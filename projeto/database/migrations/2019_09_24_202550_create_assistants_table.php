@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFormationAssistantsTable extends Migration
+class CreateAssistantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFormationAssistantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('formation_assistants', function (Blueprint $table) {
+        Schema::create('assistants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('value');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateFormationAssistantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formation_assistants');
+        Schema::dropIfExists('assistants');
     }
 }
