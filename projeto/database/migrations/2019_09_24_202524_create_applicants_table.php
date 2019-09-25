@@ -38,7 +38,6 @@ class CreateApplicantsTable extends Migration
             $table->string('email');
             $table->bigInteger('rsClass_id')->unsigned();
             $table->foreign('rsClass_id')->references('id')->on('rs_lasses')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
             $table->string('appFormUrl');
             $table->string('ccUrl');
             $table->string('literacyUrl');
@@ -50,6 +49,9 @@ class CreateApplicantsTable extends Migration
             $table->string('categorization');
             $table->string('dataAssessment');
             $table->string('observations');
+            $table->boolean('alternate');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

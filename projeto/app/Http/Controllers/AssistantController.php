@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\FormationAssistant;
+use App\Assistant;
 use Illuminate\Http\Request;
 
-class FormationAssistantController extends Controller
+class AssistantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class FormationAssistantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\FormationAssistant  $formationAssistant
+     * @param  \App\Assistant  $assistant
      * @return \Illuminate\Http\Response
      */
-    public function show(FormationAssistant $formationAssistant)
+    public function show(Assistant $assistant)
     {
         //
     }
@@ -52,10 +52,10 @@ class FormationAssistantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\FormationAssistant  $formationAssistant
+     * @param  \App\Assistant  $assistant
      * @return \Illuminate\Http\Response
      */
-    public function edit(FormationAssistant $formationAssistant)
+    public function edit(Assistant $assistant)
     {
         //
     }
@@ -64,10 +64,10 @@ class FormationAssistantController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\FormationAssistant  $formationAssistant
+     * @param  \App\Assistant  $assistant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FormationAssistant $formationAssistant)
+    public function update(Request $request, Assistant $assistant)
     {
         //
     }
@@ -75,10 +75,10 @@ class FormationAssistantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\FormationAssistant  $formationAssistant
+     * @param  \App\Assistant  $assistant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FormationAssistant $formationAssistant)
+    public function destroy(Assistant $assistant)
     {
         //
     }
