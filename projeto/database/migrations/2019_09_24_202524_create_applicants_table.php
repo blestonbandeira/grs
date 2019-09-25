@@ -37,7 +37,7 @@ class CreateApplicantsTable extends Migration
             $table->string('town');
             $table->string('email');
             $table->bigInteger('rsClass_id')->unsigned();
-            $table->foreign('rsClass_id')->references('id')->on('rs_lasses')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('rsClass_id')->references('id')->on('rs_classes')->onDelete('cascade')->onUpdate('cascade');
             $table->string('appFormUrl');
             $table->string('ccUrl');
             $table->string('literacyUrl');
