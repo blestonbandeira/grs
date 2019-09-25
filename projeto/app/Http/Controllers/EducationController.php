@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Literacy;
+use App\education;
 use Illuminate\Http\Request;
 
-class LiteracyController extends Controller
+class EducationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class LiteracyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Literacy  $literacy
+     * @param  \App\education  $education
      * @return \Illuminate\Http\Response
      */
-    public function show(Literacy $literacy)
+    public function show(education $education)
     {
         //
     }
@@ -52,10 +52,10 @@ class LiteracyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Literacy  $literacy
+     * @param  \App\education  $education
      * @return \Illuminate\Http\Response
      */
-    public function edit(Literacy $literacy)
+    public function edit(education $education)
     {
         //
     }
@@ -64,10 +64,10 @@ class LiteracyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Literacy  $literacy
+     * @param  \App\education  $education
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Literacy $literacy)
+    public function update(Request $request, education $education)
     {
         //
     }
@@ -75,10 +75,10 @@ class LiteracyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Literacy  $literacy
+     * @param  \App\education  $education
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Literacy $literacy)
+    public function destroy(education $education)
     {
         //
     }

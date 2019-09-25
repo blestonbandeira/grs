@@ -15,7 +15,9 @@ class CreateVocationalInventoriesTable extends Migration
     {
         Schema::create('vocational_inventories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('value');
+            $table->bigInteger('applicant_id')->unsigned();
+            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('date');
             $table->timestamps();
         });
     }

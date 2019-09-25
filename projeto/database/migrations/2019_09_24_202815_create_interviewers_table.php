@@ -15,7 +15,7 @@ class CreateInterviewersTable extends Migration
     {
         Schema::create('interviewers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('value');
+            $table->string('name');
             $table->timestamps();
         });
     }

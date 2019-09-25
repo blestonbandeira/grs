@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Literacy extends Model
+class enterviewInterviewer extends Model
 {
     //
 }

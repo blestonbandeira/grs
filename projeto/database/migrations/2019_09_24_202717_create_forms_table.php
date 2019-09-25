@@ -15,7 +15,25 @@ class CreateFormsTable extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('enterview_id')->unsigned();
+            $table->foreign('enterview_id')->references('id')->on('enterviews')->onDelete('cascade')->onUpdate('cascade');
             $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('value');
+            $table->string('finalOpinion');
             $table->timestamps();
         });
     }

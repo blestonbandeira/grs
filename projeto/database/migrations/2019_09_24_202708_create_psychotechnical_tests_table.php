@@ -15,7 +15,10 @@ class CreatePsychotechnicalTestsTable extends Migration
     {
         Schema::create('psychotechnical_tests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('value');
+            $table->bigInteger('applicant_id')->unsigned();
+            $table->foreign('applicant_id')->references('id')->on('applicant')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('date');
+            $table->string('result');
             $table->timestamps();
         });
     }
