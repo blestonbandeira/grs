@@ -15,9 +15,9 @@ class CreateRsClassesTable extends Migration
     {
         Schema::create('rs_classes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('assistant_id')->unsigned();
+            $table->bigInteger('assistant_id')->unsigned()->nullable();
             $table->foreign('assistant_id')->references('id')->on('assistants')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('classState_id')->unsigned();
+            $table->bigInteger('classState_id')->unsigned()->nullable();
             $table->foreign('classState_id')->references('id')->on('class_states')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

@@ -14,7 +14,10 @@ class ApplicantController extends Controller
      */
     public function index()
     {
-        //
+        $applicants = Applicant::all();
+        return view('applicants.index')
+        ->with(compact('applicants'));
+
     }
 
     /**
@@ -24,7 +27,8 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        //
+        return view('applicants.create')
+        ->with(compact('applicants'));
     }
 
     /**
@@ -35,7 +39,12 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $applicant = new Applicant;
+        $applicant->name = $request->name;
+        $applicant->email = $request->email;
+        $applicant->town = $request->town;
+        $applicant->save();
+        return redirect('/applicants');
     }
 
     /**
@@ -69,7 +78,11 @@ class ApplicantController extends Controller
      */
     public function update(Request $request, Applicant $applicant)
     {
-        //
+        $applicant->name = $request->name;
+        $applicant->email = $request->email;
+        $applicant->town = $request->town;
+        $applicant->save();
+        return redirect('/applicants');
     }
 
     /**
@@ -80,6 +93,7 @@ class ApplicantController extends Controller
      */
     public function destroy(Applicant $applicant)
     {
-        //
+        $applicant->delete();
+        return redirect('/applicants');
     }
 }

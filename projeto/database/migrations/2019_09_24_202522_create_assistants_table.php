@@ -15,7 +15,7 @@ class CreateAssistantsTable extends Migration
     {
         Schema::create('assistants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('value');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }
