@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class;
     }
 
     /**
@@ -25,4 +25,5 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+    
 }

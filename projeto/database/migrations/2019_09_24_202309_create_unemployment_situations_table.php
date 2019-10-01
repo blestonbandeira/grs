@@ -15,7 +15,7 @@ class CreateUnemploymentSituationsTable extends Migration
     {
         Schema::create('unemployment_situations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('value');
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }
