@@ -3,57 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Calendar;
-use Google_Service_Calendar;
-use Google_Client;
-use Spatie\GoogleCalendar\GoogleCalendar;
-use Spatie\GoogleCalendar\Event;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Google_Service_Calendar_Event;
 
 class CalendarController extends Controller
 {
-    function getClient()
-    {
-       
-        $client = new Google_Client();
-        $client->setApplicationName('Google Calendar API PHP Quickstart');
-        $client->setScopes(Google_Service_Calendar::CALENDAR_READONLY);
-        $client->setAuthConfig(__DIR__.'/credentials.json');
-        $client->setAccessType('offline');
-        $client->setPrompt('select_account consent');
-        $tokenPath = 'token.json';
-        if (file_exists($tokenPath)) {
-            $accessToken = json_decode(file_get_contents($tokenPath), true);
-            $client->setAccessToken($accessToken);
-        }
-
-        if ($client->isAccessTokenExpired()) {
-            if ($client->getRefreshToken()) {
-                $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-            } else {
-                $authUrl = $client->createAuthUrl();
-                printf("Open the following link in your browser:\n%s\n", $authUrl);
-                print 'Enter verification code: ';
-                
-                $authCode = "4/rgGuyMD66nJ61Z1unSsXCmDaDg5yq3z0cexOW2Q9v74kZufd4A-_H4A";
-
-                $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
-                $client->setAccessToken($accessToken);
-
-                if (array_key_exists('error', $accessToken)) {
-                    throw new Exception(join(', ', $accessToken));
-                }
-            }
-            if (!file_exists(dirname($tokenPath))) {
-                mkdir(dirname($tokenPath), 0700, true);
-            }
-            file_put_contents($tokenPath, json_encode($client->getAccessToken()));
-        }
-        return $client;
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +14,29 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return redirect('/');
+        $connect = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
+
+        $data = array();
+
+        $query = "SELECT * FROM events ORDER BY id";
+
+        $statement = $connect->prepare($query);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+
+        foreach($result as $row)
+        {
+            $data[] = array(
+            'id'   => $row["id"],
+            'title'   => $row["title"],
+            'start'   => $row["start_event"],
+            'end'   => $row["end_event"]
+            );
+        }
+
+        echo json_encode($data);
     }
 
     /**
@@ -71,7 +46,7 @@ class CalendarController extends Controller
      */
     public function create()
     {
-        return view('calendar.create');
+        //
     }
 
     /**
@@ -82,26 +57,24 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $client = $this->getClient();
-        $service = new Google_Service_Calendar($client);        
-        $event = new Google_Service_Calendar_Event(array(
-            'summary' => "'".$request->name."'",
-            'description' => "'".$request->description."'",
-            'start' => array(
-              'dateTime' => '2019-10-02T09:00:00-07:00',
-            ),
-            'end' => array(
-              'dateTime' => '2019-10-02T17:00:00-07:00',
-            ),
-            'reminders' => array(
-              'useDefault' => FALSE,
-            ),
-        ));
-          
-        $calendarId = 'primary';
-        $event = $service->events->insert($calendarId, $event);
-        printf('Event created: %s\n', $event->htmlLink);
+        $connect = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
+
+        if(isset($_POST["title"]))
+        {
+            $query = "
+                INSERT INTO events 
+                (title, start_event, end_event) 
+                VALUES (:title, :start_event, :end_event)
+                ";
+            $statement = $connect->prepare($query);
+            $statement->execute(
+                array(
+                ':title'  => $_POST['title'],
+                ':start_event' => $_POST['start'],
+                ':end_event' => $_POST['end']
+                )
+            );
+        }
     }
 
     /**
@@ -135,7 +108,25 @@ class CalendarController extends Controller
      */
     public function update(Request $request, Calendar $calendar)
     {
-        //
+        $connect = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
+
+        if(isset($_POST["id"]))
+        {
+            $query = "
+                UPDATE events 
+                SET title=:title, start_event=:start_event, end_event=:end_event 
+                WHERE id=:id
+                ";
+            $statement = $connect->prepare($query);
+            $statement->execute(
+                array(
+                ':title'  => $_POST['title'],
+                ':start_event' => $_POST['start'],
+                ':end_event' => $_POST['end'],
+                ':id'   => $_POST['id']
+                )
+            );
+        }
     }
 
     /**
@@ -146,7 +137,18 @@ class CalendarController extends Controller
      */
     public function destroy(Calendar $calendar)
     {
-        //
+        if(isset($_POST["id"]))
+        {
+            $connect = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
+            $query = "
+                DELETE from events WHERE id=:id
+                ";
+            $statement = $connect->prepare($query);
+            $statement->execute(
+                array(
+                ':id' => $_POST['id']
+                )
+            );
+        }
     }
 }
-
