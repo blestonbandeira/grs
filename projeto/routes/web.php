@@ -14,5 +14,6 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('/applicants','ApplicantController');
 Route::resource('/assistants','ApplicantController');
+Route::resource('/calendar','CalendarController');
 
 Auth::routes();
