@@ -36,25 +36,24 @@ class ApiCalendarController extends Controller
         return response($event, 201);
     }
 
-    public function show($id)
+    public function show(Calendar $calendar)
     {
-        return Calendar::find($id)->get();
+        return response($calendar, 200);
     }
 
-    public function update($title, $start_event, $end_event, $id)
+    public function update(Request $request, Calendar $calendar)
     {
-        $event = Calendar::find($id)->get();
-        $event->title = $title;
-        $time = Carbon::parse($start_event);
-        $event->start_event = $time;
-        $time = Carbon::parse($end_event);
-        $event->end_event = $time;
-        $event->save();
-        return response($event, 200);
+        $calendar->title = $request->title;
+        $time = Carbon::parse($request->start_event);
+        $calendar->start_event = $time;
+        $time = Carbon::parse($request->end_event);
+        $calendar->end_event = $time;
+        $calendar->save();
+        return response($calendar, 200);
     }
 
-    public function destroy($id)
+    public function destroy(Calendar $calendar)
     {
-        Calendar::find($id)->delete();
+        $calendar->delete();
     }
 }
