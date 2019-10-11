@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Applicant;
+use App\Calendar;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +22,18 @@ class DatabaseSeeder extends Seeder
             $applicant->town = "Porto"; 
             $applicant->save();
         }
+
+        for($i=0; $i<5; $i++){
+            for($j=0; $j<3; $j++){
+                $calendar = new Calendar;
+                $calendar->title = "Teste Evento ".($i+1); 
+                $time = Carbon::parse(now()->addHours($j+3)->addDays($i));
+                $calendar->start_event = $time; 
+                $calendar->end_event = $time; 
+                $calendar->save();
+            }
+        }
+
+        
     }
 }
