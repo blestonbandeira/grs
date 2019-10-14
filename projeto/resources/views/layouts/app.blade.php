@@ -9,6 +9,7 @@
   <title>
     Material Dashboard by Creative Tim
   </title>
+  
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -17,6 +18,11 @@
   <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+  <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
 </head>
 
 <body class="">
@@ -176,11 +182,9 @@
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <script src="{{ asset('js/plugins/nouislider.min.js') }}"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
   <script src="{{ asset('js/plugins/arrive.min.js') }}"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE') }}"></script>
   <!-- Chartist JS -->
   <script src="{{ asset('js/plugins/chartist.min.js') }}"></script>
   <!--  Notifications Plugin    -->
@@ -189,6 +193,7 @@
   <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('demo/demo.js') }}"></script>
+  
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -365,6 +370,120 @@
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
 
+    });
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+  <script>
+    var allEvents;
+    $.ajax({
+        dataType: "json",
+        url:"/api/calendars",
+        type:"GET",
+        data:{},
+        success:function(data)
+        {
+            console.log(data);
+            allEvents = data;
+            var calendar = $('#calendar').fullCalendar({
+                defaultView: 'agendaWeek',
+                slotDuration: '00:15:00',
+                slotLabelInterval: 15,
+                slotMinutes: 15,
+                timeFormat: 'HH:mm',
+                minTime: "09:00:00",
+                maxTime: "19:00:00",
+                allDaySlot: false,
+                eventColor: '#378006',
+                weekends: false,
+                height: 550,
+                editable:true,
+                plugins: [ 'bootstrap' ],
+                themeSystem: 'bootstrap',
+                header:{
+                    left:'prev,next today',
+                    center:'title',
+                    right:'month,agendaWeek,agendaDay'
+                },
+                events: allEvents,
+                selectable:true,
+                selectHelper:true,
+                select: function(start, end, allDay)
+                {
+                    var title = prompt("Enter Event Title");
+                    if(title)
+                    {
+                        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                        $.ajax({
+                            url:"/api/calendars",
+                            type:"POST",
+                            data:{title:title, start_event:start, end_event:end},
+                            success:function()
+                            {
+                                location.reload();
+                            }
+                        })
+                    }
+                },
+                eventResize:function(event)
+                {
+                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    var title = event.title;
+                    var id = event.id;
+                    $.ajax({
+                        url:"/api/calendars/" + id,
+                        type:"PUT",
+                        data:{title:title, start_event:start, end_event:end},
+                        success:function()
+                        {
+                            location.reload();
+                        }
+                        
+                    })
+                },
+                eventDrop:function(event)
+                {
+                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    var title = event.title;
+                    var id = event.id;
+                    $.ajax({
+                        url:"/api/calendars/" + id,
+                        type:"PUT",
+                        data:{title:title, start_event:start, end_event:end},
+                        success:function()
+                        {
+                            location.reload();
+                        }
+                    });
+                },
+                /*eventClick:function(event)
+                {
+                    if(confirm("Are you sure you want to remove it?"))
+                    {
+                        var id = event.id;
+                        $.ajax({
+                            url:"/api/calendars/" + id,
+                            type:"DELETE",
+                            data:{},
+                            success:function()
+                            {
+                                location.reload();
+                            }
+                        })
+                    }
+                },*/
+                eventClick:function(event)
+                { 
+                  document.getElementById('btnModalShow').click();
+                },
+            });
+        }
     });
   </script>
 </body>
