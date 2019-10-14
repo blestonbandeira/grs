@@ -18,7 +18,8 @@ class ApiCalendarController extends Controller
             'id'   => $row["id"],
             'title'   => $row["title"],
             'start'   => $row["start_event"],
-            'end'   => $row["end_event"]
+            'end'   => $row["end_event"],
+            'color' => "#zzz"
             );
         }
         return $data;
