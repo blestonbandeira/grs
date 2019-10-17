@@ -4,7 +4,7 @@
 	<title>Entrar</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.ico') }}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -14,13 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
@@ -28,7 +28,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100" >
 			<div class="wrap-login100"  style="box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);">
@@ -38,20 +38,26 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
 					@csrf
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Email necessário">
-						<span class="label-input100">{{ __('E-Mail') }}</span>				
+						<span class="label-input100">{{ __('E-Mail') }}</span>
 
 						<input id="email" type="email"  class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Escreva o seu email" autofocus>
 
 						<span class="focus-input100"></span>
-						
+
+						@error('email')
+							<span role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
+
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">{{ __('Password') }}</span>
-						
+
 						<input id="password" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Escreva a sua password">
 
 						<span class="focus-input100"></span>
@@ -59,7 +65,9 @@
 
 					<div class="flex-sb-m w-full p-b-30">
 						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" {{ old('remember') ? 'checked' : '' }}>
+							{{-- <input class="input-checkbox100" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> --}}
+
 							<label class="label-checkbox100" for="ckb1">
 								{{ __('Lembrar-me') }}
 							</label>
@@ -71,6 +79,13 @@
 									{{ __('Forgot Your Password?') }}
 								</a>
 							@endif
+
+							@error('password')
+								<span role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+
 						</div>
 					</div>
 
@@ -83,7 +98,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 <!--===============================================================================================-->
 	<script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 <!--===============================================================================================-->
