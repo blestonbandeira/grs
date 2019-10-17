@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePsychotechnicalTestsTable extends Migration
+class CreateCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePsychotechnicalTestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('psychotechnical_tests', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('applicant_id')->unsigned();
-            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('date');
-            $table->string('result');
+            $table->date('startDate')->nullable();
+            $table->string('name')->nullable();
+            $table->bigInteger('id_courseType')->unsigned()->nullable();
+            $table->foreign('id_courseType')->references('id')->on('course_types')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePsychotechnicalTestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('psychotechnical_tests');
+        Schema::dropIfExists('courses');
     }
 }

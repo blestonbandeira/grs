@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnemploymentSituationsTable extends Migration
+class CreateOriginsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUnemploymentSituationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('unemployment_situations', function (Blueprint $table) {
+        Schema::create('origins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateUnemploymentSituationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unemployment_situations');
+        Schema::dropIfExists('origin');
     }
 }

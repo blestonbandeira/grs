@@ -15,9 +15,11 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('applicant_id')->unsigned();
-            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('date');
+            $table->date('date');
+            $table->bigInteger('id_testType')->unsigned()->nullable();
+            $table->foreign('id_testType')->references('id')->on('test_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('id_applicant')->unsigned()->nullable();
+            $table->foreign('id_applicant')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');            
             $table->string('result');
             $table->timestamps();
         });

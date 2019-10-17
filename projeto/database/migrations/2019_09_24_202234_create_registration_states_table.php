@@ -15,7 +15,7 @@ class CreateRegistrationStatesTable extends Migration
     {
         Schema::create('registration_states', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('value')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }

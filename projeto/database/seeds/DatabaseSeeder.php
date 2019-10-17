@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Applicant;
-use App\Calendar;
+use App\Event;
 use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
@@ -22,59 +22,47 @@ class DatabaseSeeder extends Seeder
             $applicant->town = "Porto"; 
             $applicant->save();
         }
-
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 11";
-        $calendar->start_event = "2019-10-14 18:15:00"; 
-        $calendar->end_event = "2019-10-14 19:30:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 12";
-        $calendar->start_event = "2019-10-14 15:00:00"; 
-        $calendar->end_event = "2019-10-14 16:45:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 13";
-        $calendar->start_event = "2019-10-14 11:00:00"; 
-        $calendar->end_event = "2019-10-14 12:15:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 14";
-        $calendar->start_event = "2019-10-14 09:00:00"; 
-        $calendar->end_event = "2019-10-14 9:15:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 15";
-        $calendar->start_event = "2019-10-14 09:45:00"; 
-        $calendar->end_event = "2019-10-14 14:45:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 21";
-        $calendar->start_event = "2019-10-15 18:15:00"; 
-        $calendar->end_event = "2019-10-15 19:30:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 22";
-        $calendar->start_event = "2019-10-15 15:00:00"; 
-        $calendar->end_event = "2019-10-15 16:45:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 23";
-        $calendar->start_event = "2019-10-15 11:00:00"; 
-        $calendar->end_event = "2019-10-15 12:15:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 24";
-        $calendar->start_event = "2019-10-15 09:00:00"; 
-        $calendar->end_event = "2019-10-15 9:15:00"; 
-        $calendar->save();
-        $calendar = new Calendar;
-        $calendar->title = "Teste Evento 25";
-        $calendar->start_event = "2019-10-15 09:45:00"; 
-        $calendar->end_event = "2019-10-15 14:45:00"; 
-        $calendar->save();
-
         
-        
+        $event = new Event;
+        $event->title = "Teste Evento 13";
+        $event->start_event = "2019-10-14 11:00:00"; 
+        $event->end_event = "2019-10-14 12:15:00"; 
+        $event->save();
+        $event = new Event;
+        $event->title = "Teste Evento 14";
+        $event->start_event = "2019-10-14 09:00:00"; 
+        $event->end_event = "2019-10-14 9:15:00"; 
+        $event->save();
+        $event = new Event;
+        $event->title = "Teste Evento 15";
+        $event->start_event = "2019-10-14 09:45:00"; 
+        $event->end_event = "2019-10-14 14:45:00"; 
+        $event->save();
+        $event = new Event;
+        $event->title = "Teste Evento 21";
+        $event->start_event = "2019-10-15 18:15:00"; 
+        $event->end_event = "2019-10-15 19:30:00"; 
+        $event->save();
+        $event = new Event;
+        $event->title = "Teste Evento 22";
+        $event->start_event = "2019-10-15 15:00:00"; 
+        $event->end_event = "2019-10-15 16:45:00"; 
+        $event->save();
+        $event = new Event;
+        $event->title = "Teste Evento 23";
+        $event->start_event = "2019-10-15 11:00:00"; 
+        $event->end_event = "2019-10-15 12:15:00"; 
+        $event->save();
+        $event = new Event;
+        $event->title = "Teste Evento 24";
+        $event->start_event = "2019-10-15 09:00:00"; 
+        $event->end_event = "2019-10-15 9:15:00"; 
+        $event->save();
+        $event = new Event;
+        $event->title = "Teste Evento 25";
+        $event->start_event = "2019-10-15 09:45:00"; 
+        $event->end_event = "2019-10-15 14:45:00"; 
+        $event->save();
+
     }
 }

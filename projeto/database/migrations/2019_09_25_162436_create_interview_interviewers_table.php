@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRsClassesTable extends Migration
+class CreateInterviewInterviewersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateRsClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rs_classes', function (Blueprint $table) {
+        Schema::create('interview_interviewers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_user')->unsigned()->nullable(); //fazer where para atribuir id de assistente de formação
+            $table->bigInteger('id_interview')->unsigned();
+            $table->foreign('id_interview')->references('id')->on('interviews')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('id_user')->unsigned(); //fazer where para garantir que o user tem id de interviewer
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('id_classState')->unsigned()->nullable();
-            $table->foreign('id_classState')->references('id')->on('class_states')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateRsClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rs_classes');
+        Schema::dropIfExists('enterview_interviewers');
     }
 }
