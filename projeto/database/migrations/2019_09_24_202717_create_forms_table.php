@@ -18,7 +18,7 @@ class CreateFormsTable extends Migration
             $table->bigInteger('id_interview')->unsigned();
             $table->foreign('id_interview')->references('id')->on('interviews')->onDelete('cascade')->onUpdate('cascade');
             $table->string('interviewer')->default('id_user');
-            $table->date('date');
+            $table->string('date');
             $table->string('applicantName')->default('id_applicant');
             $table->string('firstCourseOption')->nullable();
             $table->string('motivation')->nullable();

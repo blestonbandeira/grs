@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::apiResource('/calendars', 'ApiCalendarController');
+Route::apiResource('/calendars', 'ApiEventController');
