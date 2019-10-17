@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Calendar;
+use App\Event;
 use Carbon\Carbon;
 
-class ApiCalendarController extends Controller
+class ApiEventController extends Controller
 {
     public function index()
     {
-        $result = Calendar::orderBy('id')->get();
+        $result = Event::orderBy('id')->get();
         $data = array();
         foreach($result as $row)
         {
@@ -27,7 +27,7 @@ class ApiCalendarController extends Controller
 
     public function store(Request $request)
     {
-        $event = new Calendar;
+        $event = new Event;
         $event->title = $request->title;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;
@@ -37,24 +37,24 @@ class ApiCalendarController extends Controller
         return response($event, 201);
     }
 
-    public function show(Calendar $calendar)
+    public function show(Event $event)
     {
-        return response($calendar, 200);
+        return response($event, 200);
     }
 
-    public function update(Request $request, Calendar $calendar)
+    public function update(Request $request, Event $event)
     {
-        $calendar->title = $request->title;
+        $event->title = $request->title;
         $time = Carbon::parse($request->start_event);
-        $calendar->start_event = $time;
+        $event->start_event = $time;
         $time = Carbon::parse($request->end_event);
-        $calendar->end_event = $time;
-        $calendar->save();
-        return response($calendar, 200);
+        $event->end_event = $time;
+        $event->save();
+        return response($event, 200);
     }
 
-    public function destroy(Calendar $calendar)
+    public function destroy(Event $event)
     {
-        $calendar->delete();
+        $event->delete();
     }
 }
