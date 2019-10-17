@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->bigInteger('id_permissionLevel')->unsigned()->nullable();
+            $table->foreign('id_permissionLevel')->references('id')->on('permission_levels');
             $table->rememberToken();
             $table->timestamps();
         });

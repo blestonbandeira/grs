@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVocationalInventoriesTable extends Migration
+class CreateCourseTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateVocationalInventoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vocational_inventories', function (Blueprint $table) {
+        Schema::create('course_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('applicant_id')->unsigned();
-            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('date');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateVocationalInventoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vocational_inventories');
+        Schema::dropIfExists('course_types');
     }
 }

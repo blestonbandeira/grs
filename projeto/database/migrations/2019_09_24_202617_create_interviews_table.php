@@ -15,10 +15,9 @@ class CreateInterviewsTable extends Migration
     {
         Schema::create('interviews', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('applicant_id')->unsigned();
-            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('date');
-            $table->string('result');
+            $table->bigInteger('id_applicant')->unsigned();
+            $table->foreign('id_applicant')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('date');            
             $table->timestamps();
         });
     }
