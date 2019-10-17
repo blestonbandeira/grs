@@ -46,14 +46,10 @@
 						<input id="email" type="email"  class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Escreva o seu email" autofocus>
 
 						<span class="focus-input100"></span>
-
-						@error('email')
-							<span role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-						@enderror
-
 					</div>
+
+						
+
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">{{ __('Password') }}</span>
@@ -79,25 +75,25 @@
 									{{ __('Forgot Your Password?') }}
 								</a>
 							@endif
-
-							@error('password')
-								<span role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
-
 						</div>
 					</div>
-
 					<div class="container-login100-form-btn">
 						<button type="submit" class="login100-form-btn">
                             {{ __('Login') }}
 						</button>
 					</div>
+
+					@error('email')
+						<span id="alert-validate" role="alert">
+							<strong style="width: 100%; margin-top: .25rem; font-size: 80%; color: #dc3545;">{{ $message }}</strong>
+						</span>
+					@enderror
+									
 				</form>
 			</div>
 		</div>
 	</div>
+
 
 <!--===============================================================================================-->
 	<script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
