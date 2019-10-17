@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use Carbon\Carbon;
+use DateTime;
 
 class ApiEventController extends Controller
 {
