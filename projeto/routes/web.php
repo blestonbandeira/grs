@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::resource('/applicants','ApplicantController');
-Route::resource('/assistants','ApplicantController');
-Route::resource('/calendar','CalendarController');
+//Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return redirect('/calendar');
+});
+
+Route::middleware('auth')->resource('/applicants','ApplicantController');
+Route::middleware('auth')->resource('/assistants','ApplicantController');
+Route::middleware('auth')->resource('/calendar','CalendarController');
 Auth::routes();
