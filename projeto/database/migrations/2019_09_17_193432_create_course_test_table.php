@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTestCourseTable extends Migration
+class CreateCourseTestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTestCourseTable extends Migration
      */
     public function up()
     {
-        Schema::create('test_course', function (Blueprint $table) {
+        Schema::create('course_test', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_testType')->unsigned();
             $table->foreign('id_testType')->references('id')->on('test_types')->onDelete('cascade')->onUpdate('cascade');
@@ -30,6 +30,6 @@ class CreateTestCourseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_course');
+        Schema::dropIfExists('course_test');
     }
 }

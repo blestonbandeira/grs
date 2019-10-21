@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApplicantEventsTable extends Migration
+class CreateApplicantEventTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateApplicantEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applicant_events', function (Blueprint $table) {
+        Schema::create('applicant_event', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_applicant')->unsigned()->nullable();
             $table->foreign('id_applicant')->references('id')->on('applicants');
@@ -30,6 +30,6 @@ class CreateApplicantEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applicant_events');
+        Schema::dropIfExists('applicant_event');
     }
 }
