@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\VocationalInventory;
+use App\InterviewInterviewer;
 use Illuminate\Http\Request;
 
-class VocationalInventoryController extends Controller
+class InterviewInterviewerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class VocationalInventoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\VocationalInventory  $vocationalInventory
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
-    public function show(VocationalInventory $vocationalInventory)
+    public function show(InterviewInterviewer $interviewInterviewer)
     {
         //
     }
@@ -52,10 +52,10 @@ class VocationalInventoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\VocationalInventory  $vocationalInventory
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
-    public function edit(VocationalInventory $vocationalInventory)
+    public function edit(InterviewInterviewer $InterviewInterviewer)
     {
         //
     }
@@ -64,10 +64,10 @@ class VocationalInventoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\VocationalInventory  $vocationalInventory
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VocationalInventory $vocationalInventory)
+    public function update(Request $request, InterviewInterviewer $InterviewInterviewer)
     {
         //
     }
@@ -75,10 +75,10 @@ class VocationalInventoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\VocationalInventory  $vocationalInventory
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VocationalInventory $vocationalInventory)
+    public function destroy(InterviewInterviewer $InterviewInterviewer)
     {
         //
     }
