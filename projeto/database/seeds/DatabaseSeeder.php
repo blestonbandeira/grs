@@ -3,7 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\Applicant;
 use App\Event;
+use App\User;
 use Carbon\Carbon;
+use App\PermissionLevel;
 
 class DatabaseSeeder extends Seeder
 {
@@ -64,5 +66,38 @@ class DatabaseSeeder extends Seeder
         $event->end_event = "2019-10-15 14:45:00"; 
         $event->save();
 
+        
+        $permission = new PermissionLevel;
+        $permission->name = "Admin";
+        $permission->save();
+        $permission = new PermissionLevel;
+        $permission->name = "Assist";
+        $permission->save();
+        $permission = new PermissionLevel;
+        $permission->name = "Inter";
+        $permission->save();
+
+
+        $user = new User;
+        $user->name = "Admin";
+        $user->email = "admin@m.pt";
+        $user->password = bcrypt("123++qwe");
+        $user->id_permissionLevel = 1;
+        $user->save();
+
+        $user = new User;
+        $user->name = "Assist";
+        $user->email = "assist@m.pt";
+        $user->password = bcrypt("123++qwe");
+        $user->id_permissionLevel = 2;
+        $user->save();
+
+        $user = new User;
+        $user->name = "Inter";
+        $user->email = "inter@m.pt";
+        $user->password = bcrypt("123++qwe");
+        $user->id_permissionLevel = 3;
+        $user->save();
+        
     }
 }
