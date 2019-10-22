@@ -10,38 +10,40 @@
         <a href="#" class="simple-text logo-normal"> Administrador </a>
     </div>          
     <div class="sidebar-wrapper">
-    <ul class="nav">
-        <li class="nav-item active  ">
-        <a class="nav-link" href="./dashboard.html">
+    <ul id="nav" class="nav">
+        <li class="nav-item active">
+        {{-- <a class="nav-link" href="#"> --}}
+        <a class="nav-link" href="{{ route('calendar.index') }}">
             <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
+            <p>Calendário</p>
+        </a>
+        </li>
+        <li class="nav-item ">
+        <a class="nav-link" href="{{ route('applicants.index') }}">
+        {{-- <a class="nav-link" href="#"> --}}
+            <i class="material-icons">person</i>
+            <p>Candidatos</p>
+        </a>
+        </li>
+        <li class="nav-item ">
+        <a class="nav-link" href="#">
+            <i class="material-icons">content_paste</i>
+            <p>Turmas</p>
+        </a>
+        </li>
+        <li class="nav-item ">
+        <a class="nav-link" href="#">
+            <i class="material-icons">library_books</i>
+            <p>Entrevistadores</p>
+        </a>
+        </li>
+        <li class="nav-item ">
+        <a class="nav-link" href="#">
+            <i class="material-icons">bubble_chart</i>
+            <p>Assistentes</p>
         </a>
         </li>
         {{-- <li class="nav-item ">
-        <a class="nav-link" href="./user.html">
-            <i class="material-icons">person</i>
-            <p>User Profile</p>
-        </a>
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link" href="./tables.html">
-            <i class="material-icons">content_paste</i>
-            <p>Table List</p>
-        </a>
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link" href="./typography.html">
-            <i class="material-icons">library_books</i>
-            <p>Typography</p>
-        </a>
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link" href="./icons.html">
-            <i class="material-icons">bubble_chart</i>
-            <p>Icons</p>
-        </a>
-        </li>
-        <li class="nav-item ">
         <a class="nav-link" href="./map.html">
             <i class="material-icons">location_ons</i>
             <p>Maps</p>
@@ -63,3 +65,16 @@
         </ul>
     </div>
 </div>
+
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("nav");
+    var btns = header.getElementsByClassName("nav-item");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
