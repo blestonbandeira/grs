@@ -319,12 +319,11 @@
     var allEvents;
     $.ajax({
         dataType: "json",
-        url:"/api/calendars",
+        url:"/api/event",
         type:"GET",
         data:{},
         success:function(data)
         {
-            console.log(data);
             allEvents = data;
             var calendar = $('#calendar').fullCalendar({
                 defaultView: 'agendaWeek',
@@ -357,7 +356,7 @@
                         var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                         var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                         $.ajax({
-                            url:"/api/calendars",
+                            url:"/api/event",
                             type:"POST",
                             data:{title:title, start_event:start, end_event:end},
                             success:function()
@@ -374,7 +373,7 @@
                     var title = event.title;
                     var id = event.id;
                     $.ajax({
-                        url:"/api/calendars/" + id,
+                        url:"/api/event/" + id,
                         type:"PUT",
                         data:{title:title, start_event:start, end_event:end},
                         success:function()
@@ -391,7 +390,7 @@
                     var title = event.title;
                     var id = event.id;
                     $.ajax({
-                        url:"/api/calendars/" + id,
+                        url:"/api/event/" + id,
                         type:"PUT",
                         data:{title:title, start_event:start, end_event:end},
                         success:function()
@@ -406,7 +405,7 @@
                     {
                         var id = event.id;
                         $.ajax({
-                            url:"/api/calendars/" + id,
+                            url:"/api/event/" + id,
                             type:"DELETE",
                             data:{},
                             success:function()
@@ -418,7 +417,8 @@
                 },*/
                 eventClick:function(event)
                 { 
-                  document.getElementById('btnModalShow').click();
+                  $('#exampleModalLabel').Value = "OLAAAAA";
+                  $('#btnModalShow').click();
                 },
             });
         }
