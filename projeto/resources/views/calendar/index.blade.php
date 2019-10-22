@@ -28,4 +28,19 @@
     </div>
   </div>
 </div>
+
+<script>
+    // Add active class to the current button (highlight it)
+    try{
+        var header = document.getElementById("nav");
+        var btns = header.getElementsByClassName("nav-item");
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+    }
+    catch(err){
+        document.getElementById("btnCalendar").className += " active";
+    }
+    document.getElementById("btnCalendar").className += " active";
+    
+</script>
 @endsection

@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Creative Tim
+    GRS
   </title>
   
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -131,7 +131,7 @@
   <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('demo/demo.js') }}"></script>
-  
+
   <script>
     $(document).ready(function() {
       $().ready(function() {

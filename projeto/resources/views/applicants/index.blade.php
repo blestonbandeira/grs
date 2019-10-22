@@ -14,29 +14,6 @@
                     </div>
                 </div>
 
-
-                    
-                <div class="container-fluid">
-                    <div class="row">
-                    @foreach ($applicants as $applicant)    
-                        <div class="col-xl-2" style="margin: 5px; margin-bottom: 30px; padding: 10px; border-style: solid;border-color: rgb(0, 162, 255); border-radius: 7px; min-width: 14vw; word-wrap: break-word;">
-                            <h2>
-                                <a href="{{ url('/applicants/' . $applicant->id ) }}">{{$applicant->name}}</a>
-                            </h2>
-                            <p>
-                                {{ Str::limit($applicant->email, 30)}}
-                            </p>
-                            <p>
-                                <a class="btn btn-primary btn-sm" href="{{ url('/applicants/' . $applicant->id ) }}" role="button">Detalhes</a>
-                            </p>
-                        </div>
-                    @endforeach
-                    </div>
-                </div>
-                
-
-
-
 </hr>
 
                 <div class="row">
@@ -93,4 +70,18 @@
         </div>
     </div>
 </div>
+<script>
+    // Add active class to the current button (highlight it)
+    try{
+        var header = document.getElementById("nav");
+        var btns = header.getElementsByClassName("nav-item");
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+    }
+    catch(err){
+        document.getElementById("btnApplicant").className += " active";
+    }
+    document.getElementById("btnApplicant").className += " active";
+    
+</script>
 @endsection
