@@ -367,7 +367,8 @@
                         data:{title:title, start_event:start, end_event:end},
                         success:function()
                         {
-                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso!</p></div></div>'; 
+                          document.getElementById('btnModalShow').click();
+                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso para: ' + title + '!</p></div></div>'; 
                           setTimeout(function() {location.reload();},2000);
                         }
                         
@@ -385,7 +386,8 @@
                         data:{title:title, start_event:start, end_event:end},
                         success:function()
                         {
-                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso!</p></div></div>'; 
+                          document.getElementById('btnModalShow').click();
+                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso para: ' + title + '!</p></div></div>'; 
                           setTimeout(function() {location.reload();},2000);
                         }
                     });
