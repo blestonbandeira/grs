@@ -417,10 +417,11 @@
                 },*/
                 eventClick:function(event)
                 { 
+                  document.getElementById('idEvent').value = event.id;
                   var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                   var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                   document.getElementById('btnModalShow').click();
-                  document.getElementById('modalTitleParagraph').innerHTML = event.title;
+                  document.getElementById('modalDelete').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">' + event.title + '</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button></div>';
                   document.getElementById('modalBodyParagraph').innerHTML = "Data de Inicio: " + start + "<br/>Data de Fim: " + end;
                 },
             });
