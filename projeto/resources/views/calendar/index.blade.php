@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" style="margin-left: 10vw;margin-top:-10px;">
-   <div id="calendar" style="width: 100%!important;"></div>
+   <div id="calendar" style="width: 55vw!important;"></div>
 </div>
 
 
@@ -53,7 +53,7 @@
     })
   }
   function confirmDeleteEvents(){
-    document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title">Deseja mesmo eliminar?</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p>Tudo relacionado a este registo será perdido!</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button><button type="button" class="btn btn-danger" onclick="deleteEvents()">Sim, eliminar</button></div>';
+    document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title">Tem a certeza que pretende eliminar?</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p>Este registo será totalmente perdido!</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button><button type="button" class="btn btn-danger" onclick="deleteEvents()">Sim, eliminar</button></div>';
   }
 </script>
 
