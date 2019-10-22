@@ -417,8 +417,11 @@
                 },*/
                 eventClick:function(event)
                 { 
-                  $('#exampleModalLabel').Value = "OLAAAAA";
-                  $('#btnModalShow').click();
+                  var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                  var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                  document.getElementById('btnModalShow').click();
+                  document.getElementById('modalTitleParagraph').innerHTML = event.title;
+                  document.getElementById('modalBodyParagraph').innerHTML = "Data de Inicio: " + start + "<br/>Data de Fim: " + end;
                 },
             });
         }
