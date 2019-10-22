@@ -11,33 +11,34 @@
     </div>          
     <div class="sidebar-wrapper">
     <ul id="nav" class="nav">
-        <li class="nav-item active">
+        <li id="btnCalendar" class="nav-item">
         {{-- <a class="nav-link" href="#"> --}}
         <a class="nav-link" href="{{ route('calendar.index') }}">
             <i class="material-icons">dashboard</i>
             <p>Calendário</p>
         </a>
         </li>
-        <li class="nav-item ">
+
+        <li id="btnApplicant" class="nav-item ">
         <a class="nav-link" href="{{ route('applicants.index') }}">
         {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">person</i>
             <p>Candidatos</p>
         </a>
         </li>
-        <li class="nav-item ">
+        <li id="btnClass" class="nav-item ">
         <a class="nav-link" href="#">
             <i class="material-icons">content_paste</i>
             <p>Turmas</p>
         </a>
         </li>
-        <li class="nav-item ">
+        <li id="btnInterviewer" class="nav-item ">
         <a class="nav-link" href="#">
             <i class="material-icons">library_books</i>
             <p>Entrevistadores</p>
         </a>
         </li>
-        <li class="nav-item ">
+        <li id="btnAssitant" class="nav-item ">
         <a class="nav-link" href="#">
             <i class="material-icons">bubble_chart</i>
             <p>Assistentes</p>
@@ -65,16 +66,3 @@
         </ul>
     </div>
 </div>
-
-<script>
-    // Add active class to the current button (highlight it)
-    var header = document.getElementById("nav");
-    var btns = header.getElementsByClassName("nav-item");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-</script>
