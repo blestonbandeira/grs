@@ -350,21 +350,10 @@
                 selectHelper:true,
                 select: function(start, end, allDay)
                 {
-                    var title = prompt("Enter Event Title");
-                    if(title)
-                    {
-                        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                        $.ajax({
-                            url:"/api/event",
-                            type:"POST",
-                            data:{title:title, start_event:start, end_event:end},
-                            success:function()
-                            {
-                                location.reload();
-                            }
-                        })
-                    }
+                  var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                  var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                  document.getElementById('btnModalShow').click();
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Insira o nome:</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div id="modalBodyParagraph" class="modal-body"><p><input id="inputTitleEvents" class="form-control" type="text" placeholder="Titulo do Evento"/></p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
                 },
                 eventResize:function(event)
                 {
@@ -378,7 +367,8 @@
                         data:{title:title, start_event:start, end_event:end},
                         success:function()
                         {
-                            location.reload();
+                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso!</p></div></div>'; 
+                          setTimeout(function() {location.reload();},2000);
                         }
                         
                     })
@@ -395,7 +385,8 @@
                         data:{title:title, start_event:start, end_event:end},
                         success:function()
                         {
-                            location.reload();
+                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso!</p></div></div>'; 
+                          setTimeout(function() {location.reload();},2000);
                         }
                     });
                 },
@@ -421,8 +412,7 @@
                   var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                   var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                   document.getElementById('btnModalShow').click();
-                  document.getElementById('modalDelete').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">' + event.title + '</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button></div>';
-                  document.getElementById('modalBodyParagraph').innerHTML = "Data de Inicio: " + start + "<br/>Data de Fim: " + end;
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">' + event.title + '</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button></div>';
                 },
             });
         }
