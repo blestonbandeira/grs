@@ -15,35 +15,86 @@
         {{-- <a class="nav-link" href="#"> --}}
         <a class="nav-link" href="{{ route('calendar.index') }}">
             <i class="material-icons">dashboard</i>
-            <p>Calendário</p>
+            <p>Calendário</p>         
         </a>
         </li>
 
-        <li id="btnApplicant" class="nav-item ">
-        <a class="nav-link" href="{{ route('applicants.index') }}">
+        <li id="btnApplicant" class="nav-item">
+        <a class="nav-link">
         {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">person</i>
-            <p>Candidatos</p>
+            <p data-toggle="collapse" data-target="#applicant">Candidatos</p>
+            <ul id="applicant" class="collapse">
+                <a class="nav-link" href="{{ route('applicants.index') }}">
+                    <li class="nav-item">Ver</li>  
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Adicionar</li> 
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Gerir</li>  
+                </a>          
+            </ul>
         </a>
         </li>
+
         <li id="btnClass" class="nav-item ">
         <a class="nav-link" href="#">
+        {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">content_paste</i>
-            <p>Turmas</p>
+            <p data-toggle="collapse" data-target="#classes">Turmas</p>
+            <ul id="classes" class="collapse">
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Ver</li>  
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Adicionar</li>    
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Gerir</li> 
+                </a>           
+            </ul>
         </a>
         </li>
+        
         <li id="btnInterviewer" class="nav-item ">
         <a class="nav-link" href="#">
+        {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">library_books</i>
-            <p>Entrevistadores</p>
+            <p data-toggle="collapse" data-target="#interviewers">Entrevistadores</p>
+            <ul id="interviewers" class="collapse">
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Ver</li>  
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Adicionar</li>    
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Gerir</li> 
+                </a>           
+            </ul>
         </a>
         </li>
+
         <li id="btnAssitant" class="nav-item ">
         <a class="nav-link" href="#">
+        {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">bubble_chart</i>
-            <p>Assistentes</p>
+            <p data-toggle="collapse" data-target="#assistants">Assistentes de Formação</p>
+            <ul id="assistants" class="collapse">
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Ver</li>  
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Adicionar</li>    
+                </a>
+                <a class="nav-link" href="#">
+                    <li class="nav-item">Gerir</li> 
+                </a>           
+            </ul>
         </a>
         </li>
+
         {{-- <li class="nav-item ">
         <a class="nav-link" href="./map.html">
             <i class="material-icons">location_ons</i>
