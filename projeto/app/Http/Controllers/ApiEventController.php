@@ -37,6 +37,7 @@ class ApiEventController extends Controller
         $time = Carbon::parse($request->end_event);
         $event->end_event = $time;
         $event->save();
+
         return response($event, 201);
     }
 

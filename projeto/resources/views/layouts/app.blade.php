@@ -361,12 +361,7 @@
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     var title = event.title;
                     var id = event.id;
-                    var evenType; 
-
-                    var radio = document.getElementsByClassName('eventRadio');
-                    for(var i = 0; i < 4; i++)
-                      if(radio[i].checked)
-                        evenType = radio[i].value;
+                    var evenType = event.type; 
 
                     $.ajax({
                         url:"/api/event/" + id,
@@ -387,12 +382,7 @@
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     var title = event.title;
                     var id = event.id;
-                    var evenType; 
-
-                    var radio = document.getElementsByClassName('eventRadio');
-                    for(var i = 0; i < 4; i++)
-                      if(radio[i].checked)
-                        evenType = radio[i].value;
+                    var evenType = event.type; 
 
                     $.ajax({
                         url:"/api/event/" + id,
