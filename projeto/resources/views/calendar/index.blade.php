@@ -27,11 +27,17 @@
     {
         var start = document.getElementById('startEvents').value;
         var end = document.getElementById('endEvents').value;
+        var evenType; 
+
+        var radio = document.getElementsByClassName('eventRadio');
+        for(var i = 0; i < 4; i++)
+          if(radio[i].checked)
+            evenType = radio[i].value;
 
         $.ajax({
             url:"/api/event",
             type:"POST",
-            data:{title:title, start_event:start, end_event:end},
+            data:{title:title, type:evenType, start_event:start, end_event:end},
             success:function()
             {
               document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 
