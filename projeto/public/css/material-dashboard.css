@@ -10870,7 +10870,7 @@ fieldset[disabled] .form-group.is-focused .form-check .form-check-label {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 1px solid rgba(0, 0, 0, .54);
+  border: 1px solid #0092d1;
   overflow: hidden;
   z-index: 1;
   border-radius: 3px;
@@ -10895,7 +10895,7 @@ fieldset[disabled] .form-group.is-focused .form-check .form-check-label {
 }
 
 .form-check .form-check-input:checked+.form-check-sign .check {
-  background: #9c27b0;
+  background: #0092d1;
 }
 
 .form-check .form-check-input:checked+.form-check-sign .check:before {
