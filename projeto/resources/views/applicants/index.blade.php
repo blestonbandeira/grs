@@ -6,16 +6,20 @@
     <a href="#"><button type="button" class="btn btn-info">Marcar Entrevista</button></a>
     <a href="#"><button type="button" class="btn btn-info">Marcar Prova</button></a>
 </div>
+
 <div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-6 col-md-12">
+      <div class="accordion" id="accordionExample">
         <div class="card">
           <div class="card-header card-header-info">
-          <h4 class="card-title">Turma TPSI11.18</h4>
+          <button class=" card-title btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Turma TPSI11.18</button>
           <p class="card-category">Início: novembro 2018</p>
         </div>
+
         <div class="card-body table-responsive">
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <table class="table table-hover">
             <thead class="text-info">
             <th></th>
@@ -67,14 +71,20 @@
         </table>
         </div>
         </div>
+        </div>
+        </div>
       </div>
-      <div class="col-lg-6 col-md-12">
+            
+
+   <div class="col-lg-6 col-md-12">
         <div class="card">
-        <div class="card-header card-header-info">
-          <h4 class="card-title">Turma TPSI10.18</h4>
-          <p class="card-category">Início: outubro   2018</p>
+          <div class="card-header card-header-info">
+          <button class=" card-title btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Turma TPSI11.18</button>
+          <p class="card-category">Início: novembro 2018</p>
         </div>
+
         <div class="card-body table-responsive">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <table class="table table-hover">
             <thead class="text-info">
             <th></th>
@@ -126,7 +136,11 @@
         </table>
         </div>
         </div>
+        </div>
+        </div>
       </div>
+
+
     </div>
   </div>
 </div>
