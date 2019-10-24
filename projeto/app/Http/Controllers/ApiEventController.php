@@ -18,6 +18,7 @@ class ApiEventController extends Controller
             $data[] = array(
             'id'   => $row["id"],
             'title'   => $row["title"],
+            'type'   => $row["type"],
             'start'   => $row["start_event"],
             'end'   => $row["end_event"],
             'color' => "#zzz"
@@ -30,6 +31,7 @@ class ApiEventController extends Controller
     {
         $event = new Event;
         $event->title = $request->title;
+        $event->type = $request->type;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;
         $time = Carbon::parse($request->end_event);
@@ -46,6 +48,7 @@ class ApiEventController extends Controller
     public function update(Request $request, Event $event)
     {
         $event->title = $request->title;
+        $event->type = $request->type;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;
         $time = Carbon::parse($request->end_event);
