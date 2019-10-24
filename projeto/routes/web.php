@@ -19,4 +19,5 @@ Route::get('/', function () {
 Route::middleware('auth')->resource('/applicants','ApplicantController');
 Route::middleware('auth')->resource('/assistants','ApplicantController');
 Route::middleware('auth')->resource('/calendar','CalendarController');
+Route::middleware('auth')->resource('/form','FormController');
 Auth::routes();

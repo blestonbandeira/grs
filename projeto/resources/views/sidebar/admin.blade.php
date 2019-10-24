@@ -20,8 +20,7 @@
         </li>
 
         <li id="btnApplicant" class="nav-item">
-        <a class="nav-link">
-        {{-- <a class="nav-link" href="#"> --}}
+        <span class="nav-link">
             <i class="material-icons">person</i>
             <p data-toggle="collapse" data-target="#applicant">Candidatos</p>
             <ul id="applicant" class="collapse">
@@ -35,12 +34,11 @@
                     <li class="nav-item">Gerir</li>  
                 </a>          
             </ul>
-        </a>
+        </span>
         </li>
 
         <li id="btnClass" class="nav-item ">
         <a class="nav-link" href="#">
-        {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">content_paste</i>
             <p data-toggle="collapse" data-target="#classes">Turmas</p>
             <ul id="classes" class="collapse">
@@ -59,7 +57,6 @@
         
         <li id="btnInterviewer" class="nav-item ">
         <a class="nav-link" href="#">
-        {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">library_books</i>
             <p data-toggle="collapse" data-target="#interviewers">Entrevistadores</p>
             <ul id="interviewers" class="collapse">
@@ -78,7 +75,6 @@
 
         <li id="btnAssitant" class="nav-item ">
         <a class="nav-link" href="#">
-        {{-- <a class="nav-link" href="#"> --}}
             <i class="material-icons">bubble_chart</i>
             <p data-toggle="collapse" data-target="#assistants">Assistentes de Formação</p>
             <ul id="assistants" class="collapse">
