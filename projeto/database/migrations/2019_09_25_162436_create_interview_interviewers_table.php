@@ -30,6 +30,6 @@ class CreateInterviewInterviewerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enterview_interviewer');
+        Schema::dropIfExists('interview_interviewer');
     }
 }

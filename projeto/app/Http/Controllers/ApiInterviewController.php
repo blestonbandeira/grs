@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Interview;
 use App\InterviewInterviewer;
 use Carbon\Carbon;
+use Auth;
 
 class ApiInterviewController extends Controller
 {
@@ -28,18 +29,13 @@ class ApiInterviewController extends Controller
      */
     public function store(Request $request)
     {
-        $applRE = $request->id_applicants;
-        foreach($appl as $applRE)
-        {
-            
-        }
         $interview = new Interview;
         $interview->id_applicant = $request->id_applicants;
         $time = Carbon::parse($request->date);
-        $interview->date = $request->$time;
+        $interview->date = $time;
         $interview->save();
 
-        $interview_interviewer = new InterviewInterviewer;
+        $interview_interviewer = new InterviewInterviewer();
         $interview_interviewer->id_interview = $request->id_interview;
         $interview_interviewer->id_user = Auth::id();
         $interview_interviewer->save();
@@ -57,6 +53,8 @@ class ApiInterviewController extends Controller
         $appli_event->id_applicant = $request->id_applicant;
         $appli_event->id_event = $eventCreated->id;
         $appli_event->save();
+
+        return $request->id_applicants;
     }
 
     /**

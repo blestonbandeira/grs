@@ -41,7 +41,7 @@ class InterviewInterviewerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\InterviewInterviewer  $interviewInterviewer
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
     public function show(InterviewInterviewer $interviewInterviewer)
@@ -52,10 +52,10 @@ class InterviewInterviewerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\InterviewInterviewer  $interviewInterviewer
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
-    public function edit(InterviewInterviewer $interviewInterviewer)
+    public function edit(InterviewInterviewer $InterviewInterviewer)
     {
         //
     }
@@ -64,10 +64,10 @@ class InterviewInterviewerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\InterviewInterviewer  $interviewInterviewer
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InterviewInterviewer $interviewInterviewer)
+    public function update(Request $request, InterviewInterviewer $InterviewInterviewer)
     {
         //
     }
@@ -75,10 +75,10 @@ class InterviewInterviewerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\InterviewInterviewer  $interviewInterviewer
+     * @param  \App\InterviewInterviewer  $InterviewInterviewer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InterviewInterviewer $interviewInterviewer)
+    public function destroy(InterviewInterviewer $InterviewInterviewer)
     {
         //
     }
