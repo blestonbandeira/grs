@@ -15,8 +15,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
+ 
 </head>
 
 <body class="">
@@ -169,8 +168,7 @@
   <script src="{{ asset('js/plugins/bootstrap-tagsinput.js') }}"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
   <script src="{{ asset('js/plugins/jasny-bootstrap.min.js') }}"></script>
-  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="{{ asset('js/plugins/fullcalendar.min.js') }}"></script>
+  
   <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
   <script src="{{ asset('js/plugins/jquery-jvectormap.js') }}"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
@@ -187,8 +185,7 @@
   <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script>
-  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="{{ asset('demo/demo.js') }}"></script>
+ 
   <script>
     $(document).ready(function() {
       $().ready(function() {
