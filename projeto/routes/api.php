@@ -13,5 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::apiResource('/event', 'ApiEventController');
-Route::apiResource('/interview', 'ApiInterviewController');
+Route::apiResource('/events', 'ApiEventController');
+Route::apiResource('/interviews', 'ApiInterviewController');
