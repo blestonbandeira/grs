@@ -86,15 +86,18 @@
 
 <script>
     function getApplicantsSelected(){
+        var appliSelected = [];
         var applicantsSelected = document.getElementsByClassName('applicantsSelect');
+        var i = 0;
         for(var i = 0; i < applicantsSelected.length; i++)
-        if(applicantsSelected[i].checked)
         {
-            
+            if(applicantsSelected[i].checked)
+            {
+                appliSelected[i] = applicantsSelected.value;
+                i++;
+            }
         }
     }
-        
-    
 </script>
 
 

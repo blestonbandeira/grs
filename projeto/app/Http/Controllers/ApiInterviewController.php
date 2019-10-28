@@ -30,32 +30,31 @@ class ApiInterviewController extends Controller
      */
     public function store(Request $request)
     {
-        foreach($request as $newReq){
-            $interview = new Interview;
-            $interview->id_applicant = $newReq->id_applicants;
-            $time = Carbon::parse($newReq->date);
-            $interview->date = $time;
-            $interview->save();
-    
-            $interview_interviewer = new InterviewInterviewers;
-            $interview_interviewer->id_interview = $newReq->id_interview;
-            $interview_interviewer->id_user = Auth::id();
-            $interview_interviewer->save();
-    
-            $event = new Event;
-            $event->id_user = Auth::id();
-            $event->title = $newReq->title;
-            $event->type = $newReq->type;
-            $event->start_event = $newReq->start_event;
-            $event->end_event = $newReq->end_event;
-            $event->save();
-    
-            $eventCreated = Event::where('title', '=', $event->title, 'and', 'start_event', '=', $event->start_event)->first();
-            $appli_event = new ApplicantEvent;
-            $appli_event->id_applicant = $newReq->id_applicants;
-            $appli_event->id_event = $eventCreated->id;
-            $appli_event->save();
-        }
+        $interview = new Interview;
+        $interview->id_applicant = $request->id_applicants;
+        $time = Carbon::parse($request->date);
+        $interview->date = $time;
+        $interview->save();
+
+        $interCreated = Interview::where('id_applicant', '=', $interview->id_applicant, 'and', 'date', '=', $time)->first();
+        $interview_interviewer = new InterviewInterviewers;
+        $interview_interviewer->id_interview = $interCreated->id;
+        $interview_interviewer->id_user = Auth::id();
+        $interview_interviewer->save();
+
+        $event = new Event;
+        $event->id_user = Auth::id();
+        $event->title = Auth::name() + " " + Applicant::name()->where('id', '=', $request->id_applicants);
+        $event->type = $request->type;
+        $event->start_event = $time;
+        $event->end_event = $time->add;
+        $event->save();
+
+        $eventCreated = Event::where('title', '=', $event->title, 'and', 'start_event', '=', $event->start_event)->first();
+        $appli_event = new ApplicantEvent;
+        $appli_event->id_applicant = $request->id_applicants;
+        $appli_event->id_event = $eventCreated->id;
+        $appli_event->save();
 
         return $request->id_applicants;
     }
