@@ -47,7 +47,7 @@ class ApiInterviewController extends Controller
         $event->title = Auth::name() + " " + Applicant::name()->where('id', '=', $request->id_applicants);
         $event->type = $request->type;
         $event->start_event = $time;
-        $event->end_event = $time->add;
+        $event->end_event = $time->addMinutes(45);
         $event->save();
 
         $eventCreated = Event::where('title', '=', $event->title, 'and', 'start_event', '=', $event->start_event)->first();
