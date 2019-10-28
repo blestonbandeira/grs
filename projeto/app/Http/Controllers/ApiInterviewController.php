@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\ApplicantEvent;
 use Illuminate\Http\Request;
 use App\Interview;
-use App\InterviewInterviewers;
+use App\InterviewInterviewer;
 use Carbon\Carbon;
 use App\Event;
 use Auth;
@@ -31,13 +31,13 @@ class ApiInterviewController extends Controller
     public function store(Request $request)
     {
         $interview = new Interview;
-        $interview->id_applicant = $request->id_applicants;
+        $interview->id_applicant = $request->id_applicant;
         $time = Carbon::parse($request->date);
         $interview->date = $time;
         $interview->save();
 
         $interCreated = Interview::where('id_applicant', '=', $interview->id_applicant, 'and', 'date', '=', $time)->first();
-        $interview_interviewer = new InterviewInterviewers;
+        $interview_interviewer = new InterviewInterviewer;
         $interview_interviewer->id_interview = $interCreated->id;
         $interview_interviewer->id_user = Auth::id();
         $interview_interviewer->save();
@@ -52,11 +52,11 @@ class ApiInterviewController extends Controller
 
         $eventCreated = Event::where('title', '=', $event->title, 'and', 'start_event', '=', $event->start_event)->first();
         $appli_event = new ApplicantEvent;
-        $appli_event->id_applicant = $request->id_applicants;
+        $appli_event->id_applicant = $request->id_applicant;
         $appli_event->id_event = $eventCreated->id;
         $appli_event->save();
 
-        return $request->id_applicants;
+        return $request->id_applicant;
     }
 
     /**
