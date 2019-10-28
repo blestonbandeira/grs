@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InterviewInterviewer extends Model
+class InterviewInterviewers extends Model
 {
     //
 }

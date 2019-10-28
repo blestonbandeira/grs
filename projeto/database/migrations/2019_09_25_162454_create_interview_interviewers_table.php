@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInterviewInterviewerTable extends Migration
+class CreateInterviewInterviewersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInterviewInterviewerTable extends Migration
      */
     public function up()
     {
-        Schema::create('interview_interviewer', function (Blueprint $table) {
+        Schema::create('interview_interviewers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_interview')->unsigned();
             $table->foreign('id_interview')->references('id')->on('interviews')->onDelete('cascade')->onUpdate('cascade');
@@ -30,6 +30,6 @@ class CreateInterviewInterviewerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enterview_interviewer');
+        Schema::dropIfExists('interview_interviewers');
     }
 }
