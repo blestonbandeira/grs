@@ -39,12 +39,12 @@ class ApiInterviewController extends Controller
         $interCreated = Interview::where('id_applicant', '=', $interview->id_applicant, 'and', 'date', '=', $time)->first();
         $interview_interviewer = new InterviewInterviewer;
         $interview_interviewer->id_interview = $interCreated->id;
-        $interview_interviewer->id_user = Auth::id();
+        $interview_interviewer->id_user = 1; //Auth::id();
         $interview_interviewer->save();
 
         $event = new Event;
-        $event->id_user = Auth::id();
-        $event->title = Auth::name() + " " + Applicant::name()->where('id', '=', $request->id_applicants);
+        $event->id_user = 1; //Auth::id();
+        $event->title = "antónio" ; //Auth::name() + " " + Applicant::name()->where('id', '=', $request->id_applicants);
         $event->type = $request->type;
         $event->start_event = $time;
         $event->end_event = $time->addMinutes(45);
