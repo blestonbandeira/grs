@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->resource('/applicants','ApplicantController');
 Route::middleware('auth')->resource('/assistants','ApplicantController');
-Route::middleware('auth')->resource('/calendar','CalendarController');
-Route::middleware('auth')->resource('/form','FormController');
-Route::resource('/interview','InterviewController');
+Route::middleware('auth')->resource('/calendars','CalendarController');
+Route::middleware('auth')->resource('/forms','FormController');
+Route::resource('/interviews','InterviewController');
 Auth::routes();
