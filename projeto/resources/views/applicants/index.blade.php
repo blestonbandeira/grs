@@ -80,7 +80,17 @@
 
 
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="container" style="margin-left: 10vw;margin-top:-10px;">
+            <div id="calendar" style="width: 55vw!important;"></div>
+        </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -97,94 +107,12 @@
                 i++;
             }
         }
-        
+
     }
-</script>
 
 
+    //----------NAV SELECTED---------//
 
-
-
-
-
-
-
-
-
-
-
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col text-left">
-                        <h2></h2>
-                    </div>
-                    <div class="col text-right">
-                        <a href="/applicants/create"><button type="button" class="btn btn-primary">NEW</button></a>
-                    </div>
-                </div>
-
-</hr>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        NAME
-                                    </th>
-                                    <th>
-                                        EMAIL
-                                    </th>
-                                    <th>
-                                        TOWN
-                                    </th>
-                                    <th>
-                                        do
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($applicants as $applicant)
-                                <tr>
-                                    <td>
-                                        {{$applicant->id}}
-                                    </td>
-                                    <td>
-                                        <a href="{{ url('/applicants/' . $applicant->id ) }}">{{$applicant->name}}</a>
-                                    </td>
-                                    <td>
-                                        {{ Str::limit($applicant->email, 30)}}
-                                    </td>
-                                    <td>
-                                        {{$applicant->town}}
-                                    </td>
-                                    <td>
-                                        <form action="/applicants/{{ $applicant->id }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <input type="submit" class="btn btn-danger btn-sm" value="DELETE">
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-<script>
-    // Add active class to the current button (highlight it)
     try{
         var header = document.getElementById("nav");
         var btns = header.getElementsByClassName("nav-item");
@@ -196,5 +124,127 @@
     }
     document.getElementById("btnApplicant").className += " active";
 
-</script>
+
+
+    //-------CALENDAR-------//
+
+    var allEvents;
+    $.ajax({
+        dataType: "json",
+        url:"/api/event",
+        type:"GET",
+        data:{},
+        success:function(data)
+        {
+            allEvents = data;
+            var calendar = $('#calendar').fullCalendar({
+                defaultView: 'agendaWeek',
+                slotDuration: '00:15:00',
+                slotLabelInterval: 15,
+                slotMinutes: 15,
+                timeFormat: 'HH:mm',
+                minTime: "09:00:00",
+                maxTime: "19:00:00",
+                allDaySlot: false,
+                eventColor: '#378006',
+                weekends: false,
+                height: 550,
+                editable:true,
+                plugins: [ 'bootstrap' ],
+                themeSystem: 'bootstrap',
+                header:{
+                    left:'prev,next today',
+                    center:'title',
+                    right:'month,agendaWeek,agendaDay'
+                },
+                events: allEvents,
+                selectable:true,
+                selectHelper:true,
+                select: function(start, end, allDay)
+                {
+                  var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+                  var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                  document.getElementById('btnModalShow').click();       
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Insira o nome:</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div id="modalBodyParagraph" class="modal-body"><p><input id="inputTitleEvents" class="form-control" type="text" placeholder="Titulo do Evento"/><input type="radio" name="eventType" class="eventRadio" value="interview"> Entrevista<br><input type="radio" name="eventType" class="eventRadio" value="cursoNA"> Prova de Aferição<input type="radio" name="eventType" class="eventRadio" value="cursoA"> Inventario Vocacional<br><input type="radio" name="eventType" class="eventRadio" value="cursoT">Teste Psicotecnico<br></p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
+                },
+                eventResize:function(event)
+                {
+                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    var title = event.title;
+                    var id = event.id;
+                    var evenType = event.type; 
+
+                    $.ajax({
+                        url:"/api/event/" + id,
+                        type:"PUT",
+                        data:{title:title, type:evenType, start_event:start, end_event:end},
+                        success:function()
+                        {
+                          document.getElementById('btnModalShow').click();
+                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso para: ' + title + '!</p></div></div>'; 
+                          setTimeout(function() {location.reload();},2000);
+                        }
+                        
+                    })
+                },
+                eventDrop:function(event)
+                {
+                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    var title = event.title;
+                    var id = event.id;
+                    var evenType = event.type; 
+
+                    $.ajax({
+                        url:"/api/event/" + id,
+                        type:"PUT",
+                        data:{title:title, type:evenType, start_event:start, end_event:end},
+                        success:function()
+                        {
+                          document.getElementById('btnModalShow').click();
+                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso para: ' + title + '!</p></div></div>'; 
+                          setTimeout(function() {location.reload();},2000);
+                        }
+                    });
+                },
+                /*eventClick:function(event)
+                {
+                    if(confirm("Are you sure you want to remove it?"))
+                    {
+                        var id = event.id;
+                        $.ajax({
+                            url:"/api/event/" + id,
+                            type:"DELETE",
+                            data:{},
+                            success:function()
+                            {
+                                location.reload();
+                            }
+                        })
+                    }
+                },*/
+                eventClick:function(event)
+                { 
+                  document.getElementById('idEvent').value = event.id;
+                  var start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
+                  var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
+                  var date = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+                  var typeEvent;
+                  if (event.type === "interview")
+                    typeEvent="Entrevista";
+                  else if (event.type === "cursoNA")
+                    typeEvent="Prova de Aferição";
+                  else if (event.type === "cursoA")
+                    typeEvent="Inventário Vocacional";
+                  else if (event.type === "cursoT")
+                    typeEvent="Teste Psicotécnico";
+
+                  document.getElementById('btnModalShow').click();
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button></div>';
+                },
+            });
+        }
+    });
+  </script>
 @endsection
