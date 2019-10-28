@@ -48,6 +48,13 @@ class DatabaseSeeder extends Seeder
         $user->id_permissionLevel = 3;
         $user->save();
         
+        $user = new User;
+        $user->name = "Inter2";
+        $user->email = "inter2@m.pt";
+        $user->password = bcrypt("123++qwe");
+        $user->id_permissionLevel = 3;
+        $user->save();
+
         // $this->call(UsersTableSeeder::class);
         for($i=0; $i<20; $i++){
             $applicant = new Applicant;
