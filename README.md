@@ -3,6 +3,7 @@ ON GOING:
 - início da apresentação
 - calendário com cores
 - acabar o layout da sidebar
+- angular app
 
 
 
@@ -29,7 +30,7 @@ TAREFAS:
 		- o candidato faltou às convocatórias,
 		- o candidato anulou a inscrição
 	- se primeiro utilizador => administrador, senão, escolher : [administrador, entrevistador, assistente de formação]
-- rever as tags de scrips - são mais que as mães! precisamos de todas?
+- rever as tags de scripts - são mais que as mães! precisamos de todas?
 - login de entrevistador: 
 	- o calendário não pode ser o mesmo, nem o modal.
 	- tem de aparecer a sua disponibilidade,
