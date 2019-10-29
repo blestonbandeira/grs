@@ -13,7 +13,7 @@
 
 //Route::get('/', 'HomeController@index')->name('home');
 Route::get('/', function () {
-    return redirect('/calendar');
+    return redirect('/calendars');
 });
 
 Route::middleware('auth')->resource('/applicants','ApplicantController');

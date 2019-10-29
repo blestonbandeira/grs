@@ -131,8 +131,17 @@
         {
             if(applicantsSelected[i].checked)
             {
-                appliSelected[j] = applicantsSelected.value;
-                document.getElementById('applicantList').innerHTML += "<b><a src='/applicants/" + applicantsSelected[i].value + "'><p>" + applicantsSelected[i].value + "</p></a></b>";
+                appliSelected[j] = applicantsSelected[i].value;
+                $.ajax({
+                    url:"/api/applicants/" + appliSelected[j],
+                    type:"GET",
+                    data:{},
+                    success:function(data)
+                    {
+                        alert(data.d);
+                        document.getElementById('applicantList').innerHTML += "<b><a src='/applicants/" + appliSelected[j] + "'><p>" + data.d[0][1] + "</p></a></b>";
+                    }
+                });
                 j++;
             }
         }
@@ -192,48 +201,62 @@ function calendarCharge(){
                     hourSelect.innerHTML = "<option>--</option>";
                     document.getElementById('interSelected').innerHTML = "<b>" + event.title + "</b></br>" + start + " - " + end + "</br>" + date;
                     
-                     if(minEnd < 45){
-                         for(var i = hourStart; i < hourEnd; i++)
-                             hourSelect.innerHTML += "<option>" + i + "</option>";
-                     }else{
-                         for(var i = hourStart; i <= hourEnd; i++)
-                             hourSelect.innerHTML += "<option>" + i + "</option>";
-                     }
-                     hourSelect.addEventListener("click", function(){
-                        hourEnd = $.fullCalendar.formatDate(event.end, "HH");
-                        minEnd = $.fullCalendar.formatDate(event.end, "mm");
-                         if(hourSelect.value == hourEnd && minEnd == 45){
+                    if(minEnd < 45){
+                        for(var i = hourStart; i < hourEnd; i++)
+                            hourSelect.innerHTML += "<option>" + i + "</option>";
+                    }else{
+                        for(var i = hourStart; i <= hourEnd; i++)
+                            hourSelect.innerHTML += "<option>" + i + "</option>";
+                    }
+                    hourSelect.addEventListener("click", function(){
+                    hourEnd = $.fullCalendar.formatDate(event.end, "HH");
+                    minEnd = $.fullCalendar.formatDate(event.end, "mm");
+                        if(hourSelect.value == hourEnd && minEnd == 45){
                             minSelect.innerHTML = "<option>--</option>";
-                             minEnd = 01;
-                             for(var i = 0; i < minEnd; i++)
-                                 minSelect.innerHTML += "<option>" + i + "</option>";
-                         }else if(hourSelect.value == hourEnd && minEnd > 45){
+                            minEnd = 01;
+                        for(var i = minStart; i < minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else if(hourSelect.value == hourEnd && minEnd > 45){
                             minSelect.innerHTML = "<option>--</option>";
-                             minEnd - 45;
-                             for(var i = minStart; i <= minEnd; i++)
-                                 minSelect.innerHTML += "<option>" + i + "</option>";
-                         }else if((hourSelect.value == hourEnd || hourEnd-hourStart == 1) && minEnd < 45){
+                            minEnd - 45;
+                            for(var i = minStart; i <= minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else if((hourSelect.value == hourEnd || hourEnd-hourStart == 1) && minEnd < 45){
                             minSelect.innerHTML = "<option>--</option>";
-                             var numMinEnd = 45 - minEnd;
-                             minEnd = 60 - numMinEnd;
-                             minStart = 00;
-                             for(var i = minStart; i <= minEnd; i++)
-                                 minSelect.innerHTML += "<option>" + i + "</option>";
-                         }else if(hourSelect.value == hourEnd && minEnd < 45){
+                            var numMinEnd = 45 - minEnd;
+                            minEnd = 60 - numMinEnd;
+                        for(var i = minStart; i <= minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else if(hourSelect.value == hourEnd && minEnd < 45){
                             minSelect.innerHTML = "<option>--</option>";
-                             var numMinEnd = 45 - minEnd;
-                             minEnd = 60 - numMinEnd;
-                             minStart = 0;
-                             for(var i = minStart; i <= minEnd; i++)
-                                 minSelect.innerHTML += "<option>" + i + "</option>";
-                         }else {
+                            var numMinEnd = 45 - minEnd;
+                            minEnd = 60 - numMinEnd;
+                            minStart = 0;
+                            for(var i = minStart; i <= minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else {
                             minSelect.innerHTML = "<option>--</option>";
-                             minStart = 0;
-                             minEnd = 59;
-                             for(var i = minStart; i <= minEnd; i++)
-                                 minSelect.innerHTML += "<option>" + i + "</option>";
-                         }
-                     });
+                            minStart = 0;
+                            minEnd = 59;
+                        for(var i = minStart; i <= minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }
+                    });
                     
                         
                 },
