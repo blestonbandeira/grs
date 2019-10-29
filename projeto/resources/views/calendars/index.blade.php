@@ -22,7 +22,7 @@
     var allEvents;
     $.ajax({
         dataType: "json",
-        url:"/api/event",
+        url:"/api/events",
         type:"GET",
         data:{},
         success:function(data)
@@ -67,7 +67,7 @@
                     var evenType = event.type; 
 
                     $.ajax({
-                        url:"/api/event/" + id,
+                        url:"/api/events/" + id,
                         type:"PUT",
                         data:{title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
@@ -88,7 +88,7 @@
                     var evenType = event.type; 
 
                     $.ajax({
-                        url:"/api/event/" + id,
+                        url:"/api/events/" + id,
                         type:"PUT",
                         data:{title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
@@ -154,7 +154,7 @@
             evenType = radio[i].value;
 
         $.ajax({
-            url:"/api/event",
+            url:"/api/events",
             type:"POST",
             data:{title:title, type:evenType, start_event:start, end_event:end},
             success:function()
@@ -167,7 +167,7 @@
   }
   function deleteEvents(){
     $.ajax({
-      url:"/api/event/" + document.getElementById('idEvent').value,
+      url:"/api/events/" + document.getElementById('idEvent').value,
       type:"DELETE",
       data:{},
       success:function()
