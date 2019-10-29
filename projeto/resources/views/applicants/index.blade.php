@@ -80,17 +80,39 @@
 
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<button type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+<div class="modal fade bd-example-modal-lg" style="width: 90vw!important;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="container" style="margin-left: 10vw;margin-top:-10px;">
             <div id="calendar" style="width: 55vw!important;"></div>
         </div>
+
+
+        <div class="container-fluid" style="width: 55vw!important;">
+            <div class="row">
+                <p id="interSelected"></p>
+                <div class="col-lg-1">
+                    
+                    <select id="hourSelectChange" class="form-control" style="width: 50px;">
+            
+                    </select>
+                </div>
+                <b>:</b>
+                <div class="col-lg-1">
+                    <select id="minSelectChange" class="form-control" style="width: 50px;">
+            
+                    </select>
+                </div>
+                <b>h</b>
+        </div>
+        
     </div>
   </div>
 </div>
+
 
 
 
@@ -110,28 +132,13 @@
 
     }
 
+//-------CALENDAR-------//
 
-    //----------NAV SELECTED---------//
-
-    try{
-        var header = document.getElementById("nav");
-        var btns = header.getElementsByClassName("nav-item");
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-    }
-    catch(err){
-        document.getElementById("btnApplicant").className += " active";
-    }
-    document.getElementById("btnApplicant").className += " active";
-
-
-
-    //-------CALENDAR-------//
-
+function calendarCharge(){
     var allEvents;
     $.ajax({
         dataType: "json",
-        url:"/api/event",
+        url:"/api/events",
         type:"GET",
         data:{},
         success:function(data)
@@ -149,7 +156,7 @@
                 eventColor: '#378006',
                 weekends: false,
                 height: 550,
-                editable:true,
+                editable:false,
                 plugins: [ 'bootstrap' ],
                 themeSystem: 'bootstrap',
                 header:{
@@ -160,91 +167,87 @@
                 events: allEvents,
                 selectable:true,
                 selectHelper:true,
-                select: function(start, end, allDay)
-                {
-                  var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                  var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                  document.getElementById('btnModalShow').click();       
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Insira o nome:</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div id="modalBodyParagraph" class="modal-body"><p><input id="inputTitleEvents" class="form-control" type="text" placeholder="Titulo do Evento"/><input type="radio" name="eventType" class="eventRadio" value="interview"> Entrevista<br><input type="radio" name="eventType" class="eventRadio" value="cursoNA"> Prova de Aferição<input type="radio" name="eventType" class="eventRadio" value="cursoA"> Inventario Vocacional<br><input type="radio" name="eventType" class="eventRadio" value="cursoT">Teste Psicotecnico<br></p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
-                },
-                eventResize:function(event)
-                {
-                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                    var title = event.title;
-                    var id = event.id;
-                    var evenType = event.type; 
-
-                    $.ajax({
-                        url:"/api/event/" + id,
-                        type:"PUT",
-                        data:{title:title, type:evenType, start_event:start, end_event:end},
-                        success:function()
-                        {
-                          document.getElementById('btnModalShow').click();
-                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso para: ' + title + '!</p></div></div>'; 
-                          setTimeout(function() {location.reload();},2000);
-                        }
-                        
-                    })
-                },
-                eventDrop:function(event)
-                {
-                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                    var title = event.title;
-                    var id = event.id;
-                    var evenType = event.type; 
-
-                    $.ajax({
-                        url:"/api/event/" + id,
-                        type:"PUT",
-                        data:{title:title, type:evenType, start_event:start, end_event:end},
-                        success:function()
-                        {
-                          document.getElementById('btnModalShow').click();
-                          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Horário alterado com sucesso para: ' + title + '!</p></div></div>'; 
-                          setTimeout(function() {location.reload();},2000);
-                        }
-                    });
-                },
-                /*eventClick:function(event)
-                {
-                    if(confirm("Are you sure you want to remove it?"))
-                    {
-                        var id = event.id;
-                        $.ajax({
-                            url:"/api/event/" + id,
-                            type:"DELETE",
-                            data:{},
-                            success:function()
-                            {
-                                location.reload();
-                            }
-                        })
-                    }
-                },*/
                 eventClick:function(event)
                 { 
-                  document.getElementById('idEvent').value = event.id;
-                  var start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
-                  var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
-                  var date = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-                  var typeEvent;
-                  if (event.type === "interview")
-                    typeEvent="Entrevista";
-                  else if (event.type === "cursoNA")
-                    typeEvent="Prova de Aferição";
-                  else if (event.type === "cursoA")
-                    typeEvent="Inventário Vocacional";
-                  else if (event.type === "cursoT")
-                    typeEvent="Teste Psicotécnico";
+                    var hourSelect = document.getElementById('hourSelectChange');
+                    var minSelect = document.getElementById('minSelectChange');
 
-                  document.getElementById('btnModalShow').click();
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button></div>';
+                    var start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
+                    var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
+                    var date = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+
+                    var hourStart = $.fullCalendar.formatDate(event.start, "HH");
+                    var minStart = $.fullCalendar.formatDate(event.start, "mm");
+                    var hourEnd = $.fullCalendar.formatDate(event.end, "HH");
+                    var minEnd = $.fullCalendar.formatDate(event.end, "mm");
+                    
+
+                    hourSelect.innerHTML = "<option>--</option>";
+                    document.getElementById('interSelected').innerHTML = "<b>" + event.title + "</b></br>" + start + " - " + end + "</br>" + date;
+                    
+                     if(minEnd < 45){
+                         for(var i = hourStart; i < hourEnd; i++)
+                             hourSelect.innerHTML += "<option>" + i + "</option>";
+                     }else{
+                         for(var i = hourStart; i <= hourEnd; i++)
+                             hourSelect.innerHTML += "<option>" + i + "</option>";
+                     }
+                     hourSelect.addEventListener("click", function(){
+                        hourEnd = $.fullCalendar.formatDate(event.end, "HH");
+                        minEnd = $.fullCalendar.formatDate(event.end, "mm");
+                         if(hourSelect.value == hourEnd && minEnd == 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                             minEnd = 01;
+                             for(var i = 0; i < minEnd; i++)
+                                 minSelect.innerHTML += "<option>" + i + "</option>";
+                         }else if(hourSelect.value == hourEnd && minEnd > 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                             minEnd - 45;
+                             for(var i = minStart; i <= minEnd; i++)
+                                 minSelect.innerHTML += "<option>" + i + "</option>";
+                         }else if((hourSelect.value == hourEnd || hourEnd-hourStart == 1) && minEnd < 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                             var numMinEnd = 45 - minEnd;
+                             minEnd = 60 - numMinEnd;
+                             minStart = 00;
+                             for(var i = minStart; i <= minEnd; i++)
+                                 minSelect.innerHTML += "<option>" + i + "</option>";
+                         }else if(hourSelect.value == hourEnd && minEnd < 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                             var numMinEnd = 45 - minEnd;
+                             minEnd = 60 - numMinEnd;
+                             minStart = 0;
+                             for(var i = minStart; i <= minEnd; i++)
+                                 minSelect.innerHTML += "<option>" + i + "</option>";
+                         }else {
+                            minSelect.innerHTML = "<option>--</option>";
+                             minStart = 0;
+                             minEnd = 59;
+                             for(var i = minStart; i <= minEnd; i++)
+                                 minSelect.innerHTML += "<option>" + i + "</option>";
+                         }
+                     });
+                    
+                        
                 },
             });
         }
     });
+}
+    
+
+
+    //----------NAV SELECTED---------//
+
+    try{
+        var header = document.getElementById("nav");
+        var btns = header.getElementsByClassName("nav-item");
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+    }
+    catch(err){
+        document.getElementById("btnApplicant").className += " active";
+    }
+    document.getElementById("btnApplicant").className += " active";
   </script>
 @endsection
