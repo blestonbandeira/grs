@@ -18,11 +18,15 @@
   </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 <script>
     var allEvents;
     $.ajax({
         dataType: "json",
-        url:"/api/event",
+        url:"/api/events",
         type:"GET",
         data:{},
         success:function(data)
@@ -67,7 +71,7 @@
                     var evenType = event.type; 
 
                     $.ajax({
-                        url:"/api/event/" + id,
+                        url:"/api/events/" + id,
                         type:"PUT",
                         data:{title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
@@ -88,7 +92,7 @@
                     var evenType = event.type; 
 
                     $.ajax({
-                        url:"/api/event/" + id,
+                        url:"/api/events/" + id,
                         type:"PUT",
                         data:{title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
@@ -105,7 +109,7 @@
                     {
                         var id = event.id;
                         $.ajax({
-                            url:"/api/event/" + id,
+                            url:"/api/events/" + id,
                             type:"DELETE",
                             data:{},
                             success:function()
@@ -167,7 +171,7 @@
   }
   function deleteEvents(){
     $.ajax({
-      url:"/api/event/" + document.getElementById('idEvent').value,
+      url:"/api/events/" + document.getElementById('idEvent').value,
       type:"DELETE",
       data:{},
       success:function()
@@ -183,7 +187,17 @@
 </script>
 
 <script>
-   
+    // Add active class to the current button (highlight it)
+    try{
+        var header = document.getElementById("nav");
+        var btns = header.getElementsByClassName("nav-item");
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+    }
+    catch(err){
+        document.getElementById("btnCalendar").className += " active";
+    }
+    document.getElementById("btnCalendar").className += " active";
     
 </script>
 @endsection

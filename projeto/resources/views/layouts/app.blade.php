@@ -16,13 +16,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
   <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+  
 </head>
 
 <body class="">
@@ -82,6 +80,7 @@
           </div>
         </div>
       </nav>
+      
       <div class="content">
           <div class="container-fluid">
             @yield('content')
@@ -127,10 +126,6 @@
       <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
       <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
       <script src="{{ asset ('js/custom.js' )}}"></script>
     </div>
   </div>
