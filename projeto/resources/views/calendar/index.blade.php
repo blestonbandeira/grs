@@ -5,8 +5,6 @@
    <div id="calendar" style="width: 55vw!important;"></div>
 </div>
 
-
-
 <button id="btnModalShow" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow" style="visibility: hidden;"></button>
 
 <div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
