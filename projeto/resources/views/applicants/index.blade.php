@@ -133,12 +133,15 @@
             {
                 appliSelected[j] = applicantsSelected[i].value;
                 $.ajax({
+                    contentType: "application/json",
                     url:"/api/applicants/" + appliSelected[j],
                     type:"GET",
                     data:{},
                     success:function(data)
                     {
-                        alert(data.d);
+                        alert(data.d[0]);
+                        var teste1 = JSON.parse(data);
+                        alert(teste1[0]);
                         document.getElementById('applicantList').innerHTML += "<b><a src='/applicants/" + appliSelected[j] + "'><p>" + data.d[0][1] + "</p></a></b>";
                     }
                 });
