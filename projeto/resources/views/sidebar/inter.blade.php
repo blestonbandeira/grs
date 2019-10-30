@@ -7,16 +7,21 @@
     -->
     
     <div class="logo">
-        <a href="#" class="simple-text logo-normal"> Interviewer </a>
-    </div>          
+        <a href="#" class="simple-text logo-normal"> Entrevistador </a>
+    </div>    
+
     <div class="sidebar-wrapper">
-    <ul class="nav">
-        <li class="nav-item active  ">
-        <a class="nav-link" href="./dashboard.html">
+
+    <ul id="nav" class="nav">
+        <li id="btnCalendar" class="nav-item">
+        {{-- <a class="nav-link" href="#"> --}}
+        <a class="nav-link" href="{{ route('calendars.index') }}">
             <i class="material-icons">dashboard</i>
-            <p>Disponibilidade</p>
+            <p>Calendário | Disponibilidade</p>         
         </a>
         </li>
+
+ 
         {{-- <li class="nav-item ">
         <a class="nav-link" href="./user.html">
             <i class="material-icons">person</i>
