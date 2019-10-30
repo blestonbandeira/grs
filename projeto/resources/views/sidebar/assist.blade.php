@@ -7,7 +7,7 @@
     -->
     
     <div class="logo">
-        <a href="#" class="simple-text logo-normal"> Assistant </a>
+        <a href="#" class="simple-text logo-normal"> Assistente de Formação </a>
     </div>          
     <div class="sidebar-wrapper">
     <ul id="nav" class="nav">
@@ -32,18 +32,7 @@
             <p>Turmas</p>
         </a>
         </li>
-        <li id="btnInterviewer" class="nav-item ">
-        <a class="nav-link" href="#">
-            <i class="material-icons">library_books</i>
-            <p>Entrevistadores</p>
-        </a>
-        </li>
-        <li id="btnAssitant" class="nav-item ">
-        <a class="nav-link" href="#">
-            <i class="material-icons">bubble_chart</i>
-            <p>Assistentes</p>
-        </a>
-        </li>
+        
         {{-- <li class="nav-item ">
         <a class="nav-link" href="./user.html">
             <i class="material-icons">person</i>
