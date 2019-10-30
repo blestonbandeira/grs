@@ -8,7 +8,8 @@
     
     <div class="logo">
         <a href="#" class="simple-text logo-normal"> Administrador </a>
-    </div>          
+    </div>   
+           
     <div class="sidebar-wrapper">
     <ul id="nav" class="nav">
         <li id="btnCalendar" class="nav-item">
