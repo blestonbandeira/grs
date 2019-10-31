@@ -36,7 +36,8 @@ class ApiApplicantController extends Controller
      */
     public function show($id)
     {
-        return Applicant::Where('id', '=', $id)->get();
+        $applicant = Applicant::select('name')->Where('id', '=', $id)->get();
+        return $applicant;
     }
 
     /**
