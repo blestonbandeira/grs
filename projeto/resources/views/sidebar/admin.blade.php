@@ -11,106 +11,117 @@
     </div>   
            
     <div class="sidebar-wrapper">
-    <ul id="nav" class="nav">
-        <li id="btnCalendar" class="nav-item">
-        {{-- <a class="nav-link" href="#"> --}}
-        <a class="nav-link" href="{{ route('calendars.index') }}">
-            <i class="material-icons">dashboard</i>
-            <p>Calendário</p>         
-        </a>
-        </li>
-
-        <li id="btnApplicant" class="nav-item">
-        <span class="nav-link">
-            <i class="material-icons">person</i>
-            <p data-toggle="collapse" data-target="#applicant">Candidatos</p>
-            <ul id="applicant" class="collapse">
-                <a class="nav-link" href="{{ route('applicants.index') }}">
-                    <li class="nav-item">Ver</li>  
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Adicionar</li> 
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Gerir</li>  
-                </a>          
-            </ul>
-        </span>
-        </li>
-
-        <li id="btnClass" class="nav-item ">
-        <a class="nav-link" href="#">
-            <i class="material-icons">content_paste</i>
-            <p data-toggle="collapse" data-target="#classes">Turmas</p>
-            <ul id="classes" class="collapse">
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Ver</li>  
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Adicionar</li>    
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Gerir</li> 
-                </a>           
-            </ul>
-        </a>
-        </li>
-        
-        <li id="btnInterviewer" class="nav-item ">
-        <a class="nav-link" href="#">
-            <i class="material-icons">library_books</i>
-            <p data-toggle="collapse" data-target="#interviewers">Entrevistadores</p>
-            <ul id="interviewers" class="collapse">
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Ver</li>  
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Adicionar</li>    
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Gerir</li> 
-                </a>           
-            </ul>
-        </a>
-        </li>
-
-        <li id="btnAssitant" class="nav-item ">
-        <a class="nav-link" href="#">
-            <i class="material-icons">bubble_chart</i>
-            <p data-toggle="collapse" data-target="#assistants">Assistentes de Formação</p>
-            <ul id="assistants" class="collapse">
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Ver</li>  
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Adicionar</li>    
-                </a>
-                <a class="nav-link" href="#">
-                    <li class="nav-item">Gerir</li> 
-                </a>           
-            </ul>
-        </a>
-        </li>
-
-        {{-- <li class="nav-item ">
-        <a class="nav-link" href="./map.html">
-            <i class="material-icons">location_ons</i>
-            <p>Maps</p>
-        </a>
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link" href="./notifications.html">
-            <i class="material-icons">notifications</i>
-            <p>Notifications</p>
-        </a>
-        </li>
-        <li class="nav-item ">
-        <a class="nav-link" href="./rtl.html">
-            <i class="material-icons">language</i>
-            <p>RTL Support</p>
-        </a>
-        </li> --}}
+        <div class="accordion nav" id="sidebar">
             
-        </ul>
+            <div class="card nav-item">
+                <div class="card-header" id="headingOne">
+                    <i class="material-icons">dashboard</i>
+                    <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Calendário
+                    </p>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
+                    <div class="card-body nav-link">
+                        <ul>
+                            <a class="nav-link" href="{{ route('calendars.index') }}">
+                                <li class="nav-item">Entrevistas</li>  
+                            </a>
+                            <a class="nav-link" href="#">
+                                <li class="nav-item">Testes Psicotécnicos & Provas de Aferição</li> 
+                            </a>
+                            <a class="nav-link" href="#">           
+                                <li class="nav-item">Testes Psicotécnicos & Inventário Vocacional</li>  
+                            </a>          
+                        </ul>                                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="card nav-item">
+                <div class="card-header" id="headingTwo">
+                    <i class="material-icons">person</i>
+                    <p data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    Candidatos
+                    </p>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#sidebar">
+                <div class="card-body">
+                    <ul>
+                        <a class="nav-link" href="{{ route('applicants.index') }}">
+                            <li class="nav-item">Ver</li>  
+                        </a>
+                        <a class="nav-link" href="{{ route('applicants.create') }}">
+                            <li class="nav-item">Adicionar</li> 
+                        </a>                               
+                    </ul> 
+                </div>
+                </div>
+            </div>
+
+            <div class="card nav-item">
+                <div class="card-header" id="headingThree">
+                    <i class="material-icons">content_paste</i>
+                    <p data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Turmas
+                    </p>                
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#sidebar">
+                    <div class="card-body">
+                        <ul>
+                            <a class="nav-link" href="{{ route('rsclasses.index') }}">
+                                <li class="nav-item">Ver</li>  
+                            </a>
+                            <a class="nav-link" href="{{ route('rsclasses.create') }}">
+                                <li class="nav-item">Adicionar</li>    
+                            </a>           
+                        </ul>                
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <i class="material-icons">bubble_chart</i>
+                    <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        Assistentes de Formação
+                    </p>                
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#sidebar">
+                    <div class="card-body">
+                        <ul>
+                            <a class="nav-link" href="{{ route('assistants.index') }}">
+                                <li class="nav-item">Ver</li>  
+                            </a>
+                            <a class="nav-link" href="{{ route('assistants.create') }}">
+                                <li class="nav-item">Adicionar</li>    
+                            </a>           
+                        </ul>                
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFive">
+                    <i class="material-icons">library_books</i>
+                    <p data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        Entrevistadores
+                    </p>                
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#sidebar">
+                    <div class="card-body">
+                        <ul>
+                            <a class="nav-link" href="{{ route('interviewers.index') }}">
+                                <li class="nav-item">Ver</li>  
+                            </a>
+                            <a class="nav-link" href="{{ route('interviewers.create') }}">
+                                <li class="nav-item">Adicionar</li>    
+                            </a>           
+                        </ul>                
+                    </div>
+                </div>
+            </div>
+
+        </div> 
     </div>
 </div>

@@ -14,7 +14,9 @@ class AssistantController extends Controller
      */
     public function index()
     {
-        //
+        $assistants = Assistant::all();
+        return view('assistants.index')
+        ->with(compact('assistants'));
     }
 
     /**
