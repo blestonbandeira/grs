@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
   <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
   
 </head>
 
@@ -55,9 +56,7 @@
                     
                   <i class="material-icons">person</i>
                   {{ Auth::user()->name }}
-                  {{-- <p class="d-lg-none d-md-block">
-                    Account
-                  </p> --}}
+                 
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">Profile</a>
@@ -112,8 +111,6 @@
     <script src="{{ asset('js/plugins/bootstrap-tagsinput.js') }}"></script>
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
     <script src="{{ asset('js/plugins/jasny-bootstrap.min.js') }}"></script>
-    <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="{{ asset('js/plugins/fullcalendar.min.js') }}"></script>
     <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
     <script src="{{ asset('js/plugins/jquery-jvectormap.js') }}"></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
@@ -128,7 +125,6 @@
     <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script>
-
     <script src="{{ asset ('js/custom.js' )}}"></script>
     </div>
   </div>
