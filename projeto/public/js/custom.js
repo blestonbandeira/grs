@@ -1,3 +1,4 @@
+
 // Add active class to the current button (highlight it)
   var liContainer = document.getElementById("liActive");
   var lis = liContainer.getElementsByClassName("nav-item");

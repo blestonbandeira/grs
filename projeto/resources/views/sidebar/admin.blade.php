@@ -12,6 +12,7 @@
            
     <div class="sidebar-wrapper">
         <div class="accordion nav" id="sidebar">
+            
             <div class="card nav-item">
                 <div class="card-header" id="headingOne">
                     <i class="material-icons">dashboard</i>
@@ -20,8 +21,8 @@
                     </p>
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#sidebar">
-                    <div class="card-body">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
+                    <div class="card-body nav-link">
                         <ul>
                             <a class="nav-link" href="{{ route('calendars.index') }}">
                                 <li class="nav-item">Entrevistas</li>  
@@ -37,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card nav-item">
                 <div class="card-header" id="headingTwo">
                     <i class="material-icons">person</i>
                     <p data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -58,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card nav-item">
                 <div class="card-header" id="headingThree">
                     <i class="material-icons">content_paste</i>
                     <p data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
