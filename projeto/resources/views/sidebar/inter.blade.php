@@ -13,7 +13,7 @@
     <div class="sidebar-wrapper">
         <div class="accordion nav" id="sidebar">
             
-            <div class="card nav-item">
+           <div class="card nav-item">
                 <div class="card-header" id="headingOne">
                     <i class="material-icons">dashboard</i>
                     <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -25,15 +25,19 @@
                     <div class="card-body nav-link">
                         <ul>
                             <a class="nav-link" href="{{ route('calendars.index') }}">
-                                <li class="nav-item">Entrevistas por realizar</li>  
+                                <li class="nav-item">Entrevistas</li>  
                             </a>
                             <a class="nav-link" href="#">
-                                <li class="nav-item">Entrevistas realizadas</li> 
-                            </a>                                    
+                                <li class="nav-item">Testes Psicotécnicos & Provas de Aferição</li> 
+                            </a>
+                            <a class="nav-link" href="#">           
+                                <li class="nav-item">Testes Psicotécnicos & Inventário Vocacional</li>  
+                            </a>          
                         </ul>                                        
                     </div>
                 </div>
             </div>
+        </div>
 
 
           
