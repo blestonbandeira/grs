@@ -11,6 +11,7 @@
     </div>      
 
     <div class="sidebar-wrapper">
+
         <div class="accordion nav" id="sidebar">
             
             <div class="card nav-item">
@@ -23,24 +24,14 @@
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body nav-link">
-                        <ul>
-                            <a class="nav-link" href="{{ route('calendars.index') }}">
-                                <li class="nav-item">Entrevistas por realizar</li>  
-                            </a>
+                        <ul>                            
                             <a class="nav-link" href="#">
-                                <li class="nav-item">Entrevistas realizadas</li> 
-                            </a>                                    
+                                <li class="nav-item">Entrevistas por realizar</li> 
+                            </a>                                  
                         </ul>                                        
                     </div>
                 </div>
             </div>
-
-
-          
-
-     
-
-      
-
         </div> 
+    </div> 
 </div>
