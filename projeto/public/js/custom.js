@@ -1,3 +1,4 @@
+
 // Add active class to the current button (highlight it)
  try{
   var header = document.getElementById("nav");
