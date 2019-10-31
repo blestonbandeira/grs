@@ -1,17 +1,27 @@
 
 // Add active class to the current button (highlight it)
- try{
-  var header = document.getElementById("nav");
-  var btns = header.getElementsByClassName("nav-item");
-  var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-}
-catch(err){
-  document.getElementById("btnCalendar").className += " active";
-}
-document.getElementById("btnCalendar").className += " active";
-
-
+  var liContainer = document.getElementById("liActive");
+  var lis = liContainer.getElementsByClassName("nav-item");
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+  
+      // If there's no active class
+      if (current.length > 0) {
+        current[0].className = current[0].className.replace(" active", "");
+      }
+      // this.className += " active";
+    }); 
+  }
+  
+  setTimeout(function(){
+    var id = "calendarClass";
+    var cenas = document.getElementByClassName(id);
+    cenas.className += " active";
+  
+    }, 3000);
+  
+ 
 $(document).ready(function() {
   $().ready(function() {
     $sidebar = $('.sidebar');

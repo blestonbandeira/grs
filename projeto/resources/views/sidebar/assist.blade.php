@@ -8,6 +8,7 @@
     
     <div class="logo">
         <a href="#" class="simple-text logo-normal"> Assistente de Formação </a>
+<<<<<<< HEAD
     </div>      
 
       <div class="sidebar-wrapper">
@@ -74,5 +75,31 @@
                 </div>
             </div>
         </div> 
+=======
+    </div>          
+    <div class="sidebar-wrapper">
+    <ul id="nav" class="nav">
+        <li id="btnCalendar" class="nav-item">
+        <a class="nav-link" href="{{ route('calendars.index') }}">
+            <i class="material-icons">dashboard</i>
+            <p>Calendário</p>
+        </a>
+        </li>
+
+        <li id="btnApplicant" class="nav-item ">
+        <a class="nav-link" href="{{ route('applicants.index') }}">
+            <i class="material-icons">person</i>
+            <p>Candidatos</p>
+        </a>
+        </li>
+        <li id="btnClass" class="nav-item ">
+        <a class="nav-link" href="#">
+            <i class="material-icons">content_paste</i>
+            <p>Turmas</p>
+        </a>
+        </li>
+
+        </ul>
+>>>>>>> 8a7dc771fb331abcb7139783825462472b9d1a2b
     </div>
 </div>

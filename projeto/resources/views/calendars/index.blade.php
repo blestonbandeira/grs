@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<input type="hidden" value="calendarClass" class="navLiSelect">
 <div class="container" style="margin-left: 10vw;margin-top:-10px;">
    <div id="calendar" style="width: 55vw!important;"></div>
 </div>
@@ -156,7 +157,7 @@
             evenType = radio[i].value;
 
         $.ajax({
-            url:"/api/event",
+            url:"/api/events",
             type:"POST",
             data:{title:title, type:evenType, start_event:start, end_event:end},
             success:function()
