@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Calendar;
 use Illuminate\Http\Request;
+use App\Applicant;
 
-class CalendarController extends Controller
+class ApiApplicantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,16 +13,6 @@ class CalendarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('calendars.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -41,33 +31,22 @@ class CalendarController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Calendar  $calendar
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Calendar $calendar)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Calendar  $calendar
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Calendar $calendar)
-    {
-        //
+        return Applicant::Where('id', '=', $id)->get();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Calendar  $calendar
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Calendar $calendar)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +54,10 @@ class CalendarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Calendar  $calendar
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Calendar $calendar)
+    public function destroy($id)
     {
         //
     }
