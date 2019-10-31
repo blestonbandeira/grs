@@ -5,8 +5,6 @@ ON GOING:
 - acabar o layout da sidebar
 - angular app
 
-
-
 TAREFAS:
 - view: applicants/index 
 	- trocar o estado "a definir" por $applicant->category;
@@ -30,8 +28,10 @@ TAREFAS:
 		- o candidato faltou às convocatórias,
 		- o candidato anulou a inscrição
 	- se primeiro utilizador => administrador, senão, escolher : [administrador, entrevistador, assistente de formação]
-- rever as tags de scripts - são mais que as mães! precisamos de todas?
 - login de entrevistador: 
 	- o calendário não pode ser o mesmo, nem o modal.
 	- tem de aparecer a sua disponibilidade,
 	- o modal tem de perguntar apenas "Tem a certeza?" ou coisa parecida (ou as mesmas coisas com as opções de testes indisponíveis)
+	
+COMPLETED:
+- rever as tags de scripts - são mais que as mães! precisamos de todas?

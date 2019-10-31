@@ -5,3 +5,11 @@ li {
 a {
   color: inherit;
 }
+
+ul.nav-item {
+  padding-left: 17px;
+}
+
+a:hover {
+  text-decoration: none;
+}

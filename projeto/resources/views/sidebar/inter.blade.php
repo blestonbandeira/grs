@@ -7,10 +7,11 @@
     -->
     
     <div class="logo">
-        <a href="#" class="simple-text logo-normal"> Entrevistador </a>
-    </div>    
+        <img style="width: 100%;" src="{{ asset('images/onlinelogomaker-103119-1759-6926.png') }}" alt="logo">
+    </div>      
 
     <div class="sidebar-wrapper">
+
         <div class="accordion nav" id="sidebar">
             
            <div class="card nav-item">
@@ -23,28 +24,14 @@
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body nav-link">
-                        <ul>
-                            <a class="nav-link" href="{{ route('calendars.index') }}">
-                                <li class="nav-item">Entrevistas</li>  
-                            </a>
+                        <ul>                            
                             <a class="nav-link" href="#">
-                                <li class="nav-item">Testes Psicotécnicos & Provas de Aferição</li> 
-                            </a>
-                            <a class="nav-link" href="#">           
-                                <li class="nav-item">Testes Psicotécnicos & Inventário Vocacional</li>  
-                            </a>          
+                                <li class="nav-item">Entrevistas por realizar</li> 
+                            </a>                                  
                         </ul>                                        
                     </div>
                 </div>
             </div>
-        </div>
-
-
-          
-
-     
-
-      
-
         </div> 
+    </div> 
 </div>
