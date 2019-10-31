@@ -14,7 +14,9 @@ class RsClassController extends Controller
      */
     public function index()
     {
-        //
+        $rsclasses = RsClass::all();
+        return view('rsclasses.index')
+        ->with(compact('rsclasses'));
     }
 
     /**
