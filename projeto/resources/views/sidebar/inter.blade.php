@@ -7,8 +7,8 @@
     -->
     
     <div class="logo">
-        <a href="#" class="simple-text logo-normal"> Entrevistador </a>
-    </div>    
+        <img style="width: 100%;" src="{{ asset('images/onlinelogomaker-103119-1759-6926.png') }}" alt="logo">
+    </div>      
 
     <div class="sidebar-wrapper">
         <div class="accordion nav" id="sidebar">
