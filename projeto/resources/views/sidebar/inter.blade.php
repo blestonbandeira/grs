@@ -11,16 +11,36 @@
     </div>    
 
     <div class="sidebar-wrapper">
+        <div class="accordion nav" id="sidebar">
+            
+            <div class="card nav-item">
+                <div class="card-header" id="headingOne">
+                    <i class="material-icons">dashboard</i>
+                    <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Calendário
+                    </p>
+                </div>
 
-        <ul id="nav" class="nav">
-            <li id="btnCalendar" class="nav-item">
-            <a class="nav-link" href="{{ route('calendars.index') }}">
-                <i class="material-icons">dashboard</i>
-                <p>Calendário | Disponibilidade</p>         
-            </a>
-            </li>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
+                    <div class="card-body nav-link">
+                        <ul>
+                            <a class="nav-link" href="{{ route('calendars.index') }}">
+                                <li class="nav-item">Entrevistas por realizar</li>  
+                            </a>
+                            <a class="nav-link" href="#">
+                                <li class="nav-item">Entrevistas realizadas</li> 
+                            </a>                                    
+                        </ul>                                        
+                    </div>
+                </div>
+            </div>
 
-                
-        </ul>
-    </div>
+
+          
+
+     
+
+      
+
+        </div> 
 </div>
