@@ -1,11 +1,7 @@
 ON GOING:
 - logotipo
 - início da apresentação
-- calendário com cores
-- acabar o layout da sidebar
 - angular app
-
-TAREFAS:
 - view: applicants/index 
 	- trocar o estado "a definir" por $applicant->category;
 	- criar turmas e fazer foreach das turmas 
@@ -14,6 +10,9 @@ TAREFAS:
 	- criar/editar user,
 	- criar/editar turma (class) - aqui tem de haver algoritmo para criar o nome da turma, a partir do nome do curso e da data de início
 	- criar/editar curso,
+
+TAREFAS:
+
 - design para modal de marcação de entrevista/testes ou provas
 - acrescentar opções a marcação de:
 	- entrevista,
@@ -35,3 +34,5 @@ TAREFAS:
 	
 COMPLETED:
 - rever as tags de scripts - são mais que as mães! precisamos de todas?
+- acabar o layout da sidebar
+- calendário com cores
