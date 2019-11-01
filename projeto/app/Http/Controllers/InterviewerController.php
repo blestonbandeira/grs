@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Interviewer;
 use Illuminate\Http\Request;
+use App\User;
 
 class InterviewerController extends Controller
 {
@@ -14,7 +15,9 @@ class InterviewerController extends Controller
      */
     public function index()
     {
-        //
+        $interviewers = User::all()->where('permissionLevel', '=', 3);
+        return view('interviewers.index')
+        ->with(compact('interviewers'));
     }
 
     /**
@@ -24,7 +27,8 @@ class InterviewerController extends Controller
      */
     public function create()
     {
-        //
+        return view('interviewers.create')
+        ->with(compact('interviewers'));
     }
 
     /**
