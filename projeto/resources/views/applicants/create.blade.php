@@ -39,18 +39,4 @@
     </div>
 </div>
 
-<script>
-    // Add active class to the current button (highlight it)
-    try{
-        var header = document.getElementById("nav");
-        var btns = header.getElementsByClassName("nav-item");
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-    }
-    catch(err){
-        document.getElementById("btnApplicant").className += " active";
-    }
-    document.getElementById("btnApplicant").className += " active";
-    
-</script>
 @endsection
