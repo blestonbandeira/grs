@@ -7,14 +7,14 @@
     -->
     
     <div class="logo">
-        <a href="#" class="simple-text logo-normal"> Entrevistador </a>
-    </div>    
+        <img style="width: 100%;" src="{{ asset('images/onlinelogomaker-103119-1759-6926.png') }}" alt="logo">
+    </div>      
 
     <div class="sidebar-wrapper">
 
         <div class="accordion nav" id="sidebar">
             
-        <div class="card nav-item">
+           <div class="card nav-item">
                 <div class="card-header" id="headingOne">
                     <i class="material-icons">dashboard</i>
                     <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">

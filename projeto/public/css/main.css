@@ -63,7 +63,7 @@ a:focus {
 
 a:hover {
     text-decoration: none;
-    color: #00AEEF;
+    color: #00A3E0;
 }
 
 
@@ -367,7 +367,7 @@ iframe {
     -o-transition: all 0.6s;
     -moz-transition: all 0.6s;
     transition: all 0.6s;
-    background: #00aeef;
+    background: #00A3E0;
 }
 
 
@@ -432,7 +432,7 @@ input.input100 {
 }
 
 .input-checkbox100:checked+.label-checkbox100::before {
-    color: #00AEEF;
+    color: #00A3E0;
 }
 
 
@@ -460,7 +460,7 @@ input.input100 {
     padding: 0 20px;
     min-width: 160px;
     height: 50px;
-    background-color: #00AEEF;
+    background-color: #00A3E0;
     border-radius: 0.2rem;
     font-family: Poppins-Regular;
     font-size: 16px;

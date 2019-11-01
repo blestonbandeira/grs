@@ -9,7 +9,7 @@
   <title>
     GRS
   </title>
-  
+
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -21,7 +21,7 @@
   <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
-  
+
 </head>
 
 <body class="">
@@ -29,17 +29,27 @@
     @elseif (Auth::user()->id_permissionLevel == "2") @include('sidebar.assist')
     @elseif (Auth::user()->id_permissionLevel == "3") @include('sidebar.inter')
     @endif
+  <img style="width: 100%;" src="{{ asset('image/onlinelogomaker-103119-1759-6926.png') }}" alt="">
   <div class="main-panel">
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
+       
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon icon-bar"></span>
           <span class="navbar-toggler-icon icon-bar"></span>
           <span class="navbar-toggler-icon icon-bar"></span>
         </button>
+        
         <div class="collapse navbar-collapse justify-content-end">
+            
           <ul class="navbar-nav">
+              <li class="justify-item-left">
+                  @if (Auth::user()->id_permissionLevel == "1") Administrador
+                  @elseif (Auth::user()->id_permissionLevel == "2") Assistente
+                  @elseif (Auth::user()->id_permissionLevel == "3") Entrevistador
+                  @endif
+              </li>
             @guest
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -53,10 +63,10 @@
 
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    
+
                   <i class="material-icons">person</i>
                   {{ Auth::user()->name }}
-                 
+
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">Profile</a>
@@ -89,7 +99,7 @@
         </div>
     </div>
       <!--   Core JS Files   -->
-  
+
     <script src="{{ asset('js/core/popper.min.js') }}"></script>
     <script src="{{ asset('js/core/bootstrap-material-design.min.js') }}"></script>
     <script src="{{ asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>

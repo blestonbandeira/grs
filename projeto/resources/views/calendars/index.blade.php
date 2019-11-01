@@ -27,9 +27,9 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{},
+        data:{id_user:{{Auth::id()}}},
         success:function(data)
-        {
+        {alert(data);
             allEvents = data;
             var calendar = $('#calendar').fullCalendar({
                 defaultView: 'agendaWeek',
@@ -93,7 +93,7 @@
                     $.ajax({
                         url:"/api/events/" + id,
                         type:"PUT",
-                        data:{title:title, type:evenType, start_event:start, end_event:end},
+                        data:{id_user:{{Auth::id()}}, title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
                         {
                           document.getElementById('btnModalShow').click();
@@ -159,9 +159,10 @@
         $.ajax({
             url:"/api/events",
             type:"POST",
-            data:{title:title, type:evenType, start_event:start, end_event:end},
-            success:function()
+            data:{id_user:{{ Auth::id() }}, title:title, type:evenType, start_event:start, end_event:end},
+            success:function(data)
             {
+              alert(data);
               document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 
               setTimeout(function() {location.reload();},2000);
             }
