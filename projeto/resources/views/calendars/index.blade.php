@@ -29,7 +29,7 @@
         type:"GET",
         data:{id_user:{{Auth::id()}}},
         success:function(data)
-        {alert(data);
+        {
             allEvents = data;
             var calendar = $('#calendar').fullCalendar({
                 defaultView: 'agendaWeek',
@@ -40,10 +40,15 @@
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
                 allDaySlot: false,
-                eventColor: '#378006',
                 weekends: false,
                 height: 550,
-                editable:true,
+                @if(Auth::user()->id_permissionLevel == "2")
+                  editable:false,
+                  selectable:false,
+                @else
+                  editable:true,
+                  selectable:true,
+                @endif
                 plugins: [ 'bootstrap' ],
                 themeSystem: 'bootstrap',
                 header:{
@@ -52,7 +57,6 @@
                     right:'month,agendaWeek,agendaDay'
                 },
                 events: allEvents,
-                selectable:true,
                 selectHelper:true,
                 select: function(start, end, allDay)
                 {
@@ -72,7 +76,7 @@
                     $.ajax({
                         url:"/api/events/" + id,
                         type:"PUT",
-                        data:{title:title, type:evenType, start_event:start, end_event:end},
+                        data:{id_user:{{Auth::id()}}, title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
                         {
                           document.getElementById('btnModalShow').click();

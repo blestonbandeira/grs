@@ -159,7 +159,7 @@ function calendarCharge(){
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{},
+        data:{id_user:{{Auth::id()}}},
         success:function(data)
         {
             allEvents = data;
@@ -175,7 +175,13 @@ function calendarCharge(){
                 eventColor: '#378006',
                 weekends: false,
                 height: 550,
-                editable:false,
+                 @if(Auth::user()->id_permissionLevel == "2")
+                  editable:false,
+                  selectable:false,
+                @else
+                  editable:true,
+                  selectable:true,
+                @endif
                 plugins: [ 'bootstrap' ],
                 themeSystem: 'bootstrap',
                 header:{
@@ -184,7 +190,6 @@ function calendarCharge(){
                     right:'month,agendaWeek,agendaDay'
                 },
                 events: allEvents,
-                selectable:true,
                 selectHelper:true,
                 eventClick:function(event)
                 { 
