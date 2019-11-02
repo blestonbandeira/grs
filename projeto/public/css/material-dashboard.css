@@ -13318,7 +13318,7 @@ fieldset[disabled] .form-group .form-control {
     border-radius: 3px;
     line-height: 20px;
     margin-left: 5px;
-    color: inherit;
+    color: #0089f2;
 }
 
 .navbar .collapse .navbar-nav .nav-item .nav-link:not(.btn-just-icon) .fa {
@@ -14714,7 +14714,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     padding: 5px 0px;
     display: inline-block;
     font-size: 18px;
-    color: #3C4858;
+    color: #0089f2;
     white-space: nowrap;
     font-weight: 400;
     line-height: 30px;

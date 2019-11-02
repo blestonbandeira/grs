@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Event;
+use App\User;
 use Carbon\Carbon;
 use DateTime;
 use Auth;
@@ -14,8 +16,9 @@ class ApiEventController extends Controller
     {
         $data = array();
         $lastId = -1;
-        $lastColor = "#f00";
-        if($request->id_user == "1"){
+        $lastColor = "#0089f2";
+        $userR = User::where('id', '=', $request->id_user)->get();
+        if($userR[0]['id_permissionLevel'] == 1){
             $result = Event::orderBy('id')->get();
             foreach($result as $row)
             {
@@ -45,13 +48,11 @@ class ApiEventController extends Controller
                 'type'   => $row["type"],
                 'start'   => $row["start_event"],
                 'end'   => $row["end_event"],
-                'color' => "#zzz"
+                'color' => "#0089f2"
                 );
             }
         }
-        
-        
-        
+
         return $data;
     }
 
@@ -78,6 +79,7 @@ class ApiEventController extends Controller
 
     public function update(Request $request, Event $event)
     {
+        $event->id_user = $request->id_user;
         $event->title = $request->title;
         $event->type = $request->type;
         $time = Carbon::parse($request->start_event);
