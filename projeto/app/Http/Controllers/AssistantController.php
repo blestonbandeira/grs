@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Assistant;
 use Illuminate\Http\Request;
+USE App\User;
 
 class AssistantController extends Controller
 {
@@ -14,7 +15,7 @@ class AssistantController extends Controller
      */
     public function index()
     {
-        $assistants = Assistant::all();
+        $assistants = User::all()->where('permissionLevel', '=', 2);
         return view('assistants.index')
         ->with(compact('assistants'));
     }
@@ -26,7 +27,8 @@ class AssistantController extends Controller
      */
     public function create()
     {
-        //
+        return view('assistants.create')
+        ->with(compact('assistants'));
     }
 
     /**

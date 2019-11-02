@@ -26,7 +26,8 @@ class RsClassController extends Controller
      */
     public function create()
     {
-        //
+        return view('rsclasses.create')
+        ->with(compact('rsclasses'));
     }
 
     /**

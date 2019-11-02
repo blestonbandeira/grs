@@ -3,7 +3,7 @@
 @section('content')
 <div class="col text-center">
     <a href="/applicants/create"><button type="button" class="btn btn-info">Adicionar</button></a>
-    <a ><button type="button" class="btn btn-info" onclick="getApplicantsSelected()" data-toggle="modal" data-target=".bd-example-modal-lg">Marcar Entrevista</button></a>
+    <a><button type="button" class="btn btn-info" onclick="getApplicantsSelected()" data-toggle="modal" data-target=".bd-example-modal-lg">Marcar Entrevista</button></a>
     <a href="#"><button type="button" class="btn btn-info">Marcar Prova</button></a>
 </div>
 
@@ -77,9 +77,6 @@
    </div>
   </div>
 </div>
-
-
-
 
             <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 

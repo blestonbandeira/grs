@@ -49,3 +49,21 @@ a {
 {
   color: gray;
 }
+
+ul.nav-item {
+  padding-left: 17px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.activeMenu {
+  color: #00A3E0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+li.active {
+  background-color: #00A3E0;
+}
