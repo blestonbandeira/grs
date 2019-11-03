@@ -6,6 +6,50 @@ a {
   color: inherit;
 }
 
+.fc-center
+{
+  background-color: #0089f2!important;
+  background-image: none!important;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 8px 3px 8px;
+}
+
+.fc-button
+{
+  background-color: #0089f2!important;
+  background-image: none!important;
+  color: white;
+}
+
+  .fc-state-hover
+  {
+    background-color: #0063b9!important;
+    background-image: none!important;
+    color: white;
+    border-color: white;
+  }
+
+
+    .fc-state-active
+    {
+      background-color: #005da5!important;
+      background-image: none!important;
+      border-color: rgb(255, 255, 255);
+      color: white;
+    }
+
+.fc-event .fc-content 
+{
+  color:white!important;
+  font-weight: bold;
+}
+
+.fc th
+{
+  color: gray;
+}
+
 ul.nav-item {
   padding-left: 17px;
 }

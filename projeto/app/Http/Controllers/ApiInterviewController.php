@@ -57,7 +57,7 @@ class ApiInterviewController extends Controller
         $appli_event->save();
 
         return $request->id_applicant;
-    }
+        }
 
     /**
      * Display the specified resource.
