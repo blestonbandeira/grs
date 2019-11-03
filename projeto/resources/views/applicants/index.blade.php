@@ -78,34 +78,36 @@
   </div>
 </div>
 
-            <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar">Large modal</button>
+            <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
-            <div class="modal fade modalCalendar" style="margin: 15px!important;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 0px;">
-                    <div class="modal-content" style="width: 100vw!important;">
-                        <div class="container-fluid" style="">
-                            <div class="row" style="">
+            <div class="modal fade bd-example-modal-lg" style="width: 90vw!important;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" style="width: 90vw!important;">
+                    <div class="modal-content" style="width: 90vw!important;">
+                        <div class="container-fluid" style="width: 90vw!important;">
+                            <div class="row" style="width: 90vw!important;">
                                 <div id="applicantList" class="col-md-2">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="container" style="margin-left: 10vw;margin-top:-10px;">
-                                        <div id="calendar" style="width: 68vw!important; margin-top: 20px;"></div>
+                                        <div id="calendar" style="width: 55vw!important;"></div>
                                     </div>
-                                    <div id="modalTime" class="modal fade" style="width: 55vw!important;" role="dialog">
-                                        <p id="interSelected"></p>
-                                        <div class="col-lg-1">
-                                            
-                                            <select id="hourSelectChange" class="form-control" style="width: 50px;">
-                                    
-                                            </select>
+                                    <div class="container-fluid" style="width: 55vw!important;">
+                                        <div class="row">
+                                            <p id="interSelected"></p>
+                                            <div class="col-lg-1">
+                                                
+                                                <select id="hourSelectChange" class="form-control" style="width: 50px;">
+                                        
+                                                </select>
+                                            </div>
+                                            <b>:</b>
+                                            <div class="col-lg-1">
+                                                <select id="minSelectChange" class="form-control" style="width: 50px;">
+                                        
+                                                </select>
+                                            </div>
+                                            <b>h</b>
                                         </div>
-                                        <b>:</b>
-                                        <div class="col-lg-1">
-                                            <select id="minSelectChange" class="form-control" style="width: 50px;">
-                                    
-                                            </select>
-                                        </div>
-                                        <b>h</b>
                                     </div>
                                 </div>
                             </div>
@@ -170,8 +172,13 @@ function calendarCharge(){
                 eventColor: '#378006',
                 weekends: false,
                 height: 550,
-                editable:false,
-                selectable:false,
+                 @if(Auth::user()->id_permissionLevel == "2")
+                  editable:false,
+                  selectable:false,
+                @else
+                  editable:true,
+                  selectable:true,
+                @endif
                 plugins: [ 'bootstrap' ],
                 themeSystem: 'bootstrap',
                 header:{
@@ -209,53 +216,52 @@ function calendarCharge(){
                     hourSelect.addEventListener("click", function(){
                     hourEnd = $.fullCalendar.formatDate(event.end, "HH");
                     minEnd = $.fullCalendar.formatDate(event.end, "mm");
-                    if(hourSelect.value == hourEnd && minEnd == 45){
-                        minSelect.innerHTML = "<option>--</option>";
-                        minEnd = 1;
-                    for(var i = minStart; i < minEnd; i++)
-                        if(i<10) 
-                            minSelect.innerHTML += "<option>0" + i + "</option>";
-                        else
-                            minSelect.innerHTML += "<option>" + i + "</option>";
-                    }else if(hourSelect.value == hourEnd && minEnd > 45){
-                        minSelect.innerHTML = "<option>--</option>";
-                        minEnd - 45;
+                        if(hourSelect.value == hourEnd && minEnd == 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                            minEnd = 01;
+                        for(var i = minStart; i < minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else if(hourSelect.value == hourEnd && minEnd > 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                            minEnd - 45;
+                            for(var i = minStart; i <= minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else if((hourSelect.value == hourEnd || hourEnd-hourStart == 1) && minEnd < 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                            var numMinEnd = 45 - minEnd;
+                            minEnd = 60 - numMinEnd;
                         for(var i = minStart; i <= minEnd; i++)
-                        if(i<10) 
-                            minSelect.innerHTML += "<option>0" + i + "</option>";
-                        else
-                            minSelect.innerHTML += "<option>" + i + "</option>";
-                    }else if((hourSelect.value == hourEnd || hourEnd-hourStart == 1) && minEnd < 45){
-                        minSelect.innerHTML = "<option>--</option>";
-                        var numMinEnd = 45 - minEnd;
-                        minEnd = 60 - numMinEnd;
-                    for(var i = minStart; i <= minEnd; i++)
-                        if(i<10) 
-                            minSelect.innerHTML += "<option>0" + i + "</option>";
-                        else
-                            minSelect.innerHTML += "<option>" + i + "</option>";
-                    }else if(hourSelect.value == hourEnd && minEnd < 45){
-                        minSelect.innerHTML = "<option>--</option>";
-                        var numMinEnd = 45 - minEnd;
-                        minEnd = 60 - numMinEnd;
-                        minStart = 0;
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else if(hourSelect.value == hourEnd && minEnd < 45){
+                            minSelect.innerHTML = "<option>--</option>";
+                            var numMinEnd = 45 - minEnd;
+                            minEnd = 60 - numMinEnd;
+                            minStart = 0;
+                            for(var i = minStart; i <= minEnd; i++)
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }else {
+                            minSelect.innerHTML = "<option>--</option>";
+                            minStart = 0;
+                            minEnd = 59;
                         for(var i = minStart; i <= minEnd; i++)
-                        if(i<10) 
-                            minSelect.innerHTML += "<option>0" + i + "</option>";
-                        else
-                            minSelect.innerHTML += "<option>" + i + "</option>";
-                    }else {
-                        minSelect.innerHTML = "<option>--</option>";
-                        minStart = 0;
-                        minEnd = 59;
-                    for(var i = minStart; i <= minEnd; i++)
-                        if(i<10) 
-                            minSelect.innerHTML += "<option>0" + i + "</option>";
-                        else
-                            minSelect.innerHTML += "<option>" + i + "</option>";
-                    }
-                    $("#modalTime").modal("show");
-                });
+                            if(i<10) 
+                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                            else
+                                minSelect.innerHTML += "<option>" + i + "</option>";
+                        }
+                    });
                     
                         
                 },
