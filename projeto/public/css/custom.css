@@ -6,6 +6,11 @@ a {
   color: inherit;
 }
 
+#modalTime .show
+{
+  display: contents!important;
+}
+
 .fc-center
 {
   background-color: #0089f2!important;
