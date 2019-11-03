@@ -93,7 +93,32 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card nav-item">
+                <div class="card-header" id="headingFive">
+                    <i class="fas fa-book"></i>
+                    <p data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                        Cursos
+                    </p>                
+                </div>
+                <div id="collapseFive" class="collapse {{ request()->is('courses*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                    <div class="card-body">
+                    <ul class="nav-item">
+                            <li class="{{ request()->is('courses') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('courses') }}">
+                                Ver  
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('courses/create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('courses.create') }}">
+                                Adicionar
+                                </a>   
+                            </li>                           
+                        </ul>                  
+                    </div>
+                </div>
+            </div>
+
+            <div class="card nav-item">
                 <div class="card-header" id="headingFour">
                     <i class="material-icons">bubble_chart</i>
                     <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('assistants*') ? 'activeMenu' : '' }}">
@@ -118,7 +143,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card nav-item">
                 <div class="card-header" id="headingFive">
                     <i class="material-icons">library_books</i>
                     <p data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive" class="{{ request()->is('interviewers*') ? 'activeMenu' : '' }}">

@@ -23,3 +23,8 @@ a:hover {
 li.active {
   background-color: #00A3E0;
 }
+
+.btn .btn-info .btn-link .btn-sm {
+  border: transparent;
+  padding: 5;
+}
