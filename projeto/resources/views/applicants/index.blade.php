@@ -2,24 +2,36 @@
 
 @section('content')
 <div class="col text-center">
-    <a href="/applicants/create"><button type="button" class="btn btn-info">Adicionar</button></a>
-    <a><button type="button" class="btn btn-info" onclick="getApplicantsSelected()" data-toggle="modal" data-target=".bd-example-modal-lg">Marcar Entrevista</button></a>
-    <a href="#"><button type="button" class="btn btn-info">Marcar Prova</button></a>
+    <a href="/applicants/create">
+        <button type="button" class="btn btn-info">
+            Adicionar
+        </button>
+    </a>
+    <a>
+        <button type="button" class="btn btn-info" onclick="getApplicantsSelected()" data-toggle="modal" data-target=".bd-example-modal-lg">
+            Marcar Entrevista
+        </button>
+    </a>
+    <a href="#">
+        <button type="button" class="btn btn-info">
+            Marcar Prova
+        </button>
+    </a>
 </div>
 
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-6 col-md-12">
-      <div class="accordion" id="accordionExample">
+      <div class="col-md-12">
+      <div class="accordion" id="rsclasses">
         <div class="card">
-          <div class="card-header card-header-info">
-          <button class=" card-title btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Turma TPSI11.18</button>
+          <div class="card-header card-header-info" data-toggle="collapse" data-target="#collapsePlusOne" aria-expanded="true" aria-controls="collapsePlusOne">
+          <button class="card-title btn btn-link" type="button">Turma TPSI11.18</button>
           <p class="card-category">Início: novembro 2018</p>
         </div>
 
         <div class="card-body table-responsive">
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div id="collapsePlusOne" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
         <table class="table table-hover">
             <thead class="text-info">
             <th></th>
@@ -42,27 +54,27 @@
                         </div>
                     </td>
                     <td>
-                        {{$applicant->id}}
+                        {{ $applicant->id }}
                     </td>
                     <td>
-                        {{$applicant->name}}
+                        {{ $applicant->name }}
                     </td>
 
                     <td>
-                        a definir
+                        {{ $applicant->category }}
                     </td>
                     <td class="d-flex">
-                        <button style="border: none; padding:0" type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
                             <i class="material-icons">edit</i>
                         </button>
 
                         <form action="/applicants/{{ $applicant->id }}" method="post">
                             @csrf
                             @method('delete')
-                            <button style="border: none; padding:0" type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm"  value="DELETE"  type="submit">
+                            <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
                                 <i class="material-icons">close</i>
                             </button>
-                            {{-- <input type="submit" class="btn btn-danger btn-sm" value="DELETE"> --}}
+                            
                         </form>
                     </td>
                 </tr>
@@ -80,18 +92,19 @@
 
             <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar">Large modal</button>
             
+            <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
-            <div class="modal fade modalCalendar" style="margin: 15px!important;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 0px;">
-                    <div class="modal-content" style="width: 100vw!important;">
-                        <div class="container-fluid" style="">
-                            <div class="row" style="">
+            <div class="modal fade bd-example-modal-lg" style="width: 90vw!important;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" style="width: 90vw!important;">
+                    <div class="modal-content" style="width: 90vw!important;">
+                        <div class="container-fluid" style="width: 90vw!important;">
+                            <div class="row" style="width: 90vw!important;">
                                 <div id="applicantList" class="col-md-2">
                                     <button id="btnModelSh" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalHours">Large modal</button>
                                 </div>
                                 <div id="modalTime" class="col-md-10">
                                     <div class="container" style="margin-left: 10vw;margin-top:-10px;">
-                                        <div id="calendar" style="width: 68vw!important; margin-top: 20px;"></div>
+                                        <div id="calendar" style="width: 55vw!important;"></div>
                                     </div>
                                     <div class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
                                         <div class="row">
@@ -122,10 +135,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-
+            
 <script>
     function getApplicantsSelected(){
         var appliSelected = [];
