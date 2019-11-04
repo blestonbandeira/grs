@@ -29,7 +29,6 @@
     @elseif (Auth::user()->id_permissionLevel == 2) @include('sidebar.assist')
     @elseif (Auth::user()->id_permissionLevel == 3) @include('sidebar.inter')
     @endif
-  <img style="width: 100%;" src="{{ asset('image/onlinelogomaker-103119-1759-6926.png') }}" alt="">
   <div class="main-panel">
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">

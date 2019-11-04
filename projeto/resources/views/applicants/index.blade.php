@@ -87,12 +87,10 @@
     </div>
 
             <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar">Large modal</button>
-            
-            <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
-            <div class="modal fade bd-example-modal-lg" style="width: 90vw!important;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" style="width: 90vw!important;">
-                    <div class="modal-content" style="width: 90vw!important;">
+            <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
+                    <div class="modal-content" style="width: 95.5vw!important;">
                         <div class="container-fluid" style="width: 90vw!important;">
                             <div class="row" style="width: 90vw!important;">
                                 <div id="applicantList" class="col-md-2">
@@ -125,7 +123,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <b>h</b>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +147,7 @@
                     data:{},
                     success:function(data)
                     {
-                        alert(data.d[0]);
+                        alert(data[0]['name']);
                         var teste1 = JSON.parse(data);
                         alert(teste1[0]);
                         document.getElementById('applicantList').innerHTML += "<b><a src='/applicants/" + appliSelected[j] + "'><p>" + data.d[0][1] + "</p></a></b>";
@@ -183,7 +180,6 @@ function calendarCharge(){
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
                 allDaySlot: false,
-                eventColor: '#378006',
                 weekends: false,
                 height: 550,
                 editable:false,
@@ -235,7 +231,7 @@ function calendarCharge(){
                             for(var i = minStart; i < minEnd; i++)
                             {
                                 if(i<10) 
-                                    minSelect.innerHTML += "<option>0" + i + "</option>";
+                                    minSelect.innerHTML += "<option>" + i + "</option>";
                                 else
                                     minSelect.innerHTML += "<option>" + i + "</option>";
                             }

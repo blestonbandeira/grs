@@ -13,7 +13,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Administrador')->first();
+        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Admin')->first();
         $user = new User;
         $user->name = "Admin";
         $user->email = "admin@m.pt";
@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
         $user->id_permissionLevel = $permissionLevels;
         $user->save();
 
-        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Assistente de Formação')->first();
+        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Assist')->first();
         $user = new User;
         $user->name = "Assist";
         $user->email = "assist@m.pt";
@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
         $user->id_permissionLevel = $permissionLevels;
         $user->save();
 
-        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Entrevistador')->first();
+        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Inter')->first();
         $user = new User;
         $user->name = "Inter";
         $user->email = "inter@m.pt";
@@ -37,7 +37,7 @@ class UsersSeeder extends Seeder
         $user->id_permissionLevel = $permissionLevels;
         $user->save();
     
-        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Entrevistador')->first();
+        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Inter')->first();
         $user = new User;
         $user->name = "Inter2";
         $user->email = "inter2@m.pt";
@@ -45,7 +45,7 @@ class UsersSeeder extends Seeder
         $user->id_permissionLevel = $permissionLevels;
         $user->save();
 
-        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Assistente de Formação')->first();
+        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Assist')->first();
         $user = new User;
         $user->name = "Assist2";
         $user->email = "assist2@m.pt";
@@ -53,7 +53,7 @@ class UsersSeeder extends Seeder
         $user->id_permissionLevel = $permissionLevels;
         $user->save();
 
-        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Assistente de Formação')->first();
+        $permissionLevels = DB::table('permission_levels')->select('id')->where('name', '=', 'Assist')->first();
         $user = new User;
         $user->name = "Assist3";
         $user->email = "assist3@m.pt";
