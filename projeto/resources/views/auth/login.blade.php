@@ -4,35 +4,24 @@
 	<title>Entrar</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.ico') }}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
-<!--===============================================================================================-->
+	<link rel="icon" href="{{ asset('images/icons/favicon.ico') }}"/>
+	<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/util.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 <body>
 	admin@m.pt -> 123++qwe | assist@m.pt-> 123++qwe | inter@m.pt -> 123++qwe 
 	<div class="limiter">
 		<div class="container-login100" >
-			<div class="wrap-login100"  style="box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);">
-				<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+			<div class="wrap-login100" style="box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);">
+				<div id="entrar" class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
 					<span class="login100-form-title-1">
 						{{ __('Entrar') }}
 					</span>
@@ -95,21 +84,14 @@
 	</div>
 
 
-<!--===============================================================================================-->
 	<script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
-<!--===============================================================================================-->
 	<script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
-<!--===============================================================================================-->
 	<script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
 	<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<!--===============================================================================================-->
 	<script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
-<!--===============================================================================================-->
 	<script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
 	<script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
-<!--===============================================================================================-->
 	<script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
-<!--===============================================================================================-->
 	<script src="{{ asset('js/main.js') }}"></script>
 
 </body>

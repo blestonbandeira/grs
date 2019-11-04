@@ -72,3 +72,11 @@ li.active {
   border: transparent;
   padding: 5;
 }
+
+.wrap-login100 {
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+}
+
+img#entrar {
+  background-image: url(images/bg-01.jpg);
+}

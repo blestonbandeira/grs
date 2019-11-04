@@ -94,13 +94,13 @@
             </div>
 
             <div class="card nav-item">
-                <div class="card-header" id="headingFive">
+                <div class="card-header" id="headingFour">
                     <i class="fas fa-book"></i>
-                    <p data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
                         Cursos
                     </p>                
                 </div>
-                <div id="collapseFive" class="collapse {{ request()->is('courses*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                <div id="collapseFour" class="collapse {{ request()->is('courses*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
                     <div class="card-body">
                     <ul class="nav-item">
                             <li class="{{ request()->is('courses') ? 'active' : '' }}">
@@ -119,13 +119,13 @@
             </div>
 
             <div class="card nav-item">
-                <div class="card-header" id="headingFour">
+                <div class="card-header" id="headingFive">
                     <i class="material-icons">bubble_chart</i>
-                    <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('assistants*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive" class="{{ request()->is('assistants*') ? 'activeMenu' : '' }}">
                         Assistentes de Formação
                     </p>                
                 </div>
-                <div id="collapseFour" class="collapse {{ request()->is('assistants*') ? ' show' : '' }}" aria-labelledby="headingFour" data-parent="#sidebar">
+                <div id="collapseFive" class="collapse {{ request()->is('assistants*') ? ' show' : '' }}" aria-labelledby="headingFour" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
                             <li class="{{ request()->is('assistants') ? 'active' : '' }}">
@@ -144,13 +144,13 @@
             </div>
 
             <div class="card nav-item">
-                <div class="card-header" id="headingFive">
+                <div class="card-header" id="headingSix">
                     <i class="material-icons">library_books</i>
-                    <p data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive" class="{{ request()->is('interviewers*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix" class="{{ request()->is('interviewers*') ? 'activeMenu' : '' }}">
                         Entrevistadores
                     </p>                
                 </div>
-                <div id="collapseFive" class="collapse {{ request()->is('interviewers*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                <div id="collapseSix" class="collapse {{ request()->is('interviewers*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
                     <div class="card-body">
                     <ul class="nav-item">
                             <li class="{{ request()->is('interviewers') ? 'active' : '' }}">
