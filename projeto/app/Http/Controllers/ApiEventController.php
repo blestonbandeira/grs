@@ -22,9 +22,9 @@ class ApiEventController extends Controller
             $result = Event::orderBy('id')->get();
             foreach($result as $row)
             {
-                if(!$row["id_user"] == $lastId)
+                if($row["id_user"] != $lastId)
                     $lastColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
-
+                
                 $data[] = array(
                     'id'   => $row["id"],
                     'id_user'   => $row["id_user"],
