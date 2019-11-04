@@ -20,75 +20,71 @@
 </div>
 
 <div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-      <div class="accordion" id="rsclasses">
-        <div class="card">
-          <div class="card-header card-header-info" data-toggle="collapse" data-target="#collapsePlusOne" aria-expanded="true" aria-controls="collapsePlusOne">
-          <button class="card-title btn btn-link" type="button">Turma TPSI11.18</button>
-          <p class="card-category">Início: novembro 2018</p>
-        </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="accordion" id="rsclasses">
+                    <div class="card">
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#collapsePlusOne" aria-expanded="true" aria-controls="collapsePlusOne">
+                            <button class="card-title btn btn-link" type="button">Turma TPSI11.18</button>
+                            <p class="card-category">Início: novembro 2018</p>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <div id="collapsePlusOne" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
+                                <table class="table table-hover">
+                                    <thead class="text-info">
+                                        <th></th>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Categorização</th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($applicants as $applicant)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input applicantsSelect" type="checkbox" value="{{$applicant->id}}">
+                                                            <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    {{ $applicant->id }}
+                                                </td>
+                                                <td>
+                                                    {{ $applicant->name }}
+                                                </td>
 
-        <div class="card-body table-responsive">
-        <div id="collapsePlusOne" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
-        <table class="table table-hover">
-            <thead class="text-info">
-            <th></th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Categorização</th>
-            <th></th>
-            </thead>
-            <tbody>
-            @foreach ($applicants as $applicant)
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input applicantsSelect" type="checkbox" value="{{$applicant->id}}">
-                                <span class="form-check-sign">
-                                <span class="check"></span>
-                                </span>
-                            </label>
+                                                <td>
+                                                    {{ $applicant->category }}
+                                                </td>
+                                                <td class="d-flex">
+                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                    <form action="/applicants/{{ $applicant->id }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </td>
-                    <td>
-                        {{ $applicant->id }}
-                    </td>
-                    <td>
-                        {{ $applicant->name }}
-                    </td>
-
-                    <td>
-                        {{ $applicant->category }}
-                    </td>
-                    <td class="d-flex">
-                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                        </button>
-
-                        <form action="/applicants/{{ $applicant->id }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
-                                <i class="material-icons">close</i>
-                            </button>
-                            
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
-      </div>
-   </div>
-  </div>
-</div>
+    </div>
 
             <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar">Large modal</button>
             
@@ -129,6 +125,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <b>h</b>
                                 </div>
                             </div>
                         </div>
