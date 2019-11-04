@@ -25,9 +25,9 @@
 </head>
 
 <body class="">
-    @if (Auth::user()->id_permissionLevel == 1) @include('sidebar.admin')
-    @elseif (Auth::user()->id_permissionLevel == 2) @include('sidebar.assist')
-    @elseif (Auth::user()->id_permissionLevel == 3) @include('sidebar.inter')
+    @if (Auth::user()->id_permissionLevel == "1") @include('sidebar.admin')
+    @elseif (Auth::user()->id_permissionLevel == "2") @include('sidebar.assist')
+    @elseif (Auth::user()->id_permissionLevel == "3") @include('sidebar.inter')
     @endif
   <img style="width: 100%;" src="{{ asset('image/onlinelogomaker-103119-1759-6926.png') }}" alt="">
   <div class="main-panel">
@@ -45,9 +45,9 @@
             
           <ul class="navbar-nav">
               <li class="justify-item-left">
-                  @if (Auth::user()->id_permissionLevel == 1) Administrador
-                  @elseif (Auth::user()->id_permissionLevel == 2) Assistente
-                  @elseif (Auth::user()->id_permissionLevel == 3) Entrevistador
+                  @if (Auth::user()->id_permissionLevel == "1") Administrador
+                  @elseif (Auth::user()->id_permissionLevel == "2") Assistente
+                  @elseif (Auth::user()->id_permissionLevel == "3") Entrevistador
                   @endif
               </li>
             @guest
