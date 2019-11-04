@@ -15,7 +15,7 @@ class RsClassesSeeder extends Seeder
         $rsClass = new RsClass;
         $courseName = DB::table('course_names')
                         ->select('name')->join('courses', 'courses.id_courseName', '=', 'course_names.id')->get();
-        $startDate = DB::('courses')->select('startDate')
-        $rsClass->name = getCourseName($courseName) . ;
+        $startDate = DB::table('courses')->select('startDate');
+        $rsClass->name = $courseName;
     }
 }
