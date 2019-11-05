@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="col text-center">
-        <a href="/applicants/create">
+        <a href="{{ route('rsclasses.create') }}">
             <button type="button" class="btn btn-info">
                 Adicionar
             </button>
@@ -15,7 +15,7 @@
                     <div class="accordion" id="rsclasses">
                         <div class="card">
                             <div class="card-header card-header-info" data-toggle="collapse" data-target="#collapsePlusOne" aria-expanded="true" aria-controls="collapsePlusOne">
-                                <button class="card-title btn btn-link" type="button">Gestão de Turmas</button>
+                                <button class="card-title btn btn-link" type="button">Gestão de Turmas de Recrutamento</button>
                                 </div>
                                 <div class="card-body table-responsive">
                                     {{-- <div id="collapsePlusOne" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses"> --}}
@@ -24,7 +24,8 @@
                                             <th></th>
                                             <th>ID</th>
                                             <th>Curso</th>
-                                            <th>Mês e ano de início</th>
+                                            <th>Mês de início</th>
+                                            <th>Ano de início</th>
                                             <th>Nº de Inscrições</th>
                                             <th>Nº de Aptos</th>
                                             <th></th>
@@ -52,7 +53,11 @@
                                                         {{-- {{ $applicant->category }} --}}
                                                     </td>
                                                     <td>
-                                                        Novembro de 2018
+                                                        Novembro
+                                                        {{-- {{ $applicant->category }} --}}
+                                                    </td>
+                                                    <td>
+                                                        2018
                                                         {{-- {{ $applicant->category }} --}}
                                                     </td>
                                                     <td>
