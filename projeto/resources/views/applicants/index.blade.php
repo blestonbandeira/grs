@@ -86,7 +86,7 @@
         </div>
     </div>
 
-            <button id="btnModelShow" type="button" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar">Large modal</button>
+            <input id="btnModelShow" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
 
             <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
@@ -131,32 +131,47 @@
             </div>
             
 <script>
-    function getApplicantsSelected(){
-        var appliSelected = [];
+var appliSelectedId = [];
+var appliSelectedName = [];
+    function getApplicantsSelected()
+    {
         var applicantsSelected = document.getElementsByClassName('applicantsSelect');
         var j = 0;
+        var k = 0;
         for(var i = 0; i < applicantsSelected.length; i++)
         {
             if(applicantsSelected[i].checked)
             {
-                appliSelected[j] = applicantsSelected[i].value;
+                appliSelectedId[j] = applicantsSelected[i].value;
                 $.ajax({
                     contentType: "application/json",
-                    url:"/api/applicants/" + appliSelected[j],
+                    url:"/api/applicants/" + applicantsSelected[i].value,
                     type:"GET",
                     data:{},
                     success:function(data)
-                    {
-                        alert(data[0]['name']);
-                        var teste1 = JSON.parse(data);
-                        alert(teste1[0]);
-                        document.getElementById('applicantList').innerHTML += "<b><a src='/applicants/" + appliSelected[j] + "'><p>" + data.d[0][1] + "</p></a></b>";
+                    { 
+                        appliSelectedName[k] = data[0]['name'];
+                        if(appliSelectedName.length == appliSelectedId.length){
+                            innerApplicantsSelected();
+                            document.getElementById('btnModelShow').click();
+                            calendarCharge();
+                        }
+                        k++;
                     }
                 });
                 j++;
             }
         }
-        calendarCharge();
+    }
+
+    function innerApplicantsSelected(){
+        var j = 0;
+        for(var i = 0; i < appliSelectedName.length; i++)
+        {
+            document.getElementById('applicantList').innerHTML += "<b><a href='/applicants/" + appliSelectedId[j] + "'><p>" + appliSelectedName[j] + "</p></a></b>";
+            j++;
+        }
+        
     }
 
 //-------CALENDAR-------//
