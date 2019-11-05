@@ -2,6 +2,8 @@
 
 @section('content')
 <input type="hidden" value="calendarClass" class="navLiSelect">
+
+
 <div class="container" style="margin-left: 10vw;margin-top:-10px;">
    <div id="calendar" style="width: 55vw!important;"></div>
 </div>
