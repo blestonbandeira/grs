@@ -13,15 +13,15 @@ class PermissionLevelsSeeder extends Seeder
     public function run()
     {
         $permission = new PermissionLevel;
-        $permission->name = "Admin";
+        $permission->name = "Administrador";
         $permission->save();
 
         $permission = new PermissionLevel;
-        $permission->name = "Assist";
+        $permission->name = "Assistente de Formação";
         $permission->save();
         
         $permission = new PermissionLevel;
-        $permission->name = "Inter";
+        $permission->name = "Entrevistador";
         $permission->save();
     }
 }

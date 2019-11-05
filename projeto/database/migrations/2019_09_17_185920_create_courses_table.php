@@ -15,7 +15,7 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('startDate')->nullable();
+            $table->date('startDate')->nullable();
             $table->bigInteger('id_courseName')->unsigned()->nullable();
             $table->foreign('id_courseName')->references('id')->on('course_names');
             $table->bigInteger('id_courseType')->unsigned()->nullable();

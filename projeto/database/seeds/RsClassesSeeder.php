@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\RsClass;
+use App\Course;
+use App\CourseName;
 
 class RsClassesSeeder extends Seeder
 {
@@ -13,9 +15,10 @@ class RsClassesSeeder extends Seeder
     public function run()
     {
         $rsClass = new RsClass;
-        $courseName = DB::table('course_names')
-                        ->select('name')->join('courses', 'courses.id_courseName', '=', 'course_names.id')->get();
-        $startDate = DB::table('courses')->select('startDate');
-        $rsClass->name = $courseName;
+        $courseName = CourseName::select('name')
+                    ->join('courses', 'courses.id_courseName', '=', 'course_names.id')->get();
+        $startDate = Course::select('startDate')
+                    ->join('courses', 'courses.id_courseName', '=', 'course_names.id')->get();
+        $rsClass->name = getCourseName($courseName, $startDate);
     }
 }

@@ -7,7 +7,7 @@
     -->
     
     <div class="logo">
-        <img style="width: 100%;" src="{{ asset('images/onlinelogomaker-103119-1759-6926.png') }}" alt="logo">
+        <img class="logoStyle" src="{{ asset('images/onlinelogomaker-103119-1759-6926.png') }}" alt="logo">
     </div>   
            
     <div class="sidebar-wrapper">

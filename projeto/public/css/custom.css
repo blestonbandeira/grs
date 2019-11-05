@@ -85,3 +85,7 @@ li.active {
 img#entrar {
   background-image: url(images/bg-01.jpg);
 }
+
+.logoStyle {
+  width: 100%;
+}
