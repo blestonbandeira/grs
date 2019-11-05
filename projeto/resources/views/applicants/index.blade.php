@@ -165,6 +165,7 @@ var appliSelectedName = [];
     }
 
     function innerApplicantsSelected(){
+        document.getElementById('applicantList').innerHTML = "";
         var j = 0;
         for(var i = 0; i < appliSelectedName.length; i++)
         {
@@ -222,7 +223,6 @@ function calendarCharge(){
                     var hourEnd = $.fullCalendar.formatDate(event.end, "HH");
                     var minEnd = $.fullCalendar.formatDate(event.end, "mm");
                     
-
                     hourSelect.innerHTML = "<option>--</option>";
                     document.getElementById('interSelected').innerHTML = "<b>" + event.title + "</b></br>" + start + " - " + end + "</br>" + date;
                     
