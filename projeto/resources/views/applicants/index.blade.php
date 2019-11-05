@@ -100,7 +100,7 @@
                                     <div class="container" style="margin-left: 10vw;margin-top:-10px;">
                                         <div id="calendar" style="width: 55vw!important;"></div>
                                     </div>
-                                    <div class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
+                                    <div id="hoursShow" class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
                                         <div class="row">
                                             <p id="interSelected"></p>
 
@@ -211,32 +211,146 @@ function calendarCharge(){
                 selectHelper:true,
                 eventClick:function(event)
                 {
+                    
                     var hourSelect = document.getElementById('hourSelectChange');
                     var minSelect = document.getElementById('minSelectChange');
+
+                    minSelect.innerHTML = "<option>--</option>";
 
                     var start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
                     var date = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
 
                     var hourStart = $.fullCalendar.formatDate(event.start, "HH");
-                    var minStart = $.fullCalendar.formatDate(event.start, "mm");
+                    var minStart = $.fullCalendar.formatDate(event.start, "m");
                     var hourEnd = $.fullCalendar.formatDate(event.end, "HH");
-                    var minEnd = $.fullCalendar.formatDate(event.end, "mm");
+                    var minEnd = $.fullCalendar.formatDate(event.end, "m");
                     
                     hourSelect.innerHTML = "<option>--</option>";
                     document.getElementById('interSelected').innerHTML = "<b>" + event.title + "</b></br>" + start + " - " + end + "</br>" + date;
                     
                     if(minEnd < 45){
-                        for(var i = hourStart; i < hourEnd; i++)
-                            hourSelect.innerHTML += "<option>" + i + "</option>";
-                    }else{
-                        for(var i = hourStart; i <= hourEnd; i++)
-                            hourSelect.innerHTML += "<option>" + i + "</option>";
+                        hourEnd = hourEnd - 1;
                     }
                     
+                    for(var i = hourStart; i <= hourEnd; i++)
+                            hourSelect.innerHTML += "<option>" + i + "</option>";
+
                     hourSelect.addEventListener("click", function()
                     {
-                        hourEnd = $.fullCalendar.formatDate(event.end, "HH");
+                        minSelect.innerHTML = "<option>--</option>";
+
+                        minStart = $.fullCalendar.formatDate(event.start, "m");
+                        minEnd = $.fullCalendar.formatDate(event.end, "m");
+                        
+                        if (hourSelect.value == hourStart)
+                        {
+                            if(hourSelect.value == hourEnd)
+                            {
+                                if((minEnd - 45) < 0){
+                                    var time = 45 - minEnd;
+                                    minEnd = 60 - time;
+                                    minSelect.innerHTML = "<option>--</option>";
+                                    for(var i = minStart; i <= minEnd; i++)
+                                    {
+                                        if(i<10) 
+                                            minSelect.innerHTML += "<option>0" + i + "</option>";
+                                        else
+                                            minSelect.innerHTML += "<option>" + i + "</option>";
+                                    }
+                                }
+                                else
+                                {
+                                    minSelect.innerHTML = "<option>--</option>";
+                                    if(minEnd == 0)
+                                    {
+                                        minSelect.innerHTML = "<option>00</option>";
+                                    }
+                                    else
+                                    {
+                                        for(var i = minStart; i <= minEnd; i++)
+                                        {
+                                            if(i<10) 
+                                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                                            else
+                                                minSelect.innerHTML += "<option>" + i + "</option>";
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for(var i = minStart; i <= 59; i++)
+                                {
+                                    if(i<10) 
+                                        minSelect.innerHTML += "<option>0" + i + "</option>";
+                                    else
+                                        minSelect.innerHTML += "<option>" + i + "</option>";
+                                }
+                            }
+                        }
+                        else
+                        {
+                            minStart = 0;
+                            if((minEnd - 45) < 0){
+                                var time = 45 - minEnd;
+                                minEnd = 60 - time;
+                                minSelect.innerHTML = "<option>--</option>";
+                                for(var i = minStart; i <= minEnd; i++)
+                                {
+                                    if(i<10) 
+                                        minSelect.innerHTML += "<option>0" + i + "</option>";
+                                    else
+                                        minSelect.innerHTML += "<option>" + i + "</option>";
+                                }
+                            }
+                            else
+                            {
+                                if(hourSelect.value == hourEnd)
+                                {
+                                    minEnd = minEnd - 45;
+                                    minSelect.innerHTML = "<option>--</option>";
+                                    if(minEnd == 0)
+                                    {
+                                        minSelect.innerHTML = "<option>00</option>";
+                                    }
+                                    else
+                                    {
+                                        for(var i = minStart; i <= minEnd; i++)
+                                        {
+                                            if(i<10) 
+                                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                                            else
+                                                minSelect.innerHTML += "<option>" + i + "</option>";
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    for(var i = 0; i <= 59; i++)
+                                    {
+                                        if(i<10) 
+                                            minSelect.innerHTML += "<option>0" + i + "</option>";
+                                        else
+                                            minSelect.innerHTML += "<option>" + i + "</option>";
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }); 
+                    document.getElementById('hoursShow').className += " show";
+                },
+            });
+        }
+    });
+}
+</script>
+@endsection
+
+
+
+{{-- hourEnd = $.fullCalendar.formatDate(event.end, "HH");
                         minEnd = $.fullCalendar.formatDate(event.end, "mm");
                         
                         if(hourSelect.value == hourEnd && minEnd == 45)
@@ -302,12 +416,4 @@ function calendarCharge(){
                                 else
                                     minSelect.innerHTML += "<option>" + i + "</option>";
                             }
-                        }
-                    }); 
-                },
-            });
-        }
-    });
-}
-</script>
-@endsection
+                        } --}}
