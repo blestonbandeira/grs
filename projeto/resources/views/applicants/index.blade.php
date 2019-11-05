@@ -133,10 +133,11 @@
 <script>
 var appliSelectedId = [];
 var appliSelectedName = [];
-    function getApplicantsSelected(){
-        
+    function getApplicantsSelected()
+    {
         var applicantsSelected = document.getElementsByClassName('applicantsSelect');
         var j = 0;
+        var k = 0;
         for(var i = 0; i < applicantsSelected.length; i++)
         {
             if(applicantsSelected[i].checked)
@@ -149,18 +150,16 @@ var appliSelectedName = [];
                     data:{},
                     success:function(data)
                     { 
-                        appliSelectedName[j] = data[0]['name'];
+                        appliSelectedName[k] = data[0]['name'];
                         if(appliSelectedName.length == appliSelectedId.length){
-                            alert("chegouuu");
                             innerApplicantsSelected();
                             document.getElementById('btnModelShow').click();
                             calendarCharge();
                         }
-                            
-                        j++;
+                        k++;
                     }
                 });
-                
+                j++;
             }
         }
     }
