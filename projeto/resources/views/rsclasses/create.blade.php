@@ -7,7 +7,7 @@
                     <div class="accordion" id="rsclasses">
                         <div class="card">
                             <div class="card-header card-header-info" data-toggle="collapse" data-target="#collapsePlusOne" aria-expanded="true" aria-controls="collapsePlusOne">
-                                <button class="card-title btn btn-link" type="button">Criar Nova Turma</button>
+                                <button class="card-title btn btn-link" type="button">Criar Nova Turma de Recrutamento</button>
                                 </div>
                                 <div class="card-body table-responsive">
                                     <table class="table table-hover">
@@ -21,11 +21,17 @@
                                             <tr>
                                                 <td>
                                                 <select class="custom-select">
-                                                    @foreach($courses as $course)
-                                                        <option value="{{$course}}">
-                                                            Selecione aqui o curso
-                                                        </option>
-                                                    @endforeach
+                                                    @if (count($courses) > 0 )
+                                                        @foreach($courses as $course)
+                                                            <option value="{{$course->name}}">
+                                                                --Selecione aqui o curso--
+                                                            </option>
+                                                        @endforeach
+                                                    @else
+                                                    <option>
+                                                        --Não existem cursos na plataforma--
+                                                    </option>
+                                                    @endif
                                                 </select>
                                                 </td>
 

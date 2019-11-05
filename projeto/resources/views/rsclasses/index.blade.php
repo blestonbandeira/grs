@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="col text-center">
-        <a href="/applicants/create">
+        <a href="{{ route('rsclasses.create') }}">
             <button type="button" class="btn btn-info">
                 Adicionar
             </button>
@@ -15,7 +15,7 @@
                     <div class="accordion" id="rsclasses">
                         <div class="card">
                             <div class="card-header card-header-info" data-toggle="collapse" data-target="#collapsePlusOne" aria-expanded="true" aria-controls="collapsePlusOne">
-                                <button class="card-title btn btn-link" type="button">Gestão de Turmas</button>
+                                <button class="card-title btn btn-link" type="button">Gestão de Turmas de Recrutamento</button>
                                 </div>
                                 <div class="card-body table-responsive">
                                     {{-- <div id="collapsePlusOne" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses"> --}}
