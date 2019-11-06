@@ -1,3 +1,4 @@
+Quando pegarem numa tarefa, ponham o vosso nome à frente, passando-a para a part On Going. A partir desse momento ficam responsáveis por verificar se está completa ou não. Quando terminarem a tarefa, passem-na para a parte Conpleted. Façam esta verificação uma vez por dia, para sabermos todos o que estamos a fazer.
 ON GOING:
 - logotipo
 - início da apresentação
@@ -29,8 +30,12 @@ TAREFAS:
 	- se primeiro utilizador => administrador, senão, escolher : [administrador, entrevistador, assistente de formação]
 - login de entrevistador: 
 	- o calendário não pode ser o mesmo, nem o modal.
+	- o modal não pode ter as opções de entrevista, bla bla bla. só serve para confirmar - o modal tem de perguntar apenas "Tem a certeza?" ou coisa parecida (ou as mesmas coisas com as opções de testes indisponíveis)
 	- tem de aparecer a sua disponibilidade,
-	- o modal tem de perguntar apenas "Tem a certeza?" ou coisa parecida (ou as mesmas coisas com as opções de testes indisponíveis)
+- o calendário pode aparecer em full page
+- trocar a imagem da sidebar
+- o administrador não pode criar eventos
+- tem de aparecer tantas "caixas" de turmas quanto as que existem na base de dados com o estado activo. estas "caixas" têm de ser geradas dinamicamente
 	
 COMPLETED:
 - rever as tags de scripts - são mais que as mães! precisamos de todas?
