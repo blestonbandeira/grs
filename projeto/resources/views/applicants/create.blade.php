@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" >
+{{-- <div class="container" >
     <div class="row justify-content-center">
         <div class="col-md-12">
         <h2>Create Page</h2>
@@ -37,7 +37,7 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> --}}
 
 
   <div class="content">
@@ -55,33 +55,112 @@
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Name</label>
-                          <input type="text" id="name" class="form-control input-border-width">
-                        </div>
+                          <label class="bmd-label-floating">Turma de Recrutamento</label>
+                            <datalist id="turma">
+                              <option value="TPSI11.18">
+                              <option value="TPSI10.18">
+                              <option value="GR09.17">
+                              <option value="GR09.18">
+                              <option value="GR09.19">
+                            </datalist>
+                            <input list="turma" class="form-control input-border-width">
+                          </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Username</label>
+                          <label class="bmd-label-floating">Nome Completo</label>
+                          <input type="text" class="form-control input-border-width" name="name">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating bg-white">Data-de-Nascimento</label>
+                          <input type="date" class="form-control input-border-width" format="dd/MM/yyyy"">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">N. Contribuinte</label>
                           <input type="text" class="form-control input-border-width">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Email address</label>
+                          <label class="bmd-label-floating">N. CC</label>
+                          <input type="text" class="form-control input-border-width">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating bg-white">Data de Validade</label>
+                          <input type="date" class="form-control input-border-width">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Naturalidade</label>
+                          <input type="text" class="form-control input-border-width">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Nacionalidade</label>
+                          <input type="text" class="form-control input-border-width">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Estado Civil</label>
+                          <input type="text" class="form-control input-border-width">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Morada</label>
+                          <input type="text" id="name" class="form-control input-border-width">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Código Postal</label>
+                          <input type="text" class="form-control input-border-width">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating" name="town">Localidade</label>
                           <input type="email" class="form-control input-border-width">
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
+                          <label class="bmd-label-floating">Concelho</label>
                           <input type="text" class="form-control input-border-width">
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-3">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Last Name</label>
+                          <label class="bmd-label-floating">Distrito</label>
+                          <input type="text" class="form-control input-border-width">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating" name="email">Contacto</label>
+                          <input type="text" class="form-control input-border-width">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Email</label>
                           <input type="text" class="form-control input-border-width">
                         </div>
                       </div>
@@ -89,28 +168,54 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control input-border-width">
+                          <label>Observações</label>
+                          <div class="form-group">
+                            <textarea class="form-control" rows="5"></textarea>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">City</label>
-                          <input type="text" class="form-control input-border-width">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control input-border-width">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
-                          <input type="text" class="form-control input-border-width">
+                            <label>Documentos entregues:</label>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    BI/CC
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>                                    
+                                </label><br><br>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Certificado de Habilitações
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>                                    
+                                </label><br><br>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Cartão de Utente ou Declaração Centro de Emprego
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>                                    
+                                </label><br><br>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Curriculum Vitae
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>                                    
+                                </label><br><br>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Registo Criminal
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>                                    
+                                </label><br><br>
+                            </div>
                         </div>
                       </div>
                     </div>
