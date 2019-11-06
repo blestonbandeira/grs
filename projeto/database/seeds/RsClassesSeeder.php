@@ -6,6 +6,7 @@ use App\RsClass;
 use App\Course;
 use App\CourseName;
 use App\User;
+use Carbon\Carbon;
 
 class RsClassesSeeder extends Seeder
 {
@@ -17,15 +18,14 @@ class RsClassesSeeder extends Seeder
     public function run()
     {
         $rsClass = new RsClass;
-        $rsClass->startDate = "2019-12-03";
-        $users = User::select('name')->where('id', '=', '2')->get();
-        $rsClass->id_user = $users;
-        $classStates = ClassState::select('name')->where('id', '=', '1');
+        $rsClass->startDate =  "2019-12-03";
+        $users = User::select('id')->where('name', '=', 'Assist')->get();
+        $rsClass->id_user = $users[0]["id"];
+        $classStates = ClassState::select('id')->where('name', '=', 'Activo');
         $rsClass->id_classState = $classStates;
-        $courses = Course::select('id')->where('id_courseName', '=', '$courses->id')->get();
-        $rsClass->id_course = $courses;  
-        $courseNames = CourseName::select('name')->where('id', '=', '$course_names->id')->get();
-        $rsClass->name = getCourseName($courseNames, $rsClass->startDate);        
+        $courseNames = CourseName::select('name')->where('id', '=', '1')->get();
+        $rsClass->name = getCourseName($courseNames, "2019-12-03"); 
+        $rsClass->save();       
     
     }
 }

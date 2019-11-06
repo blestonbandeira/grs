@@ -14,7 +14,6 @@ class ApiEventController extends Controller
 {
     public function index(Request $request)
     {
-                       
         $data = array();
         $lastId = -1;
         $lastColor = "#0089f2";

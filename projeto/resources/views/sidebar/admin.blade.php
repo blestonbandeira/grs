@@ -122,48 +122,23 @@
                 <div class="card-header" id="headingFive">
                     <i class="material-icons">bubble_chart</i>
                     <p data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive" class="{{ request()->is('assistants*') ? 'activeMenu' : '' }}">
-                        Assistentes de Formação
+                        Utilizadores
                     </p>                
                 </div>
-                <div id="collapseFive" class="collapse {{ request()->is('assistants*') ? ' show' : '' }}" aria-labelledby="headingFour" data-parent="#sidebar">
+                <div id="collapseFive" class="collapse {{ request()->is('users*') ? ' show' : '' }}" aria-labelledby="headingFour" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
-                            <li class="{{ request()->is('assistants') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('assistants') }}">
+                            <li class="{{ request()->is('users') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('users') }}">
                                 Ver  
                                 </a>
                             </li>
-                            <li class="{{ request()->is('assistants/create') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('assistants.create') }}">
+                            <li class="{{ request()->is('users/create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('users.create') }}">
                                 Adicionar
                                 </a>   
                             </li>                           
                         </ul>             
-                    </div>
-                </div>
-            </div>
-
-            <div class="card nav-item">
-                <div class="card-header" id="headingSix">
-                    <i class="material-icons">library_books</i>
-                    <p data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix" class="{{ request()->is('interviewers*') ? 'activeMenu' : '' }}">
-                        Entrevistadores
-                    </p>                
-                </div>
-                <div id="collapseSix" class="collapse {{ request()->is('interviewers*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
-                    <div class="card-body">
-                    <ul class="nav-item">
-                            <li class="{{ request()->is('interviewers') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('interviewers') }}">
-                                Ver  
-                                </a>
-                            </li>
-                            <li class="{{ request()->is('interviewers/create') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('interviewers.create') }}">
-                                Adicionar
-                                </a>   
-                            </li>                           
-                        </ul>                  
                     </div>
                 </div>
             </div>

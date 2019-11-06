@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Date;
 use Carbon\Carbon;
 
-function getCourseName(CourseName $courseName, Date $startDate) {
+function getCourseName(string $courseName, $startDate) {
         
-  $startDate = Carbon::parse($startDate)->format('MM-YY');
+  $startDate = Carbon::parse($startDate);
   $palavras = explode(" ", $courseName);
   $acronimo = "";
   
