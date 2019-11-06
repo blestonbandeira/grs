@@ -32,6 +32,7 @@ TAREFAS:
 	- o calendário não pode ser o mesmo, nem o modal.
 	- tem de aparecer a sua disponibilidade,
 	- o modal tem de perguntar apenas "Tem a certeza?" ou coisa parecida (ou as mesmas coisas com as opções de testes indisponíveis)
+- o calendário pode aparecer em full page
 	
 COMPLETED:
 - rever as tags de scripts - são mais que as mães! precisamos de todas?
