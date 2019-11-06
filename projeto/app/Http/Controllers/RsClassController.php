@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\RsClass;
-use App\Course;
+use App\CourseName;
 use Illuminate\Http\Request;
 
 class RsClassController extends Controller
@@ -27,7 +27,7 @@ class RsClassController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
+        $courses = CourseName::all();
         return view('rsclasses.create')
         ->with(compact('rsclasses', 'courses'));
     }
