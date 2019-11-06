@@ -58,7 +58,6 @@ class ApiEventController extends Controller
 
     public function store(Request $request)
     {
-        dd(DB::table('permission_levels')->select('id')->where('name', '=', 'Administrador')->first());
         $event = new Event;
         $event->id_user = $request->id_user;
         $event->title = $request->title;
@@ -67,7 +66,6 @@ class ApiEventController extends Controller
         $event->start_event = $time;
         $time = Carbon::parse($request->end_event);
         $event->end_event = $time;
-       
         $event->save();
 
         return response($event, 201);
