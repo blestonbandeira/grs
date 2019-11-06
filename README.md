@@ -1,3 +1,4 @@
+Quando pegarem numa tarefa, ponham o vosso nome à frente, passando-a para a part On Going. A partir desse momento ficam responsáveis por verificar se está completa ou não. Quando terminarem a tarefa, passem-na para a parte Conpleted. Façam esta verificação uma vez por dia, para sabermos todos o que estamos a fazer.
 ON GOING:
 - logotipo
 - início da apresentação
