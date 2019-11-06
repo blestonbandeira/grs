@@ -168,7 +168,6 @@
             data:{id_user:{{ Auth::id() }}, title:title, type:evenType, start_event:start, end_event:end},
             success:function(data)
             {
-              alert(data);
               document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 
               setTimeout(function() {location.reload();},2000);
             }
