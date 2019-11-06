@@ -5,7 +5,7 @@ use Carbon\Carbon;
 
 function getCourseName(CourseName $courseName, Date $startDate) {
         
-  $startDate = Carbon::parse($startDate)->format('MM:YY');
+  $startDate = Carbon::parse($startDate)->format('MM-YY');
   $palavras = explode(" ", $courseName);
   $acronimo = "";
   

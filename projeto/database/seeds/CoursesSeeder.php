@@ -16,52 +16,48 @@ class CoursesSeeder extends Seeder
      */
     public function run()
     {
-        $course = new Course;
-        $course->startDate = "2019-12-11";
-        $courseNames = DB::table('course_names')->select('id')->where('name', '=', 'Técnico/a Especialista em Mecatrónica Automóvel, Planeamento e Controlo de Processos')->first();
-        $course->id_courseName = $courseNames;
-        $courseTypes = DB::table('course_types')->select('id')->where('name', '=', 'Especialização Tecnológica')->first();
-        $course->id_courseType = $courseTypes;
-        $regimes = DB::table('regimes')->select('id')->where('name', '=', 'Diurno')->first();
-        $course->id_regime = $regimes;
-        $minimumQualifications = DB::table('minimum_qualifications')->select('id')->where('name', '=', '12º Ano')->first();
-        $course->id_minimumQualification = $minimumQualifications;
+        $course = new Course;        
+        $courseNames = CourseName::select('id')->where('name', '=', 'Técnico/a Especialista em Mecatrónica Automóvel, Planeamento e Controlo de Processos')->get();
+        $course->id_courseName = $courseNames[0]["id"];
+        $courseTypes = CourseType::select('id')->where('name', '=', 'Especialização Tecnológica')->get();
+        $course->id_courseType = $courseTypes[0]["id"];
+        $regimes = Regime::select('id')->where('name', '=', 'Diurno')->get();
+        $course->id_regime = $regimes[0]["id"];
+        $minimumQualifications = MinimumQualification::select('id')->where('name', '=', '12º Ano')->get();
+        $course->id_minimumQualification = $minimumQualifications[0]["id"];
         $course->save();
 
         $course = new Course;
-        $course->startDate = "2019-12-09";
-        $courseNames = DB::table('course_names')->select('id')->where('name', '=', 'Técnico/a Especialista em Mecatrónica Automóvel, Planeamento e Controlo de Processos')->first();
-        $course->id_courseName = $courseNames;
-        $courseTypes = DB::table('course_types')->select('id')->where('name', '=', 'Especialização Tecnológica')->first();
-        $course->id_courseType = $courseTypes;
-        $regimes = DB::table('regimes')->select('id')->where('name', '=', 'Pós-Laboral')->first();
-        $course->id_regime = $regimes;
-        $minimumQualifications = DB::table('minimum_qualifications')->select('id')->where('name', '=', '12º Ano')->first();
-        $course->id_minimumQualification = $minimumQualifications;
+        $courseNames = CourseName::select('id')->where('name', '=', 'Técnico/a Especialista em Mecatrónica Automóvel, Planeamento e Controlo de Processos')->get();
+        $course->id_courseName = $courseNames[0]["id"];
+        $courseTypes = CourseType::select('id')->where('name', '=', 'Especialização Tecnológica')->get();
+        $course->id_courseType = $courseTypes[0]["id"];
+        $regimes = Regime::select('id')->where('name', '=', 'Pós-Laboral')->get();
+        $course->id_regime = $regimes[0]["id"];
+        $minimumQualifications = MinimumQualification::select('id')->where('name', '=', '12º Ano')->get();
+        $course->id_minimumQualification = $minimumQualifications[0]["id"];
         $course->save();
         
         $course = new Course;
-        $course->startDate = "2019-12-09";
-        $courseNames = DB::table('course_names')->select('id')->where('name', '=', 'Técnico/a de Mecatrónica Automóvel')->first();
-        $course->id_courseName = $courseNames;
-        $courseTypes = DB::table('course_types')->select('id')->where('name', '=', 'Aprendizagem')->first();
-        $course->id_courseType = $courseTypes;
-        $regimes = DB::table('regimes')->select('id')->where('name', '=', 'Diurno')->first();
-        $course->id_regime = $regimes;
-        $minimumQualifications = DB::table('minimum_qualifications')->select('id')->where('name', '=', '9º Ano')->first();
-        $course->id_minimumQualification = $minimumQualifications;
+        $courseNames = CourseName::select('id')->where('name', '=', 'Técnico/a de Mecatrónica Automóvel')->get();
+        $course->id_courseName = $courseNames[0]["id"];
+        $courseTypes = CourseType::select('id')->where('name', '=', 'Aprendizagem')->get();
+        $course->id_courseType = $courseTypes[0]["id"];
+        $regimes = Regime::select('id')->where('name', '=', 'Diurno')->get();
+        $course->id_regime = $regimes[0]["id"];
+        $minimumQualifications = MinimumQualification::select('id')->where('name', '=', '9º Ano')->get();
+        $course->id_minimumQualification = $minimumQualifications[0]["id"];
         $course->save();
 
         $course = new Course;
-        $course->startDate = "2019-11-23";
-        $courseNames = DB::table('course_names')->select('id')->where('name', '=', 'Técnico/a de Mecatrónica')->first();
-        $course->id_courseName = $courseNames;
-        $courseTypes = DB::table('course_types')->select('id')->where('name', '=', 'Aprendizagem')->first();
-        $course->id_courseType = $courseTypes;
-        $regimes = DB::table('regimes')->select('id')->where('name', '=', 'Diurno')->first();
-        $course->id_regime = $regimes;
-        $minimumQualifications = DB::table('minimum_qualifications')->select('id')->where('name', '=', '9º Ano')->first();
-        $course->id_minimumQualification = $minimumQualifications;
+        $courseNames = CourseName::select('id')->where('name', '=', 'Técnico/a de Mecatrónica')->get();
+        $course->id_courseName = $courseNames[0]["id"];
+        $courseTypes = CourseType::select('id')->where('name', '=', 'Aprendizagem')->get();
+        $course->id_courseType = $courseTypes[0]["id"];
+        $regimes = Regime::select('id')->where('name', '=', 'Diurno')->get();
+        $course->id_regime = $regimes[0]["id"];
+        $minimumQualifications = MinimumQualification::select('id')->where('name', '=', '9º Ano')->get();
+        $course->id_minimumQualification = $minimumQualifications[0]["id"];
         $course->save();
     }
 }
