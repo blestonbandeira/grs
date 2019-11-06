@@ -22,9 +22,10 @@
                                                 <td>
                                                 <select class="custom-select">
                                                     @if (count($courses) > 0 )
+                                                    <option>-- selecione aqui o curso --</option>
                                                         @foreach($courses as $course)
-                                                            <option value="{{$course->name}}">
-                                                                --Selecione aqui o curso--
+                                                            <option value="{{$course}}">
+                                                                {{ $course->name }}
                                                             </option>
                                                         @endforeach
                                                     @else

@@ -1,91 +1,87 @@
 li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 a {
-  color: inherit;
+    color: inherit;
 }
 
-#modalTime .show
-{
-  display: contents!important;
+#modalTime .show {
+    display: contents!important;
 }
 
-.fc-center
-{
-  background-color: #0089f2!important;
-  background-image: none!important;
-  color: white;
-  border-radius: 5px;
-  padding: 5px 8px 3px 8px;
+.fc-center {
+    background-color: #0089f2!important;
+    background-image: none!important;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 8px 3px 8px;
 }
 
-.fc-button
-{
-  background-color: #0089f2!important;
-  background-image: none!important;
-  color: white;
+.fc-button {
+    background-color: #0089f2!important;
+    background-image: none!important;
+    color: white;
 }
 
-  .fc-state-hover
-  {
+.fc-state-hover {
     background-color: #0063b9!important;
     background-image: none!important;
     color: white;
     border-color: white;
-  }
-
-
-    .fc-state-active
-    {
-      background-color: #005da5!important;
-      background-image: none!important;
-      border-color: rgb(255, 255, 255);
-      color: white;
-    }
-
-.fc-event .fc-content 
-{
-  color:white!important;
-  font-weight: bold;
 }
 
-.fc th
-{
-  color: gray;
+.fc-state-active {
+    background-color: #005da5!important;
+    background-image: none!important;
+    border-color: rgb(255, 255, 255);
+    color: white;
+}
+
+.fc-event .fc-content {
+    color: white!important;
+    font-weight: bold;
+}
+
+.fc th {
+    color: gray;
 }
 
 ul.nav-item {
-  padding-left: 17px;
+    padding-left: 17px;
 }
 
 a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .activeMenu {
-  color: #00A3E0;
-  font-weight: bold;
-  font-size: 16px;
+    color: #00A3E0;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 li.active {
-  background-color: #00A3E0;
+    background-color: #00A3E0;
 }
 
 .btn .btn-info .btn-link .btn-sm {
-  border: transparent;
-  padding: 5;
+    border: transparent;
+    padding: 5;
 }
 
 .wrap-login100 {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
 }
 
 img#entrar {
-  background-image: url(images/bg-01.jpg);
+    background-image: url(images/bg-01.jpg);
 }
 
 .logoStyle {
-  width: 100%;
+    width: 100%;
+}
+
+.input-border-width {
+    border-width: 0 0 1px;
 }
