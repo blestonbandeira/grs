@@ -1,11 +1,12 @@
 Quando pegarem numa tarefa, ponham o vosso nome à frente, passando-a para a part On Going. A partir desse momento ficam responsáveis por verificar se está completa ou não. Quando terminarem a tarefa, passem-na para a parte Conpleted. Façam esta verificação uma vez por dia, para sabermos todos o que estamos a fazer.
+
 ON GOING:
-- logotipo
-- início da apresentação
-- angular app
+
+- início da apresentação (animação para a apresentação) **Inês**
+- angular app **Bárbara**
 - view: applicants/index 
-	- trocar o estado "a definir" por $applicant->category;
-	- criar turmas e fazer foreach das turmas 
+	- trocar o estado "a definir" por $applicant->category **feito?**;
+	- criar turmas **feito** e fazer foreach das turmas (tem de aparecer tantas "caixas" de turmas quanto as que existem na base de dados com o estado activo. estas "caixas" têm de ser geradas dinamicamente)
 - criar páginas para:
 	- criar/editar applicant,
 	- criar/editar user,
@@ -38,9 +39,10 @@ TAREFAS:
 - o calendário pode aparecer em full page
 - trocar a imagem da sidebar
 - o administrador não pode criar eventos
-- tem de aparecer tantas "caixas" de turmas quanto as que existem na base de dados com o estado activo. estas "caixas" têm de ser geradas dinamicamente
+- 
 	
 COMPLETED:
 - rever as tags de scripts - são mais que as mães! precisamos de todas?
 - acabar o layout da sidebar
 - calendário com cores
+- logotipo
