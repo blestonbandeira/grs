@@ -24,6 +24,7 @@ class RsClassesSeeder extends Seeder
         $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '1')->get();
+        $rsClass->id_courseName = 1;
         $rsClass->name = getCourseName($courseNames, $rsClass->startDate); 
         $rsClass->save();      
         
@@ -34,6 +35,7 @@ class RsClassesSeeder extends Seeder
         $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '2')->get();
+        $rsClass->id_courseName = 2;
         $rsClass->name = getCourseName($courseNames, $rsClass->startDate); 
         $rsClass->save();    
 
@@ -44,6 +46,7 @@ class RsClassesSeeder extends Seeder
         $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '7')->get();
+        $rsClass->id_courseName = 7;
         $rsClass->name = getCourseName($courseNames, $rsClass->startDate); 
         $rsClass->save();  
 
@@ -54,6 +57,7 @@ class RsClassesSeeder extends Seeder
         $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '5')->get();
+        $rsClass->id_courseName = 5;
         $rsClass->name = getCourseName($courseNames, $rsClass->startDate); 
         $rsClass->save();  
 
@@ -64,6 +68,7 @@ class RsClassesSeeder extends Seeder
         $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '6')->get();
+        $rsClass->id_courseName = 6;
         $rsClass->name = getCourseName($courseNames, $rsClass->startDate); 
         $rsClass->save(); 
 
@@ -74,6 +79,7 @@ class RsClassesSeeder extends Seeder
         $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '4')->get();
+        $rsClass->id_courseName = 4;
         $rsClass->name = getCourseName($courseNames, $rsClass->startDate); 
         $rsClass->save(); 
     
