@@ -13,15 +13,15 @@ class UnemploymentSituationsSeeder extends Seeder
     public function run()
     {
         $unemploymentSitutation = new UnemploymentSituation;
-        $unemploymentSitutation->name = "Desempregado";
+        $unemploymentSitutation->name = "Desempregada/o";
         $unemploymentSitutation->save();
 
         $unemploymentSitutation = new UnemploymentSituation;
-        $unemploymentSitutation->name = "Empregado a Tempo Inteiro";
+        $unemploymentSitutation->name = "Empregada/o a Tempo Inteiro";
         $unemploymentSitutation->save();
 
         $unemploymentSitutation = new UnemploymentSituation;
-        $unemploymentSitutation->name = "Empregado em part-time";
+        $unemploymentSitutation->name = "Empregada/o em part-time";
         $unemploymentSitutation->save();
 
     }

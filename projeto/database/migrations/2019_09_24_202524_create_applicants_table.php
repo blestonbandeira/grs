@@ -19,10 +19,10 @@ class CreateApplicantsTable extends Migration
             $table->string('nif')->nullable();
             $table->bigInteger('id_gender')->unsigned()->nullable();
             $table->foreign('id_gender')->references('id')->on('genders')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('birthdate')->nullable();
+            $table->date('birthdate')->nullable();
             $table->bigInteger('id_registrationState')->unsigned()->nullable();
             $table->foreign('id_registrationState')->references('id')->on('registration_states')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('applicationDate')->nullable();
+            $table->date('applicationDate')->nullable();
             $table->bigInteger('id_origin')->unsigned()->nullable();
             $table->foreign('id_origin')->references('id')->on('origins')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('id_unemploymentSituation')->unsigned()->nullable();
@@ -38,12 +38,12 @@ class CreateApplicantsTable extends Migration
             $table->string('parish')->nullable();
             $table->string('town')->nullable();
             $table->string('email')->nullable();
-            $table->bigInteger('id_rsClass')->unsigned()->nullable();
-            $table->foreign('id_rsClass')->references('id')->on('rs_classes')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('firstOptionCourse')->unsigned()->nullable()->unique();
             $table->foreign('firstOptionCourse')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('secondOptionCourse')->unsigned()->nullable()->unique();
             $table->foreign('secondOptionCourse')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('id_rsClass')->unsigned()->nullable();
+            $table->foreign('id_rsClass')->references('id')->on('rs_classes')->onDelete('cascade')->onUpdate('cascade');            
             $table->string('appFormUrl')->nullable();
             $table->string('ccUrl')->nullable();
             $table->string('literacyUrl')->nullable();
