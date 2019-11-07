@@ -3,6 +3,7 @@ Quando pegarem numa tarefa, ponham o vosso nome à frente, passando-a para a par
 ON GOING:
 
 - início da apresentação (animação para a apresentação) **Inês**
+- escolher template para o powerpoint **Inês**
 - angular app **Bárbara**
 - view: applicants/index 
 	- trocar o estado "a definir" por $applicant->category **feito?**;
