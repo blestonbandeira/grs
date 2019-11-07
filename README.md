@@ -9,7 +9,7 @@ ON GOING:
 - criar páginas para:
 	- criar/editar applicant,
 	- criar/editar user,
-	- criar/editar turma (class) - aqui tem de haver algoritmo para criar o nome da turma, a partir do nome do curso e da data de início
+	- criar/editar turma (class) **- aqui tem de haver algoritmo para criar o nome da turma, a partir do nome do curso e da data de início** (feito)
 	- criar/editar curso,
 
 TAREFAS:
