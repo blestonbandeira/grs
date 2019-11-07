@@ -139,7 +139,11 @@
                                     </div>
                                     <div id="hoursShow" class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
                                         <div class="row">
-                                            <p id="interSelected"></p>
+                                            <div>
+                                                <ul id="interSelected">
+
+                                                </ul>
+                                            </div>
 
                                             <div class="col-md-1">
                                                 <select id="hourSelectChange" class="form-control" style="width: 50px;">
@@ -158,6 +162,9 @@
                                             <div class="col-md-1">
                                                 <b>h</b>
                                             </div>
+                                            <div class="col">
+                                                <button onclick="saveInterview()">Guardar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -168,8 +175,11 @@
             </div>
             
 <script>
-var appliSelectedId = [];
-var appliSelectedName = [];
+    var appliSelectedId = [];
+    var appliSelectedName = [];
+    var appliSelected = null;
+    var dateSelected = "";
+
     function getApplicantsSelected()
     {
         var applicantsSelected = document.getElementsByClassName('applicantsSelect');
@@ -206,11 +216,23 @@ var appliSelectedName = [];
         var j = 0;
         for(var i = 0; i < appliSelectedName.length; i++)
         {
-            document.getElementById('applicantList').innerHTML += "<b><a href='/applicants/" + appliSelectedId[j] + "'><p>" + appliSelectedName[j] + "</p></a></b>";
+            document.getElementById('applicantList').innerHTML += "<li class='applOnClick' value=" + appliSelectedId[j] + " onclick='applicantSelected(this)'><b>" + appliSelectedName[j] + "</b></li>";
             j++;
         }
-        
     }
+
+    function applicantSelected(data)
+    {
+        appliSelected = data.value;
+    }
+
+    function saveInterview()
+    {
+        var selected = appliSelected;
+        var date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value;
+        alert(selected + " " + date);
+    }
+
 
 //-------CALENDAR-------//
 
@@ -257,6 +279,7 @@ function calendarCharge(){
                     var start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
                     var date = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+                    dateSelected = date;
 
                     var hourStart = $.fullCalendar.formatDate(event.start, "HH");
                     var minStart = $.fullCalendar.formatDate(event.start, "m");

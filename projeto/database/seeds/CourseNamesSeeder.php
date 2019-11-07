@@ -13,31 +13,31 @@ class CourseNamesSeeder extends Seeder
     public function run()
     {
         $courseName = new CourseName;
-        $courseName->name = "Técnico/a Especialista em Mecatrónica Automóvel, Planeamento e Controlo de Processos";
+        $courseName->name = "Mecatrónica Automóvel, Planeamento e Controlo de Processos Porto";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Técnico/a de Mecatrónica Automóvel";
+        $courseName->name = "Mecatrónica Automóvel Porto";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Técnico/a de Mecatrónica";
+        $courseName->name = "Mecatrónica Porto";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Técnico/a Especialista em Cibersegurança";
+        $courseName->name = "Ciber Segurança Porto";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Técnico/a Especialista em Automação Robótica e Controlo Industrial";
+        $courseName->name = "Automação Robótica e Controlo Industrial Porto";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Técnico/a Especialista Gestão de Redes e Sistemas Informáticos";
+        $courseName->name = "Gestão de Redes e Sistemas Informáticos Porto";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Técnico/a Especialista em Tecnologias e Programação de Sistemas de Informação";
+        $courseName->name = "Tecnologias e Programação de Sistemas de Informação Porto";
         $courseName->save();
     }
 }
