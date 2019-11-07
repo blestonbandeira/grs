@@ -21,6 +21,16 @@ class ApplicantsSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
+=======
+        // for($i=0; $i<20; $i++){
+        //     $applicant = new Applicant;
+        //     $applicant->name = "Teste Aluno ".(string)($i+1); 
+        //     $applicant->email = "testealuno".(string)($i+1)."@mail.com"; 
+        //     $applicant->town = "Porto"; 
+        //     $applicant->save();
+        // }
+>>>>>>> e22f97d027be87435ab63c577335664511b3b779
         $applicant = new Applicant;
         $applicant->name = "BLB";
         $nif = '227550404';
