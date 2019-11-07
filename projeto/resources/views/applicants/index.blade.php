@@ -13,46 +13,9 @@
         </button>
     </a>
     <a href="#">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-info">
             Marcar Prova
         </button>
-
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Marcar Prova</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Teste & Prova</button>
-                    <button type="button" class="btn btn-info">Teste & Inventário</button>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </a>
 </div>
 
@@ -223,14 +186,31 @@
 
     function applicantSelected(data)
     {
+        var divActive = document.getElementById('applicantList');
+        var numActives = divActive.getElementsByClassName('applOnClick');
+        foreach(active in numActives)
+        {
+            active.removeClass('active');
+        }
+        data.className += " active";
         appliSelected = data.value;
     }
 
     function saveInterview()
     {
         var selected = appliSelected;
-        var date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value;
+        var date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         alert(selected + " " + date);
+        $.ajax({
+            dataType: "json",
+            url:"/api/interviews",
+            type:"POST",
+            data:{"id_applicant":selected, "id_user":{{Auth::id()}}, "date":date},
+            success:function(data)
+            {
+                
+            }
+        });
     }
 
 
