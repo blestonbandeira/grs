@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(PermissionLevelsSeeder::class);
         // $this->call(UsersSeeder::class);
-        // $this->call(ApplicantsSeeder::class);
+        $this->call(ApplicantsSeeder::class);
         // $this->call(EventsSeeder::class);
         // $this->call(DistrictsSeeder::class);
         // $this->call(TestTypesSeeder::class);
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(RegistrationStatesSeeder::class);
         // $this->call(EducationsSeeder::class);
         // $this->call(ClassStatesSeeder::class);
-        $this->call(RsClassesSeeder::class);
+        // $this->call(RsClassesSeeder::class);
 
         
         
