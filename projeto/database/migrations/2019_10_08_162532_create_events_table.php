@@ -17,6 +17,8 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_user')->unsigned()->nullable();
             $table->foreign('id_user')->references('id')->on('users');
+            $table->bigInteger('id_event_type')->unsigned()->nullable();
+            $table->foreign('id_event_type')->references('id')->on('event_types');
             $table->string('title');
             $table->string('type');
             $table->string('start_event');
