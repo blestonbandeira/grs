@@ -5,15 +5,19 @@ use Carbon\Carbon;
 
 function getCourseName(string $courseName, $startDate) {
         
-  $startDate = Carbon::parse($startDate);
-  $palavras = explode(" ", $courseName);
+
+  $palavras = preg_split('/(?=[A-Z])/', $courseName);
   $acronimo = "";
-  
+
   foreach ($palavras as $p) {
     $acronimo .= $p[0];
-  }
+  } 
 
-  $courseName = $acronimo . '_' . $startDate;
+  $startDateSeparated = explode("-", $startDate);
+  $fullYear = $startDateSeparated[0];
+  $year = Carbon::parse($fullYear)->format('y');
+  $month = $startDateSeparated[1];
+  $courseName = $acronimo . '_' . $month . '.' . $year;
   return $courseName;
 }
 
