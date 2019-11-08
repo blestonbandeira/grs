@@ -25,6 +25,18 @@
                 <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
+                            <li class="{{ request()->is('calendars/create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('calendars.create') }}">
+                                Inserir Disponibilidade
+                                </a>
+                            </li>                              
+                        </ul>                                        
+                    </div>
+                </div>
+
+                <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
+                    <div class="card-body">
+                        <ul class="nav-item">
                             <li class="{{ request()->is('calendars') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars') }}">
                                 Entrevistas por realizar

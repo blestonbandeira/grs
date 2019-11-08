@@ -13,46 +13,9 @@
         </button>
     </a>
     <a href="#">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-info">
             Marcar Prova
         </button>
-
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Marcar Prova</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Teste & Prova</button>
-                    <button type="button" class="btn btn-info">Teste & Inventário</button>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </a>
 </div>
 
@@ -173,6 +136,20 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <input id="btnModelSuccess" type="hidden" class="btn btn-primary" data-toggle="modal" data-target=".modalSuccess"/>
+
+            <div class="modal fade modalSuccess" style="width: 25vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" style="width: 22vw!important; margin: 15px;">
+                    <div class="modal-content" style="width: 20vw!important;">
+                        <div class="container-fluid" style="width: 20vw!important;">
+                            <h3 style="color:#0089f2">Marcado com sucesso.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
 <script>
     var appliSelectedId = [];
@@ -223,14 +200,33 @@
 
     function applicantSelected(data)
     {
+        var divActive = document.getElementById('applicantList');
+        var numActives = divActive.getElementsByClassName('applOnClick');
+
+        for(i = 0; i < numActives.length; i++)
+        {
+            numActives[i].classList.remove("active");
+        }
+        data.className += " active";
         appliSelected = data.value;
     }
 
     function saveInterview()
     {
         var selected = appliSelected;
-        var date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value;
-        alert(selected + " " + date);
+        var date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
+        $.ajax({
+            dataType: "json",
+            url:"/api/interviews",
+            type:"POST",
+            data:{"id_applicant":selected, "id_user":{{Auth::id()}}, "date":date},
+            success:function(data)
+            {
+                alert(selected + " " + date);
+                document.getElementById('btnModelSuccess').click();
+                setTimeout(function() {document.getElementById('btnModelSuccess').click();},2000);
+            }
+        });
     }
 
 
@@ -407,73 +403,3 @@ function calendarCharge(){
 }
 </script>
 @endsection
-
-
-
-{{-- hourEnd = $.fullCalendar.formatDate(event.end, "HH");
-                        minEnd = $.fullCalendar.formatDate(event.end, "mm");
-                        
-                        if(hourSelect.value == hourEnd && minEnd == 45)
-                        {
-                            minSelect.innerHTML = "<option>--</option>";
-                            minEnd = 1;
-                            for(var i = minStart; i < minEnd; i++)
-                            {
-                                if(i<10) 
-                                    minSelect.innerHTML += "<option>" + i + "</option>";
-                                else
-                                    minSelect.innerHTML += "<option>" + i + "</option>";
-                            }
-                        }
-                        else if(hourSelect.value == hourEnd && minEnd > 45)
-                        {
-                            minSelect.innerHTML = "<option>--</option>";
-                            minEnd - 45;
-                            for(var i = minStart; i <= minEnd; i++)
-                            {
-                                if(i<10) 
-                                    minSelect.innerHTML += "<option>0" + i + "</option>";
-                                else
-                                    minSelect.innerHTML += "<option>" + i + "</option>";
-                            }
-                        }
-                        else if((hourSelect.value == hourEnd || hourEnd-hourStart == 1) && minEnd < 45)
-                        {
-                            minSelect.innerHTML = "<option>--</option>";
-                            var numMinEnd = 45 - minEnd;
-                            minEnd = 60 - numMinEnd;
-                            for(var i = minStart; i <= minEnd; i++)
-                            {
-                                if(i<10) 
-                                    minSelect.innerHTML += "<option>0" + i + "</option>";
-                                else
-                                    minSelect.innerHTML += "<option>" + i + "</option>";
-                            }
-                        }
-                        else if(hourSelect.value == hourEnd && minEnd < 45)
-                        {
-                            minSelect.innerHTML = "<option>--</option>";
-                            var numMinEnd = 45 - minEnd;
-                            minEnd = 60 - numMinEnd;
-                            minStart = 0;
-                            for(var i = minStart; i <= minEnd; i++)
-                            {
-                                if(i<10) 
-                                    minSelect.innerHTML += "<option>0" + i + "</option>";
-                                else
-                                    minSelect.innerHTML += "<option>" + i + "</option>";
-                            }
-                        }
-                        else
-                        {
-                            minSelect.innerHTML = "<option>--</option>";
-                            minStart = 0;
-                            minEnd = 59;
-                            for(var i = minStart; i <= minEnd; i++)
-                            {
-                                if(i<10) 
-                                    minSelect.innerHTML += "<option>0" + i + "</option>";
-                                else
-                                    minSelect.innerHTML += "<option>" + i + "</option>";
-                            }
-                        } --}}
