@@ -136,6 +136,20 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <input id="btnModelSuccess" type="hidden" class="btn btn-primary" data-toggle="modal" data-target=".modalSuccess"/>
+
+            <div class="modal fade modalSuccess" style="width: 25vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" style="width: 22vw!important; margin: 15px;">
+                    <div class="modal-content" style="width: 20vw!important;">
+                        <div class="container-fluid" style="width: 20vw!important;">
+                            <h3 style="color:#0089f2">Marcado com sucesso.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
 <script>
     var appliSelectedId = [];
@@ -188,9 +202,10 @@
     {
         var divActive = document.getElementById('applicantList');
         var numActives = divActive.getElementsByClassName('applOnClick');
-        foreach(active in numActives)
+
+        for(i = 0; i < numActives.length; i++)
         {
-            active.removeClass('active');
+            numActives[i].classList.remove("active");
         }
         data.className += " active";
         appliSelected = data.value;
@@ -200,7 +215,6 @@
     {
         var selected = appliSelected;
         var date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
-        alert(selected + " " + date);
         $.ajax({
             dataType: "json",
             url:"/api/interviews",
@@ -208,7 +222,9 @@
             data:{"id_applicant":selected, "id_user":{{Auth::id()}}, "date":date},
             success:function(data)
             {
-                
+                alert(selected + " " + date);
+                document.getElementById('btnModelSuccess').click();
+                setTimeout(function() {document.getElementById('btnModelSuccess').click();},2000);
             }
         });
     }
