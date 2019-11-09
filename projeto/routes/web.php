@@ -24,5 +24,6 @@ Route::middleware('auth')->resource('/courses','CourseController');
 Route::middleware('auth')->resource('/interviewers','InterviewerController');
 Route::middleware('auth')->resource('/calendars','CalendarController');
 Route::middleware('auth')->resource('/forms','FormController');
+Route::middleware('auth')->resource('/documents', 'DocumentController');
 Route::resource('/interviews','InterviewController');
 Auth::routes();

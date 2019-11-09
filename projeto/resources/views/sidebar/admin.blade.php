@@ -143,6 +143,31 @@
                 </div>
             </div>
 
+            <div class="card nav-item">
+                <div class="card-header" id="headingSeven">
+                    <i class="fas fa-book"></i>
+                    <p data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                        Documentos
+                    </p>                
+                </div>
+                <div id="collapseSeven" class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                    <div class="card-body">
+                    <ul class="nav-item">
+                            <li class="{{ request()->is('documents') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('documents') }}">
+                                Ver  
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('documents/create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('documents.create') }}">
+                                Adicionar
+                                </a>   
+                            </li>                           
+                        </ul>                  
+                    </div>
+                </div>
+            </div>
+
         </div> 
     </div>
 </div>
