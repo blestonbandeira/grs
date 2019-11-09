@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\RsClass;
-use App\CourseName;
+use App\DocumentType;
 use Illuminate\Http\Request;
 
-class RsClassController extends Controller
+class DocumentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class RsClassController extends Controller
      */
     public function index()
     {
-        $rsclasses = RsClass::all();
-        return view('rsclasses.index')
-        ->with(compact('rsclasses'));
+        $documentTypes = DocumentType::all();
+        return view('documentTypes.index')->with(compact('documentTypes'));
     }
 
     /**
@@ -27,9 +25,7 @@ class RsClassController extends Controller
      */
     public function create()
     {
-        $courseNames = CourseName::all();
-        return view('rsclasses.create')
-        ->with(compact('rsclasses', 'courseNames'));
+        //
     }
 
     /**
@@ -46,10 +42,10 @@ class RsClassController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\RsClass  $rsClass
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function show(RsClass $rsClass)
+    public function show(DocumentType $documentType)
     {
         //
     }
@@ -57,10 +53,10 @@ class RsClassController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\RsClass  $rsClass
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function edit(RsClass $rsClass)
+    public function edit(DocumentType $documentType)
     {
         //
     }
@@ -69,10 +65,10 @@ class RsClassController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\RsClass  $rsClass
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RsClass $rsClass)
+    public function update(Request $request, DocumentType $documentType)
     {
         //
     }
@@ -80,10 +76,10 @@ class RsClassController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\RsClass  $rsClass
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RsClass $rsClass)
+    public function destroy(DocumentType $documentType)
     {
         //
     }

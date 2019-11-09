@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
   <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+  <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
 </head>
@@ -133,7 +134,8 @@
     <!--  Notifications Plugin    -->
     <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}"></script>
+    <script src="{{ asset ('js/dropzone.js' )}}"></script>
     <script src="{{ asset ('js/custom.js' )}}"></script>
     </div>
   </div>

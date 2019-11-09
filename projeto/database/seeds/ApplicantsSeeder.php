@@ -22,13 +22,7 @@ class ApplicantsSeeder extends Seeder
      */
     public function run()
     {
-        // for($i=0; $i<20; $i++){
-        //     $applicant = new Applicant;
-        //     $applicant->name = "Teste Aluno ".(string)($i+1); 
-        //     $applicant->email = "testealuno".(string)($i+1)."@mail.com"; 
-        //     $applicant->town = "Porto"; 
-        //     $applicant->save();
-        // }
+      
         $applicant = new Applicant;
         $applicant->name = "BLB";
         $nif = '227550404';
@@ -105,6 +99,6 @@ class ApplicantsSeeder extends Seeder
         $applicant->id_category = $categories[0]["id"];
         $applicant->save();
 
-
+//jquery file upload
     }
 }
