@@ -16,10 +16,12 @@ class CreateApplicantsTable extends Migration
         Schema::create('applicants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
+            $table->date('birthdate')->nullable();
             $table->string('nif')->nullable();
+            $table->string('identityCard')->nullable();
+            $table->date('ccExpirationDate')->nullable();
             $table->bigInteger('id_gender')->unsigned()->nullable();
             $table->foreign('id_gender')->references('id')->on('genders')->onDelete('cascade')->onUpdate('cascade');
-            $table->date('birthdate')->nullable();
             $table->bigInteger('id_registrationState')->unsigned()->nullable();
             $table->foreign('id_registrationState')->references('id')->on('registration_states')->onDelete('cascade')->onUpdate('cascade');
             $table->date('applicationDate')->nullable();
@@ -32,7 +34,11 @@ class CreateApplicantsTable extends Migration
             $table->bigInteger('id_education')->unsigned()->nullable();
             $table->foreign('id_education')->references('id')->on('education')->onDelete('cascade')->onUpdate('cascade');
             $table->string('previousSchool')->nullable();
+            $table->string('birthtown')->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('civilState')->nullable();
             $table->string('phoneNumber')->nullable();
+            $table->string('address')->nullable();
             $table->bigInteger('id_district')->unsigned()->nullable();
             $table->foreign('id_district')->references('id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
             $table->string('parish')->nullable();
