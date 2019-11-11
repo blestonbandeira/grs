@@ -62,14 +62,14 @@
                   var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
                   var date = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                   var typeEvent;
-                  if (event.type === "interview")
+                  if (event.type == 1)
                     typeEvent="Entrevista";
-                  else if (event.type === "cursoNA")
-                    typeEvent="Prova de Aferição";
-                  else if (event.type === "cursoA")
-                    typeEvent="Inventário Vocacional";
-                  else if (event.type === "cursoT")
-                    typeEvent="Teste Psicotécnico";
+                  else if (event.type == 2)
+                    typeEvent="Teste Psicotécnico && Prova de Aferição";
+                  else if (event.type == 3)
+                    typeEvent="Teste Psicotécnico && Inventário Vocacional";
+                  else
+                    typeEvent="Ñ definido!";
 
                   document.getElementById('btnModalShow').click();
                   document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">OK</button></div>';
