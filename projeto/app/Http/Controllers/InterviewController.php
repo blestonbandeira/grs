@@ -14,7 +14,7 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        return view('interview.index');
+        return view('calendars.interviews.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class InterviewController extends Controller
      */
     public function create()
     {
-        return view('interview.index');
+        return view('calendars.interviews.index');
     }
 
     /**
