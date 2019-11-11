@@ -20,7 +20,7 @@
                     </p>
                 </div>
 
-                <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
                             <li class="{{ request()->is('calendars') ? 'active' : '' }}">

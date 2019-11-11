@@ -29,7 +29,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:1},
+        data:{id_user:1, typeEvent:1},
         success:function(data)
         {
             allEvents = data;
@@ -72,28 +72,11 @@
                     typeEvent="Teste Psicotécnico";
 
                   document.getElementById('btnModalShow').click();
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->id_permissionLevel != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">OK</button></div>';
                 },
             });
         }
     });
   </script>
-<script>
-  function deleteEvents(){
-    $.ajax({
-      url:"/api/events/" + document.getElementById('idEvent').value,
-      type:"DELETE",
-      data:{},
-      success:function()
-      {
-        document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Eliminado com sucesso!</p></div></div>'; 
-        setTimeout(function() {location.reload();},2000);
-      }
-    })
-  }
-  function confirmDeleteEvents(){
-    document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title">Tem a certeza que pretende eliminar?</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p>Este registo será totalmente perdido!</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button><button type="button" class="btn btn-danger" onclick="deleteEvents()">Sim, eliminar</button></div>';
-  }
-</script>
 
 @endsection

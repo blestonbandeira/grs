@@ -238,7 +238,7 @@ function calendarCharge(){
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:{{Auth::id()}}},
+        data:{id_user:{{Auth::id()}}, typeEvent:4},
         success:function(data)
         {
             allEvents = data;

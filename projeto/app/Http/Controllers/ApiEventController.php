@@ -21,7 +21,7 @@ class ApiEventController extends Controller
         $lastColor = "#0089f2";
         $userR = User::where('id', '=', $request->id_user)->get();
         if($userR[0]['id_permissionLevel'] == 1){
-            $result = Event::orderBy('id')->get();
+            $result = Event::orderBy('id')->where('id_event_type','=', $request->typeEvent)->get();
             foreach($result as $row)
             {
                 if($row["id_user"] != $lastId)
@@ -31,7 +31,7 @@ class ApiEventController extends Controller
                     'id'   => $row["id"],
                     'id_user'   => $row["id_user"],
                     'title'   => $row["title"],
-                    'type'   => $row["type"],
+                    'type'   => $row["id_event_type"],
                     'start'   => $row["start_event"],
                     'end'   => $row["end_event"],
                     'color' => $lastColor
@@ -40,14 +40,14 @@ class ApiEventController extends Controller
                 $lastId = (Int)$row["id_user"];
             } 
         }else{
-            $result = Event::where('id_user', '=', $request->id_user)->orderBy('id')->get();
+            $result = Event::where([['id_user', '=', $request->id_user],['id_event_type','=', $request->typeEvent]])->orderBy('id')->get();
             foreach($result as $row)
             {
                 $data[] = array(
                 'id'   => $row["id"],
                 'id_user'   => $row["id_user"],
                 'title'   => $row["title"],
-                'type'   => $row["type"],
+                'type'   => $row["id_event_type"],
                 'start'   => $row["start_event"],
                 'end'   => $row["end_event"],
                 'color' => "#0089f2"
@@ -63,7 +63,7 @@ class ApiEventController extends Controller
         $event = new Event;
         $event->id_user = $request->id_user;
         $event->title = $request->title;
-        $event->type = $request->type;
+        $event->id_event_type = $request->id_event_type;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;
         $time = Carbon::parse($request->end_event);
@@ -80,9 +80,6 @@ class ApiEventController extends Controller
 
     public function update(Request $request, Event $event)
     {
-        $event->id_user = $request->id_user;
-        $event->title = $request->title;
-        $event->type = $request->type;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;
         $time = Carbon::parse($request->end_event);

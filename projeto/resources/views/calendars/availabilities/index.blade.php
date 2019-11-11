@@ -29,8 +29,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:{{Auth::id()}}},
-        data:{id_user:1},
+        data:{id_user:1, typeEvent:4},
         success:function(data)
         {
             allEvents = data;
@@ -45,15 +44,13 @@
                 allDaySlot: false,
                 weekends: false,
                 height: 550,
-                @if(Auth::user()->id_permissionLevel == "2")
-                  editable:false,
-                  selectable:false,
-                @else
+                @if(Auth::user()->id_permissionLevel == 1)
                   editable:true,
                   selectable:true,
+                @else
+                  editable:false,
+                  selectable:false,
                 @endif
-                editable:false,
-                selectable:false,
                 plugins: [ 'bootstrap' ],
                 themeSystem: 'bootstrap',
                 header:{
@@ -128,7 +125,6 @@
                     typeEvent="Teste Psicotécnico";
 
                   document.getElementById('btnModalShow').click();
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button></div>';
                   document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->id_permissionLevel != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
                 },
             });
@@ -143,12 +139,7 @@
     {
         var start = document.getElementById('startEvents').value;
         var end = document.getElementById('endEvents').value;
-        var evenType; 
-
-        var radio = document.getElementsByClassName('eventRadio');
-        for(var i = 0; i < 4; i++)
-          if(radio[i].checked)
-            evenType = radio[i].value;
+        var evenType = 4;
 
         $.ajax({
             url:"/api/events",
