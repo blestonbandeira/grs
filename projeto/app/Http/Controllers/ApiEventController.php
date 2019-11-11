@@ -21,12 +21,17 @@ class ApiEventController extends Controller
         $lastColor = "#0089f2";
         $userR = User::where('id', '=', $request->id_user)->get();
         if($userR[0]['id_permissionLevel'] == 1){
-            $result = Event::orderBy('id')->where('id_event_type','=', $request->typeEvent)->get();
+            if($request->id_event_type == null)
+                $result = Event::orderBy('id')->get();
+            else
+                $result = Event::where('id_event_type','=', $request->id_event_type)->orderBy('id')->get();
+
             foreach($result as $row)
             {
-                if($row["id_user"] != $lastId)
+                if($row["id_user"] != $lastId){
                     $lastColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
-                
+                }
+     
                 $data[] = array(
                     'id'   => $row["id"],
                     'id_user'   => $row["id_user"],
@@ -36,11 +41,10 @@ class ApiEventController extends Controller
                     'end'   => $row["end_event"],
                     'color' => $lastColor
                 );
-                
                 $lastId = (Int)$row["id_user"];
             } 
         }else{
-            $result = Event::where([['id_user', '=', $request->id_user],['id_event_type','=', $request->typeEvent]])->orderBy('id')->get();
+            $result = Event::where(['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type])->orderBy('id')->get();
             foreach($result as $row)
             {
                 $data[] = array(
@@ -54,7 +58,6 @@ class ApiEventController extends Controller
                 );
             }
         }
-
         return $data;
     }
 

@@ -25,9 +25,9 @@ Route::middleware('auth')->resource('/interviewers','InterviewerController');
 Route::middleware('auth')->resource('/forms','FormController');
 Route::middleware('auth')->resource('/documents', 'DocumentController');
 Route::middleware('auth')->resource('/calendars/interviews','InterviewController');
-Route::middleware('auth')->resource('/calendars/tests','InterviewController');
-Route::middleware('auth')->resource('/calendars/inventories','InterviewController');
-Route::middleware('auth')->resource('/calendars/availabilities','InterviewController');
+Route::middleware('auth')->resource('/calendars/tests','TestsController');
+Route::middleware('auth')->resource('/calendars/inventories','InventoriesController');
+Route::middleware('auth')->resource('/calendars/availabilities','AvailabilitiesController');
 Route::middleware('auth')->resource('/calendars','CalendarController');
 Auth::routes();
 
