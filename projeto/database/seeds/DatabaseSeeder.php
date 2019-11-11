@@ -26,10 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CourseTypesSeeder::class);
         $this->call(CoursesSeeder::class);
         $this->call(CategoriesSeeder::class);
-        // $this->call(FileTypesSeeder::class);
         $this->call(DocumentTypesSeeder::class);
         $this->call(DocumentsSeeder::class);
-        // $this->call(FilesSeeder::class);
         $this->call(GendersSeeder::class);
         $this->call(OriginsSeeder::class);
         $this->call(RegistrationStatesSeeder::class);
@@ -39,8 +37,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ClassStatesSeeder::class);
         $this->call(RsClassesSeeder::class);
         $this->call(ApplicantsSeeder::class);
+        $this->call(EventTypesSeeder::class);  
         $this->call(EventsSeeder::class);        
-        $this->call(EventTypesSeeder::class);   
+         
         
     }
 }

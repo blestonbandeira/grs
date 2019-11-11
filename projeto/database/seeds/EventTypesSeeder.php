@@ -13,15 +13,15 @@ class EventTypesSeeder extends Seeder
     public function run()
     {
         $eventType = new EventType;
-        $eventType->name = "Interview";
+        $eventType->name = "Entrevista";
         $eventType->save();
 
         $eventType = new EventType;
-        $eventType->name = "Test";
+        $eventType->name = "Teste";
         $eventType->save();
 
         $eventType = new EventType;
-        $eventType->name = "Inventory";
+        $eventType->name = "Inventário";
         $eventType->save();
 
     }

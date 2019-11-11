@@ -34,16 +34,35 @@
           
           <select class="custom-select">
             @if (count($documentTypes) > 0 )
-            <option>-- selecione o tipo de documento --</option>
+              <option>
+                -- selecione o tipo de documento --
+              </option>
                 @foreach($documentTypes as $documentType)
                     <option value="{{$documentType}}">
                         {{ $documentType->name }}
                     </option>
                 @endforeach
             @else
-            <option>
-                --Não existem opções disponíveis--
-            </option>
+              <option>
+                  --Não existem opções disponíveis--
+              </option>
+            @endif
+          </select>
+
+          <select class="custom-select">
+            @if (count($applicants) > 0 )
+              <option>
+                -- selecione o candidato --
+              </option>
+                @foreach($applicants as $applicant)
+                    <option value="{{$applicant}}">
+                        {{ $applicant->name }}
+                    </option>
+                @endforeach
+            @else
+              <option>
+                  --Não existem candidatos com esse documento em falta--
+              </option>
             @endif
           </select>
          
