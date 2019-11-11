@@ -29,7 +29,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:1, id_event_type:null},
+        data:{id_user:{{Auth::id()}}, id_event_type:0},
         success:function(data)
         {
             allEvents = data;
