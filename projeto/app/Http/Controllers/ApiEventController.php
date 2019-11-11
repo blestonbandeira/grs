@@ -16,8 +16,6 @@ class ApiEventController extends Controller
 {
     public function index(Request $request)
     {
-        $rsClasses = RsClass::select('id')->where('name', '=', 'TPSIP_12.19')->get();
-        dd($rsClasses);
         $data = array();
         $lastId = -1;
         $lastColor = "#0089f2";
