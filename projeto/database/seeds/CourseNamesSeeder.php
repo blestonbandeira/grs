@@ -13,23 +13,23 @@ class CourseNamesSeeder extends Seeder
     public function run()
     {
         $courseName = new CourseName;
-        $courseName->name = "Mecatrónica Automóvel, Planeamento e Controlo de Processos Porto";
+        $courseName->name = "Mecatrónica Automóvel, Planeamento e Controlo de Processos";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Mecatrónica Automóvel Porto";
+        $courseName->name = "Mecatrónica Automóvel";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Mecatrónica Porto";
+        $courseName->name = "Mecatrónica";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Ciber Segurança Porto";
+        $courseName->name = "CIBERsegurança";
         $courseName->save();
 
         $courseName = new CourseName;
-        $courseName->name = "Automação Robótica e Controlo Industrial Porto";
+        $courseName->name = "Automação Robótica e Controlo Industrial";
         $courseName->save();
 
         $courseName = new CourseName;

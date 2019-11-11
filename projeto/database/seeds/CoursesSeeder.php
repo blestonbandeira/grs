@@ -17,7 +17,7 @@ class CoursesSeeder extends Seeder
     public function run()
     {
         $course = new Course;        
-        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica Automóvel, Planeamento e Controlo de Processos Porto')->get();
+        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica Automóvel, Planeamento e Controlo de Processos')->get();
         $course->id_courseName = $courseNames[0]["id"];
         $courseTypes = CourseType::select('id')->where('name', '=', 'Especialização Tecnológica')->get();
         $course->id_courseType = $courseTypes[0]["id"];
@@ -28,7 +28,7 @@ class CoursesSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica Automóvel, Planeamento e Controlo de Processos Porto')->get();
+        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica Automóvel, Planeamento e Controlo de Processos')->get();
         $course->id_courseName = $courseNames[0]["id"];
         $courseTypes = CourseType::select('id')->where('name', '=', 'Especialização Tecnológica')->get();
         $course->id_courseType = $courseTypes[0]["id"];
@@ -39,7 +39,7 @@ class CoursesSeeder extends Seeder
         $course->save();
         
         $course = new Course;
-        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica Automóvel Porto')->get();
+        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica Automóvel')->get();
         $course->id_courseName = $courseNames[0]["id"];
         $courseTypes = CourseType::select('id')->where('name', '=', 'Aprendizagem')->get();
         $course->id_courseType = $courseTypes[0]["id"];
@@ -50,7 +50,7 @@ class CoursesSeeder extends Seeder
         $course->save();
 
         $course = new Course;
-        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica Porto')->get();
+        $courseNames = CourseName::select('id')->where('name', '=', 'Mecatrónica')->get();
         $course->id_courseName = $courseNames[0]["id"];
         $courseTypes = CourseType::select('id')->where('name', '=', 'Aprendizagem')->get();
         $course->id_courseType = $courseTypes[0]["id"];
