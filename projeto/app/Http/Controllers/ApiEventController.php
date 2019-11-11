@@ -11,6 +11,7 @@ use DateTime;
 use Auth;
 use App\UnemployementSituation;
 use App\RsClass;
+use App\EventType;
 
 class ApiEventController extends Controller
 {
@@ -72,9 +73,11 @@ class ApiEventController extends Controller
 
     public function store(Request $request)
     {
+        $userTemp = User::where('id','=', $request->id_user)->get();
+        $eventTemp = EventType::where('id','=', $request->id_event_type)->get();
         $event = new Event;
         $event->id_user = $request->id_user;
-        $event->title = $request->title;
+        $event->title = $request->title . " User: " . $userTemp[0]["name"] . "/ Tipo: " . $eventTemp[0]["name"];
         $event->id_event_type = $request->id_event_type;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;

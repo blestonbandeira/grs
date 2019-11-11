@@ -44,13 +44,8 @@
                 allDaySlot: false,
                 weekends: false,
                 height: 550,
-                @if(Auth::user()->id_permissionLevel == 1)
-                  editable:true,
-                  selectable:true,
-                @else
-                  editable:false,
-                  selectable:false,
-                @endif
+                editable:true,
+                selectable:true,
                 plugins: [ 'bootstrap' ],
                 themeSystem: 'bootstrap',
                 header:{
