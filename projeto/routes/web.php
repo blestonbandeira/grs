@@ -22,8 +22,12 @@ Route::middleware('auth')->resource('/users','UserController');
 Route::middleware('auth')->resource('/rsclasses','RsClassController');
 Route::middleware('auth')->resource('/courses','CourseController');
 Route::middleware('auth')->resource('/interviewers','InterviewerController');
-Route::middleware('auth')->resource('/calendars','CalendarController');
 Route::middleware('auth')->resource('/forms','FormController');
 Route::middleware('auth')->resource('/documents', 'DocumentController');
-Route::resource('/interviews','InterviewController');
+Route::middleware('auth')->resource('/calendars/interviews','InterviewController');
+Route::middleware('auth')->resource('/calendars/tests','TestController');
+Route::middleware('auth')->resource('/calendars/inventories','InventoriesController');
+Route::middleware('auth')->resource('/calendars/availabilities','AvailabilitiesController');
+Route::middleware('auth')->resource('/calendars','CalendarController');
 Auth::routes();
+
