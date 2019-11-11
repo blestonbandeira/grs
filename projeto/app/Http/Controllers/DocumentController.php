@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Document;
 use App\DocumentType;
+use App\Applicant;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -29,8 +30,9 @@ class DocumentController extends Controller
     public function create()
     {
         $documentTypes = DocumentType::all();
+        $applicants = Applicant::all()->where('apt', '=', false);
         return view('documents.create')
-        ->with(compact('documents', 'documentTypes'));
+        ->with(compact('documents', 'documentTypes', 'applicants'));
     }
 
     /**
@@ -60,6 +62,7 @@ class DocumentController extends Controller
             $document = new Document();
             $document->name = "$fileUploaded";
             $document->size= $fileSize;
+            // $document->id_applicant = 
             $document->save();
         }
         return back()->with('success', 'Ficheiro carregado com sucesso');
