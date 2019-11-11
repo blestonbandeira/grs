@@ -18,10 +18,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Entrevista')->get();
         $event->id_event_type = $eventTypes[0]["id"];
         $event->title = "Teste Evento 13";
-        $eventType = EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-04 11:00:00"; 
-        $event->end_event = "2019-11-04 12:15:00"; 
+        $event->start_event = "2019-11-13 11:00:00"; 
+        $event->end_event = "2019-11-13 12:15:00"; 
         $event->save();
 
         $event = new Event;
@@ -29,10 +27,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Entrevista')->get();
         $event->id_event_type = $eventTypes[0]["id"];
         $event->title = "Teste Evento 14";
-        $eventType = EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-04 09:00:00"; 
-        $event->end_event = "2019-11-04 09:15:00"; 
+        $event->start_event = "2019-11-12 09:00:00"; 
+        $event->end_event = "2019-11-12 09:15:00"; 
         $event->save();
 
         $event = new Event;
@@ -40,10 +36,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Entrevista')->get();
         $event->id_event_type= $eventTypes[0]["id"];
         $event->title = "Teste Evento 15";
-        $eventType= EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-04 09:45:00"; 
-        $event->end_event = "2019-11-04 14:45:00"; 
+        $event->start_event = "2019-11-12 09:45:00"; 
+        $event->end_event = "2019-11-12 14:45:00"; 
         $event->save();
 
         $event = new Event;
@@ -51,10 +45,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Entrevista')->get();
         $event->id_event_type = $eventTypes[0]["id"];
         $event->title = "Teste Evento 21";
-        $eventType = EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-05 18:15:00"; 
-        $event->end_event = "2019-11-05 19:30:00"; 
+        $event->start_event = "2019-11-11 18:15:00"; 
+        $event->end_event = "2019-11-11 19:30:00"; 
         $event->save();
 
         $event = new Event;
@@ -62,10 +54,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Teste')->get();
         $event->id_event_type = $eventTypes[0]["id"];
         $event->title = "Teste Evento 22";
-        $eventType= EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-05 15:00:00"; 
-        $event->end_event = "2019-11-05 16:45:00"; 
+        $event->start_event = "2019-11-14 15:00:00"; 
+        $event->end_event = "2019-11-14 16:45:00"; 
         $event->save();
 
         $event = new Event;
@@ -73,10 +63,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Teste')->get();
         $event->id_event_type = $eventTypes[0]["id"];
         $event->title = "Teste Evento 23";
-        $eventType = EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();~
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-05 11:00:00"; 
-        $event->end_event = "2019-11-05 12:15:00"; 
+        $event->start_event = "2019-11-11 11:00:00"; 
+        $event->end_event = "2019-11-11 12:15:00"; 
         $event->save();
 
         $event = new Event;
@@ -84,10 +72,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Teste')->get();
         $event->id_event_type = $eventTypes[0]["id"];
         $event->title = "Teste Evento 24";
-        $eventType= EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-05 09:00:00"; 
-        $event->end_event = "2019-11-05 9:15:00"; 
+        $event->start_event = "2019-11-13 09:00:00"; 
+        $event->end_event = "2019-11-13 9:15:00"; 
         $event->save();
 
         $event = new Event;
@@ -95,10 +81,8 @@ class EventsSeeder extends Seeder
         $eventTypes = EventType::select('id')->where('name', '=', 'Teste')->get();
         $event->id_event_type = $eventTypes[0]["id"];
         $event->title = "Teste Evento 25";
-        $eventType = EventType::select('name')->where('id', '=', $eventTypes[0]["id"])->get();
-        $event->type = $eventType[0]["name"];
-        $event->start_event = "2019-11-05 09:45:00"; 
-        $event->end_event = "2019-11-05 14:45:00"; 
+        $event->start_event = "2019-11-15 09:45:00"; 
+        $event->end_event = "2019-11-15 14:45:00"; 
         $event->save();
 
         

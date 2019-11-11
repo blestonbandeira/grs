@@ -20,7 +20,6 @@ class CreateEventsTable extends Migration
             $table->bigInteger('id_event_type')->unsigned()->nullable();
             $table->foreign('id_event_type')->references('id')->on('event_types');
             $table->string('title');
-            $table->string('type');
             $table->string('start_event');
             $table->string('end_event');
             $table->timestamps();

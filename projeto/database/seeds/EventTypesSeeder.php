@@ -24,5 +24,9 @@ class EventTypesSeeder extends Seeder
         $eventType->name = "Inventário";
         $eventType->save();
 
+        $eventType = new EventType;
+        $eventType->name = "Disponibilidade";
+        $eventType->save();
+
     }
 }
