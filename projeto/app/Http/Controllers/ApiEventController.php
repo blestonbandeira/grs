@@ -21,53 +21,67 @@ class ApiEventController extends Controller
         $lastId = -1;
         $lastColor = "#0089f2";
         $userR = User::where('id', '=', $request->id_user)->get();
-        if($userR[0]['id_permissionLevel'] == 1){
-            if($request->id_event_type == 0)
+
+        if($request->id_event_type == 0)
+        {//CALENDARS
+            if($userR[0]['id_permissionLevel'] == 1 || $userR[0]['id_permissionLevel'] == 2) 
+            {
                 $result = Event::orderBy('id')->get();
-            else
-                $result = Event::where('id_event_type','=', $request->id_event_type)->orderBy('id')->get();
-
-            foreach($result as $row)
+            }
+            else if($userR[0]['id_permissionLevel'] == 3)
             {
-                if($row["id_user"] != $lastId){
-                    $lastColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
-                }
-     
-                $data[] = array(
-                    'id'   => $row["id"],
-                    'id_user'   => $row["id_user"],
-                    'title'   => $row["title"],
-                    'type'   => $row["id_event_type"],
-                    'start'   => $row["start_event"],
-                    'end'   => $row["end_event"],
-                    'color' => $lastColor
-                );
-                $lastId = (Int)$row["id_user"];
+                $result = Event::where([['id_user', '=', $request->id_user],['id_event_type','=', 1]])->orWhere([['id_user', '=', $request->id_user],['id_event_type','=', 4]])->orderBy('id')->get();
             } 
-        }else{
-            if($request->id_event_type == 0)
-                $result = Event::where('id_event_type','!=', 4)->orderBy('id')->get();
-            else
-                $result = Event::where([['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type]])->orderBy('id')->get();
-
-            foreach($result as $row)
+        }
+        else if($request->id_event_type == 1)
+        {//INTERVIEWS
+            if($userR[0]['id_permissionLevel'] == 1 || $userR[0]['id_permissionLevel'] == 2)
             {
-                if($row["id_user"] != $lastId){
-                    $lastColor = '#' . str_pad(dechex(mt_rand(0, 0xFFF)), 3, '0', STR_PAD_LEFT);
-                }
+                $result = Event::where('id_event_type','=', $request->id_event_type)->orderBy('id')->get();
+            }
+            else if($userR[0]['id_permissionLevel'] == 3)
+            {
+                $result = Event::where([['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type]])->orderBy('id')->get();
+            } 
 
-                $data[] = array(
-                    'id'   => $row["id"],
-                    'id_user'   => $row["id_user"],
-                    'title'   => $row["title"],
-                    'type'   => $row["id_event_type"],
-                    'start'   => $row["start_event"],
-                    'end'   => $row["end_event"],
-                    'color' => $lastColor
-                );
-                $lastId = (Int)$row["id_user"];
+        }
+        else if($request->id_event_type == 2 || $request->id_event_type == 3)
+        {//TESTS && INVENTORIES
+            if($userR[0]['id_permissionLevel'] == 1 || $userR[0]['id_permissionLevel'] == 2)
+            {
+                $result = Event::where('id_event_type','=', $request->id_event_type)->orderBy('id')->get();
             }
         }
+        else if($request->id_event_type == 4)
+        {//AVAILABILITIES
+            if($userR[0]['id_permissionLevel'] == 1)
+            {
+                $result = Event::where('id_event_type','=', $request->id_event_type)->orderBy('id')->get();
+            }
+            else if($userR[0]['id_permissionLevel'] == 3)
+            {
+                $result = Event::where([['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type]])->orderBy('id')->get();
+            } 
+        }
+
+        foreach($result as $row)
+        {
+            if($row["id_user"] != $lastId){
+                $lastColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+            }
+ 
+            $data[] = array(
+                'id'   => $row["id"],
+                'id_user'   => $row["id_user"],
+                'title'   => $row["title"],
+                'type'   => $row["id_event_type"],
+                'start'   => $row["start_event"],
+                'end'   => $row["end_event"],
+                'color' => $lastColor
+            );
+            $lastId = (Int)$row["id_user"];
+        } 
+
         return $data;
     }
 

@@ -47,7 +47,6 @@
                 maxTime: "19:00:00",
                 allDaySlot: false,
                 weekends: false,
-                height: 650,
                 editable:true,
                 selectable:true,
                 plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
