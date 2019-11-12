@@ -23,6 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/pt.js"></script>
+
 <script>
     var allEvents;
     $.ajax({
@@ -35,15 +37,19 @@
             allEvents = data;
             var calendar = $('#calendar').fullCalendar({
                 defaultView: 'agendaWeek',
+                contentHeight: 'auto',
+                locale: 'pt',
                 slotDuration: '00:15:00',
                 slotLabelInterval: 15,
                 slotMinutes: 15,
+                slotLabelFormat: 'HH:mm',
                 timeFormat: 'HH:mm',
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
+                slotLabelFormat:
                 allDaySlot: false,
                 weekends: false,
-                height: 550,
+                height: 650,
                 @if(Auth::user()->id_permissionLevel == 1)
                   editable:true,
                   selectable:true,
@@ -51,7 +57,7 @@
                   editable:false,
                   selectable:false,
                 @endif
-                plugins: [ 'bootstrap' ],
+                plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
                 themeSystem: 'bootstrap',
                 header:{
                     left:'prev,next today',
@@ -122,7 +128,7 @@
                   else if (event.type == 3)
                     typeEvent="Teste Psicotécnico && Inventário Vocacional";
                   else
-                    typeEvent="Ñ definido!";
+                    typeEvent="Não definido!";
 
                   document.getElementById('btnModalShow').click();
                   document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->id_permissionLevel != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';

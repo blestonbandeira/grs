@@ -14,7 +14,7 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        return view('interviews.index');
+        return view('calendars.interviews.index');
     }
 
     /**

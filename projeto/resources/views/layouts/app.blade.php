@@ -15,12 +15,13 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
-  <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
-  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
-  <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
+  <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' >
+  <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'  />
+  <link rel="stylesheet" href= "{{ asset('css/core/custom.css') }}" />
+  <link rel="stylesheet" href= "{{ asset('css/daygrid/custom.css') }}"  />
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
 </head>
@@ -95,6 +96,7 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/pt.js"></script>
           @yield('content')
         </div>
     </div>
@@ -105,8 +107,6 @@
     <script src="{{ asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
     <!-- Plugin for the momentJs  -->
     <script src="{{ asset('js/plugins/moment.min.js') }}"></script>
-    <!--  Plugin for Sweet Alert -->
-    <script src="{{ asset('js/plugins/sweetalert2.js') }}"></script>
     <!-- Forms Validations Plugin -->
     <script src="{{ asset('js/plugins/jquery.validate.min.js') }}"></script>
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
@@ -135,7 +135,6 @@
     <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}"></script>
-    <script src="{{ asset ('js/dropzone.js' )}}"></script>
     <script src="{{ asset ('js/custom.js' )}}"></script>
     </div>
   </div>
