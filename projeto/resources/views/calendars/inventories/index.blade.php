@@ -46,7 +46,6 @@
                 maxTime: "19:00:00",
                 allDaySlot: false,
                 weekends: false,
-                height: 650,
                 @if(Auth::user()->id_permissionLevel == 1)
                   editable:true,
                   selectable:true,

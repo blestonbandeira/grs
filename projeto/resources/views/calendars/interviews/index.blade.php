@@ -47,7 +47,6 @@
               maxTime: "19:00:00",
               allDaySlot: false,
               weekends: false,
-              contentHeight: 950,
               editable:true,
               selectable:true,
               plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
@@ -144,7 +143,7 @@
         $.ajax({
             url:"/api/events",
             type:"POST",
-            data:{id_user:{{ Auth::id() }}, title:title, id_event_type:4, start_event:start, end_event:end},
+            data:{id_user:{{ Auth::id() }}, title:title, id_event_type:1, start_event:start, end_event:end},
             success:function(data)
             {
               document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 
