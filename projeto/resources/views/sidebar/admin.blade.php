@@ -20,24 +20,34 @@
                     </p>
                 </div>
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
+                <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
-                            <li class="{{ request()->is('calendars') ? 'active' : '' }}">
+                        <li class="{{ request()->is('calendars') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars') }}">
+                                Todos 
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('calendars/interviews') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/interviews') }}">
                                 Entrevistas 
                                 </a>
                             </li> 
-                            <li>
-                                <a class="nav-link" href="#">
+                            <li class="{{ request()->is('calendars/tests') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/tests') }}">
                                     Testes & Provas
                                 </a>
                             </li> 
-                            <li>
-                                <a class="nav-link" href="#">           
+                            <li class="{{ request()->is('calendars/inventories') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/inventories') }}">       
                                     Testes & Inventário
                                 </a>  
-                            </li>          
+                            </li>  
+                            <li class="{{ request()->is('calendars/availabilities') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/availabilities') }}">       
+                                    Disponibilidades
+                                </a>  
+                            </li>         
                         </ul>                                        
                     </div>
                 </div>

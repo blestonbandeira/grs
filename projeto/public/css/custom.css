@@ -6,14 +6,25 @@ a {
     color: inherit;
 }
 
+a.nav-link {
+    text-align: center;
+}
+
 #modalTime .show {
     display: contents!important;
 }
 
+body .fc { 
+    font-size: 1em;  
+ }
+ 
+ .fc-content .fc-time {
+    font-size: 1em!important;
+ }
+
 .fc-center {
-    background-color: #0089f2!important;
-    background-image: none!important;
-    color: white;
+   
+    color: #0089f2;
     border-radius: 5px;
     padding: 5px 8px 3px 8px;
 }
@@ -44,7 +55,18 @@ a {
 }
 
 .fc th {
-    color: gray;
+    color: #0089f2;
+    
+}
+
+.fc-widget-content {
+    color: #0089f2;
+    
+}
+
+.calendar-container {
+    margin: 10px;
+    padding: 10px;  
 }
 
 ul.nav-item {
@@ -56,13 +78,13 @@ a:hover {
 }
 
 .activeMenu {
-    color: #00A3E0;
+    color: #0089f2;
     font-weight: bold;
     font-size: 16px;
 }
 
 li.active {
-    background-color: #00A3E0;
+    background-color: #0089f2;
 }
 
 .btn .btn-info .btn-link .btn-sm {
