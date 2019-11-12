@@ -44,14 +44,14 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <form action="/applicants" method="post">
-              @csrf
+              
               <div class="card">
                 <div class="card-header card-header-info">
                   <button class="card-title btn btn-link">Registo de Candidato</button>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form action="/applicants" method="post">
+                    @csrf
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">
@@ -75,7 +75,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating bg-white">Data-de-Nascimento</label>
-                          <input type="date" class="form-control input-border-width" format="dd/MM/yyyy"">
+                          <input type="date" class="form-control input-border-width" name="birthdate" format="dd/MM/yyyy">
                         </div>
                       </div>
                     </div>
@@ -83,7 +83,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating">N. Contribuinte</label>
-                          <input type="text" class="form-control input-border-width">
+                          <input type="text" class="form-control input-border-width" name="nif">
                         </div>
                       </div>
                       <div class="col-md-4">

@@ -29,7 +29,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:1, id_event_type:4},
+        data:{id_user:{{Auth::id()}}, id_event_type:4},
         success:function(data)
         {
             allEvents = data;
@@ -44,13 +44,8 @@
                 allDaySlot: false,
                 weekends: false,
                 height: 550,
-                @if(Auth::user()->id_permissionLevel == 1)
-                  editable:true,
-                  selectable:true,
-                @else
-                  editable:false,
-                  selectable:false,
-                @endif
+                editable:true,
+                selectable:true,
                 plugins: [ 'bootstrap' ],
                 themeSystem: 'bootstrap',
                 header:{

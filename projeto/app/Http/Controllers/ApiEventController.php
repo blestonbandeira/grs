@@ -11,6 +11,7 @@ use DateTime;
 use Auth;
 use App\UnemployementSituation;
 use App\RsClass;
+use App\EventType;
 
 class ApiEventController extends Controller
 {
@@ -21,7 +22,7 @@ class ApiEventController extends Controller
         $lastColor = "#0089f2";
         $userR = User::where('id', '=', $request->id_user)->get();
         if($userR[0]['id_permissionLevel'] == 1){
-            if($request->id_event_type == null)
+            if($request->id_event_type == 0)
                 $result = Event::orderBy('id')->get();
             else
                 $result = Event::where('id_event_type','=', $request->id_event_type)->orderBy('id')->get();
@@ -44,18 +45,27 @@ class ApiEventController extends Controller
                 $lastId = (Int)$row["id_user"];
             } 
         }else{
-            $result = Event::where(['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type])->orderBy('id')->get();
+            if($request->id_event_type == 0)
+                $result = Event::where('id_event_type','!=', 4)->orderBy('id')->get();
+            else
+                $result = Event::where(['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type])->orderBy('id')->get();
+
             foreach($result as $row)
             {
+                if($row["id_user"] != $lastId){
+                    $lastColor = '#' . str_pad(dechex(mt_rand(0, 0xFFF)), 3, '0', STR_PAD_LEFT);
+                }
+
                 $data[] = array(
-                'id'   => $row["id"],
-                'id_user'   => $row["id_user"],
-                'title'   => $row["title"],
-                'type'   => $row["id_event_type"],
-                'start'   => $row["start_event"],
-                'end'   => $row["end_event"],
-                'color' => "#0089f2"
+                    'id'   => $row["id"],
+                    'id_user'   => $row["id_user"],
+                    'title'   => $row["title"],
+                    'type'   => $row["id_event_type"],
+                    'start'   => $row["start_event"],
+                    'end'   => $row["end_event"],
+                    'color' => $lastColor
                 );
+                $lastId = (Int)$row["id_user"];
             }
         }
         return $data;
@@ -63,9 +73,11 @@ class ApiEventController extends Controller
 
     public function store(Request $request)
     {
+        $userTemp = User::where('id','=', $request->id_user)->get();
+        $eventTemp = EventType::where('id','=', $request->id_event_type)->get();
         $event = new Event;
         $event->id_user = $request->id_user;
-        $event->title = $request->title;
+        $event->title = $request->title . " User: " . $userTemp[0]["name"] . "/ Tipo: " . $eventTemp[0]["name"];
         $event->id_event_type = $request->id_event_type;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;
