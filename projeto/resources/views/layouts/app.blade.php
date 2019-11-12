@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="">
+<body>
     @if (Auth::user()->id_permissionLevel == 1) @include('sidebar.admin')
     @elseif (Auth::user()->id_permissionLevel == 2) @include('sidebar.assist')
     @elseif (Auth::user()->id_permissionLevel == 3) @include('sidebar.inter')
@@ -34,7 +34,12 @@
   <div class="main-panel">
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
-       
+        <div class="navbar-wrapper">
+          @if (Request::is('applicants/create'))
+            <a class="navbar-brand">Registo de Candidato</a>
+          @else <a></a>
+          @endif
+          </div>  
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon icon-bar"></span>
@@ -45,12 +50,6 @@
         <div class="collapse navbar-collapse justify-content-end">
             
           <ul class="navbar-nav">
-              <li class="justify-item-left">
-                  @if (Auth::user()->id_permissionLevel == 1) Administrador
-                  @elseif (Auth::user()->id_permissionLevel == 2) Assistente
-                  @elseif (Auth::user()->id_permissionLevel == 3) Entrevistador
-                  @endif
-              </li>
             @guest
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

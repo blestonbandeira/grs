@@ -11,62 +11,59 @@ a.nav-link {
 }
 
 #modalTime .show {
-    display: contents!important;
+    display: contents !important;
 }
 
-body .fc { 
-    font-size: 1em;  
- }
- 
- .fc-content .fc-time {
-    font-size: 1em!important;
- }
+body .fc {
+    font-size: 1em;
+}
+
+.fc-content .fc-time {
+    font-size: 1em !important;
+}
 
 .fc-center {
-   
-    color: #0089f2;
+    color: #00a3e0;
     border-radius: 5px;
     padding: 5px 8px 3px 8px;
 }
 
 .fc-button {
-    background-color: #0089f2!important;
-    background-image: none!important;
+    background-color: #00a3e0 !important;
+    background-image: none !important;
     color: white;
 }
 
 .fc-state-hover {
-    background-color: #0063b9!important;
-    background-image: none!important;
+    background-color: #0063b9 !important;
+    background-image: none !important;
     color: white;
     border-color: white;
 }
 
 .fc-state-active {
-    background-color: #005da5!important;
-    background-image: none!important;
+    background-color: #005da5 !important;
+    background-image: none !important;
     border-color: rgb(255, 255, 255);
     color: white;
 }
 
 .fc-event .fc-content {
-    color: white!important;
+    color: white !important;
     font-weight: bold;
 }
 
 .fc th {
-    color: #0089f2;
-    
+    color: #00a3e0;
 }
 
 .fc-widget-content {
-    color: #0089f2;
-    
+    color: #00a3e0;
 }
 
 .calendar-container {
     margin: 10px;
-    padding: 10px;  
+    padding: 10px;
 }
 
 ul.nav-item {
@@ -78,13 +75,13 @@ a:hover {
 }
 
 .activeMenu {
-    color: #0089f2;
+    color: #00a3e0;
     font-weight: bold;
     font-size: 16px;
 }
 
 li.active {
-    background-color: #0089f2;
+    background-color: #00a3e0;
 }
 
 .btn .btn-info .btn-link .btn-sm {
@@ -93,7 +90,8 @@ li.active {
 }
 
 .wrap-login100 {
-    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14),
+        0 7px 10px -5px rgba(156, 39, 176, 0.4);
 }
 
 img#entrar {
