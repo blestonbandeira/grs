@@ -97,8 +97,8 @@
                                     <button id="btnModelSh" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalHours">Large modal</button>
                                 </div>
                                 <div id="modalTime" class="col-md-10">
-                                    <div class="container" style="margin-left: 10vw;margin-top:-10px;">
-                                        <div id="calendar" style="width: 55vw!important;"></div>
+                                    <div class="container" style="margin: 15px;">
+                                        <div id="calendar" style="width: 74vw!important;"></div>
                                     </div>
                                     <div id="hoursShow" class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
                                         <div class="row">
@@ -193,7 +193,7 @@
         var j = 0;
         for(var i = 0; i < appliSelectedName.length; i++)
         {
-            document.getElementById('applicantList').innerHTML += "<li class='applOnClick' value=" + appliSelectedId[j] + " onclick='applicantSelected(this)'><b>" + appliSelectedName[j] + "</b></li>";
+            document.getElementById('applicantList').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[j] + " onclick='applicantSelected(this)' style='width:13vw;'><b>" + appliSelectedName[j] + "</b></li>";
             j++;
         }
     }
@@ -238,7 +238,7 @@ function calendarCharge(){
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:{{Auth::id()}}, typeEvent:4},
+        data:{id_user:{{Auth::id()}}, id_event_type:4},
         success:function(data)
         {
             allEvents = data;
@@ -252,7 +252,7 @@ function calendarCharge(){
                 maxTime: "19:00:00",
                 allDaySlot: false,
                 weekends: false,
-                height: 550,
+                height: 800,
                 editable:false,
                 selectable:false,
                 plugins: [ 'bootstrap' ],
