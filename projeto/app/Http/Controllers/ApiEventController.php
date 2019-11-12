@@ -48,7 +48,7 @@ class ApiEventController extends Controller
             if($request->id_event_type == 0)
                 $result = Event::where('id_event_type','!=', 4)->orderBy('id')->get();
             else
-                $result = Event::where(['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type])->orderBy('id')->get();
+                $result = Event::where([['id_user', '=', $request->id_user],['id_event_type','=', $request->id_event_type]])->orderBy('id')->get();
 
             foreach($result as $row)
             {

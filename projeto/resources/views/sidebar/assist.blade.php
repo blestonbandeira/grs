@@ -12,32 +12,44 @@
       <div class="sidebar-wrapper">
         <div class="accordion nav" id="sidebar">
             
-            <div class="card nav-item">
+        <div class="card nav-item">
                 <div class="card-header" id="headingOne">
                     <i class="material-icons">dashboard</i>
                     <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
-                    Calendário
+                        <a href="{{ url('calendars') }}">
+                            Calendário
+                        </a>
                     </p>
                 </div>
 
                 <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
-                            <li class="{{ request()->is('calendars') ? 'active' : '' }}">
+                        <li class="{{ request()->is('calendars') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars') }}">
+                                Todos 
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('calendars/interviews') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/interviews') }}">
                                 Entrevistas 
                                 </a>
                             </li> 
-                            <li>
-                                <a class="nav-link" href="#">
+                            <li class="{{ request()->is('calendars/tests') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/tests') }}">
                                     Testes & Provas
                                 </a>
                             </li> 
-                            <li>
-                                <a class="nav-link" href="#">           
+                            <li class="{{ request()->is('calendars/inventories') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/inventories') }}">       
                                     Testes & Inventário
                                 </a>  
-                            </li>          
+                            </li>  
+                            <li class="{{ request()->is('calendars/availabilities') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/availabilities') }}">       
+                                    Disponibilidades
+                                </a>  
+                            </li>         
                         </ul>                                        
                     </div>
                 </div>
@@ -55,7 +67,7 @@
                     <ul class="nav-item">
                         <li class="{{ request()->is('applicants') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ url('applicants') }}">
-                                Ver  
+                               Ver  
                             </a>
                         </li>
                         <li class="{{ request()->is('applicants/create') ? 'active' : '' }}">
@@ -89,6 +101,56 @@
                                 </a>   
                             </li>                           
                         </ul>                
+                    </div>
+                </div>
+            </div>
+
+            <div class="card nav-item">
+                <div class="card-header" id="headingFour">
+                    <i class="fas fa-book"></i>
+                    <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                        Cursos
+                    </p>                
+                </div>
+                <div id="collapseFour" class="collapse {{ request()->is('courses*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                    <div class="card-body">
+                    <ul class="nav-item">
+                            <li class="{{ request()->is('courses') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('courses') }}">
+                                Ver  
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('courses/create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('courses.create') }}">
+                                Adicionar
+                                </a>   
+                            </li>                           
+                        </ul>                  
+                    </div>
+                </div>
+            </div>
+
+            <div class="card nav-item">
+                <div class="card-header" id="headingSeven">
+                    <i class="fas fa-book"></i>
+                    <p data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                        Documentos
+                    </p>                
+                </div>
+                <div id="collapseSeven" class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                    <div class="card-body">
+                    <ul class="nav-item">
+                            <li class="{{ request()->is('documents') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('documents') }}">
+                                Ver  
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('documents/create') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('documents.create') }}">
+                                Adicionar
+                                </a>   
+                            </li>                           
+                        </ul>                  
                     </div>
                 </div>
             </div>

@@ -47,7 +47,7 @@
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
                 allDaySlot: false,
-                weekends: false,                
+                weekends: false,
                 editable:false,
                 selectable:false,
                 plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
@@ -72,6 +72,8 @@
                     typeEvent="Teste Psicotécnico && Prova de Aferição";
                   else if (event.type == 3)
                     typeEvent="Teste Psicotécnico && Inventário Vocacional";
+                  else if (event.type == 4)
+                    typeEvent="Disponibilidade";
                   else
                     typeEvent="Não definido!";
 
