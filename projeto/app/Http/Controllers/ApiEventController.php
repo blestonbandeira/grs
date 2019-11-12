@@ -91,7 +91,7 @@ class ApiEventController extends Controller
         $eventTemp = EventType::where('id','=', $request->id_event_type)->get();
         $event = new Event;
         $event->id_user = $request->id_user;
-        $event->title = $request->title . " User: " . $userTemp[0]["name"] . "/ Tipo: " . $eventTemp[0]["name"];
+        $event->title = "User: " . $userTemp[0]["name"] . "<br/>Tipo: " . $eventTemp[0]["name"];
         $event->id_event_type = $request->id_event_type;
         $time = Carbon::parse($request->start_event);
         $event->start_event = $time;
