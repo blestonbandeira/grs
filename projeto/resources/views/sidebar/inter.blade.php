@@ -18,16 +18,18 @@
                 <div class="card-header" id="headingOne">
                     <i class="material-icons">dashboard</i>
                     <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
-                    Calendário
+                        <a href="{{ url('calendars') }}">
+                            Calendário
+                        </a>
                     </p>
                 </div>
 
                 <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
-                            <li class="{{ request()->is('calendars/create') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('calendars.create') }}">
-                                Inserir Disponibilidade
+                            <li class="{{ request()->is('calendars/interviews') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/interviews') }}">
+                                Entrevistas Marcadas
                                 </a>
                             </li>                              
                         </ul>                                        
@@ -37,9 +39,9 @@
                 <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
-                            <li class="{{ request()->is('calendars') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('calendars') }}">
-                                Entrevistas por realizar
+                            <li class="{{ request()->is('calendars/availabilities') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/availabilities') }}">
+                                Disponibilidade para Entrevistas
                                 </a>
                             </li>                              
                         </ul>                                        

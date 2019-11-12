@@ -4,8 +4,8 @@
 <input type="hidden" value="calendarClass" class="navLiSelect">
 
 
-<div class="container" style="margin-left: 10vw;margin-top:-10px;">
-   <div id="calendar" style="width: 55vw!important;"></div>
+<div class="calendar-container">
+   <div id="calendar"></div>
 </div>
 
 <button id="btnModalShow" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow" style="visibility: hidden;"></button>
