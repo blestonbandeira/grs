@@ -126,7 +126,7 @@
                                                 <b>h</b>
                                             </div>
                                             <div class="col">
-                                                <button onclick="saveInterview()">Guardar</button>
+                                                <button class="btn btn-info" onclick="saveInterview()">Guardar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -156,6 +156,7 @@
     var appliSelectedName = [];
     var appliSelected = null;
     var dateSelected = "";
+    var eventSelectedId = 0;
 
     function getApplicantsSelected()
     {
@@ -219,10 +220,9 @@
             dataType: "json",
             url:"/api/interviews",
             type:"POST",
-            data:{"id_applicant":selected, "id_user":{{Auth::id()}}, "date":date},
+            data:{id_applicant:selected, id_event:eventSelectedId, date:date},
             success:function(data)
             {
-                alert(selected + " " + date);
                 document.getElementById('btnModelSuccess').click();
                 setTimeout(function() {document.getElementById('btnModelSuccess').click();},2000);
             }
@@ -246,13 +246,14 @@ function calendarCharge(){
                 defaultView: 'agendaWeek',
                 slotDuration: '00:15:00',
                 slotLabelInterval: 15,
+                slotLabelFormat: 'HH:mm',
                 slotMinutes: 15,
                 timeFormat: 'HH:mm',
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
                 allDaySlot: false,
                 weekends: false,
-                height: 800,
+                height: 750,
                 editable:false,
                 selectable:false,
                 plugins: [ 'bootstrap' ],
@@ -266,7 +267,7 @@ function calendarCharge(){
                 selectHelper:true,
                 eventClick:function(event)
                 {
-                    
+                    eventSelectedId = event.id;
                     var hourSelect = document.getElementById('hourSelectChange');
                     var minSelect = document.getElementById('minSelectChange');
 

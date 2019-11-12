@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ClassStatesSeeder::class);
         $this->call(RsClassesSeeder::class);
         $this->call(ApplicantsSeeder::class);
-        $this->call(EventTypesSeeder::class);  
-        $this->call(EventsSeeder::class);        
-         
-        
+        $this->call(EventTypesSeeder::class);
+        $this->call(EventsSeeder::class);
+
+
     }
 }
