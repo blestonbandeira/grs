@@ -38,12 +38,12 @@
                 slotDuration: '00:15:00',
                 slotLabelInterval: 15,
                 slotMinutes: 15,
-                timeFormat: 'HH:mm',
+                timeFormat: 'HH:MM',
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
                 allDaySlot: false,
                 weekends: false,
-                height: 550,
+                height: 1000,
                 editable:false,
                 selectable:false,
                 plugins: [ 'bootstrap' ],
@@ -69,7 +69,7 @@
                   else if (event.type == 3)
                     typeEvent="Teste Psicotécnico && Inventário Vocacional";
                   else
-                    typeEvent="Ñ definido!";
+                    typeEvent="Não definido!";
 
                   document.getElementById('btnModalShow').click();
                   document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">OK</button></div>';

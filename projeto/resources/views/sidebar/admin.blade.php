@@ -23,8 +23,13 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
-                            <li class="{{ request()->is('calendars') ? 'active' : '' }}">
+                        <li class="{{ request()->is('calendars') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars') }}">
+                                Todos 
+                                </a>
+                            </li>
+                            <li class="{{ request()->is('calendars/interviews') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/interviews') }}">
                                 Entrevistas 
                                 </a>
                             </li> 
