@@ -44,7 +44,6 @@
                 timeFormat: 'HH:mm',
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
-                slotLabelFormat:
                 allDaySlot: false,
                 weekends: false,
                 height: 650,
@@ -56,7 +55,6 @@
                   selectable:false,
                 @endif
                 plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
-                
                 themeSystem: 'bootstrap',
                 header:{
                     left:'prev,next today',
@@ -121,13 +119,15 @@
                   var date = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                   var typeEvent;
                   if (event.type == 1)
-                    typeEvent="Entrevista";
-                  else if (event.type == 2)
-                    typeEvent="Teste Psicotécnico && Prova de Aferição";
-                  else if (event.type == 3)
-                    typeEvent="Teste Psicotécnico && Inventário Vocacional";
-                  else
-                    typeEvent="Não definido!";
+                  typeEvent="Entrevista";
+                else if (event.type == 2)
+                  typeEvent="Teste Psicotécnico && Prova de Aferição";
+                else if (event.type == 3)
+                  typeEvent="Teste Psicotécnico && Inventário Vocacional";
+                else if (event.type == 4)
+                  typeEvent="Disponibilidade";
+                else
+                  typeEvent="Não definido!";
 
                   document.getElementById('btnModalShow').click();
                   document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->id_permissionLevel != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
