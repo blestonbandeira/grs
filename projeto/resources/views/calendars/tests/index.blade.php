@@ -51,7 +51,7 @@
                 @if(Auth::user()->id_permissionLevel == 1)
                   editable:true,
                   selectable:true,
-                @else
+                @elseif
                   editable:false,
                   selectable:false,
                 @endif

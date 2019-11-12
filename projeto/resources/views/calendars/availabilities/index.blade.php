@@ -47,8 +47,16 @@
                 maxTime: "19:00:00",
                 allDaySlot: false,
                 weekends: false,
-                editable:true,
-                selectable:true,
+                @if(Auth::user()->id_permissionLevel == 1)
+                  editable:true,
+                  selectable:false,
+                @elseif(Auth::user()->id_permissionLevel == 2)
+                  editable:false,
+                  selectable:false,
+                @elseif(Auth::user()->id_permissionLevel == 3)
+                  editable:true,
+                  selectable:true,
+                @endif
                 plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
                 themeSystem: 'bootstrap',
                 header:{
