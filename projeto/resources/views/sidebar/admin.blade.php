@@ -16,7 +16,9 @@
                 <div class="card-header" id="headingOne">
                     <i class="material-icons">dashboard</i>
                     <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
-                    Calendário
+                        <a href="{{ url('calendars') }}">
+                            Calendário
+                        </a>
                     </p>
                 </div>
 
