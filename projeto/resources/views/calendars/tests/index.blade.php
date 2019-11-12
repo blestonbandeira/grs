@@ -46,7 +46,6 @@
                 timeFormat: 'HH:mm',
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
-                slotLabelFormat:
                 allDaySlot: false,
                 weekends: false,
                 height: 650,
@@ -127,6 +126,8 @@
                     typeEvent="Teste Psicotécnico && Prova de Aferição";
                   else if (event.type == 3)
                     typeEvent="Teste Psicotécnico && Inventário Vocacional";
+                  else if (event.type == 4)
+                    typeEvent="Disponibilidade";
                   else
                     typeEvent="Não definido!";
 

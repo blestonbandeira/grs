@@ -30,7 +30,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:{{Auth::id()}}, id_event_type:4},
+        data:{id_user:{{Auth::id()}}, id_event_type:1},
         success:function(data)
         {
             allEvents = data;
@@ -47,7 +47,6 @@
               maxTime: "19:00:00",
               allDaySlot: false,
               weekends: false,
-              height: 650,
               contentHeight: 950,
               editable:true,
               selectable:true,
@@ -121,8 +120,10 @@
                   typeEvent="Teste Psicotécnico && Prova de Aferição";
                 else if (event.type == 3)
                   typeEvent="Teste Psicotécnico && Inventário Vocacional";
+                else if (event.type == 4)
+                  typeEvent="Disponibilidade";
                 else
-                  typeEvent="Ñ definido!";
+                  typeEvent="Não definido!";
 
                 document.getElementById('btnModalShow').click();
                 document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->id_permissionLevel != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
