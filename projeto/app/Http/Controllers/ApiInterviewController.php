@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Interview;
 use App\InterviewInterviewer;
 use Carbon\Carbon;
+use App\Applicant;
+use App\Category;
 use App\Event;
 use App\User;
 use Auth;
@@ -34,6 +36,8 @@ class ApiInterviewController extends Controller
         $eventTemp = Event::find($request->id_event);
         $id_user = $eventTemp->id_user;
         $userTemp = User::find($id_user);
+        $appliTemp = Applicant::find($request->id_applicant);
+        $categoryTemp = Category::select('id')->where('name', '=', 'Candidatura Em Processo R&S')->get();
 
         $interview = new Interview;
         $interview->id_applicant = $request->id_applicant;
@@ -56,14 +60,17 @@ class ApiInterviewController extends Controller
         $event->end_event = Carbon::parse($time)->addMinutes(45);
         $event->save();
         
-        $eventCreated = Event::where('id_user', '=', $event->id_user, 'and', 'start_event', '=', $event->start_event)->first();
+        $eventCreated = Event::where('id_user', '=', $event->id_user, 'and', 'id_event_type', '=', $event->id_event_type)->first();
     
         $appli_event = new ApplicantEvent;
         $appli_event->id_applicant = $request->id_applicant;
         $appli_event->id_event = $eventCreated->id;
         $appli_event->save();
 
-        return $event->id_user;
+        $appliTemp->id_category = $categoryTemp[0]["id"];
+        $appliTemp->save();
+
+        return $appliTemp;
     }
 
     /**
