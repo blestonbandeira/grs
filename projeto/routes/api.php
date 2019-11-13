@@ -15,4 +15,4 @@ use Illuminate\Http\Request;
 
 Route::apiResource('/applicants', 'ApiApplicantController');
 Route::apiResource('/events', 'ApiEventController');
-Route::apiResource('/interviews', 'ApiInterviewController');
+Route::apiResource('/interviews', 'ApiEventController');
