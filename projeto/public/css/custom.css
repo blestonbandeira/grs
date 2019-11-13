@@ -105,3 +105,20 @@ img#entrar {
 .input-border-width {
     border-width: 0 0 1px;
 }
+
+.text-info{
+    color: #00a3e0 !important;
+}
+
+.text-info:hover{
+    color: #00a3e0 !important;
+}
+
+.main-panel{
+    background-color: #f1f1f1;
+}
+
+#calendar{
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
