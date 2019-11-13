@@ -8,7 +8,7 @@
         </button>
     </a>
     <a>
-        <button type="button" class="btn btn-info" onclick="getApplicantsSelected()" data-toggle="modal" data-target=".bd-example-modal-lg">
+        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()" data-toggle="modal" data-target=".bd-example-modal-lg">
             Marcar Entrevista
         </button>
     </a>
@@ -86,88 +86,111 @@
         </div>
     </div>
 
-            <input id="btnModelShow" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
+<input id="btnModelShow" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
 
-            <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
-                    <div class="modal-content" style="width: 95.5vw!important;">
-                        <div class="container-fluid" style="width: 90vw!important;">
-                            <div class="row" style="width: 90vw!important;">
-                                <div id="applicantList" class="col-md-2">
-                                    <button id="btnModelSh" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalHours">Large modal</button>
+<div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
+        <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
+            <div class="container-fluid" style="width: 90vw!important;">
+                <button id="btnCloseModalFromInterviews" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style=" margin-top: 7px;background: #0089f2; border-radius: 17px; color: #fff; border: transparent; padding: 2px 10px 2px 10px;" aria-hidden="true">&times;</span>
+                </button>
+                <div class="row" style="width: 90vw!important;">
+                    <div id="modalSuccessMessage" class="container-fluid" style="visibility:hidden; border-radius:10px; border: 1px solid #0089f2!important; padding: 50px; width: 26.7vw!important; position:absolute; z-index:100; background-color:white;">
+                    </div>
+                            
+                    <div id="applicantListFromInterviews" class="col-md-2">
+                        <button id="btnModelSh" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalHours">Large modal</button>
+                    </div>
+                    <div id="modalTime" class="col-md-10">
+                        <div class="container" style="margin: 15px;">
+                            <div id="calendar" style="width: 74vw!important;"></div>
+                        </div>
+                        <div id="hoursShow" class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
+                            <div class="row">
+                                <div>
+                                    <ul id="interSelected">
+
+                                    </ul>
                                 </div>
-                                <div id="modalTime" class="col-md-10">
-                                    <div class="container" style="margin: 15px;">
-                                        <div id="calendar" style="width: 74vw!important;"></div>
-                                    </div>
-                                    <div id="hoursShow" class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
-                                        <div class="row">
-                                            <div>
-                                                <ul id="interSelected">
 
-                                                </ul>
-                                            </div>
+                                <div class="col-md-1">
+                                    <select id="hourSelectChange" class="form-control" style="width: 50px;">
+                                    </select>
+                                </div>
 
-                                            <div class="col-md-1">
-                                                <select id="hourSelectChange" class="form-control" style="width: 50px;">
-                                                </select>
-                                            </div>
+                                <div class="col-md-1">
+                                    <b>:</b>
+                                </div>
 
-                                            <div class="col-md-1">
-                                                <b>:</b>
-                                            </div>
+                                <div class="col-md-1">
+                                    <select id="minSelectChange" class="form-control" style="width: 50px;">
+                                    </select>
+                                </div>
 
-                                            <div class="col-md-1">
-                                                <select id="minSelectChange" class="form-control" style="width: 50px;">
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-1">
-                                                <b>h</b>
-                                            </div>
-                                            <div class="col">
-                                                <button class="btn btn-info" onclick="saveInterview()">Guardar</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-1">
+                                    <b>h</b>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-info" onclick="saveInterview()">Guardar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 
+<!--MODAL PROVAS-->
+<input id="btnModelShow" type="button" onclick="" class="btn btn-primary" data-toggle="modal" data-target=".modalTests"/>
 
-            <input id="btnModelSuccess" type="hidden" class="btn btn-primary" data-toggle="modal" data-target=".modalSuccess"/>
-
-            <div class="modal fade modalSuccess" style="width: 25vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" style="width: 22vw!important; margin: 15px;">
-                    <div class="modal-content" style="width: 20vw!important;">
-                        <div class="container-fluid" style="width: 20vw!important;">
-                            <h3 style="color:#0089f2">Marcado com sucesso.</h3>
-                        </div>
-                    </div>
+<div id="modalTests" class="modal fade modalTests" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
+        <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
+            <div class="container-fluid" style="width: 90vw!important;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <button onclick="getApplicantsSelectedFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="1">Teste && Prova de Aferição</button>
+                    <button onclick="getApplicantsSelectedFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="2">Teste && Inventário Vocacional</button>
+                </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            
-<script>
-    var appliSelectedId = [];
-    var appliSelectedName = [];
-    var appliSelected = null;
-    var dateSelected = "";
-    var eventSelectedId = 0;
+        </div>
+    </div>
+</div>
 
-    function getApplicantsSelected()
+<!--FIM MODAL PROVAS-->
+
+<script>
+    let appliSelectedIdFromInterviews = [];
+    let appliSelectedNameFromInterviews = [];
+    let appliSelectedFromInterviews = null;
+    let appliSelectedHtmlFromInterviews = "";
+    let dateSelectedFromInterviews = "";
+    let eventSelectedIdFromInterviews = 0;
+
+    function getApplicantsSelectedFromInterviews()
     {
-        var applicantsSelected = document.getElementsByClassName('applicantsSelect');
-        var j = 0;
-        var k = 0;
-        for(var i = 0; i < applicantsSelected.length; i++)
+        let applicantsSelected = document.getElementsByClassName('applicantsSelect');
+        appliSelectedNameFromInterviews = [];
+        let j = 0;
+        let k = 0;
+        for(let i = 0; i < applicantsSelected.length; i++)
         {
             if(applicantsSelected[i].checked)
             {
-                appliSelectedId[j] = applicantsSelected[i].value;
+                appliSelectedIdFromInterviews[j] = applicantsSelected[i].value;
                 $.ajax({
                     contentType: "application/json",
                     url:"/api/applicants/" + applicantsSelected[i].value,
@@ -175,9 +198,9 @@
                     data:{},
                     success:function(data)
                     { 
-                        appliSelectedName[k] = data[0]['name'];
-                        if(appliSelectedName.length == appliSelectedId.length){
-                            innerApplicantsSelected();
+                        appliSelectedNameFromInterviews[k] = data[0]['name'];
+                        if(appliSelectedNameFromInterviews.length == appliSelectedIdFromInterviews.length){
+                            innerApplicantsSelectedFromInterviews();
                             document.getElementById('btnModelShow').click();
                             calendarCharge();
                         }
@@ -189,45 +212,81 @@
         }
     }
 
-    function innerApplicantsSelected(){
-        document.getElementById('applicantList').innerHTML = "";
-        var j = 0;
-        for(var i = 0; i < appliSelectedName.length; i++)
+    function innerApplicantsSelectedFromInterviews()
+    {
+        document.getElementById('hoursShow').classList.remove("show");
+        document.getElementById('applicantListFromInterviews').innerHTML = "";
+        let j = 0;
+        for(let i = 0; i < appliSelectedNameFromInterviews.length; i++)
         {
-            document.getElementById('applicantList').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[j] + " onclick='applicantSelected(this)' style='width:13vw;'><b>" + appliSelectedName[j] + "</b></li>";
+            document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedIdFromInterviews[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedNameFromInterviews[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
             j++;
         }
     }
 
-    function applicantSelected(data)
+    function applicantSelectedFromInterviews(data)
     {
-        var divActive = document.getElementById('applicantList');
-        var numActives = divActive.getElementsByClassName('applOnClick');
-
+        appliSelectedHtmlFromInterviews = data;
+        let divActive = document.getElementById('applicantListFromInterviews');
+        let numActives = divActive.getElementsByClassName('applOnClick');
+        document.getElementById('hoursShow').classList.remove("show");
         for(i = 0; i < numActives.length; i++)
         {
             numActives[i].classList.remove("active");
         }
         data.className += " active";
-        appliSelected = data.value;
+        appliSelectedFromInterviews = data.value;
     }
 
     function saveInterview()
     {
-        var selected = appliSelected;
-        var date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
+        let selected = appliSelectedFromInterviews;
+        let date = dateSelectedFromInterviews + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         $.ajax({
             dataType: "json",
             url:"/api/interviews",
             type:"POST",
-            data:{id_applicant:selected, id_event:eventSelectedId, date:date},
+            data:{id_applicant:selected, id_event:eventSelectedIdFromInterviews, date:date},
             success:function(data)
             {
-                document.getElementById('btnModelSuccess').click();
-                setTimeout(function() {document.getElementById('btnModelSuccess').click();},2000);
+                document.getElementById('hoursShow').classList.remove("show");
+                let tempModal = document.getElementById('modalSuccessMessage');
+                tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
+                tempModal.style.visibility = "visible" ;
+                appliSelectedHtmlFromInterviews.setAttribute("style", "visibility: hidden; position: absolute;");
+                setTimeout(function() {tempModal.style.visibility = "hidden";},2000);
+                appliSelectedFromInterviews = null;
             }
         });
     }
+
+
+
+    function getApplicantsSelectedFromTests(data)
+    {
+        let divActive = document.getElementById('modalTests');
+        let numActives = divActive.getElementsByClassName('btnModalTests');
+        for(i = 0; i < numActives.length; i++)
+        {
+            numActives[i].classList.remove("active");
+        }
+        data.className += " active";
+
+
+
+    }
+
+
+
+    $("#applicantListFromInterviews").on("click", "button", function(e) {
+        e.preventDefault();
+        $(this).parent().remove();
+        appliSelectedFromInterviews = null;
+    });
+
+    $("#btnCloseModalFromInterviews").on("click", function() {
+        location.reload();
+    });
 
 
 //-------CALENDAR-------//
@@ -267,43 +326,95 @@ function calendarCharge(){
                 selectHelper:true,
                 eventClick:function(event)
                 {
-                    eventSelectedId = event.id;
-                    var hourSelect = document.getElementById('hourSelectChange');
-                    var minSelect = document.getElementById('minSelectChange');
-
-                    minSelect.innerHTML = "<option>--</option>";
-
-                    var start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
-                    var date = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
-                    dateSelected = date;
-
-                    var hourStart = $.fullCalendar.formatDate(event.start, "HH");
-                    var minStart = $.fullCalendar.formatDate(event.start, "m");
-                    var hourEnd = $.fullCalendar.formatDate(event.end, "HH");
-                    var minEnd = $.fullCalendar.formatDate(event.end, "m");
-                    
-                    hourSelect.innerHTML = "<option>--</option>";
-                    document.getElementById('interSelected').innerHTML = "<b>" + event.title + "</b></br>" + start + " - " + end + "</br>" + date;
-                    
-                    if(minEnd < 45){
-                        hourEnd = hourEnd - 1;
+                    if(appliSelectedFromInterviews == null){
+                        let tempModal = document.getElementById('modalSuccessMessage');
+                        tempModal.innerHTML = "<h3 style='color:#f00'>Selecionar Primeiro o Candidato!</h3>";
+                        tempModal.style.visibility = "visible" ;
+                        setTimeout(function() {tempModal.style.visibility = "hidden";},2000);
                     }
-                    
-                    for(var i = hourStart; i <= hourEnd; i++)
-                            hourSelect.innerHTML += "<option>" + i + "</option>";
-
-                    hourSelect.addEventListener("click", function()
+                    else
                     {
+                        eventSelectedIdFromInterviews = event.id;
+                        let hourSelect = document.getElementById('hourSelectChange');
+                        let minSelect = document.getElementById('minSelectChange');
+
                         minSelect.innerHTML = "<option>--</option>";
 
-                        minStart = $.fullCalendar.formatDate(event.start, "m");
-                        minEnd = $.fullCalendar.formatDate(event.end, "m");
+                        let start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
+                        let end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
+                        let date = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+                        dateSelectedFromInterviews = date;
+
+                        let hourStart = $.fullCalendar.formatDate(event.start, "HH");
+                        let minStart = $.fullCalendar.formatDate(event.start, "m");
+                        let hourEnd = $.fullCalendar.formatDate(event.end, "HH");
+                        let minEnd = $.fullCalendar.formatDate(event.end, "m");
                         
-                        if (hourSelect.value == hourStart)
+                        hourSelect.innerHTML = "<option>--</option>";
+                        document.getElementById('interSelected').innerHTML = "<b>" + event.title + "</b></br>" + start + " - " + end + "</br>" + date;
+                        
+                        if(minEnd < 45){
+                            hourEnd = hourEnd - 1;
+                        }
+                        
+                        for(var i = hourStart; i <= hourEnd; i++)
+                            hourSelect.innerHTML += "<option>" + i + "</option>";
+
+                        hourSelect.addEventListener("click", function()
                         {
-                            if(hourSelect.value == hourEnd)
+                            minSelect.innerHTML = "<option>--</option>";
+                            minStart = $.fullCalendar.formatDate(event.start, "m");
+                            minEnd = $.fullCalendar.formatDate(event.end, "m");
+                            
+                            if (hourSelect.value == hourStart)
                             {
+                                if(hourSelect.value == hourEnd)
+                                {
+                                    if((minEnd - 45) < 0){
+                                        var time = 45 - minEnd;
+                                        minEnd = 60 - time;
+                                        minSelect.innerHTML = "<option>--</option>";
+                                        for(var i = minStart; i <= minEnd; i++)
+                                        {
+                                            if(i<10) 
+                                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                                            else
+                                                minSelect.innerHTML += "<option>" + i + "</option>";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        minSelect.innerHTML = "<option>--</option>";
+                                        if(minEnd == 0)
+                                        {
+                                            minSelect.innerHTML = "<option>00</option>";
+                                        }
+                                        else
+                                        {
+                                            for(var i = minStart; i <= minEnd; i++)
+                                            {
+                                                if(i<10) 
+                                                    minSelect.innerHTML += "<option>0" + i + "</option>";
+                                                else
+                                                    minSelect.innerHTML += "<option>" + i + "</option>";
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    for(var i = minStart; i <= 59; i++)
+                                    {
+                                        if(i<10) 
+                                            minSelect.innerHTML += "<option>0" + i + "</option>";
+                                        else
+                                            minSelect.innerHTML += "<option>" + i + "</option>";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                minStart = 0;
                                 if((minEnd - 45) < 0){
                                     var time = 45 - minEnd;
                                     minEnd = 60 - time;
@@ -318,86 +429,42 @@ function calendarCharge(){
                                 }
                                 else
                                 {
-                                    minSelect.innerHTML = "<option>--</option>";
-                                    if(minEnd == 0)
+                                    if(hourSelect.value == hourEnd)
                                     {
-                                        minSelect.innerHTML = "<option>00</option>";
-                                    }
-                                    else
-                                    {
-                                        for(var i = minStart; i <= minEnd; i++)
+                                        minEnd = minEnd - 45;
+                                        minSelect.innerHTML = "<option>--</option>";
+                                        if(minEnd == 0)
                                         {
-                                            if(i<10) 
-                                                minSelect.innerHTML += "<option>0" + i + "</option>";
-                                            else
-                                                minSelect.innerHTML += "<option>" + i + "</option>";
+                                            minSelect.innerHTML = "<option>00</option>";
                                         }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                for(var i = minStart; i <= 59; i++)
-                                {
-                                    if(i<10) 
-                                        minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    else
-                                        minSelect.innerHTML += "<option>" + i + "</option>";
-                                }
-                            }
-                        }
-                        else
-                        {
-                            minStart = 0;
-                            if((minEnd - 45) < 0){
-                                var time = 45 - minEnd;
-                                minEnd = 60 - time;
-                                minSelect.innerHTML = "<option>--</option>";
-                                for(var i = minStart; i <= minEnd; i++)
-                                {
-                                    if(i<10) 
-                                        minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    else
-                                        minSelect.innerHTML += "<option>" + i + "</option>";
-                                }
-                            }
-                            else
-                            {
-                                if(hourSelect.value == hourEnd)
-                                {
-                                    minEnd = minEnd - 45;
-                                    minSelect.innerHTML = "<option>--</option>";
-                                    if(minEnd == 0)
-                                    {
-                                        minSelect.innerHTML = "<option>00</option>";
-                                    }
-                                    else
-                                    {
-                                        for(var i = minStart; i <= minEnd; i++)
-                                        {
-                                            if(i<10) 
-                                                minSelect.innerHTML += "<option>0" + i + "</option>";
-                                            else
-                                                minSelect.innerHTML += "<option>" + i + "</option>";
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    for(var i = 0; i <= 59; i++)
-                                    {
-                                        if(i<10) 
-                                            minSelect.innerHTML += "<option>0" + i + "</option>";
                                         else
-                                            minSelect.innerHTML += "<option>" + i + "</option>";
+                                        {
+                                            for(var i = minStart; i <= minEnd; i++)
+                                            {
+                                                if(i<10) 
+                                                    minSelect.innerHTML += "<option>0" + i + "</option>";
+                                                else
+                                                    minSelect.innerHTML += "<option>" + i + "</option>";
+                                            }
+                                        }
                                     }
+                                    else
+                                    {
+                                        for(var i = 0; i <= 59; i++)
+                                        {
+                                            if(i<10) 
+                                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                                            else
+                                                minSelect.innerHTML += "<option>" + i + "</option>";
+                                        }
+                                    }
+                                    
                                 }
-                                
                             }
-                        }
-                    }); 
-                    document.getElementById('hoursShow').className += " show";
-                },
+                        }); 
+                        document.getElementById('hoursShow').className += " show";
+                    }
+                }, 
             });
         }
     });
