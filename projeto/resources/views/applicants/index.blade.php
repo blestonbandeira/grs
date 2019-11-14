@@ -95,7 +95,7 @@
         </div>
     </div>
 
-<input id="btnModelShow" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
+<input id="btnModelShowFromInterviews" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
 
 <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
@@ -109,13 +109,12 @@
                     </div>
                             
                     <div id="applicantListFromInterviews" class="col-md-2">
-                        <button id="btnModelSh" type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalHours">Large modal</button>
                     </div>
                     <div id="modalTime" class="col-md-10">
                         <div class="container" style="margin: 15px;">
                             <div id="calendar" style="width: 74vw!important;"></div>
                         </div>
-                        <div id="hoursShow" class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
+                        <div id="hoursShowFromInterviews" class="container-fluid modal fade modalHours" style="width: 55vw!important;" role="dialog">
                             <div class="row">
                                 <div>
                                     <ul id="interSelected">
@@ -154,7 +153,7 @@
 
 
 <!--MODAL PROVAS-->
-<input id="btnModelShow" type="button" onclick="" class="btn btn-primary" data-toggle="modal" data-target=".modalTests"/>
+<input id="btnModelShowFromTests" type="button" onclick="" class="btn btn-primary" data-toggle="modal" data-target=".modalTests"/>
 
 <div id="modalTests" class="modal fade modalTests" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
@@ -170,9 +169,15 @@
                     <button onclick="getApplicantsSelectedFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="1">Teste && Prova de Aferição</button>
                     <button onclick="getApplicantsSelectedFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="2">Teste && Inventário Vocacional</button>
                 </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                <div id="dayToTests" style="visibility:hidden;">
+                    <h4>Data: </h4>
+                    <input class="form-control input-border-width" type="datetime-local"/>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="" class="btn btn-primary">Marcar</button>
                 </div>
             </div>
         </div>
@@ -188,6 +193,8 @@
     let appliSelectedHtmlFromInterviews = "";
     let dateSelectedFromInterviews = "";
     let eventSelectedIdFromInterviews = 0;
+
+    let testTypeSelected = null;
 
     function getApplicantsSelectedFromInterviews()
     {
@@ -210,7 +217,7 @@
                         appliSelectedNameFromInterviews[k] = data[0]['name'];
                         if(appliSelectedNameFromInterviews.length == appliSelectedIdFromInterviews.length){
                             innerApplicantsSelectedFromInterviews();
-                            document.getElementById('btnModelShow').click();
+                            document.getElementById('btnModelShowFromInterviews').click();
                             calendarCharge();
                         }
                         k++;
@@ -223,7 +230,7 @@
 
     function innerApplicantsSelectedFromInterviews()
     {
-        document.getElementById('hoursShow').classList.remove("show");
+        document.getElementById('hoursShowFromInterviews').classList.remove("show");
         document.getElementById('applicantListFromInterviews').innerHTML = "";
         let j = 0;
         for(let i = 0; i < appliSelectedNameFromInterviews.length; i++)
@@ -238,7 +245,7 @@
         appliSelectedHtmlFromInterviews = data;
         let divActive = document.getElementById('applicantListFromInterviews');
         let numActives = divActive.getElementsByClassName('applOnClick');
-        document.getElementById('hoursShow').classList.remove("show");
+        document.getElementById('hoursShowFromInterviews').classList.remove("show");
         for(i = 0; i < numActives.length; i++)
         {
             numActives[i].classList.remove("active");
@@ -253,12 +260,12 @@
         let date = dateSelectedFromInterviews + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         $.ajax({
             dataType: "json",
-            url:"/api/interviews",
+            url:"/api/events",
             type:"POST",
             data:{id_applicant:selected, id_event:eventSelectedIdFromInterviews, date:date},
             success:function(data)
             {
-                document.getElementById('hoursShow').classList.remove("show");
+                document.getElementById('hoursShowFromInterviews').classList.remove("show");
                 let tempModal = document.getElementById('modalSuccessMessage');
                 tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
                 tempModal.style.visibility = "visible" ;
@@ -280,9 +287,10 @@
             numActives[i].classList.remove("active");
         }
         data.className += " active";
+        testTypeSelected = data.value;
 
-
-
+        let tempModal = document.getElementById('dayToTests');
+        tempModal.style.visibility = "visible" ;
     }
 
 
@@ -471,7 +479,7 @@ function calendarCharge(){
                                 }
                             }
                         }); 
-                        document.getElementById('hoursShow').className += " show";
+                        document.getElementById('hoursShowFromInterviews').className += " show";
                     }
                 }, 
             });
