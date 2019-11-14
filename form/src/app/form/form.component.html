@@ -1,18 +1,15 @@
 <div class="jumbotron"> 
   <h1>Guião de Entrevista</h1>
-
 </div>
 
-<div class="container-fluid">
-  
+<div class="container-fluid">  
     <div class="d-flex flex-row-reverse bd-highlight">
       <div class="idForm ">
         <label for="idForm">Número único do Formulário:</label>
         <br/>
         <label for="idForm">1{{ id_form }}</label>
       </div>
- 
-    
+     
       <div class="idForm">
         <label for="idForm">Número único da Entrevista:</label>
         <br/>
@@ -30,7 +27,7 @@
   </div>
 
   <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="interviewDate">Data da entrevista:</label>
           <input type="date" class="form-control" id="interviewDate">
@@ -44,6 +41,7 @@
     <h2>Perfil do candidato</h2>
 </div>
 
+<form method="POST" action="form.component.html">
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -451,16 +449,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr class="text-center">
         <td>          
           <label class="radio-inline">
-            <input type="radio" name="result" checked>1
+            <input type="radio" name="result" checked> 1
           </label>          
           <label  class="radio-inline">
-            <input type="radio" name="result">2
+            <input type="radio" name="result"> 2
           </label>
           <label  class="radio-inline">
-            <input type="radio" name="result">3
+            <input type="radio" name="result"> 3
           </label>
         </td>
       <td>
@@ -477,6 +475,9 @@
     </tbody>
   </table>
 </div>
+
+<input type="submit" value="Gravar">
+</form>
 
 <div class="container-fluid">
   <table class="table table-striped">

@@ -21,18 +21,20 @@
 
 <div class="content">
     <div class="container-fluid">
-        @foreach ($rsclasses as $rsclass)
+       
             
         <div class="row">
             <div class="col-md-12">
                 <div class="accordion" id="rsclasses">
+                @foreach ($rsclasses as $rsclass)
                     <div class="card">
-                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsclass->name }}" aria-expanded="true" aria-controls="collapsePlusOne">
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsclass->name }}" aria-expanded="true" aria-controls="{{ $rsclass->name }}">
                             <h4 class="card-title">{{ $rsclass->name }}</h4>
                                 {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
-                            </div>
-                            <div class="card-body table-responsive">
-                                <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
+                        </div>
+
+                        <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
+                            <div class="card-body table-responsive">                                
                                 <table class="table table-hover">
                                     <thead class="text-info">
                                         <th></th>
@@ -86,10 +88,11 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-        @endforeach
+       
         <div class="pagination-sm float-right">
             {{ $rsclasses->links() }}
         </div>
