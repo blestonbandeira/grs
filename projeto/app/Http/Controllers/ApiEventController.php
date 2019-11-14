@@ -92,17 +92,15 @@ class ApiEventController extends Controller
 
     public function store(Request $request)
     {
-        $eventTemp = Event::find($request->id_event);
-
-        if($eventTemp->id_event_type == 1)
+        $appliArray = $request->id_applicants;
+        $categoryTemp = Category::select('id')->where('name', '=', 'Candidatura Em Processo R&S')->get();
+        if($request->id_event_type == 1)
         {//INTERVIEWS
-            $timeAddEnd = 45;
-            
+            $eventTemp = Event::find($request->id_event);
+            $eventTypeTemp = EventType::find($request->id_event_type);
             $id_user = $eventTemp->id_user;
             $userTemp = User::find($id_user);
-            $appliTemp = Applicant::find($request->id_applicant);
-            $categoryTemp = Category::select('id')->where('name', '=', 'Candidatura Em Processo R&S')->get();
-    
+
             $interview = new Interview;
             $interview->id_applicant = $request->id_applicant;
             $time = Carbon::parse($request->date);
@@ -115,41 +113,78 @@ class ApiEventController extends Controller
             $interview_interviewer->id_interview = $interCreated->id;
             $interview_interviewer->id_user = $id_user;
             $interview_interviewer->save();
-        }
-        else if($eventTemp->id_event_type == 2)
-        {//TESTS && PROVAS
 
-        }
-        else if($eventTemp->id_event_type == 3)
-        {//TESTS && INVENTORIES
+            $startEventTemp = Carbon::parse($request->date);
+            $endEventTemp = Carbon::parse($request->date)->addMinutes(45);
 
+            $appliTemp = Applicant::find($request->id_applicant);
+            $appliTemp->id_category = $categoryTemp[0]["id"];
+            $appliTemp->save();
         }
-        else if($eventTemp->id_event_type == 4)
+        else if($request->id_event_type == 2 || $request->id_event_type == 3)
+        {//PROVAS && INVENTORIES
+            $startEventTemp = Carbon::parse($request->date);
+            $endEventTemp = Carbon::parse($request->date)->addMinutes(120);
+            $id_user = $request->id_user;
+            $userTemp = User::find($id_user);
+            $eventTypeTemp = EventType::find($request->id_event_type);
+        }
+        else if($request->id_event_type == 4)
         {//AVAILABILITIES
-
+            $id_user = $request->id_user;
+            $userTemp = User::find($id_user);
+            $eventTypeTemp = EventType::find($request->id_event_type);
+            $startEventTemp = Carbon::parse($request->start_event);
+            $endEventTemp = Carbon::parse($request->end_event);
         }
-        
 
         $event = new Event;
-        $event->id_user = $request->id_user;
-        $event->title = "User: " . $userTemp[0]["name"] . "<br/>Tipo: " . $eventTemp[0]["name"];
+        $event->id_user = $id_user;
+        $event->title = "User: " . $userTemp->name . " Tipo: " . $eventTypeTemp->name;
         $event->id_event_type = $request->id_event_type;
-        $event->start_event = Carbon::parse($time);
-        $event->end_event = Carbon::parse($time)->addMinutes($timeAddEnd);
+        $event->start_event = $startEventTemp;
+        $event->end_event = $endEventTemp;
         $event->save();
-        
         
         $eventCreated = Event::where('id_user', '=', $event->id_user, 'and', 'id_event_type', '=', $event->id_event_type)->first();
     
-        $appli_event = new ApplicantEvent;
-        $appli_event->id_applicant = $request->id_applicant;
-        $appli_event->id_event = $eventCreated->id;
-        $appli_event->save();
+        if($request->id_event_type == 2 || $request->id_event_type == 3)
+        {
+            for ($i = 0; $i < 2; $i++){
+                $appliTemp = Applicant::find($appliArray[$i]["id"]);
+                $appliTemp->id_category = $categoryTemp[0]["id"];
+                $appliTemp->save();
 
-        $appliTemp->id_category = $categoryTemp[0]["id"];
-        $appliTemp->save();
+                $appli_event = new ApplicantEvent;
+                $appli_event->id_applicant = $appliArray[$i]["id"];
+                $appli_event->id_event = $eventCreated->id;
+                $appli_event->save();
+            }
+            // foreach($appliArray as $applicant)
+            // {
+            //     $appliTemp = Applicant::find($applicant);
+            //     $appliTemp->id_category = $categoryTemp[0]["id"];
+            //     $appliTemp->save();
 
-        return response($appliTemp, 201);
+            //     $appli_event = new ApplicantEvent;
+            //     $appli_event->id_applicant = $applicant;
+            //     $appli_event->id_event = $eventCreated->id;
+            //     $appli_event->save();
+            // }
+        }
+        else
+        {
+            $appliTemp = Applicant::find($applicant);
+            $appliTemp->id_category = $categoryTemp[0]["id"];
+            $appliTemp->save();
+            
+            $appli_event = new ApplicantEvent;
+            $appli_event->id_applicant = $request->id_applicant;
+            $appli_event->id_event = $eventCreated->id;
+            $appli_event->save();
+        }
+
+        return response($event, 201);
         // $userTemp = User::where('id','=', $request->id_user)->get();
         // $eventTemp = EventType::where('id','=', $request->id_event_type)->get();
     }
