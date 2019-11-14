@@ -30,10 +30,12 @@ class CreateApplicantsTable extends Migration
             $table->bigInteger('id_unemployementSituation')->unsigned()->nullable();
             $table->foreign('id_unemployementSituation')->references('id')->on('unemployement_situations')->onDelete('cascade')->onUpdate('cascade');
             $table->string('cancellationDate')->nullable();
-            $table->string('cancellationReason')->nullable();
+            $table->bigInteger('id_cancellation_reason')->unsigned()->nullable();
+            $table->foreign('id_cancellation_reason')->references('id')->on('cancellation_reasons');
             $table->bigInteger('id_education')->unsigned()->nullable();
             $table->foreign('id_education')->references('id')->on('education')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('previousSchool')->nullable();
+            $table->bigInteger('id_provenance_school')->unsigned()->nullable();
+            $table->foreign('id_provenance_school')->references('id')->on('provenance_schools');
             $table->string('birthtown')->nullable();
             $table->string('nationality')->nullable();
             $table->string('civilState')->nullable();

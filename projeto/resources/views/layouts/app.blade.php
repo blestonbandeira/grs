@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/check.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('img/check.png') }}">
+  <link rel="icon" href="{{ asset('img/check.png') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     GRS
@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
   <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' >
   <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'  />
-  <link rel="stylesheet" href= "{{ asset('css/core/custom.css') }}" />
   <link rel="stylesheet" href= "{{ asset('css/daygrid/custom.css') }}"  />
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
@@ -69,8 +68,7 @@
 
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  {{-- <a class="dropdown-item" href="#">Settings</a> --}}
+                  <a class="dropdown-item" href="#">Profile</a>                 
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                       onclick="event.preventDefault();

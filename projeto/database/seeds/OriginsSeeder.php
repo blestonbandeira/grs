@@ -13,15 +13,43 @@ class OriginsSeeder extends Seeder
     public function run()
     {
         $origin = new Origin;
-        $origin->name = "Facebook";
+        $origin->name = "Familiares/Amigos";
         $origin->save();
 
         $origin = new Origin;
-        $origin->name = "Instagram";
+        $origin->name = "Internet/Facebook";
         $origin->save();
 
         $origin = new Origin;
-        $origin->name = "Google";
+        $origin->name = "Escola Anterior - Feira das Profissões";
+        $origin->save();
+
+        $origin = new Origin;
+        $origin->name = "Escola Anterior - Formador(a)/Professor(a)";
+        $origin->save();
+
+        $origin = new Origin;
+        $origin->name = "Escola Anterior - Psicólogo(a)";
+        $origin->save();
+
+        $origin = new Origin;
+        $origin->name = "ATEC - Formando(a)/Ex-Formando(a)";
+        $origin->save();
+
+        $origin = new Origin;
+        $origin->name = "ATEC - Feira das Profissões / Open Day";
+        $origin->save();
+
+        $origin = new Origin;
+        $origin->name = "Conclusão Nível IV Na ATEC";
+        $origin->save();
+
+        $origin = new Origin;
+        $origin->name = "Qualifica / Futurália / Exponor";
+        $origin->save();
+
+        $origin = new Origin;
+        $origin->name = "Sessão de Divulgação IEFP";
         $origin->save();
 
         $origin = new Origin;
@@ -33,27 +61,17 @@ class OriginsSeeder extends Seeder
         $origin->save();
 
         $origin = new Origin;
-        $origin->name = "Família";
+        $origin->name = "Flyer";
         $origin->save();
 
         $origin = new Origin;
-        $origin->name = "Amigos";
+        $origin->name = "STCP";
         $origin->save();
 
         $origin = new Origin;
-        $origin->name = "Escola";
+        $origin->name = "Outro";
         $origin->save();
 
-        $origin = new Origin;
-        $origin->name = "Qualifica / Futurália";
-        $origin->save();
-
-        $origin = new Origin;
-        $origin->name = "Feira das Profissões / Open Day";
-        $origin->save();
-
-        $origin = new Origin;
-        $origin->name = "Sessão de Divulgação IEFP";
-        $origin->save();
+      
     }
 }

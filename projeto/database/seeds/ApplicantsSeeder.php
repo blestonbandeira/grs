@@ -10,6 +10,7 @@ use App\Education;
 use App\Gender;
 use App\RegistrationState;
 use App\Origin;
+use App\ProvenanceSchool;
 use App\RsClass;
 use App\UnemployementSituation;
 
@@ -35,35 +36,34 @@ class ApplicantsSeeder extends Seeder
         $registrationStates = RegistrationState::select('id')->where('name', '=', 'Activo')->get();
         $applicant->id_registrationState = $registrationStates[0]["id"];
         $applicant->applicationDate = '2019-11-05';
-        $origins = Origin::select('id')->where('name', '=', 'Facebook')->get();
+        $origins = Origin::select('id')->where('name', '=', 'Internet/Facebook')->get();
         $applicant->id_origin = $origins[0]["id"];
-        $unemployementSituations = UnemployementSituation::select('id')->where('name', '=', 'Desempregada/o')->get();
+        $unemployementSituations = UnemployementSituation::select('id')->where('name', '=', 'Desempregado/a')->get();
         $applicant->id_unemployementSituation = $unemployementSituations[0]["id"];
         $educations = Education::select('id')->where('name', '=', '12º Ano')->get();
         $applicant->id_education = $educations[0]["id"];
-        $applicant->previousSchool = 'Lyceu Camões';
         $applicant->phoneNumber = '956647898';
         $districts = District::select('id')->where('name', '=', 'Aveiro')->get();
         $applicant->id_district = $districts[0]["id"];
         $applicant->parish = 'Guifães';
         $applicant->town = 'Aveiro';
         $applicant->email = 'applicant@m.pt';        
-        $firstOptionCourses = CourseName::select('id')->where('name', '=', 'Tecnologias e Programação de Sistemas de Informação Porto')->get();
+        $firstOptionCourses = CourseName::select('id')->where('name', '=', 'Técnico de SOLDadura')->get();
         $applicant->id_firstOptionCourse = $firstOptionCourses[0]["id"];
-        $secondOptionCourses = CourseName::select('id')->where('name', '=', 'Gestão de Redes e Sistemas Informáticos Porto')->get();
+        $secondOptionCourses = CourseName::select('id')->where('name', '=', 'Mecatrónica')->get();
         if ($secondOptionCourses != "") {
             $applicant->id_secondOptionCourse = $secondOptionCourses[0]["id"];
         }
         $rsClasses = RsClass::select('id')->where('id_courseName', '=', $applicant->id_firstOptionCourse)->get();
         $applicant->id_rsClass = $rsClasses[0]["id"];
         $applicant->apt = false;
-        $categories = Category::select('id')->where('name', '=', 'Em R&S')->get();
+        $categories = Category::select('id')->where('name', '=', 'R&S Completo')->get();
         $applicant->id_category = $categories[0]["id"];
         $applicant->save();
 
         $applicant = new Applicant;
         $applicant->name = "SM";
-        $nif = '227550404';
+        $nif = '235383830';
         if (validaNIF($nif)) {
             $applicant->nif = $nif;
         }        
@@ -73,32 +73,31 @@ class ApplicantsSeeder extends Seeder
         $registrationStates = RegistrationState::select('id')->where('name', '=', 'Activo')->get();
         $applicant->id_registrationState = $registrationStates[0]["id"];
         $applicant->applicationDate = '2019-11-07';
-        $origins = Origin::select('id')->where('name', '=', 'Instagram')->get();
+        $origins = Origin::select('id')->where('name', '=', 'Escola Anterior - Feira das Profissões')->get();
         $applicant->id_origin = $origins[0]["id"];
-        $unemployementSituations = UnemployementSituation::select('id')->where('name', '=', 'Empregada/o em part-time')->get();
+        $unemployementSituations = UnemployementSituation::select('id')->where('name', '=', 'Empregado/a')->get();
         $applicant->id_unemployementSituation = $unemployementSituations[0]["id"];
-        $educations = Education::select('id')->where('name', '=', '12º Ano')->get();
+        $educations = Education::select('id')->where('name', '=', '12º Ano incompleto')->get();
         $applicant->id_education = $educations[0]["id"];
-        $applicant->previousSchool = 'Escola Profissional Bento de Jesus Caraça';
         $applicant->phoneNumber = '978975123';
         $districts = District::select('id')->where('name', '=', 'Beja')->get();
         $applicant->id_district = $districts[0]["id"];
         $applicant->parish = 'Beja';
         $applicant->town = 'Beja';
         $applicant->email = 'sergio@m.pt';        
-        $firstOptionCourses = CourseName::select('id')->where('name', '=', 'Gestão de Redes e Sistemas Informáticos Porto')->get();
+        $firstOptionCourses = CourseName::select('id')->where('name', '=', 'Mecatrónica Automóvel, Planeamento e Controlo de Processos')->get();
         $applicant->id_firstOptionCourse = $firstOptionCourses[0]["id"];
-        $secondOptionCourses = CourseName::select('id')->where('name', '=', 'Tecnologias e Programação de Sistemas de Informação Porto')->get();
+        $secondOptionCourses = CourseName::select('id')->where('name', '=', 'CIBERsegurança')->get();
         if ($secondOptionCourses != "") {
             $applicant->id_secondOptionCourse = $secondOptionCourses[0]["id"];
         }
         $rsClasses = RsClass::select('id')->where('id_courseName', '=', $applicant->id_firstOptionCourse)->get();
         $applicant->id_rsClass = $rsClasses[0]["id"];
         $applicant->apt = false;
-        $categories = Category::select('id')->where('name', '=', 'Para R&S')->get();
+        $categories = Category::select('id')->where('name', '=', 'Candidatura Para R&S')->get();
         $applicant->id_category = $categories[0]["id"];
         $applicant->save();
 
-//jquery file upload
+
     }
 }

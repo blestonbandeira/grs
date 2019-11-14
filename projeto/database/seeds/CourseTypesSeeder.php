@@ -20,5 +20,9 @@ class CourseTypesSeeder extends Seeder
         $courseType->name = "Especialização Tecnológica";
         $courseType->save();
 
+        $courseType = new CourseType;
+        $courseType->name = "Educação e Formação de Adultos";
+        $courseType->save();
+
     }
 }
