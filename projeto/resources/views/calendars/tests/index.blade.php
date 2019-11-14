@@ -69,7 +69,7 @@
                   var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                   var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                   document.getElementById('btnModalShow').click();       
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Insira o nome:</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div id="modalBodyParagraph" class="modal-body"><p><input id="inputTitleEvents" class="form-control" type="text" placeholder="Titulo do Evento"/></p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Criar Teste && Prova de Aferição?</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
                 },
                 eventResize:function(event)
                 {
@@ -140,23 +140,19 @@
 <script>
   function createEvents()
   {
-    var title = document.getElementById('inputTitleEvents').value;
-    if(title)
-    {
-        var start = document.getElementById('startEvents').value;
-        var end = document.getElementById('endEvents').value;
+    var start = document.getElementById('startEvents').value;
+    var end = document.getElementById('endEvents').value;
 
-        $.ajax({
-            url:"/api/events",
-            type:"POST",
-            data:{id_user:{{ Auth::id() }}, title:title, id_event_type:2, start_event:start, end_event:end},
-            success:function(data)
-            {
-              document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 
-              setTimeout(function() {location.reload();},2000);
-            }
-        })
-    }
+    $.ajax({
+        url:"/api/events",
+        type:"POST",
+        data:{id_user:{{ Auth::id() }}, id_event_type:2, start_event:start, end_event:end},
+        success:function(data)
+        {
+          document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 
+          setTimeout(function() {location.reload();},2000);
+        }
+    })
   }
   function deleteEvents(){
     $.ajax({

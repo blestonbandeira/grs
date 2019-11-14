@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\UnemployementSituation;
+use App\InterviewInterviewer;
+use App\ApplicantEvent;
+use App\EventType;
+use App\Interview;
+use Carbon\Carbon;
+use App\Applicant;
+use App\Category;
+use App\RsClass;
 use App\Event;
 use App\User;
-use Carbon\Carbon;
 use DateTime;
 use Auth;
-use App\UnemployementSituation;
-use App\RsClass;
-use App\EventType;
 
 class ApiEventController extends Controller
 {
@@ -87,19 +92,66 @@ class ApiEventController extends Controller
 
     public function store(Request $request)
     {
-        $userTemp = User::where('id','=', $request->id_user)->get();
-        $eventTemp = EventType::where('id','=', $request->id_event_type)->get();
+        $eventTemp = Event::find($request->id_event);
+
+        if($eventTemp->id_event_type == 1)
+        {//INTERVIEWS
+            $timeAddEnd = 45;
+            
+            $id_user = $eventTemp->id_user;
+            $userTemp = User::find($id_user);
+            $appliTemp = Applicant::find($request->id_applicant);
+            $categoryTemp = Category::select('id')->where('name', '=', 'Candidatura Em Processo R&S')->get();
+    
+            $interview = new Interview;
+            $interview->id_applicant = $request->id_applicant;
+            $time = Carbon::parse($request->date);
+            $interview->date = $time;
+            $interview->save();
+    
+            $interCreated = Interview::where('id_applicant', '=', $interview->id_applicant, 'and', 'date', '=', $time)->first();
+    
+            $interview_interviewer = new InterviewInterviewer;
+            $interview_interviewer->id_interview = $interCreated->id;
+            $interview_interviewer->id_user = $id_user;
+            $interview_interviewer->save();
+        }
+        else if($eventTemp->id_event_type == 2)
+        {//TESTS && PROVAS
+
+        }
+        else if($eventTemp->id_event_type == 3)
+        {//TESTS && INVENTORIES
+
+        }
+        else if($eventTemp->id_event_type == 4)
+        {//AVAILABILITIES
+
+        }
+        
+
         $event = new Event;
         $event->id_user = $request->id_user;
-        $event->title = $request->title . " User: " . $userTemp[0]["name"] . "/ Tipo: " . $eventTemp[0]["name"];
+        $event->title = "User: " . $userTemp[0]["name"] . "<br/>Tipo: " . $eventTemp[0]["name"];
         $event->id_event_type = $request->id_event_type;
-        $time = Carbon::parse($request->start_event);
-        $event->start_event = $time;
-        $time = Carbon::parse($request->end_event);
-        $event->end_event = $time;
+        $event->start_event = Carbon::parse($time);
+        $event->end_event = Carbon::parse($time)->addMinutes($timeAddEnd);
         $event->save();
+        
+        
+        $eventCreated = Event::where('id_user', '=', $event->id_user, 'and', 'id_event_type', '=', $event->id_event_type)->first();
+    
+        $appli_event = new ApplicantEvent;
+        $appli_event->id_applicant = $request->id_applicant;
+        $appli_event->id_event = $eventCreated->id;
+        $appli_event->save();
 
-        return response($event, 201);
+        $appliTemp->id_category = $categoryTemp[0]["id"];
+        $appliTemp->save();
+
+        return response($appliTemp, 201);
+        // $userTemp = User::where('id','=', $request->id_user)->get();
+        // $eventTemp = EventType::where('id','=', $request->id_event_type)->get();
     }
 
     public function show(Event $event)

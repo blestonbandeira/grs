@@ -53,13 +53,13 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label class="bmd-label-floating">N. CC</label>
-                    <input type="text" class="form-control input-border-width">
+                    <input type="text" class="form-control input-border-width" name="identityCard">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label class="bmd-label-floating bg-white p-1">Data de Validade</label>
-                    <input type="date" class="form-control input-border-width">
+                    <input type="date" class="form-control input-border-width" name="ccExpirationDate">
                   </div>
                 </div>
               </div>
@@ -139,7 +139,7 @@
                   </div>
                 </div>
               </div>
-              <a class="text-right">Preenchimento automático</a>
+              <a class="float-right text-info" href="#">Preenchimento automático</a>
             </div>
           </div>
         </div>
@@ -151,14 +151,37 @@
               </div>
             </div>
             <div class="card-body">
+
               <div class="form-group">
                 <label class="bmd-label-floating">Genero</label>
+                <input list="genero" class="form-control input-border-width" name="id_gender">
                 <datalist id="genero">
-                  <option value="Feminino">
-                  <option value="Masculino">
-                  <option value="GR09.17">
+                  {{-- @if (count($genders) > 0 )
+                      @foreach($genders as $gender)
+                          <option value="{{ $gender->name }}" name="{{ $gender->id }}">
+                              {{ $gender->name }}
+                          </option>
+                      @endforeach
+                  @else
+                  <option>
+                    --Não existem generos registados na plataforma--
+                  </option>
+                  @endif --}}
+
+                  <option>1</option>
+                  <option>2</option>
                 </datalist>
-                <input list="genero" class="form-control input-border-width">
+              </div>
+
+              <div class="form-group">
+                <label class="bmd-label-floating">Estado Civil</label>
+                <datalist id="civil">
+                  <option value="Solteiro/a">
+                  <option value="Casado/a">
+                  <option value="Viuvo/a">
+                  <option value="Outro">
+                </datalist>
+                <input list="civil" class="form-control input-border-width">
               </div>
               <div class="form-group">
                 <label class="bmd-label-floating">Situação Face ao Emprego</label>

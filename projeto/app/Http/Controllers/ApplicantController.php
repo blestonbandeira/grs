@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Applicant;
+use App\Gender;
+use App\RsClass;
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
@@ -15,9 +17,10 @@ class ApplicantController extends Controller
     public function index()
     {
         $applicants = Applicant::all();
+        $rsclasses = RsClass::simplePaginate(5);
+        
         return view('applicants.index')
-        ->with(compact('applicants'));
-
+        ->with(compact('applicants', 'rsclasses'));
     }
 
     /**
@@ -27,8 +30,9 @@ class ApplicantController extends Controller
      */
     public function create()
     {
+        $genders = Gender::all();
         return view('applicants.create')
-        ->with(compact('applicants'));
+        ->with(compact('applicants', 'genders'));
     }
 
     /**
