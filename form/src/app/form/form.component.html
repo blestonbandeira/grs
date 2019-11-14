@@ -1,0 +1,512 @@
+<div class="jumbotron"> 
+  <h1>Guião de Entrevista</h1>
+
+</div>
+
+<div class="container-fluid">
+  
+    <div class="d-flex flex-row-reverse bd-highlight">
+      <div class="idForm ">
+        <label for="idForm">Número único do Formulário:</label>
+        <br/>
+        <label for="idForm">1{{ id_form }}</label>
+      </div>
+ 
+    
+      <div class="idForm">
+        <label for="idForm">Número único da Entrevista:</label>
+        <br/>
+        <label for="idForm">1{{ id_interview}}</label>
+      </div>
+    </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="idInterviewer">Entrevista realizada por:</label>
+        <input type="name" class="form-control" id="idInterviewer" placeholder="Nome do Formador que realiza a entrevista">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-2">
+        <div class="form-group">
+          <label for="interviewDate">Data da entrevista:</label>
+          <input type="date" class="form-control" id="interviewDate">
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<div class="page-header"> 
+    <h2>Perfil do candidato</h2>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="applicantName">Nome completo do Candidato:</label>
+          <input type="name" class="form-control" id="applicantName" placeholder="Nome completo do candidato">
+        </div>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="firstOptionCourse">Curso (Primeira Opção):</label>
+            <input type="name" class="form-control" id="firstOptionCourse" placeholder="Curso a que o candidato se inscreveu como primeira opção">
+          </div>
+        </div>
+      </div>
+
+      <hr/>
+      <br/>
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+          <p class="dica">
+            Antes de iniciar a entrevista, verifique as respostas do questionário relativas aos conhecimentos técnicos da área, ou a experiência.
+          </p>
+        </div>
+      </div>
+
+      <br/>
+      <hr/>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="motivation">
+              Porque razão quer vir frequentar um curso de formação profissional e porque é que escolheu a ATEC? 
+              <br/>
+              <span class="dica">(motivação e interesse pela área)</span>
+            </label>
+            <input type="name" class="form-control" id="motivation">
+          </div>
+        </div>
+      </div>
+
+      <br/>
+      <hr/>
+
+      <h5>Notas para o entrevistador - NÃO ESQUECER</h5>
+
+      
+      <ul>
+        <li><h5>Apenas para <strong>Aprendizagem:</strong></h5>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="preferencesAprendizagem">
+                      Analisar o relatório IPPR para identificar preferências - <strong>validar estas preferências</strong> com o candidato 
+                      <br/>
+                    </label>
+                    <input type="name" class="form-control" id="preferencesAprendizagem">
+                  </div>
+                </div>
+            </div>
+        </li>
+        <li><h5>Para <strong>TODAS</strong> as modalidades de formação</h5>
+          <span class="dica">(usar as brochuras da FP APZ e CETs)</span>
+          <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="preferencesTodos">Validar motivações e interesses - <strong>validar 1ª e 2ª opções </strong>da ficha de inscrição                 
+                  </label>
+                  <input type="name" class="form-control" id="preferencesTodos">
+                </div>
+              </div>
+            </div>
+        </li>
+      </ul>
+
+      <br/>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="objectives">Que percurso pensa fazer após o curso? Como se vê daqui a 5 anos? 
+              <br/>
+              <span class="dica">(ojectivos de vida)</span>
+            </label>
+            <input type="name" class="form-control" id="objectives">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="description">
+              Fale um pouco sobre si / Como se descreve a si próprio? / Quais os seus pontos fortes e menos fortes?  
+            </label>
+            <input type="name" class="form-control" id="description">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="rules">
+              O que pensa sobre o cumprimento de horários e regras?
+              <br/>
+              <span class="dica">(dar a conhecer o horário do curso e explorar em conformidade as rotinas diárias necessárias)</span>    
+            </label>
+            <input type="name" class="form-control" id="rules">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="family">
+              Com quem vive?
+              <br/>
+              <span class="dica">(averiguar estrutura familiar)</span>    
+            </label>
+            <input type="name" class="form-control" id="family">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="familyUnemployement">
+              <strong> (Não aplicável para APZ)</strong>
+              Tem algum membro do agregado familiar desempregado?
+              <br/>
+              <span class="dica">(saber que condições tem o candidato para permanecer no curso até à sua conclusão)</span>    
+            </label>
+            <input type="name" class="form-control" id="familyUnemployement">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="hobbies">             
+              Como ocupa os seus tempos livres?
+              <br/>
+              <span class="dica">(alguma actividade relacionada com a área de motivação?)</span>    
+            </label>
+            <input type="name" class="form-control" id="hobbies">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="reasons">             
+              Enumere 3 razões que façam de si o candidato ideal para ser formando da ATEC
+            </label>
+            <input type="name" class="form-control" id="reasons">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="page-header">
+  <h4>Observações durante a entrevista </h4>
+</div>
+<div class="container-fluid">
+ 
+  
+  <div class="row">
+    <div class="col-md-12">     
+      <table class="table">                
+        <thead>
+          <tr>
+            <th scope="col">Critérios</th>
+            <th scope="col">Desadequado</th>
+            <th scope="col">Adequado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Apresentação Geral</th>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="presentation" checked>1</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="presentation">2</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="presentation">3</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="presentation">4</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="presentation">5</label>
+              </div>
+            </td>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="presentation" checked>6</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="presentation">7</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="presentation">8</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="presentation">9</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="presentation">10</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Postura face à entrevista/entrevistador</th>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="posture" checked>1</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="posture">2</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="posture">3</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="posture">4</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="posture">5</label>
+              </div>
+            </td>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="posture" checked>6</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="posture">7</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="posture">8</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="posture">9</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="posture">10</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Hesitações/Pausas</th>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="pauses" checked>1</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="pauses">2</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="pauses">3</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="pauses">4</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="pauses">5</label>
+              </div>
+            </td>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="pauses" checked>6</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="pauses">7</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="pauses">8</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="pauses">9</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="pauses">10</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Discurso lógico</th>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="speech" checked>1</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="speech">2</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="speech">3</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="speech">4</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="speech">5</label>
+              </div>
+            </td>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="speech" checked>6</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="speech">7</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="speech">8</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="speech">9</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="speech">10</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Compreensão das questões colocadas</th>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="understanding" checked>1</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="understanding">2</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="understanding">3</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="understanding">4</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="understanding">5</label>
+              </div>
+            </td>
+            <td>
+              <div class="radio">
+                <label><input type="radio" name="understanding" checked>6</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="understanding">7</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="understanding">8</label>
+              </div>
+              <div class="radio">
+                  <label><input type="radio" name="understanding">9</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="understanding">10</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="page-header">
+  <h4>Observações gerais sobre o candidato</h4>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">               
+        <textarea class="form-control rounded-0" id="observations" rows="10"></textarea>
+      </div>            
+    </div>
+  </div>
+</div>
+
+  <div class="page-header">
+    <h4>Resultado da entrevista</h4>
+    <span class="dica">(Para os candidatos <strong>Aceites</strong>, avaliar de acordo com a escala (de 1 a 3))</span>
+  </div>
+ 
+<br/>
+<div class="container-fluid">
+  <table class="table">                
+    <thead>
+      <tr>
+        <th scope="col">Aceite</th>
+        <th scope="col">Aceite com Reservas</th>
+        <th scope="col">Não Aceite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>          
+          <label class="radio-inline">
+            <input type="radio" name="result" checked>1
+          </label>          
+          <label  class="radio-inline">
+            <input type="radio" name="result">2
+          </label>
+          <label  class="radio-inline">
+            <input type="radio" name="result">3
+          </label>
+        </td>
+      <td>
+          <label  class="radio-inline">
+              <input type="radio" name="result">
+            </label>
+      </td>
+      <td>
+          <label  class="radio-inline">
+              <input type="radio" name="result">
+            </label>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">1 - Razoável</th>
+        <th scope="col">2 - Bom</th>
+        <th scope="col">3 - Muito Bom</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th colspan=3 scope="row">Motivação e interesse pela área pretendida</th>        
+      </tr>
+      <tr>
+        <th colspan=3 scope="row">Experiência na área ou conhecimentos técnicos da mesma</th>
+      </tr>
+      <tr>
+        <th colspan=3 scope="row">Objectivos de vida bem delineados</th>
+      </tr>
+      <tr>
+        <th colspan=3 scope="row">Persistência para alcançar a meta pretendida</th>
+      </tr>
+      <tr>
+        <th colspan=3 scope="row">Capacidades de comunicação - discurso lógico e coerente</th>
+      </tr>
+      <tr>
+        <th colspan=3 scope="row">Competências de relacionamento interpessoal</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

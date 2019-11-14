@@ -13,11 +13,11 @@ class ClassStatesSeeder extends Seeder
     public function run()
     {
         $classState = new ClassState;
-        $classState->name = "Activo";
+        $classState->name = "Turma Iniciada";
         $classState->save();
 
         $classState = new ClassState;
-        $classState->name = "Inactivo";
+        $classState->name = "Turma Cancelada";
         $classState->save();
     }
 }

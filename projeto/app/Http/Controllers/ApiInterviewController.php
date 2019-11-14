@@ -45,7 +45,7 @@ class ApiInterviewController extends Controller
         $event = new Event;
         $event->id_user = $request->id_user;
         $event->title = "antónio" ; 
-        $event->type = 1;
+        $event->id_event_type = 1;
         $event->start_event = $time;
         $event->end_event = $time->addMinutes(45);
         $event->save();

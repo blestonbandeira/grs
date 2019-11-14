@@ -1,0 +1,63 @@
+.jumbotron, h4{
+  text-align:center;
+}
+
+.idForm {
+ text-align: right;
+ color: gray;
+ display: inline-table;
+ margin: 20px;
+ border: 1px solid #00A3E0;
+
+}
+
+.jumbotron {
+  background-color: #00A3E0;
+  color: white;
+}
+
+.page-header {
+  background-color: #00A3E0;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 6px;
+  margin: 25px;
+}
+
+.page-header span.dica {
+  color:white;
+}
+
+.dica {
+  color: gray;
+  font-size: 14px;  
+}
+
+li {
+  list-style-type: none;
+}
+
+p.dica{
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+
+table thead {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+.radio-inline {
+  padding: 5px;
+  text-align: center;
+}
+
+.container-fluid, .container {
+  padding-right: 15vw;
+  padding-left: 15vw;
+}

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RegimesSeeder::class);
         $this->call(MinimumQualificationsSeeder::class);
         $this->call(CourseNamesSeeder::class);
+        $this->call(CancellationReasonsSeeder::class);
+        $this->call(ProvenanceSchoolsSeeder::class);
         $this->call(CourseTypesSeeder::class);
         $this->call(CoursesSeeder::class);
         $this->call(CategoriesSeeder::class);

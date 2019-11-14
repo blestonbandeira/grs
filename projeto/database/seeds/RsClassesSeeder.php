@@ -21,7 +21,7 @@ class RsClassesSeeder extends Seeder
         $rsClass->startDate = '2019-12-03';
         $users = User::select('id')->where('name', '=', 'Assist')->get();
         $rsClass->id_user = $users[0]["id"];
-        $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
+        $classStates = ClassState::select('id')->where('name', 'like', 'Turma Iniciada')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '1')->get();
         $rsClass->id_courseName = 1;
@@ -32,7 +32,7 @@ class RsClassesSeeder extends Seeder
         $rsClass->startDate = '2019-12-03';
         $users = User::select('id')->where('name', '=', 'Assist')->get();
         $rsClass->id_user = $users[0]["id"];
-        $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
+        $classStates = ClassState::select('id')->where('name', 'like', 'Turma Iniciada')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '2')->get();
         $rsClass->id_courseName = 2;
@@ -43,7 +43,7 @@ class RsClassesSeeder extends Seeder
         $rsClass->startDate = '2019-12-03';
         $users = User::select('id')->where('name', '=', 'Assist')->get();
         $rsClass->id_user = $users[0]["id"];
-        $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
+        $classStates = ClassState::select('id')->where('name', 'like', 'Turma Iniciada')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '7')->get();
         $rsClass->id_courseName = 7;
@@ -54,7 +54,7 @@ class RsClassesSeeder extends Seeder
         $rsClass->startDate = '2020-02-03';
         $users = User::select('id')->where('name', '=', 'Assist')->get();
         $rsClass->id_user = $users[0]["id"];
-        $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
+        $classStates = ClassState::select('id')->where('name', 'like', 'Turma Cancelada')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '5')->get();
         $rsClass->id_courseName = 5;
@@ -65,7 +65,7 @@ class RsClassesSeeder extends Seeder
         $rsClass->startDate = '2020-01-03';
         $users = User::select('id')->where('name', '=', 'Assist')->get();
         $rsClass->id_user = $users[0]["id"];
-        $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
+        $classStates = ClassState::select('id')->where('name', 'like', 'Turma Cancelada')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '6')->get();
         $rsClass->id_courseName = 6;
@@ -76,7 +76,7 @@ class RsClassesSeeder extends Seeder
         $rsClass->startDate = '2019-11-03';
         $users = User::select('id')->where('name', '=', 'Assist')->get();
         $rsClass->id_user = $users[0]["id"];
-        $classStates = ClassState::select('id')->where('name', '=', 'Activo')->get();
+        $classStates = ClassState::select('id')->where('name', '=', 'Turma Cancelada')->get();
         $rsClass->id_classState = $classStates[0]["id"];
         $courseNames = CourseName::select('name')->where('id', '=', '4')->get();
         $rsClass->id_courseName = 4;

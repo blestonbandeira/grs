@@ -13,11 +13,31 @@ class EducationsSeeder extends Seeder
     public function run()
     {
         $education = new Education;
-        $education->name = "12º Ano";
+        $education->name = "< 9º Ano";
         $education->save();
 
         $education = new Education;
         $education->name = "9º Ano";
+        $education->save();
+
+        $education = new Education;
+        $education->name = "10º Ano";
+        $education->save();
+
+        $education = new Education;
+        $education->name = "11º Ano";
+        $education->save();
+
+        $education = new Education;
+        $education->name = "12º Ano incompleto";
+        $education->save();
+
+        $education = new Education;
+        $education->name = "12º Ano";
+        $education->save();
+
+        $education = new Education;
+        $education->name = "CET";
         $education->save();
 
         $education = new Education;
@@ -26,10 +46,6 @@ class EducationsSeeder extends Seeder
 
         $education = new Education;
         $education->name = "Mestrado";
-        $education->save();
-
-        $education = new Education;
-        $education->name = "Doutoramento";
         $education->save();
 
     }

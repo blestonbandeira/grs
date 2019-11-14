@@ -8,7 +8,7 @@
    <div id="calendar" ></div>
 </div>
 
-<button id="btnModalShow" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow" style="visibility: hidden;"></button>
+<button id="btnModalShow" type="hidden" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow"></button>
 
 <div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

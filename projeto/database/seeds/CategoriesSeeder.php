@@ -13,15 +13,31 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         $category = new Category;
-        $category->name = "Para R&S";
+        $category->name = "Candidatura Anulada";
         $category->save();
 
         $category = new Category;
-        $category->name = "Em R&S";
+        $category->name = "Candidatura Para R&S";
         $category->save();
 
         $category = new Category;
-        $category->name = "Falta R&S";
+        $category->name = "Candidatura Em Processo R&S";
+        $category->save();
+
+        $category = new Category;
+        $category->name = "R&S Completo";
+        $category->save();
+
+        $category = new Category;
+        $category->name = "Candidato Integrou Turma";
+        $category->save();
+
+        $category = new Category;
+        $category->name = "Candidato Suplente";
+        $category->save();
+
+        $category = new Category;
+        $category->name = "Candidato Faltou R&S";
         $category->save();
         
     }
