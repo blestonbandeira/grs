@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Interview;
 use App\InterviewInterviewer;
 use Carbon\Carbon;
+use App\Applicant;
+use App\Category;
 use App\Event;
+use App\User;
 use Auth;
 
 class ApiInterviewController extends Controller
@@ -30,6 +33,12 @@ class ApiInterviewController extends Controller
      */
     public function store(Request $request)
     {
+        $eventTemp = Event::find($request->id_event);
+        $id_user = $eventTemp->id_user;
+        $userTemp = User::find($id_user);
+        $appliTemp = Applicant::find($request->id_applicant);
+        $categoryTemp = Category::select('id')->where('name', '=', 'Candidatura Em Processo R&S')->get();
+
         $interview = new Interview;
         $interview->id_applicant = $request->id_applicant;
         $time = Carbon::parse($request->date);
@@ -37,27 +46,31 @@ class ApiInterviewController extends Controller
         $interview->save();
 
         $interCreated = Interview::where('id_applicant', '=', $interview->id_applicant, 'and', 'date', '=', $time)->first();
+
         $interview_interviewer = new InterviewInterviewer;
         $interview_interviewer->id_interview = $interCreated->id;
-        $interview_interviewer->id_user = $request->id_user; //Auth::id();
+        $interview_interviewer->id_user = $id_user;
         $interview_interviewer->save();
-
+        
         $event = new Event;
-        $event->id_user = $request->id_user;
-        $event->title = "antónio" ; 
+        $event->id_user = $id_user;
+        $event->title = $userTemp->name . " -> Entrevista"; 
         $event->id_event_type = 1;
         $event->start_event = $time;
-        $event->end_event = $time->addMinutes(45);
+        $event->end_event = Carbon::parse($time)->addMinutes(45);
         $event->save();
         
-
-        $eventCreated = Event::where('title', '=', $event->title, 'and', 'start_event', '=', $event->start_event)->first();
+        $eventCreated = Event::where('id_user', '=', $event->id_user, 'and', 'id_event_type', '=', $event->id_event_type)->first();
+    
         $appli_event = new ApplicantEvent;
         $appli_event->id_applicant = $request->id_applicant;
         $appli_event->id_event = $eventCreated->id;
         $appli_event->save();
 
-        return $event->id_user;
+        $appliTemp->id_category = $categoryTemp[0]["id"];
+        $appliTemp->save();
+
+        return $appliTemp;
     }
 
     /**
