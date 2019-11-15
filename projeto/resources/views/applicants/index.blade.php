@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
 <form method="POST" action="/calendars/interviews/create">
     <div class="col text-center">
         <a href="/applicants/create">
@@ -18,6 +19,24 @@
                 Marcar Prova
             </button>
         </a>
+=======
+<div class="col text-center">
+    <a href="/applicants/create">
+        <button type="button" class="btn btn-info">
+            Adicionar
+        </button>
+    </a>
+    <a>
+        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()" data-toggle="modal" data-target=".modalCalendar">
+            Marcar Entrevista
+        </button>
+    </a>
+    <a href="#">
+        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromTests()" data-toggle="modal" data-target=".modalTests">
+            Marcar Prova
+        </button>
+    </a>
+>>>>>>> 4e5e32520fa9289352710f0c83b86da8eec0ba23
 </div>
 
     <div class="content">
@@ -99,8 +118,6 @@
     </div>
 </form>
 
-<input id="btnModelShowFromInterviews" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
-
 <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
         <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
@@ -157,12 +174,13 @@
 
 
 <!--MODAL PROVAS-->
-<input id="btnModelShowFromTests" type="button" onclick="" class="btn btn-primary" data-toggle="modal" data-target=".modalTests"/>
 
 <div id="modalTests" class="modal fade modalTests" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
         <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
             <div class="container-fluid" style="width: 90vw!important;">
+            <div id="modalSuccessMessageTests" class="container-fluid" style="visibility:hidden; border-radius:10px; border: 1px solid #0089f2!important; padding: 50px; width: 26.7vw!important; position:absolute; z-index:100; background-color:white;">
+                    </div>
                 <div class="modal-header">
                     <h5 class="modal-title">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -170,18 +188,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <button onclick="getApplicantsSelectedFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="1">Teste && Prova de Aferição</button>
-                    <button onclick="getApplicantsSelectedFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="2">Teste && Inventário Vocacional</button>
+                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="1">Teste && Prova de Aferição</button>
+                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="2">Teste && Inventário Vocacional</button>
                 </div>
 
                 <div id="dayToTests" style="visibility:hidden;">
                     <h4>Data: </h4>
-                    <input class="form-control input-border-width" type="datetime-local"/>
+                    <input id="hoursProvas" class="form-control input-border-width" type="datetime-local"/>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" onclick="" class="btn btn-primary">Marcar</button>
+                    <button type="button" onclick="saveTests()" class="btn btn-primary">Marcar</button>
                 </div>
             </div>
         </div>
@@ -191,26 +209,26 @@
 <!--FIM MODAL PROVAS-->
 
 <script>
-    let appliSelectedIdFromInterviews = [];
-    let appliSelectedNameFromInterviews = [];
-    let appliSelectedFromInterviews = null;
-    let appliSelectedHtmlFromInterviews = "";
-    let dateSelectedFromInterviews = "";
-    let eventSelectedIdFromInterviews = 0;
+    let appliSelectedId = [];
+    let appliSelectedName = [];
+    let appliSelected = null;
+    let appliSelectedHtml = "";
+    let dateSelected = "";
+    let eventSelectedId = 0;
 
     let testTypeSelected = null;
 
     function getApplicantsSelectedFromInterviews()
     {
         let applicantsSelected = document.getElementsByClassName('applicantsSelect');
-        appliSelectedNameFromInterviews = [];
+        appliSelectedName = [];
         let j = 0;
         let k = 0;
         for(let i = 0; i < applicantsSelected.length; i++)
         {
             if(applicantsSelected[i].checked)
             {
-                appliSelectedIdFromInterviews[j] = applicantsSelected[i].value;
+                appliSelectedId[j] = applicantsSelected[i].value;
                 $.ajax({
                     contentType: "application/json",
                     url:"/api/applicants/" + applicantsSelected[i].value,
@@ -218,10 +236,9 @@
                     data:{},
                     success:function(data)
                     { 
-                        appliSelectedNameFromInterviews[k] = data[0]['name'];
-                        if(appliSelectedNameFromInterviews.length == appliSelectedIdFromInterviews.length){
+                        appliSelectedName[k] = data[0]['name'];
+                        if(appliSelectedName.length == appliSelectedId.length){
                             innerApplicantsSelectedFromInterviews();
-                            document.getElementById('btnModelShowFromInterviews').click();
                             calendarCharge();
                         }
                         k++;
@@ -237,16 +254,16 @@
         document.getElementById('hoursShowFromInterviews').classList.remove("show");
         document.getElementById('applicantListFromInterviews').innerHTML = "";
         let j = 0;
-        for(let i = 0; i < appliSelectedNameFromInterviews.length; i++)
+        for(let i = 0; i < appliSelectedName.length; i++)
         {
-            document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedIdFromInterviews[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedNameFromInterviews[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
+            document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedName[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
             j++;
         }
     }
 
     function applicantSelectedFromInterviews(data)
     {
-        appliSelectedHtmlFromInterviews = data;
+        appliSelectedHtml = data;
         let divActive = document.getElementById('applicantListFromInterviews');
         let numActives = divActive.getElementsByClassName('applOnClick');
         document.getElementById('hoursShowFromInterviews').classList.remove("show");
@@ -255,34 +272,33 @@
             numActives[i].classList.remove("active");
         }
         data.className += " active";
-        appliSelectedFromInterviews = data.value;
+        appliSelected = data.value;
     }
 
     function saveInterview()
     {
-        let selected = appliSelectedFromInterviews;
-        let date = dateSelectedFromInterviews + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
+        let selected = appliSelected;
+        let date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         $.ajax({
             dataType: "json",
             url:"/api/events",
             type:"POST",
-            data:{id_applicant:selected, id_event:eventSelectedIdFromInterviews, date:date},
+            data:{id_applicant:selected, id_event_type:1, id_event:eventSelectedId, date:date},
             success:function(data)
             {
                 document.getElementById('hoursShowFromInterviews').classList.remove("show");
                 let tempModal = document.getElementById('modalSuccessMessage');
                 tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
                 tempModal.style.visibility = "visible" ;
-                appliSelectedHtmlFromInterviews.setAttribute("style", "visibility: hidden; position: absolute;");
+                appliSelectedHtml.setAttribute("style", "visibility: hidden; position: absolute;");
                 setTimeout(function() {tempModal.style.visibility = "hidden";},2000);
-                appliSelectedFromInterviews = null;
+                appliSelected = null;
             }
         });
     }
 
 
-
-    function getApplicantsSelectedFromTests(data)
+    function selectedTypeFromTests(data)
     {
         let divActive = document.getElementById('modalTests');
         let numActives = divActive.getElementsByClassName('btnModalTests');
@@ -297,18 +313,52 @@
         tempModal.style.visibility = "visible" ;
     }
 
+    function getApplicantsSelectedFromTests()
+    {
+        let applicantsSelected = document.getElementsByClassName('applicantsSelect');
+        let j = 0;
+        for(let i = 0; i < applicantsSelected.length; i++)
+        {
+            if(applicantsSelected[i].checked)
+            {
+                appliSelectedId[j] = '{"id":'+applicantsSelected[i].value+'},';
+                j++;
+            }
+            alert(appliSelectedId);
+        }
+    }
+
+    function saveTests()
+    {
+        let date = document.getElementById('hoursProvas').value;
+        alert(date);
+        $.ajax({
+            dataType: "json",
+            url:"/api/events",
+            type:"POST",
+            data:{id_user:{{Auth::id()}}, id_applicants:"["+appliSelectedId+"]", id_event_type:testTypeSelected, date:date},
+            success:function(data)
+            {
+                let tempModal = document.getElementById('modalSuccessMessageTests');
+                tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
+                tempModal.style.visibility = "visible" ;
+                setTimeout(function() {tempModal.style.visibility = "hidden";},2000);
+                appliSelected = null;
+                location.reload();
+            }
+        });
+    }
 
 
     $("#applicantListFromInterviews").on("click", "button", function(e) {
         e.preventDefault();
         $(this).parent().remove();
-        appliSelectedFromInterviews = null;
+        appliSelected = null;
     });
 
     $("#btnCloseModalFromInterviews").on("click", function() {
         location.reload();
     });
-
 
 //-------CALENDAR-------//
 
@@ -347,7 +397,7 @@ function calendarCharge(){
                 selectHelper:true,
                 eventClick:function(event)
                 {
-                    if(appliSelectedFromInterviews == null){
+                    if(appliSelected == null){
                         let tempModal = document.getElementById('modalSuccessMessage');
                         tempModal.innerHTML = "<h3 style='color:#f00'>Selecionar Primeiro o Candidato!</h3>";
                         tempModal.style.visibility = "visible" ;
@@ -355,7 +405,7 @@ function calendarCharge(){
                     }
                     else
                     {
-                        eventSelectedIdFromInterviews = event.id;
+                        eventSelectedId = event.id;
                         let hourSelect = document.getElementById('hourSelectChange');
                         let minSelect = document.getElementById('minSelectChange');
 
@@ -364,7 +414,7 @@ function calendarCharge(){
                         let start = $.fullCalendar.formatDate(event.start, "HH:mm:ss");
                         let end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
                         let date = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
-                        dateSelectedFromInterviews = date;
+                        dateSelected = date;
 
                         let hourStart = $.fullCalendar.formatDate(event.start, "HH");
                         let minStart = $.fullCalendar.formatDate(event.start, "m");
