@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\PermissionLevel;
 use App\User;
 
 class UserController extends Controller
@@ -26,8 +27,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        $permissionLevels = PermissionLevel::all();
+        $users = User::all()->innerJoin('permission_levels', 'permission_Levels.id', '=', 'users.id_permission_level');
         return view('users.create')
-        ->with(compact('users'));
+        ->with(compact('users', 'permissionLevels'));
     }
 
     /**
