@@ -132,7 +132,7 @@ class ApiEventController extends Controller
         }
         else if($request->id_event_type == 4)
         {//AVAILABILITIES
-            $id_user = $request->id_user;
+            $id_user = (int)$request->id_user;
             $userTemp = User::find((int)$id_user);
             $eventTypeTemp = EventType::find($request->id_event_type);
             $startEventTemp = Carbon::parse($request->start_event);

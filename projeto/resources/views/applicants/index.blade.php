@@ -30,8 +30,6 @@
                             <h4 class="card-title">{{ $rsclass->name }}</h4>
                             {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
                         </div>
-
-
                         <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
                             <div class="card-body table-responsive">
                                 <table class="table table-hover">
@@ -201,22 +199,26 @@
 
     let testTypeSelected = null;
 
-    function getApplicantsSelectedFromInterviews() {
+    function getApplicantsSelectedFromInterviews()
+    {
         let applicantsSelected = document.getElementsByClassName('applicantsSelect');
         appliSelectedName = [];
         let j = 0;
         let k = 0;
-        for (let i = 0; i < applicantsSelected.length; i++) {
-            if (applicantsSelected[i].checked) {
+        for(let i = 0; i < applicantsSelected.length; i++)
+        {
+            if(applicantsSelected[i].checked)
+            {
                 appliSelectedId[j] = applicantsSelected[i].value;
                 $.ajax({
                     contentType: "application/json",
-                    url: "/api/applicants/" + applicantsSelected[i].value,
-                    type: "GET",
-                    data: {},
-                    success: function(data) {
+                    url:"/api/applicants/" + applicantsSelected[i].value,
+                    type:"GET",
+                    data:{},
+                    success:function(data)
+                    { 
                         appliSelectedName[k] = data[0]['name'];
-                        if (appliSelectedName.length == appliSelectedId.length) {
+                        if(appliSelectedName.length == appliSelectedId.length){
                             innerApplicantsSelectedFromInterviews();
                             calendarCharge();
                         }
@@ -228,104 +230,99 @@
         }
     }
 
-    function innerApplicantsSelectedFromInterviews() {
+    function innerApplicantsSelectedFromInterviews()
+    {
         document.getElementById('hoursShowFromInterviews').classList.remove("show");
         document.getElementById('applicantListFromInterviews').innerHTML = "";
         let j = 0;
-        for (let i = 0; i < appliSelectedName.length; i++) {
+        for(let i = 0; i < appliSelectedName.length; i++)
+        {
             document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedName[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
             j++;
         }
     }
 
-    function applicantSelectedFromInterviews(data) {
+    function applicantSelectedFromInterviews(data)
+    {
         appliSelectedHtml = data;
         let divActive = document.getElementById('applicantListFromInterviews');
         let numActives = divActive.getElementsByClassName('applOnClick');
         document.getElementById('hoursShowFromInterviews').classList.remove("show");
-        for (i = 0; i < numActives.length; i++) {
+        for(i = 0; i < numActives.length; i++)
+        {
             numActives[i].classList.remove("active");
         }
         data.className += " active";
         appliSelected = data.value;
     }
 
-    function saveInterview() {
+    function saveInterview()
+    {
         let selected = appliSelected;
         let date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         $.ajax({
             dataType: "json",
-            url: "/api/events",
-            type: "POST",
-            data: {
-                id_applicant: selected,
-                id_event_type: 1,
-                id_event: eventSelectedId,
-                date: date
-            },
-            success: function(data) {
+            url:"/api/events",
+            type:"POST",
+            data:{id_applicant:selected, id_event_type:1, id_event:eventSelectedId, date:date},
+            success:function(data)
+            {
                 document.getElementById('hoursShowFromInterviews').classList.remove("show");
                 let tempModal = document.getElementById('modalSuccessMessage');
                 tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
-                tempModal.style.visibility = "visible";
+                tempModal.style.visibility = "visible" ;
                 appliSelectedHtml.setAttribute("style", "visibility: hidden; position: absolute;");
-                setTimeout(function() {
-                    tempModal.style.visibility = "hidden";
-                }, 2000);
+                setTimeout(function() {tempModal.style.visibility = "hidden";},2000);
                 appliSelected = null;
             }
         });
     }
 
 
-    function selectedTypeFromTests(data) {
+    function selectedTypeFromTests(data)
+    {
         let divActive = document.getElementById('modalTests');
         let numActives = divActive.getElementsByClassName('btnModalTests');
-        for (i = 0; i < numActives.length; i++) {
+        for(i = 0; i < numActives.length; i++)
+        {
             numActives[i].classList.remove("active");
         }
         data.className += " active";
         testTypeSelected = data.value;
 
         let tempModal = document.getElementById('dayToTests');
-        tempModal.style.visibility = "visible";
+        tempModal.style.visibility = "visible" ;
     }
 
-    function getApplicantsSelectedFromTests() {
+    function getApplicantsSelectedFromTests()
+    {
         let applicantsSelected = document.getElementsByClassName('applicantsSelect');
         let j = 0;
-        for (let i = 0; i < applicantsSelected.length; i++) {
-            if (applicantsSelected[i].checked) {
+        for(let i = 0; i < applicantsSelected.length; i++)
+        {
+            if(applicantsSelected[i].checked)
+            {
                 appliSelectedId[j] = applicantsSelected[i].value;
                 j++;
             }
-
+            
         }
     }
 
-    function saveTests() {
+    function saveTests()
+    {
         let date = document.getElementById('hoursProvas').value;
         $.ajax({
             dataType: "json",
-            url: "/api/events",
-            type: "POST",
-            data: {
-                id_user: {
-                    {
-                        Auth::id()
-                    }
-                },
-                id_applicants: appliSelectedId,
-                id_event_type: testTypeSelected,
-                date: date
-            },
-            success: function(data) {
+            url:"/api/events",
+            type:"POST",
+            data:{id_user:{{Auth::id()}}, id_applicants:appliSelectedId, id_event_type:testTypeSelected, date:date},
+            success:function(data)
+            {
                 let tempModal = document.getElementById('modalSuccessMessageTests');
                 tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
-                tempModal.style.visibility = "visible";
-                setTimeout(function() {
-                    tempModal.style.visibility = "hidden";
-                }, 2000);
+                tempModal.style.visibility = "visible" ;
+                setTimeout(function() {tempModal.style.visibility = "hidden";},2000);
                 appliSelected = null;
                 location.reload();
             }
@@ -343,6 +340,7 @@
         location.reload();
     });
 
+
     //-------CALENDAR-------//
 
     function calendarCharge() {
@@ -351,14 +349,7 @@
             dataType: "json",
             url: "/api/events",
             type: "GET",
-            data: {
-                id_user: {
-                    {
-                        Auth::id()
-                    }
-                },
-                id_event_type: 4
-            },
+            data: { id_user:{{Auth::id()}}, id_event_type: 4 },
             success: function(data) {
                 allEvents = data;
                 var calendar = $('#calendar').fullCalendar({
