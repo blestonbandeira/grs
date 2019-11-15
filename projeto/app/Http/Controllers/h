@@ -1,0 +1,30 @@
+<?php
+ 
+namespace App\Http\Controllers;
+
+use App\Interviewer;
+use App\Applicant;
+use Illuminate\Http\Request;
+use Redirect,Response,DB,Config;
+use Mail;
+
+class EmailController extends Controller
+{
+    public function show()
+    {
+        $data['title'] = "Pedido de Confirmação de Entrevista";
+ 
+        Mail::send('emails.interview', $data, function($message) {
+ 
+            $message->to('atecrecrutamento@gmail.com', 'Receiver Name')
+ 
+                    ->subject('Pedido de Confirmação de Entrevista');
+        });
+ 
+        if (Mail::failures()) {
+           return response()->json('Sorry! Please try again latter');
+         }else{
+           return response()->json('Great! Successfully send in your mail');
+         }
+    }
+}

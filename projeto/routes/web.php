@@ -16,10 +16,10 @@ Route::get('/home', function () {
     return redirect('/');
 });
 Route::get('/', function () {
-    return redirect('/calendars');
+    return redirect('/applicants');
 });
 
-
+Route::middleware('auth')->resource('/emails', 'EmailController');
 Route::middleware('auth')->resource('/applicants','ApplicantController');
 Route::middleware('auth')->resource('/assistants','AssistantController');
 Route::middleware('auth')->resource('/users','UserController');

@@ -7,8 +7,8 @@
             Adicionar
         </button>
     </a>
-    <a>
-        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()" data-toggle="modal" data-target=".bd-example-modal-lg">
+    <a href="/calendars/interviews/create">
+        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()">
             Marcar Entrevista
         </button>
     </a>
@@ -99,6 +99,9 @@
     </div>
 
 <input id="btnModelShowFromInterviews" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
+
+
+
 
 <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
