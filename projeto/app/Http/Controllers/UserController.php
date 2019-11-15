@@ -16,8 +16,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $permissionLevels = PermissionLevel::all()->pluck('name');
         return view('users.index')
-        ->with(compact('users'));
+        ->with(compact('users', 'permissionLevels'));
     }
 
     /**
@@ -28,7 +29,7 @@ class UserController extends Controller
     public function create()
     {
         $permissionLevels = PermissionLevel::all();
-        $users = User::all()->innerJoin('permission_levels', 'permission_Levels.id', '=', 'users.id_permission_level');
+        $users = User::all()->join('permission_levels', 'permission_Levels.id', '=', 'users.id_permission_level');
         return view('users.create')
         ->with(compact('users', 'permissionLevels'));
     }

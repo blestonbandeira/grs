@@ -139,3 +139,7 @@ img#entrar {
 .border {
     appearance: none;
 }
+
+select {
+    border-bottom: transparent;
+}
