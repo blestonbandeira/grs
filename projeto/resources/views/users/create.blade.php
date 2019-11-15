@@ -7,53 +7,42 @@
         <div class="accordion" id="users">
           <div class="card">
             <div class="card-header card-header-info" data-toggle="collapse" data-target="#usersCreate" aria-expanded="true" aria-controls="usersCreate">
-                <span class="card-title btn btn-link" type="button">Criar Novo Utilizador</span>
+                <h4 class="card-title">Criar Novo Utilizador</h4>
             </div>
 
-            <div class="card-body table-responsive">
-                <table class="table table-hover">
-                    <thead class="text-info">
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Nível de Acesso</th>
-                        <th></th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                            
-                            </td>
+            <div class="card-body">
+                <div class="row">                
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Nome Completo</label>
+                            <input type="text" class="form-control input-border-width" name="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">                
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Email</label>
+                            <input type="text" class="form-control input-border-width" name="name">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                  <div>
+                    <label class="label-create-form pb-2">Nível de Acesso</label>
+                    <select name="permission_level" class="custom-select input-border-width">
+                        @foreach($permissionLevels as $permissionLevel)
+                              <option value="{{ $perssionLevel->name }}">
+                                  {{ $permissionLevel->name }}
+                              </option>
+                          @endforeach
+                    </select>
+                  </div>
+                </div>
 
-                            <td>
-                                <select class="custom-select" name="month">
-                                    @foreach(range(1,12) as $month)
-                                        <option value="{{$month}}">
-                                                {{date("M", strtotime('2019-'.$month))}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td>
-                                <select class="custom-select" name="year">
-                                    @for ($year = date('Y'); $year < date('Y') + 50; $year++)
-                                    <option value="{{$year}}">
-                                            {{$year}}
-                                    </option>
-                                    @endfor
-                                </select>
-                            </td>
-                            <td class="d-flex">
-                                <a href="/applicants/create">
-                                    <button type="button" class="btn btn-info">
-                                        Criar
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                
             </div>
-          </div>
         </div>
       </div>           
     </div>
