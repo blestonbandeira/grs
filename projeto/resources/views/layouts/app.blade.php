@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
   <link rel="stylesheet" href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' >
   <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'  />
-  <link rel="stylesheet" href= "{{ asset('css/daygrid/custom.css') }}"  />
+  <link rel="stylesheet" href= "{{ asset('css/daygrid/main.css') }}"  />
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 
 </head>

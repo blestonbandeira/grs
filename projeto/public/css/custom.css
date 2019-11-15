@@ -23,13 +23,13 @@ body .fc {
 }
 
 .fc-center {
-    color: #00a3e0;
+    color: #00A3E0;
     border-radius: 5px;
     padding: 5px 8px 3px 8px;
 }
 
 .fc-button {
-    background-color: #00a3e0 !important;
+    background-color: #00A3E0 !important;
     background-image: none !important;
     color: white;
 }
@@ -54,11 +54,11 @@ body .fc {
 }
 
 .fc th {
-    color: #00a3e0;
+    color: #00A3E0;
 }
 
 .fc-widget-content {
-    color: #00a3e0;
+    color: #00A3E0;
 }
 
 .calendar-container {
@@ -75,13 +75,13 @@ a:hover {
 }
 
 .activeMenu {
-    color: #00a3e0;
+    color: #00A3E0;
     font-weight: bold;
     font-size: 16px;
 }
 
 li.active {
-    background-color: #00a3e0;
+    background-color: #00A3E0;
 }
 
 .btn .btn-info .btn-link .btn-sm {
@@ -107,11 +107,11 @@ img#entrar {
 }
 
 .text-info{
-    color: #00a3e0 !important;
+    color: #00A3E0 !important;
 }
 
 .text-info:hover{
-    color: #00a3e0 !important;
+    color: #00A3E0 !important;
 }
 
 .main-panel{
@@ -121,8 +121,21 @@ img#entrar {
 #calendar{
     background-color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 2.5px;
 }
 
 .card {
     padding-bottom: 20px;
+}
+
+
+/* Modal */
+
+.label-create-form{
+    font-size: 1rem;
+}
+
+.border {
+    appearance: none;
 }
