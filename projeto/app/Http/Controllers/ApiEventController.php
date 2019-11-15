@@ -125,14 +125,15 @@ class ApiEventController extends Controller
         {//PROVAS && INVENTORIES
             $startEventTemp = Carbon::parse($request->date);
             $endEventTemp = Carbon::parse($request->date)->addMinutes(120);
-            $id_user = $request->id_user;
-            $userTemp = User::find($id_user);
+            
+            $id_user = (int)$request->id_user;
+            $userTemp = User::find((int)$id_user);
             $eventTypeTemp = EventType::find($request->id_event_type);
         }
         else if($request->id_event_type == 4)
         {//AVAILABILITIES
             $id_user = $request->id_user;
-            $userTemp = User::find($id_user);
+            $userTemp = User::find((int)$id_user);
             $eventTypeTemp = EventType::find($request->id_event_type);
             $startEventTemp = Carbon::parse($request->start_event);
             $endEventTemp = Carbon::parse($request->end_event);
@@ -145,32 +146,23 @@ class ApiEventController extends Controller
         $event->start_event = $startEventTemp;
         $event->end_event = $endEventTemp;
         $event->save();
-        
+
+
         $eventCreated = Event::where('id_user', '=', $event->id_user, 'and', 'id_event_type', '=', $event->id_event_type)->first();
     
         if($request->id_event_type == 2 || $request->id_event_type == 3)
         {
-            for ($i = 0; $i < 2; $i++){
-                $appliTemp = Applicant::find($appliArray[$i]["id"]);
+            foreach($appliArray as $applicant)
+            {
+                $appliTemp = Applicant::find($applicant);
                 $appliTemp->id_category = $categoryTemp[0]["id"];
                 $appliTemp->save();
 
                 $appli_event = new ApplicantEvent;
-                $appli_event->id_applicant = $appliArray[$i]["id"];
+                $appli_event->id_applicant = $applicant;
                 $appli_event->id_event = $eventCreated->id;
                 $appli_event->save();
             }
-            // foreach($appliArray as $applicant)
-            // {
-            //     $appliTemp = Applicant::find($applicant);
-            //     $appliTemp->id_category = $categoryTemp[0]["id"];
-            //     $appliTemp->save();
-
-            //     $appli_event = new ApplicantEvent;
-            //     $appli_event->id_applicant = $applicant;
-            //     $appli_event->id_event = $eventCreated->id;
-            //     $appli_event->save();
-            // }
         }
         else
         {

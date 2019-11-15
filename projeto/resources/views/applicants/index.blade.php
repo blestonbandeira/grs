@@ -168,8 +168,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="1">Teste && Prova de Aferição</button>
-                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="2">Teste && Inventário Vocacional</button>
+                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="2">Teste && Prova de Aferição</button>
+                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="3">Teste && Inventário Vocacional</button>
                 </div>
 
                 <div id="dayToTests" style="visibility:hidden;">
@@ -301,22 +301,20 @@
         {
             if(applicantsSelected[i].checked)
             {
-                appliSelectedId[j] = '{"id":'+applicantsSelected[i].value+'},';
+                appliSelectedId[j] = applicantsSelected[i].value;
                 j++;
             }
-            alert(appliSelectedId);
+            
         }
     }
-
     function saveTests()
     {
         let date = document.getElementById('hoursProvas').value;
-        alert(date);
         $.ajax({
             dataType: "json",
             url:"/api/events",
             type:"POST",
-            data:{id_user:{{Auth::id()}}, id_applicants:"["+appliSelectedId+"]", id_event_type:testTypeSelected, date:date},
+            data:{id_user:{{Auth::id()}}, id_applicants:appliSelectedId, id_event_type:testTypeSelected, date:date},
             success:function(data)
             {
                 let tempModal = document.getElementById('modalSuccessMessageTests');
