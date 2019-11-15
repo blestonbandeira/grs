@@ -1,25 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-<form method="POST" action="/calendars/interviews/create">
-    <div class="col text-center">
-        <a href="/applicants/create">
-            <button type="button" class="btn btn-info">
-                Adicionar
-            </button>
-        </a>
-        <a href="/calendars/interviews/create">
-            <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()">
-                Marcar Entrevista
-            </button>
-        </a>
-        <a href="#">
-            <button type="button" class="btn btn-info">
-                Marcar Prova
-            </button>
-        </a>
-=======
 <div class="col text-center">
     <a href="/applicants/create">
         <button type="button" class="btn btn-info">
@@ -36,22 +17,8 @@
             Marcar Prova
         </button>
     </a>
->>>>>>> 4e5e32520fa9289352710f0c83b86da8eec0ba23
 </div>
 
-<<<<<<< HEAD
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="accordion" id="rsclasses">
-                    @foreach ($rsclasses as $rsclass)
-                        <div class="card">
-                            <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsclass->name }}" aria-expanded="true" aria-controls="{{ $rsclass->name }}">
-                                <h4 class="card-title">{{ $rsclass->name }}</h4>
-                                    {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
-                            </div>
-=======
 <div class="content">
     <div class="container-fluid">     
         <div class="row">
@@ -63,8 +30,7 @@
                             <h4 class="card-title">{{ $rsclass->name }}</h4>
                                 {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
                         </div>
-<<<<<<< HEAD
->>>>>>> 13a7fb03047a0da40480f5c362eb88fbbfd5397d
+
 
                             <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
                                 <div class="card-body table-responsive">                                
@@ -103,7 +69,7 @@
                                                         <td class="d-flex">
                                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
                                                                 <i class="material-icons">edit</i>
-=======
+
 
                         <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
                             <div class="card-body table-responsive">                                
@@ -149,7 +115,7 @@
                                                             @method('delete')
                                                             <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
                                                                 <i class="material-icons">close</i>
->>>>>>> origin/turmas2
+
                                                             </button>
                                                             <form action="/applicants/{{ $applicant->id }}" method="post">
                                                                 @csrf
