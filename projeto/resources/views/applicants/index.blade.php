@@ -39,6 +39,7 @@
 >>>>>>> 4e5e32520fa9289352710f0c83b86da8eec0ba23
 </div>
 
+<<<<<<< HEAD
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -50,6 +51,19 @@
                                 <h4 class="card-title">{{ $rsclass->name }}</h4>
                                     {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
                             </div>
+=======
+<div class="content">
+    <div class="container-fluid">     
+        <div class="row">
+            <div class="col-md-12">
+                <div class="accordion" id="rsclasses">
+                @foreach ($rsclasses as $rsclass)
+                    <div class="card">
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsclass->name }}" aria-expanded="true" aria-controls="{{ $rsclass->name }}">
+                            <h4 class="card-title">{{ $rsclass->name }}</h4>
+                                {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
+                        </div>
+>>>>>>> 13a7fb03047a0da40480f5c362eb88fbbfd5397d
 
                             <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
                                 <div class="card-body table-responsive">                                
