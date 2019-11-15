@@ -139,17 +139,16 @@ class ApiEventController extends Controller
             $endEventTemp = Carbon::parse($request->end_event);
         }
 
-        $event = new Event;
-        $event->id_user = $id_user;
-        $event->title = "User: " . $userTemp->name . " Tipo: " . $eventTypeTemp->name;
-        $event->id_event_type = $request->id_event_type;
-        $event->start_event = $startEventTemp;
-        $event->end_event = $endEventTemp;
-        $event->save();
+        $newEvent = new Event;
+        $newEvent->id_user = $id_user;
+        $newEvent->title = "User: " . $userTemp->name . " Tipo: " . $eventTypeTemp->name;
+        $newEvent->id_event_type = $request->id_event_type;
+        $newEvent->start_event = $startEventTemp;
+        $newEvent->end_event = $endEventTemp;
+        $newEvent->save();
 
 
-        $eventCreated = Event::where('id_user', '=', $event->id_user, 'and', 'id_event_type', '=', $event->id_event_type)->first();
-    
+        $eventCreated = Event::where('id_user', '=', $newEvent->id_user)->where('id_event_type', '=', $newEvent->id_event_type)->where('start_event', '=', $newEvent->start_event)->first();
         if($request->id_event_type == 2 || $request->id_event_type == 3)
         {
             foreach($appliArray as $applicant)
@@ -176,7 +175,7 @@ class ApiEventController extends Controller
             $appli_event->save();
         }
 
-        return response($event, 201);
+        return response($appli_event, 201);
         // $userTemp = User::where('id','=', $request->id_user)->get();
         // $eventTemp = EventType::where('id','=', $request->id_event_type)->get();
     }
