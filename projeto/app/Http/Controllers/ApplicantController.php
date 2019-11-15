@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Applicant;
 use App\Gender;
 use App\RsClass;
+use App\District;
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
@@ -18,7 +19,7 @@ class ApplicantController extends Controller
     {
         $applicants = Applicant::all();
         $rsclasses = RsClass::simplePaginate(5);
-        
+
         return view('applicants.index')
         ->with(compact('applicants', 'rsclasses'));
     }
@@ -31,8 +32,15 @@ class ApplicantController extends Controller
     public function create()
     {
         $genders = Gender::all();
+        $rsclasses = RsClass::all();
+        $districts = District::all();
         return view('applicants.create')
-        ->with(compact('applicants', 'genders'));
+        ->with(compact(
+            'applicants',
+            'genders',
+            'rsclasses',
+            'districts'
+        ));
     }
 
     /**
@@ -45,9 +53,42 @@ class ApplicantController extends Controller
     {
         $applicant = new Applicant;
         $applicant->name = $request->name;
+        $applicant->id_gender = $request->id_gender;
+        $nif = $request->nif;
+        if (validaNIF($nif)) {
+            $applicant->nif = $nif;
+        }
+        $applicant->identityCard = $request->identityCard;
+        $applicant->ccExpirationDate = $request->ccExpirationDate;
         $applicant->email = $request->email;
-        $applicant->town = $request->town;
+        // $applicant->town = $request->town;
+        // $applicant->birthdate = $request->birthdate;
+        // //botão, devia ser bool
+        // $applicant->id_registrationState = 'Activo';
+        // $applicant->applicationDate = $request->applicationDate;
+        // //testar input-border-width nos selects
+        // // foreach
+        // $applicant->id_origin = $request->id_origin;
+        // // foreach
+        // $applicant->id_unemployementSituation = $request->id_unemployementSituation;
+        // // foreach
+        // $applicant->id_education = $request->id_educations;
+        // $applicant->phoneNumber = $request->phoneNumber;
+        // // foreach
+        $applicant->id_district = $request->id_district;
+        // $applicant->parish = $request->parish;
+        // // foreach
+        // $applicant->id_firstOptionCourse = $request->id_firstOptionCourse;
+        // // foreach
+        // $applicant->id_secondOptionCourse = $request->id_secondOptionCourse;
+        // // foreach
+        $applicant->id_rsClass = $request->id_rsClass;
+        // // Campo no index que é alterado apenas se todos os documentos tiverem um check (pode ser alterado no create e no edit)
+        // $applicant->apt = $request->apt;
+        // // select que pode ser alterado no create, index e edit
+        // $applicant->id_category = $request->id_category;
         $applicant->save();
+
         return redirect('/applicants');
     }
 

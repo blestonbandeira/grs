@@ -121,8 +121,18 @@ img#entrar {
 #calendar{
     background-color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 2.5px;
 }
 
 .card {
     padding-bottom: 20px;
+}
+
+.label-create-form{
+    font-size: 1rem;
+}
+
+.border {
+    appearance: none;
 }

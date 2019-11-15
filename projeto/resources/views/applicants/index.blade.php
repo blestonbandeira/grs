@@ -40,7 +40,8 @@
                                         <th></th>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Categorização</th>
+                                        {{-- pode ser alterado aqui e no edit do candidato, no create o registo está sempre 'activo' | criar filtro --}}
+                                        <th>Estado do Registo</th>
                                         <th></th>
                                     </thead>
                                     <tbody>

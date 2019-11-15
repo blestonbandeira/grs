@@ -15,22 +15,9 @@
               </div>
             </div>
             <div class="card-body">
-
               <div class="row">
-                <div class="col-md-5">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Turma de Recrutamento</label>
-                    <datalist id="turma">
-                      <option value="TPSI11.18">
-                      <option value="TPSI10.18">
-                      <option value="GR09.17">
-                      <option value="GR09.18">
-                      <option value="GR09.19">
-                    </datalist>
-                    <input list="turma" class="form-control input-border-width">
-                  </div>
-                </div>
-                <div class="col-md-3">
+                
+                <div class="col-md-8">
                   <div class="form-group">
                     <label class="bmd-label-floating">Nome Completo</label>
                     <input type="text" class="form-control input-border-width" name="name">
@@ -39,7 +26,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label class="bmd-label-floating bg-white p-1">Data-de-Nascimento</label>
-                    <input type="date" class="form-control input-border-width" name="birthdate" format="dd/MM/yyyy">
+                    <input type="date" class="form-control input-border-width" name="birthdate" value="birthdate" format="dd/MM/yyyy">
                   </div>
                 </div>
               </div>
@@ -110,22 +97,36 @@
                     <input type="text" class="form-control input-border-width">
                   </div>
                 </div>
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                   <div class="form-group">
                     <label class="bmd-label-floating">Distrito</label>
                     <input type="text" class="form-control input-border-width">
                   </div>
-                </div>
+                </div> --}}
+
                 <div class="col-md-3">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" name="email">Contacto</label>
-                    <input type="text" class="form-control input-border-width">
+                  <div>
+                    <label class="label-create-form pb-2">Distrito</label>
+                    <select name="id_district" class="custom-select input-border-width">
+                        @foreach($districts as $district)
+                              <option value="{{ $district->id }}">
+                                  {{ $district->name }}
+                              </option>
+                          @endforeach
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div>
+                    <label class="label-create-form" name="email">Contacto</label>
+                    <input class="form-control input-border-width" type="text">
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Email</label>
-                    <input type="text" class="form-control input-border-width">
+                  <div>
+                    <label class="label-create-form">Email</label>
+                    <input type="email" class="form-control input-border-width" name="email">
                   </div>
                 </div>
               </div>
@@ -152,26 +153,35 @@
             </div>
             <div class="card-body">
 
+              {{-- <div class="form-group">
+                  <label class="bmd-label-floating">Genero</label>
+                  <input class="form-control input-border-width" type="text" list="lista-generos" name="id_gender" id="lista-generos">
+                  <datalist id="lista-generos">
+                    @foreach($genders as $gender)
+                      <option value="{{ $gender->name }}">
+                          {{ $gender->id }}
+                      </option>
+                    @endforeach
+                  </datalist>
+              </div> --}}
+
+
+
               <div class="form-group">
-                <label class="bmd-label-floating">Genero</label>
-                <input list="genero" class="form-control input-border-width" name="id_gender">
-                <datalist id="genero">
-                  {{-- @if (count($genders) > 0 )
-                      @foreach($genders as $gender)
-                          <option value="{{ $gender->name }}" name="{{ $gender->id }}">
+                <label class="bmd-label-floating label-create-form">Genero</label>
+                <select name="id_gender" class="custom-select input-border-width">
+                    @foreach($genders as $gender)
+                          <option value="{{ $gender->id }}">
                               {{ $gender->name }}
                           </option>
                       @endforeach
-                  @else
-                  <option>
-                    --Não existem generos registados na plataforma--
-                  </option>
-                  @endif --}}
-
-                  <option>1</option>
-                  <option>2</option>
-                </datalist>
+                </select>
               </div>
+
+
+
+
+
 
               <div class="form-group">
                 <label class="bmd-label-floating">Estado Civil</label>
@@ -208,6 +218,19 @@
               </div>
             </div>
             <div class="card-body">
+
+              <div class="form-group">
+                <label class="bmd-label-floating">Turma de Recrutamento</label>
+                <datalist id="turma">
+                  <option value="TPSI11.18">
+                  <option value="TPSI10.18">
+                  <option value="GR09.17">
+                  <option value="GR09.18">
+                  <option value="GR09.19">
+                </datalist>
+                <input list="turma" class="form-control input-border-width">
+              </div>
+
               <div class="form-group">
                 <label class="bmd-label-floating">Curso 1ª Opção</label>
                 <datalist id="turma">
