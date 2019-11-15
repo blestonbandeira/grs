@@ -148,7 +148,7 @@
     $.ajax({
         url:"/api/events",
         type:"POST",
-        data:{id_user:{{ Auth::id() }}, title:title, id_event_type:4, start_event:start, end_event:end},
+        data:{id_user:{{ Auth::id() }}, id_event_type:4, start_event:start, end_event:end},
         success:function(data)
         {
           document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 

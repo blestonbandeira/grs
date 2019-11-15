@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Interview;
+use App\Applicant;
+use App\Event;
 use Illuminate\Http\Request;
 
 class InterviewController extends Controller
@@ -22,9 +24,14 @@ class InterviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('calendars.interviews.index');
+       
+        $interviews = Interview::all();
+        $applicants = Applicant::all();
+        $applicantsSelected = [];
+        $availabilities = Event::all()->where('id_event_type', '=', 4);
+        return view('calendars.interviews.create')->with(compact($interviews, $applicantsSelected, $availabilities));
     }
 
     /**
@@ -35,6 +42,7 @@ class InterviewController extends Controller
      */
     public function store(Request $request)
     {
+      
         return view('');
     }
 

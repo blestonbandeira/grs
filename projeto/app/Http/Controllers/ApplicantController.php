@@ -109,9 +109,9 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Applicant $applicant)
+    public function edit()
     {
-        //
+        return view('applicants.modal');
     }
 
     /**

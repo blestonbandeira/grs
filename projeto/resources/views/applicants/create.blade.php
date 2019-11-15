@@ -12,14 +12,22 @@
             <div class="card-header card-header-text card-header-info">
               <div class="card-text">
                 <h4 class="card-title">Dados da Candidatura Online</h4>
-              </div>
+              </div>              
             </div>
+
             <div class="card-body">
+<<<<<<< HEAD
 
               <div class="row">
                 <div class="col-md-6">
                   <div>
                     <label class="label-create-form">Nome Completo</label>
+=======
+              <div class="row">                
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Nome Completo</label>
+>>>>>>> 0909441800312dd8d7123fd56baab60e6394d373
                     <input type="text" class="form-control input-border-width" name="name">
                   </div>
                 </div>
@@ -304,64 +312,8 @@
                     <input list="origem" class="form-control input-border-width">
                   </div>
                 </div>
-              </div>
-
             </div>
-          </div>
         </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header card-header-text card-header-info">
-              <div class="card-text">
-                <h4 class="card-title">Documentos Entregues</h4>
-              </div>
-            </div>
-            <div class="card-body">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  BI/CC
-                  <span class="form-check-sign">
-                    <span class="check"></span>
-                  </span>
-                </label><br><br>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Certificado de Habilitações
-                  <span class="form-check-sign">
-                    <span class="check"></span>
-                  </span>
-                </label><br><br>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Cartão de Utente ou Declaração Centro de Emprego
-                  <span class="form-check-sign">
-                    <span class="check"></span>
-                  </span>
-                </label><br><br>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Curriculum Vitae
-                  <span class="form-check-sign">
-                    <span class="check"></span>
-                  </span>
-                </label><br><br>
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Registo Criminal
-                  <span class="form-check-sign">
-                    <span class="check"></span>
-                  </span>
-                </label><br><br>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-info pull-right">Criar</button>
-    </form>
-  </div>
+    </div>
 </div>
 @endsection
