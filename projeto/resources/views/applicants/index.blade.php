@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="/calendars/interviews">
-    @csrf   
+<form method="POST" action="/calendars/interviews/create">
     <div class="col text-center">
         <a href="/applicants/create">
             <button type="button" class="btn btn-info">
@@ -19,7 +18,7 @@
                 Marcar Prova
             </button>
         </a>
-    </div>
+</div>
 
     <div class="content">
         <div class="container-fluid">
@@ -50,7 +49,7 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input class="form-check-input" name="applicantsSelect[]" type="checkbox" value="{{$applicant->id}}">
+                                                                    <input class="form-check-input applicantsSelect" type="checkbox" value="{{$applicant->id}}">
                                                                     <span class="form-check-sign">
                                                                     <span class="check"></span>
                                                                     </span>
@@ -99,8 +98,6 @@
         </div>
     </div>
 </form>
-
-
 
 <input id="btnModelShowFromInterviews" type="hidden" onclick="calendarCharge()" class="btn btn-primary" data-toggle="modal" data-target=".modalCalendar"/>
 

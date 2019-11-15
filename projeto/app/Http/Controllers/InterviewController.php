@@ -26,7 +26,7 @@ class InterviewController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request);
+       
         $interviews = Interview::all();
         $applicants = Applicant::all();
         $applicantsSelected = [];
@@ -42,7 +42,7 @@ class InterviewController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+      
         return view('');
     }
 
