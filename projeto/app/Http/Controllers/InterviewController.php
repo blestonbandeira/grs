@@ -24,13 +24,14 @@ class InterviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        dd($request);
         $interviews = Interview::all();
         $applicants = Applicant::all();
         $applicantsSelected = [];
         $availabilities = Event::all()->where('id_event_type', '=', 4);
-        return view('calendars.interviews.create')->with(compact($interviews, $applicants, $availabilities));
+        return view('calendars.interviews.create')->with(compact($interviews, $applicantsSelected, $availabilities));
     }
 
     /**
@@ -41,6 +42,7 @@ class InterviewController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         return view('');
     }
 
