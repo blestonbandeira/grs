@@ -20,7 +20,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                            <select class="custom-select">
+                                            <select class="custom-select input-border-width">
                                                 @if (count($courseNames) > 0 )
                                                 <option>-- selecione aqui o curso --</option>
                                                     @foreach($courseNames as $courseName)

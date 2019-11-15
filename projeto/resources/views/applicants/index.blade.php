@@ -63,6 +63,7 @@
                             <h4 class="card-title">{{ $rsclass->name }}</h4>
                                 {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
                         </div>
+<<<<<<< HEAD
 >>>>>>> 13a7fb03047a0da40480f5c362eb88fbbfd5397d
 
                             <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
@@ -102,6 +103,53 @@
                                                         <td class="d-flex">
                                                             <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
                                                                 <i class="material-icons">edit</i>
+=======
+
+                        <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
+                            <div class="card-body table-responsive">                                
+                                <table class="table table-hover">
+                                    <thead class="text-info">
+                                        <th></th>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        {{-- pode ser alterado aqui e no edit do candidato, no create o registo está sempre 'activo' | criar filtro --}}
+                                        <th>Estado do Registo</th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($applicants as $applicant)
+                                            @if($rsclass->id == $applicant->id_rsClass)
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input applicantsSelect" type="checkbox" value="{{$applicant->id}}">
+                                                                <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        {{ $applicant->id }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $applicant->name }}
+                                                    </td>
+
+                                                    <td>
+                                                        {{ $applicant->category }}
+                                                    </td>
+                                                    <td class="d-flex">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <form action="/applicants/{{ $applicant->id }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                                <i class="material-icons">close</i>
+>>>>>>> origin/turmas2
                                                             </button>
                                                             <form action="/applicants/{{ $applicant->id }}" method="post">
                                                                 @csrf
