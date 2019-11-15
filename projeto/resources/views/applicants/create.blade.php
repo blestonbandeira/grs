@@ -15,35 +15,48 @@
               </div>
             </div>
             <div class="card-body">
+
               <div class="row">
-                
-                <div class="col-md-8">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Nome Completo</label>
+                <div class="col-md-6">
+                  <div>
+                    <label class="label-create-form">Nome Completo</label>
                     <input type="text" class="form-control input-border-width" name="name">
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                  <div>
+                    <label class="label-create-form" name="email">Contacto</label>
+                    <input class="form-control input-border-width" type="text">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div>
+                    <label class="label-create-form">Email</label>
+                    <input type="email" class="form-control input-border-width" name="email">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label class="bmd-label-floating bg-white p-1">Data-de-Nascimento</label>
                     <input type="date" class="form-control input-border-width" name="birthdate" value="birthdate" format="dd/MM/yyyy">
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label class="bmd-label-floating">N. Contribuinte</label>
                     <input type="text" class="form-control input-border-width" name="nif">
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label class="bmd-label-floating">N. CC</label>
                     <input type="text" class="form-control input-border-width" name="identityCard">
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label class="bmd-label-floating bg-white p-1">Data de Validade</label>
                     <input type="date" class="form-control input-border-width" name="ccExpirationDate">
@@ -91,7 +104,13 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" name="town">Localidade</label>
+                    <input type="email" class="form-control input-border-width">
+                  </div>
+                </div>
+                <div class="col-md-4">
                   <div class="form-group">
                     <label class="bmd-label-floating">Concelho</label>
                     <input type="text" class="form-control input-border-width">
@@ -104,7 +123,7 @@
                   </div>
                 </div> --}}
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                   <div>
                     <label class="label-create-form pb-2">Distrito</label>
                     <select name="id_district" class="custom-select input-border-width">
@@ -117,18 +136,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
-                  <div>
-                    <label class="label-create-form" name="email">Contacto</label>
-                    <input class="form-control input-border-width" type="text">
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div>
-                    <label class="label-create-form">Email</label>
-                    <input type="email" class="form-control input-border-width" name="email">
-                  </div>
-                </div>
+                
               </div>
               <div class="row">
                 <div class="col-md-12">
