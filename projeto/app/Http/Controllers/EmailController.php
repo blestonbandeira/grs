@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Interview;
+use App\Interviewer;
 use App\Applicant;
-use App\Event;
 use Illuminate\Http\Request;
+use Redirect,Response,DB,Config;
+use Mail;
 
-class InterviewController extends Controller
+class EmailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        return view('calendars.interviews.index');
+        return view(emails)
     }
 
     /**
@@ -24,14 +25,9 @@ class InterviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-       
-        $interviews = Interview::all();
-        $applicants = Applicant::all();
-        $applicantsSelected = [];
-        $availabilities = Event::all()->where('id_event_type', '=', 4);
-        return view('calendars.interviews.create')->with(compact($interviews, $applicantsSelected, $availabilities));
+        //
     }
 
     /**
@@ -42,17 +38,16 @@ class InterviewController extends Controller
      */
     public function store(Request $request)
     {
-      
-        return view('');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Interview  $interview
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Interview $interview)
+    public function show($id)
     {
         //
     }
@@ -60,10 +55,10 @@ class InterviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Interview  $interview
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Interview $interview)
+    public function edit($id)
     {
         //
     }
@@ -72,10 +67,10 @@ class InterviewController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Interview  $interview
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Interview $interview)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -83,10 +78,10 @@ class InterviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Interview  $interview
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Interview $interview)
+    public function destroy($id)
     {
         //
     }

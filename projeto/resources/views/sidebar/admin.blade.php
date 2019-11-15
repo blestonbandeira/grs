@@ -7,11 +7,39 @@
     -->
     
     <div class="logo">
-        <img class="logoStyle" src="{{ asset('images/onlinelogomaker-103119-1759-6926.png') }}" alt="logo">
+        <a href="#">
+            <img class="logoStyle" src="{{ asset('images/onlinelogomaker-103119-1759-6926.png') }}" alt="logo">
+        </a>
     </div>   
            
     <div class="sidebar-wrapper">
         <div class="accordion nav" id="sidebar">            
+
+            <div class="card nav-item">
+                <div class="card-header" id="headingTwo">
+                    <i class="material-icons">person</i>
+                    <p data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="{{ request()->is('applicants*') ? 'activeMenu' : '' }}">
+                    Candidatos
+                    </p>
+                </div>
+                <div id="collapseTwo" class="collapse {{ request()->is('applicants*') ? ' show' : '' }}" aria-labelledby="headingTwo" data-parent="#sidebar">
+                <div class="card-body">
+                    <ul class="nav-item">
+                        <li class="{{ request()->is('applicants') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('applicants') }}">
+                               Ver  
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('applicants/create') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('applicants.create') }}">
+                            Adicionar
+                            </a>   
+                        </li>                             
+                    </ul> 
+                </div>
+                </div>
+            </div>
+
             <div class="card nav-item">
                 <div class="card-header" id="headingOne">
                     <i class="material-icons">dashboard</i>
@@ -52,31 +80,6 @@
                             </li>         
                         </ul>                                        
                     </div>
-                </div>
-            </div>
-
-            <div class="card nav-item">
-                <div class="card-header" id="headingTwo">
-                    <i class="material-icons">person</i>
-                    <p data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="{{ request()->is('applicants*') ? 'activeMenu' : '' }}">
-                    Candidatos
-                    </p>
-                </div>
-                <div id="collapseTwo" class="collapse {{ request()->is('applicants*') ? ' show' : '' }}" aria-labelledby="headingTwo" data-parent="#sidebar">
-                <div class="card-body">
-                    <ul class="nav-item">
-                        <li class="{{ request()->is('applicants') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ url('applicants') }}">
-                               Ver  
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('applicants/create') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('applicants.create') }}">
-                            Adicionar
-                            </a>   
-                        </li>                             
-                    </ul> 
-                </div>
                 </div>
             </div>
 
