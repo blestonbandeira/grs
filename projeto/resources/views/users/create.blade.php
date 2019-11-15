@@ -10,38 +10,40 @@
                 <h4 class="card-title">Criar Novo Utilizador</h4>
             </div>
 
+            <br/>
             <div class="card-body">
                 <div class="row">                
                     <div class="col-md-8">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Nome Completo</label>
-                            <input type="text" class="form-control input-border-width" name="name">
+                    <div>
+                            <label class="bmd-label-floating" name="email">Nome Completo</label>
+                            <input class="form-control input-border-width" type="text">
                         </div>
                     </div>
                 </div>
-                <div class="row">                
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Email</label>
-                            <input type="text" class="form-control input-border-width" name="name">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                  <div>
-                    <label class="label-create-form pb-2">Nível de Acesso</label>
-                    <select name="permission_level" class="custom-select input-border-width">
-                        @foreach($permissionLevels as $permissionLevel)
-                              <option value="{{ $perssionLevel->name }}">
-                                  {{ $permissionLevel->name }}
-                              </option>
-                          @endforeach
-                    </select>
-                  </div>
-                </div>
+                <br/>
 
-                
+                <div class="row">
+                    <div class="col-md-8">
+                        <div>
+                            <label class="bmd-label-floating" name="email">Email</label>
+                            <input class="form-control input-border-width" type="text">
+                        </div>
+                    </div>
+                    
+               
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Nível de Acesso</label>
+                            <select name="permission_level" class="custom-select input-border-width">
+                                @foreach($permissionLevels as $permissionLevel)
+                                    <option value="{{ $permissionLevel->name }}">
+                                        {{ $permissionLevel->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    </div>
             </div>
         </div>
       </div>           
