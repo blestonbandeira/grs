@@ -104,7 +104,9 @@ img#entrar {
 
 .input-border-width {
     border-width: 0 0 1px;
+    margin-bottom: 20px;
 }
+
 
 .text-info{
     color: #00A3E0 !important;
@@ -136,10 +138,3 @@ img#entrar {
     font-size: 1rem;
 }
 
-.border {
-    appearance: none;
-}
-
-select {
-    border-bottom: transparent;
-}

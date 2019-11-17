@@ -42,7 +42,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->id_permissionLevel = $request->id_permissionLevel;
+        $user->save();
+
+        // $request->session()->flash('alert-success', 'Utilizador adicionado com sucesso');
+
+        return redirect('/users');
     }
 
     /**

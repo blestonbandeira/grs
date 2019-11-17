@@ -18,10 +18,14 @@ class ApplicantController extends Controller
     public function index()
     {
         $applicants = Applicant::all();
-        $rsclasses = RsClass::simplePaginate(5);
+        $rsClasses = RsClass::all();
+        $rsClasses = RsClass::simplePaginate(10);
+        $counter = Applicant::withCount('rsClass')->get()->count();
 
+        
+        
         return view('applicants.index')
-        ->with(compact('applicants', 'rsclasses'));
+        ->with(compact('applicants', 'rsClasses', 'counter'));
     }
 
     /**
@@ -64,7 +68,7 @@ class ApplicantController extends Controller
         // $applicant->town = $request->town;
         // $applicant->birthdate = $request->birthdate;
         // //botão, devia ser bool
-        // $applicant->id_registrationState = 'Activo';
+        // $applicant->id_registrationState = 'Activo'; 
         // $applicant->applicationDate = $request->applicationDate;
         // //testar input-border-width nos selects
         // // foreach
@@ -82,7 +86,7 @@ class ApplicantController extends Controller
         // // foreach
         // $applicant->id_secondOptionCourse = $request->id_secondOptionCourse;
         // // foreach
-        $applicant->id_rsClass = $request->id_rsClass;
+        $applicant->rs_class_id = $request->rs_class_id;
         // // Campo no index que é alterado apenas se todos os documentos tiverem um check (pode ser alterado no create e no edit)
         // $applicant->apt = $request->apt;
         // // select que pode ser alterado no create, index e edit
