@@ -50,8 +50,8 @@ class CreateApplicantsTable extends Migration
             $table->foreign('id_firstOptionCourse')->references('id')->on('course_names')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('id_secondOptionCourse')->unsigned()->nullable();
             $table->foreign('id_secondOptionCourse')->references('id')->on('course_names');
-            $table->bigInteger('id_rsClass')->unsigned()->nullable();
-            $table->foreign('id_rsClass')->references('id')->on('rs_classes')->onDelete('cascade')->onUpdate('cascade');            
+            $table->bigInteger('rs_class_id')->unsigned()->nullable();
+            $table->foreign('rs_class_id')->references('id')->on('rs_classes')->onDelete('cascade')->onUpdate('cascade');            
             $table->string('appFormUrl')->nullable();
             $table->string('ccUrl')->nullable();
             $table->string('diplomaUrl')->nullable();

@@ -17,7 +17,7 @@ class EmailController extends Controller
      */
     public function index()
     {
-        return view(emails)
+        return view(emails);
     }
 
     /**

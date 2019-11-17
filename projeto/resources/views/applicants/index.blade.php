@@ -23,14 +23,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="accordion" id="rsclasses">
-                    @foreach ($rsclasses as $rsclass)
+                <div class="accordion" id="rsClasses">
+                    @foreach ($rsClasses as $rsClass)
                     <div class="card">
-                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsclass->name }}" aria-expanded="true" aria-controls="{{ $rsclass->name }}">
-                            <h4 class="card-title">{{ $rsclass->name }}</h4>
-                            {{-- <p class="card-category"> Nº de Candidatos: {{ count($applicants)}}</p> --}}
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsClass->name }}" aria-expanded="true" aria-controls="{{ $rsClass->name }}">
+                            <h4 class="card-title">{{ $rsClass->name }}</h4>
+                           
+                            <p class="card-category"> Nº de Candidatos:{{ $counter }} </p>
+                                
                         </div>
-                        <div id="{{ $rsclass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsclasses">
+                        <div id="{{ $rsClass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsClasses">
                             <div class="card-body table-responsive">
                                 <table class="table table-hover">
                                     <thead class="text-info">
@@ -42,7 +44,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($applicants as $applicant)
-                                        @if($rsclass->id == $applicant->id_rsClass)
+                                        @if($rsClass->id == $applicant->rs_class_id)
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -90,7 +92,7 @@
                     @endforeach
                 </div>
                 <div class="pagination-sm float-right">
-                    {{ $rsclasses->links() }}
+                    {{ $rsClasses->links() }}
                 </div>
             </div>
         </div>

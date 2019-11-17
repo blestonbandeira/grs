@@ -2,7 +2,16 @@
 @section('content')
 
 <div class="content">
-    <div class="container-fluid">     
+    <div class="container-fluid">   
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="/users/create">
+                    <button type="button" class="btn btn-info">
+                        Adicionar Novo Utilizador
+                    </button>
+                </a>
+            </div>
+        </div>      
         <div class="row">
             <div class="col-md-12">
                 <div class="accordion" id="usersShow">               

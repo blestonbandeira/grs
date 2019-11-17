@@ -14,8 +14,9 @@
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.0",
-        "spatie/laravel-google-calendar": "^2.3",
-        "maddhatter/laravel-fullcalendar": "~1.0"
+        "laravelcollective/html": "^6.0",
+        "maddhatter/laravel-fullcalendar": "~1.0",
+        "spatie/laravel-google-calendar": "^2.3"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
