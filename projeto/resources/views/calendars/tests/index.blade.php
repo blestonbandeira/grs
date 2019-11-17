@@ -31,7 +31,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:1, id_event_type:2},
+        data:{user_id:1, event_type_id:2},
         success:function(data)
         {
             allEvents = data;
@@ -69,7 +69,7 @@
                   var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                   var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                   document.getElementById('btnModalShow').click();       
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Criar Teste && Prova de Aferição?</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Criar Provas de Selecção?</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
                 },
                 eventResize:function(event)
                 {
@@ -122,10 +122,8 @@
                   if (event.type == 1)
                     typeEvent="Entrevista";
                   else if (event.type == 2)
-                    typeEvent="Teste Psicotécnico && Prova de Aferição";
+                    typeEvent="Provas de Selecção";
                   else if (event.type == 3)
-                    typeEvent="Teste Psicotécnico && Inventário Vocacional";
-                  else if (event.type == 4)
                     typeEvent="Disponibilidade";
                   else
                     typeEvent="Não definido!";
@@ -146,7 +144,7 @@
     $.ajax({
         url:"/api/events",
         type:"POST",
-        data:{id_user:{{ Auth::id() }}, id_event_type:2, start_event:start, end_event:end},
+        data:{user_id:{{ Auth::id() }}, event_type_id:2, start_event:start, end_event:end},
         success:function(data)
         {
           document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 

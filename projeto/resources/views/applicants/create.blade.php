@@ -152,11 +152,11 @@
             <div class="card-body">
 
               <div class="form-group">
-                  <label class="bmd-label-floating">Genero</label>
+                  <label class="bmd-label-floating">Género</label>
                   <input class="form-control input-border-width" type="text" list="lista-generos" name="id_gender">
                   <datalist id="lista-generos">
                     @foreach($genders as $gender)
-                      <option value="{{ $gender->id }}">
+                      <option value="{{ \App\User::find($user->id_gender)->name }}">
                           {{ $gender->name }}
                       </option>
                     @endforeach

@@ -29,7 +29,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:1},
+        data:{user_id:1},
         success:function(data)
         {
             allEvents = data;
@@ -60,7 +60,7 @@
                   var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                   var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                   document.getElementById('btnModalShow').click();       
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Insira o nome:</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div id="modalBodyParagraph" class="modal-body"><p><input id="inputTitleEvents" class="form-control" type="text" placeholder="Titulo do Evento"/><input type="radio" name="eventType" class="eventRadio" value="interview"> Entrevista<br><input type="radio" name="eventType" class="eventRadio" value="cursoNA"> Prova de Aferição<input type="radio" name="eventType" class="eventRadio" value="cursoA"> Inventario Vocacional<br><input type="radio" name="eventType" class="eventRadio" value="cursoT">Teste Psicotecnico<br></p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph">Insira o nome:</p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p>Data de Inicio: ' + start + '<br/>Data de Fim: ' + end + '</p><input id="startEvents" type="hidden" value="' + start + '"/><input id="endEvents" type="hidden" value="' + end + '"/></div><div id="modalBodyParagraph" class="modal-body"><p><input id="inputTitleEvents" class="form-control" type="text" placeholder="Titulo do Evento"/><input type="radio" name="eventType" class="eventRadio" value="interview"> Entrevista<br><input type="radio" name="eventType" class="eventRadio" value="cursoNA"> Prova de Aferição<input type="radio" name="eventType" class="eventRadio" value="cursoA"> Inventario Vocacional<br><input type="radio" name="eventType" class="eventRadio" value="cursoT">Provas de Selecção<br></p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" onclick="createEvents()">Criar</button></div>';
                 },
                 eventResize:function(event)
                 {
@@ -73,7 +73,7 @@
                     $.ajax({
                         url:"/api/events/" + id,
                         type:"PUT",
-                        data:{id_user:{{Auth::id()}}, title:title, type:evenType, start_event:start, end_event:end},
+                        data:{user_id:{{Auth::id()}}, title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
                         {
                           document.getElementById('btnModalShow').click();
@@ -94,7 +94,7 @@
                     $.ajax({
                         url:"/api/events/" + id,
                         type:"PUT",
-                        data:{id_user:{{Auth::id()}}, title:title, type:evenType, start_event:start, end_event:end},
+                        data:{user_id:{{Auth::id()}}, title:title, type:evenType, start_event:start, end_event:end},
                         success:function()
                         {
                           document.getElementById('btnModalShow').click();
@@ -120,7 +120,7 @@
                     typeEvent="Teste Psicotécnico";
 
                   document.getElementById('btnModalShow').click();
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->id_permissionLevel != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->permission_level_id != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
                 },
             });
         }
@@ -144,7 +144,7 @@
         $.ajax({
             url:"/api/events",
             type:"POST",
-            data:{id_user:{{ Auth::id() }}, title:title, type:evenType, start_event:start, end_event:end},
+            data:{user_id:{{ Auth::id() }}, title:title, type:evenType, start_event:start, end_event:end},
             success:function(data)
             {
               document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 

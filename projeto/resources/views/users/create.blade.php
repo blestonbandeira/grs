@@ -59,9 +59,9 @@
                             <div class="form-group">
                                 <label class="bmd-label-floating">Nível de Acesso</label>
                                 <input class="form-control input-border-width" type="text" list="permission-level" name="permission-level"">
-                                <datalist id="permission-level" name="id_permissionLevel">
+                                <datalist id="permission-level" name="permission_level_id">
                                     @foreach($permissionLevels as $permissionLevel)
-                                    <option value="{{ $permissionLevel->name }}">
+                                    <option value="{{ $user->permissionLevel->name }}">
                                         {{ $permissionLevel->name  }}
                                     </option>
                                     @endforeach

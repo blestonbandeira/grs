@@ -17,10 +17,10 @@ class CreateDocumentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('size');
-            $table->bigInteger('id_applicant')->unsigned()->nullable();
-            $table->foreign('id_applicant')->references('id')->on('applicants');
-            $table->bigInteger('id_document_type')->unsigned()->nullable();
-            $table->foreign('id_document_type')->references('id')->on('document_types');
+            $table->bigInteger('applicant_id')->unsigned()->nullable();
+            $table->foreign('applicant_id')->references('id')->on('applicants');
+            $table->bigInteger('document_type_id')->unsigned()->nullable();
+            $table->foreign('document_type_id')->references('id')->on('document_types');
             $table->timestamps();
         });
     }

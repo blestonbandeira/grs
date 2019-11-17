@@ -26,9 +26,9 @@
 </head>
 
 <body>
-    @if (Auth::user()->id_permissionLevel == 1) @include('sidebar.admin')
-    @elseif (Auth::user()->id_permissionLevel == 2) @include('sidebar.assist')
-    @elseif (Auth::user()->id_permissionLevel == 3) @include('sidebar.inter')
+    @if (Auth::user()->permission_level_id == 1) @include('sidebar.admin')
+    @elseif (Auth::user()->permission_level_id == 2) @include('sidebar.assist')
+    @elseif (Auth::user()->permission_level_id == 3) @include('sidebar.inter')
     @endif
   <div class="main-panel">
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">

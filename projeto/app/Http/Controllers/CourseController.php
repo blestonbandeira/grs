@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Course;
+use App\CourseName;
 
 class CourseController extends Controller
 {
@@ -14,8 +16,10 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
+        $courseNames = CourseName::all();
+        
         return view('courses.index')
-        ->with(compact('courses'));
+        ->with(compact('courses', 'courseNames'));
     }
 
     /**

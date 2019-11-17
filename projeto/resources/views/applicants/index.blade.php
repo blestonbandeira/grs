@@ -266,7 +266,7 @@
             dataType: "json",
             url:"/api/events",
             type:"POST",
-            data:{id_applicant:selected, id_event_type:1, id_event:eventSelectedId, date:date},
+            data:{applicant_id:selected, event_type_id:1, event_id:eventSelectedId, date:date},
             success:function(data)
             {
                 document.getElementById('hoursShowFromInterviews').classList.remove("show");
@@ -318,7 +318,7 @@
             dataType: "json",
             url:"/api/events",
             type:"POST",
-            data:{id_user:{{Auth::id()}}, id_applicants:appliSelectedId, id_event_type:testTypeSelected, date:date},
+            data:{user_id:{{Auth::id()}}, applicants_id:appliSelectedId, event_type_id:testTypeSelected, date:date},
             success:function(data)
             {
                 let tempModal = document.getElementById('modalSuccessMessageTests');
@@ -351,7 +351,7 @@
             dataType: "json",
             url: "/api/events",
             type: "GET",
-            data: { id_user:{{Auth::id()}}, id_event_type: 4 },
+            data: { user_id:{{Auth::id()}}, event_type_id: 4 },
             success: function(data) {
                 allEvents = data;
                 var calendar = $('#calendar').fullCalendar({

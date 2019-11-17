@@ -30,7 +30,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:{{Auth::id()}}, id_event_type:4},
+        data:{user_id:{{Auth::id()}}, event_type_id:4},
         success:function(data)
         {
             allEvents = data;
@@ -47,13 +47,13 @@
                 maxTime: "19:00:00",
                 allDaySlot: false,
                 weekends: false,
-                @if(Auth::user()->id_permissionLevel == 1)
+                @if(Auth::user()->permission_level_id == 1)
                   editable:true,
                   selectable:false,
-                @elseif(Auth::user()->id_permissionLevel == 2)
+                @elseif(Auth::user()->permission_level_id == 2)
                   editable:false,
                   selectable:false,
-                @elseif(Auth::user()->id_permissionLevel == 3)
+                @elseif(Auth::user()->permission_level_id == 3)
                   editable:true,
                   selectable:true,
                 @endif
@@ -124,16 +124,14 @@
                   if (event.type == 1)
                     typeEvent="Entrevista";
                   else if (event.type == 2)
-                    typeEvent="Teste Psicotécnico && Prova de Aferição";
+                    typeEvent="Provas de Selecção";
                   else if (event.type == 3)
-                    typeEvent="Teste Psicotécnico && Inventário Vocacional";
-                  else if (event.type == 4)
                     typeEvent="Disponibilidade";
                   else
                     typeEvent="Não definido!";
 
                   document.getElementById('btnModalShow').click();
-                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->id_permissionLevel != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
+                  document.getElementById('modalEvents').innerHTML = '<div class="modal-header"><p class="modal-title" id="modalTitleParagraph"><b>' + event.title + '</b></p><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div id="modalBodyParagraph" class="modal-body"><p style="text-align:center;"><b>' + start + '</b> - <b>' + end + '</b></p><p style="text-align:center;">' + date + '</p><p style="text-align:center;">' + typeEvent + '</p></div><div class="modal-footer">@if(Auth::user()->permission_level_id != "2")<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" onclick="confirmDeleteEvents()">Eliminar</button>@else<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>@endif</div>';
                 },
             });
         }
@@ -148,7 +146,7 @@
     $.ajax({
         url:"/api/events",
         type:"POST",
-        data:{id_user:{{ Auth::id() }}, id_event_type:4, start_event:start, end_event:end},
+        data:{user_id:{{ Auth::id() }}, event_type_id:4, start_event:start, end_event:end},
         success:function(data)
         {
           document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 

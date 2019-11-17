@@ -65,14 +65,9 @@
                             </li> 
                             <li class="{{ request()->is('calendars/tests') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars/tests') }}">
-                                    Testes & Provas
+                                    Provas de Selecção
                                 </a>
-                            </li> 
-                            <li class="{{ request()->is('calendars/inventories') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('calendars/inventories') }}">       
-                                    Testes & Inventário
-                                </a>  
-                            </li>  
+                            </li>                             
                             <li class="{{ request()->is('calendars/availabilities') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars/availabilities') }}">       
                                     Disponibilidades
