@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <div class="wrapper ">
     <div class="sidebar" data-color="#00A3E0" data-background-color="white" data-image="{{ asset('img/sidebar-1.jpg') }}">
         <!--
@@ -189,7 +193,7 @@
                         Documentos
                     </p>                
                 </div>
-                <div id="collapseSix" class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                <div id="collapseSix" class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingSix" data-parent="#sidebar">
                     <div class="card-body">
                     <ul class="nav-item">
                             <li class="{{ request()->is('documents') ? 'active' : '' }}">
@@ -210,3 +214,4 @@
         </div> 
     </div>
 </div>
+
