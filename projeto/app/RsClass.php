@@ -14,7 +14,7 @@ class RsClass extends Model
         return $this->hasOne('\App\CourseName');
     }
 
-    public function applicant() {
-        return $this->hasOne('\App\Applicant');
+    public function applicants() {
+        return $this->hasMany('\App\Applicant');
     }
 }
