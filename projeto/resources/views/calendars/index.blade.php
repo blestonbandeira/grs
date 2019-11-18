@@ -43,7 +43,7 @@
                 slotLabelInterval: 15,
                 slotMinutes: 15,
                 slotLabelFormat: 'HH:mm',
-                timeFormat: 'HH:MM',
+                timeFormat: 'HH:mm',
                 minTime: "09:00:00",
                 maxTime: "19:00:00",
                 allDaySlot: false,

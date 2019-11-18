@@ -8,7 +8,7 @@
    <div id="calendar" ></div>
 </div>
 
-<button id="btnModalShow" type="hidden" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow"></button>
+<input id="btnModalShow" type="hidden" data-toggle="modal" data-target="#modalEventsShow"/>
 
 <div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -30,7 +30,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{user_id:{{Auth::id()}}, event_type_id:4},
+        data:{user_id:{{Auth::id()}}, event_type_id:3},
         success:function(data)
         {
             allEvents = data;
@@ -146,7 +146,7 @@
     $.ajax({
         url:"/api/events",
         type:"POST",
-        data:{user_id:{{ Auth::id() }}, event_type_id:4, start_event:start, end_event:end},
+        data:{user_id:{{ Auth::id() }}, event_type_id:3, start_event:start, end_event:end},
         success:function(data)
         {
           document.getElementById('modalEvents').innerHTML='<div style="border-radius:20px;" class="modal-header"><div class="modal-body"><p style="text-align:center;">Criado com sucesso!</p></div></div>'; 
