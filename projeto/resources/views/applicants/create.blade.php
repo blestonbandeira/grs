@@ -160,10 +160,10 @@
 
               <div class="form-group">
                   <label class="bmd-label-floating">Género</label>
-                  <input class="form-control input-border-width" type="text" list="lista-generos" name="gender_name">
-                  <datalist id="lista-generos" name="gender_name">
+                  <input class="form-control input-border-width" type="text" list="lista-generos" name="gender_id">
+                  <datalist id="lista-generos" >
                     @foreach($genders as $gender)
-                      <option data-value="{{ $gender->name }}">
+                      <option value="{{ $gender->id }}">
                           {{ $gender->name }}
                       </option>
                     @endforeach
