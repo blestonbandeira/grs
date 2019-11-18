@@ -163,7 +163,7 @@
                   <input class="form-control input-border-width" type="text" list="lista-generos" name="gender_id">
                   <datalist id="lista-generos">
                     @foreach($genders as $gender)
-                      <option value="{{ \App\User::find($user->gender_id)->name }}">
+                      <option value="{{ $gender->id}}">
                           {{ $gender->name }}
                       </option>
                     @endforeach

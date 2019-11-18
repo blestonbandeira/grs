@@ -61,7 +61,7 @@
                                 <input class="form-control input-border-width" type="text" list="permission-level" name="permission-level"">
                                 <datalist id="permission-level" name="permission_level_id">
                                     @foreach($permissionLevels as $permissionLevel)
-                                    <option value="{{ $user->permissionLevel->name }}">
+                                    <option value="{{ $user->permissionLevels->name }}">
                                         {{ $permissionLevel->name  }}
                                     </option>
                                     @endforeach
