@@ -18,10 +18,19 @@
         </button>
     </a>
 </div>
+{{-- //acrescentar botão 'Actualizar seriação'
+//acrescentar colunas:
+    //apto (botão sim ou não)
+    //categoria (foreach select)
+    //nota da entrevista (quadrado input)
+    //media dos teste
+    //idade
+    //botão alternativa cor preeenchida se sim, marca de água se não --}}
+
 
 <div class="content">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="displex: flex-inline;">
             <div class="col-md-12">
                 <div class="accordion" id="rsClasses">
                     @foreach ($rsClasses as $rsClass)
@@ -36,17 +45,22 @@
                             <div class="card-body table-responsive">
                                 <table class="table table-hover">
                                     <thead class="text-info">
-                                        <th></th>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Categorização</th>
-                                        <th></th>
+                                        <th class="text-center"></th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Idade</th>
+                                        <th class="text-center">Media das Provas</th>
+                                        <th class="text-center">Nota de Entrevista</th>
+                                        <th class="text-center">Apto</th>
+                                        <th class="text-center">Categorização</th>
+                                        <th class="text-center"></th>
                                     </thead>
                                     <tbody>
                                         @foreach ($applicants as $applicant)
                                         @if($rsClass->id == $applicant->rs_class_id)
                                         <tr>
-                                            <td>
+                                            <td class="text-center">
+                                                
                                                 <div class="form-check">
                                                     <label class="form-check-label">
                                                         <input class="form-check-input applicantsSelect" type="checkbox" value="{{$applicant->id}}">
@@ -56,31 +70,51 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 {{ $applicant->id }}
                                             </td>
-                                            <td>
+                                            <td class="text-center" title="{{ $applicant->observations }}">
                                                 {{ $applicant->name }}
                                             </td>
-                                            <td>
-                                                {{ $applicant->category }}
+                                            <td class="text-center">
+                                                22
                                             </td>
-                                            <td class="d-flex">
+                                            <td class="text-center">
+                                               <input type="text" value="22" style="text-align: center;" maxlength="2" size="1">
+                                            </td>
+                                            <td class="text-center">
+                                                <input type="text" value="22" style="text-align: center;" maxlength="2" size="1">
+                                            </td>
+                                            <td class="text-center">
+                                                <button class="btn btn-success" style=" display: inline-block;">Sim</button>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="form-group">
+                                                    <select name="id_category" class="custom-select" onchange="this.form.submit()">
+                                                        @foreach($categories as $category)
+                                                            <option value="{{ $category->id }}">
+                                                                {{ $category->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </td>
+                                             <td>
                                                 <form action="/applicants/{{ $applicant->id }}" method="post">
                                                     @csrf
                                                     @method('put')
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
+                                                    <button type="button" rel="tooltip" title="Editar Candidato" class="btn btn-info btn-link btn-sm border-0">
                                                         <i class="material-icons">edit</i>
                                                     </button>
                                                 </form>
-                                                <form action="/applicants/{{ $applicant->id }}" method="post">
+                                                {{--<form action="/applicants/{{ $applicant->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
-                                                </form>
-                                            </td>
+                                                </form>--}}
+                                            </td> 
                                         </tr>
                                         @endif
                                         @endforeach
@@ -98,8 +132,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
@@ -154,8 +186,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!--MODAL PROVAS-->
 
