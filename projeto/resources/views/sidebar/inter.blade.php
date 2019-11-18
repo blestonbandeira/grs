@@ -15,9 +15,9 @@
         <div class="accordion nav" id="sidebar">
             
            <div class="card nav-item">
-                <div class="card-header" id="headingOne">
+                <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     <i class="material-icons">dashboard</i>
-                    <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
+                    <p  class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
                         <a href="{{ url('calendars') }}">
                             Calendário
                         </a>

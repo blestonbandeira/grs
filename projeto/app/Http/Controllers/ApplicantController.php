@@ -13,7 +13,7 @@ use App\Course;
 use App\ProvenanceSchool;
 use App\CancellationReason;
 use App\Category;
-
+use App\CourseName;
 
 use Illuminate\Http\Request;
 
@@ -62,6 +62,8 @@ class ApplicantController extends Controller
         $unemployementSituations = UnemployementSituation::all();
         $courses = Course::all();
         $cancellationReasons = CancellationReason::all();
+
+        // $rsClasses = RsClass::leftJoin('applicants', 'applicants.rs_class_id', '=', 'rs_classes.id')->get();
         return view('applicants.create')
         ->with(compact(
             'genders',
