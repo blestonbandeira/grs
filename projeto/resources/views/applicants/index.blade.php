@@ -2,6 +2,27 @@
 
 @section('content')
 <div class="col text-center">
+        <div class="text-center"> 
+                <label class="pr-3 pl-3">Filtrar por:</label>
+                <select name="catgory_id" class="text-center custom-select w-25" onchange="this.form.submit()">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <label class="pr-3 pl-3">e</label>
+                <select name="catgory_id" class="text-center custom-select w-25" onchange="this.form.submit()">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <br>
+            <br>
+           
     <a href="/applicants/create">
         <button type="button" class="btn btn-info">
             Adicionar
@@ -17,16 +38,8 @@
             Marcar Prova
         </button>
     </a>
+    
 </div>
-{{-- //acrescentar botão 'Actualizar seriação'
-//acrescentar colunas:
-    //apto (botão sim ou não)
-    //categoria (foreach select)
-    //nota da entrevista (quadrado input)
-    //media dos teste
-    //idade
-    //botão alternativa cor preeenchida se sim, marca de água se não --}}
-
 
 <div class="content">
     <div class="container-fluid">
@@ -37,9 +50,7 @@
                     <div class="card">
                         <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsClass->name }}" aria-expanded="true" aria-controls="{{ $rsClass->name }}">
                             <h4 class="card-title">{{ $rsClass->name }}</h4>
-                           
-                            <p class="card-category"> Nº de Candidatos:{{ $counter }} </p>
-                                
+                            <p class="card-category"> Nº de Candidatos:{{ $counter }} </p> 
                         </div>
                         <div id="{{ $rsClass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsClasses">
                             <div class="card-body table-responsive">
@@ -60,7 +71,6 @@
                                         @if($rsClass->id == $applicant->rs_class_id)
                                         <tr>
                                             <td class="text-center">
-                                                
                                                 <div class="form-check">
                                                     <label class="form-check-label">
                                                         <input class="form-check-input applicantsSelect" type="checkbox" value="{{$applicant->id}}">
