@@ -15,7 +15,7 @@ class InterviewerController extends Controller
      */
     public function index()
     {
-        $interviewers = User::all()->where('permissionLevel', '=', 3);
+        $interviewers = User::all()->where('permission_level_id', '=', 3);
         return view('interviewers.index')
         ->with(compact('interviewers'));
     }

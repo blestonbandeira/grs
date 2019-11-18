@@ -31,7 +31,7 @@
         dataType: "json",
         url:"/api/events",
         type:"GET",
-        data:{id_user:{{Auth::id()}}, id_event_type:0},
+        data:{user_id:{{Auth::id()}}, event_type_id:0},
         success:function(data)
         {
             allEvents = data;
@@ -69,10 +69,8 @@
                   if (event.type == 1)
                     typeEvent="Entrevista";
                   else if (event.type == 2)
-                    typeEvent="Teste Psicotécnico && Prova de Aferição";
+                    typeEvent="Provas de Selecção";
                   else if (event.type == 3)
-                    typeEvent="Teste Psicotécnico && Inventário Vocacional";
-                  else if (event.type == 4)
                     typeEvent="Disponibilidade";
                   else
                     typeEvent="Não definido!";

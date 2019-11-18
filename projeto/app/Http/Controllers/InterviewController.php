@@ -30,7 +30,7 @@ class InterviewController extends Controller
         $interviews = Interview::all();
         $applicants = Applicant::all();
         $applicantsSelected = [];
-        $availabilities = Event::all()->where('id_event_type', '=', 4);
+        $availabilities = Event::all()->where('event_type_id', '=', 4);
         return view('calendars.interviews.create')->with(compact($interviews, $applicantsSelected, $availabilities));
     }
 

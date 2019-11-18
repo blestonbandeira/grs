@@ -15,14 +15,14 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');            
-            $table->bigInteger('id_courseName')->unsigned()->nullable();
-            $table->foreign('id_courseName')->references('id')->on('course_names');
-            $table->bigInteger('id_courseType')->unsigned()->nullable();
-            $table->foreign('id_courseType')->references('id')->on('course_types')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('id_regime')->unsigned()->nullable();
-            $table->foreign('id_regime')->references('id')->on('regimes')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('id_minimumQualification')->unsigned()->nullable();
-            $table->foreign('id_minimumQualification')->references('id')->on('minimum_qualifications')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('course_name_id')->unsigned()->nullable();
+            $table->foreign('course_name_id')->references('id')->on('course_names');
+            $table->bigInteger('course_type_id')->unsigned()->nullable();
+            $table->foreign('course_type_id')->references('id')->on('course_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('regime_id')->unsigned()->nullable();
+            $table->foreign('regime_id')->references('id')->on('regimes')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('minimum_qualification_id')->unsigned()->nullable();
+            $table->foreign('minimum_qualification_id')->references('id')->on('minimum_qualifications')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

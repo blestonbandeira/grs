@@ -15,8 +15,8 @@ class CreateFormsTable extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_interview')->unsigned();
-            $table->foreign('id_interview')->references('id')->on('interviews')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('interview_id')->unsigned();
+            $table->foreign('interview_id')->references('id')->on('interviews')->onDelete('cascade')->onUpdate('cascade');
             $table->string('interviewer')->default('id_user');
             $table->string('date');
             $table->string('applicantName')->default('id_applicant');
