@@ -196,20 +196,15 @@
                 <div id="modalSuccessMessageTests" class="container-fluid" style="visibility:hidden; border-radius:10px; border: 1px solid #0089f2!important; padding: 50px; width: 26.7vw!important; position:absolute; z-index:100; background-color:white;">
                 </div>
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Marcas Testes:</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="2">Teste && Prova de Aferição</button>
-                    <button onclick="selectedTypeFromTests(this)" type="button" class="btn btn-primary btnModalTests" value="3">Teste && Inventário Vocacional</button>
-                </div>
-                <div id="dayToTests" style="visibility:hidden;">
                     <h4>Data: </h4>
                     <input id="hoursProvas" class="form-control input-border-width" type="datetime-local" />
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" onclick="saveTests()" class="btn btn-primary">Marcar</button>
@@ -226,6 +221,7 @@
     let appliSelectedName = [];
     let appliSelected = null;
     let appliSelectedHtml = "";
+    let appliSelectedCount = 0;
     let dateSelected = "";
     let eventSelectedId = 0;
 
@@ -253,6 +249,7 @@
                         if(appliSelectedName.length == appliSelectedId.length){
                             innerApplicantsSelectedFromInterviews();
                             calendarCharge();
+                            appliSelectedCount = appliSelectedName.length;
                         }
                         k++;
                     }
@@ -310,22 +307,6 @@
         });
     }
 
-
-    function selectedTypeFromTests(data)
-    {
-        let divActive = document.getElementById('modalTests');
-        let numActives = divActive.getElementsByClassName('btnModalTests');
-        for(i = 0; i < numActives.length; i++)
-        {
-            numActives[i].classList.remove("active");
-        }
-        data.className += " active";
-        testTypeSelected = data.value;
-
-        let tempModal = document.getElementById('dayToTests');
-        tempModal.style.visibility = "visible" ;
-    }
-
     function getApplicantsSelectedFromTests()
     {
         let applicantsSelected = document.getElementsByClassName('applicantsSelect');
@@ -348,7 +329,7 @@
             dataType: "json",
             url:"/api/events",
             type:"POST",
-            data:{user_id:{{Auth::id()}}, applicants_id:appliSelectedId, event_type_id:testTypeSelected, date:date},
+            data:{user_id:{{Auth::id()}}, applicants_id:appliSelectedId, event_type_id:2, date:date},
             success:function(data)
             {
                 let tempModal = document.getElementById('modalSuccessMessageTests');
@@ -366,6 +347,9 @@
         e.preventDefault();
         $(this).parent().remove();
         appliSelected = null;
+        appliSelectedCount -= 1;
+        if (appliSelectedCount == 0)
+            location.reload();
     });
 
     $("#btnCloseModalFromInterviews").on("click", function() {
@@ -381,7 +365,7 @@
             dataType: "json",
             url: "/api/events",
             type: "GET",
-            data: { user_id:{{Auth::id()}}, event_type_id: 4 },
+            data: { user_id:{{Auth::id()}}, event_type_id: 3 },
             success: function(data) {
                 allEvents = data;
                 var calendar = $('#calendar').fullCalendar({
