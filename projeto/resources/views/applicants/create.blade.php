@@ -112,7 +112,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label class="bmd-label-floating">Distrito</label>
-                    <input type="text" class="form-control input-border-width" list="lista-distritos" name="id_district">
+                    <input type="text" class="form-control input-border-width" list="lista-distritos" name="district_id">
                     <datalist id="lista-distritos">
                       @foreach($districts as $district)
                         <option value="{{ $district->id }}">
@@ -159,11 +159,11 @@
             <div class="card-body">
 
               <div class="form-group">
-                  <label class="bmd-label-floating">Genero</label>
-                  <input class="form-control input-border-width" type="text" list="lista-generos" name="id_gender">
+                  <label class="bmd-label-floating">Género</label>
+                  <input class="form-control input-border-width" type="text" list="lista-generos" name="gender_id">
                   <datalist id="lista-generos">
                     @foreach($genders as $gender)
-                      <option value="{{ $gender->id }}">
+                      <option value="{{ \App\User::find($user->gender_id)->name }}">
                           {{ $gender->name }}
                       </option>
                     @endforeach
@@ -172,7 +172,7 @@
 
               {{-- <div class="form-group">
                 <label class="bmd-label-floating label-create-form">Genero</label>
-                <select name="id_gender" class="custom-select input-border-width">
+                <select name="gender_id" class="custom-select input-border-width">
                     @foreach($genders as $gender)
                           <option value="{{ $gender->id }}">
                               {{ $gender->name }}
@@ -193,7 +193,7 @@
               </div>
               <div class="form-group">
                 <label class="bmd-label-floating">Situação Face ao Emprego</label>
-                <input type="text" class="form-control input-border-width" list="lista-situacoes" name="id_unemployementSituation">
+                <input type="text" class="form-control input-border-width" list="lista-situacoes" name="unemployement_situation_id">
                 <datalist id="lista-situacoes">
                   @foreach($unemployementSituations as $unemployementSituation)
                     <option value="{{ $unemployementSituation->id }}">
@@ -204,7 +204,7 @@
               </div>
               <div class="form-group">
                 <label class="bmd-label-floating">Habilitação Literárias</label>
-                <input type="text" class="form-control input-border-width" list="list-habilitacoes" name="id_education">
+                <input type="text" class="form-control input-border-width" list="list-habilitacoes" name="education_id">
                 <datalist id="lista-situacoes">
                   @foreach($educations as $education)
                     <option value="{{ $education->id }}">
@@ -215,7 +215,7 @@
               </div>
               <div class="form-group">
                 <label class="bmd-label-floating">Escola de proveniência</label>
-                <input type="text" class="form-control input-border-width" list="lista-escolas" name="id_provenance_school">
+                <input type="text" class="form-control input-border-width" list="lista-escolas" name="provenance_school_id">
                 <datalist id="lista-escolas">
                   @foreach($provenance_schools as $provenance_school)
                     <option value="{{ $provenance_school->id }}">
@@ -239,7 +239,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label class="bmd-label-floating">Curso 1ª Opção</label>
-                <input list="turma" class="form-control input-border-width" list="lista-cursos1" name="id_firstOptionCourse">
+                <input list="turma" class="form-control input-border-width" list="lista-cursos1" name="first_option_course_id">
                 <datalist id="lista-cursos1">
                   @foreach($courses as $course)
                     <option value="{{ $course->id }}">
@@ -250,7 +250,7 @@
               </div>
               <div class="form-group">
                 <label class="bmd-label-floating">Curso 2ª Opção</label>
-                <input list="turma" class="form-control input-border-width" list="lista-cursos2" name="id_secondOptionCourse">
+                <input list="turma" class="form-control input-border-width" list="lista-cursos2" name="second_option_course_id">
                 <datalist id="lista-cursos2">
                   @foreach($courses as $course)
                     <option value="{{ $course->id }}">
@@ -278,7 +278,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Origem</label>
-                    <input list="lista-origens" class="form-control input-border-width" name="id_origin">
+                    <input list="lista-origens" class="form-control input-border-width" name="origin_id">
                     <datalist id="lista-origens">
                       @foreach($origins as $origin)
                         <option value="{{ $origin->id }}">
@@ -291,7 +291,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="bmd-label-floating">Motivo da Anulação</label>
-                    <input class="form-control input-border-width" list="lista-motivos" name="id_cancellation_reason">
+                    <input class="form-control input-border-width" list="lista-motivos" name="cancellation_reason_id">
                     <datalist id="lista-motivos">
                         @foreach($cancellationReasons as $cancellationReason)
                           <option value="{{ $cancellationReason->id }}">

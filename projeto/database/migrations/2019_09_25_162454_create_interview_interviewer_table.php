@@ -15,10 +15,10 @@ class CreateInterviewInterviewerTable extends Migration
     {
         Schema::create('interview_interviewer', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_interview')->unsigned();
-            $table->foreign('id_interview')->references('id')->on('interviews');
-            $table->bigInteger('id_user')->unsigned(); //fazer where para garantir que o user tem id de interviewer
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->bigInteger('interview_id')->unsigned();
+            $table->foreign('interview_id')->references('id')->on('interviews');
+            $table->bigInteger('user_id')->unsigned(); //fazer where para garantir que o user tem id de interviewer
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -15,10 +15,10 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_user')->unsigned()->nullable();
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->bigInteger('id_event_type')->unsigned()->nullable();
-            $table->foreign('id_event_type')->references('id')->on('event_types');
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('event_type_id')->unsigned()->nullable();
+            $table->foreign('event_type_id')->references('id')->on('event_types');
             $table->string('title');
             $table->string('start_event');
             $table->string('end_event');

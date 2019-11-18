@@ -15,10 +15,10 @@ class CreateApplicantEventTable extends Migration
     {
         Schema::create('applicant_event', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_applicant')->unsigned()->nullable();
-            $table->foreign('id_applicant')->references('id')->on('applicants');
-            $table->bigInteger('id_event')->unsigned()->nullable();
-            $table->foreign('id_event')->references('id')->on('events');
+            $table->bigInteger('applicant_id')->unsigned()->nullable();
+            $table->foreign('applicant_id')->references('id')->on('applicants');
+            $table->bigInteger('event_id')->unsigned()->nullable();
+            $table->foreign('event_id')->references('id')->on('events');
             $table->timestamps();
         });
     }

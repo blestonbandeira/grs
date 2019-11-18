@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
         $user->name = "Admin";
         $user->email = "admin@m.pt";
         $user->password = bcrypt("123++qwe");
-        $user->id_permissionLevel = $permissionLevels[0]["id"];
+        $user->permission_level_id = $permissionLevels[0]["id"];
         $user->save();
 
         $permissionLevels = PermissionLevel::select('id')->where('name', '=', 'Assistente de Formação')->get();
@@ -26,7 +26,7 @@ class UsersSeeder extends Seeder
         $user->name = "Assist";
         $user->email = "assist@m.pt";
         $user->password = bcrypt("123++qwe");
-        $user->id_permissionLevel = $permissionLevels[0]["id"];
+        $user->permission_level_id = $permissionLevels[0]["id"];
         $user->save();
 
         $permissionLevels = PermissionLevel::select('id')->where('name', '=', 'Entrevistador')->get();
@@ -34,7 +34,7 @@ class UsersSeeder extends Seeder
         $user->name = "Inter";
         $user->email = "inter@m.pt";
         $user->password = bcrypt("123++qwe");
-        $user->id_permissionLevel = $permissionLevels[0]["id"];
+        $user->permission_level_id = $permissionLevels[0]["id"];
         $user->save();
     
         $permissionLevels = PermissionLevel::select('id')->where('name', '=', 'Entrevistador')->get();
@@ -42,7 +42,7 @@ class UsersSeeder extends Seeder
         $user->name = "Inter2";
         $user->email = "inter2@m.pt";
         $user->password = bcrypt("123++qwe");
-        $user->id_permissionLevel = $permissionLevels[0]["id"];
+        $user->permission_level_id = $permissionLevels[0]["id"];
         $user->save();
 
         $permissionLevels = PermissionLevel::select('id')->where('name', '=', 'Assistente de Formação')->get();
@@ -50,7 +50,7 @@ class UsersSeeder extends Seeder
         $user->name = "Assist2";
         $user->email = "assist2@m.pt";
         $user->password = bcrypt("123++qwe");
-        $user->id_permissionLevel = $permissionLevels[0]["id"];
+        $user->permission_level_id = $permissionLevels[0]["id"];
         $user->save();
 
         $permissionLevels = PermissionLevel::select('id')->where('name', '=', 'Assistente de Formação')->get();
@@ -58,7 +58,7 @@ class UsersSeeder extends Seeder
         $user->name = "Assist3";
         $user->email = "assist3@m.pt";
         $user->password = bcrypt("123++qwe");
-        $user->id_permissionLevel = $permissionLevels[0]["id"];
+        $user->permission_level_id = $permissionLevels[0]["id"];
         $user->save();
     }
 }

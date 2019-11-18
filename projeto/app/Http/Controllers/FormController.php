@@ -44,8 +44,8 @@ class FormController extends Controller
 
 
         $form = new Form;
-        $form->id_interview = 2;
-        $form->interviewer = 1;
+        $form->interview_id = 2;
+        $form->interviewer_id = 1;
         $form->date = Carbon::now()->format('Y-MM-DD HH:mm:ss');
         $form->applicantName = "7";
         $form->firstCourseOption = $request->firstCourseOption;

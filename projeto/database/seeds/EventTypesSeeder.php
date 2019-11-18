@@ -17,11 +17,7 @@ class EventTypesSeeder extends Seeder
         $eventType->save();
 
         $eventType = new EventType;
-        $eventType->name = "Teste";
-        $eventType->save();
-
-        $eventType = new EventType;
-        $eventType->name = "Inventário";
+        $eventType->name = "Provas de Selecção";
         $eventType->save();
 
         $eventType = new EventType;

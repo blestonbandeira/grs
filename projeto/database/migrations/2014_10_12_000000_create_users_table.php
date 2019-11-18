@@ -16,11 +16,11 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->nullable();;
+            $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->bigInteger('id_permissionLevel')->unsigned()->nullable();
-            $table->foreign('id_permissionLevel')->references('id')->on('permission_levels');
+            $table->bigInteger('permission_level_id')->unsigned()->nullable();
+            $table->foreign('permission_level_id')->references('id')->on('permission_levels');
             $table->rememberToken();
             $table->timestamps();
         });
