@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     public function rsClasses() {
-        return $this->belongsToMany('\App\RsClass');
+        return $this->belongsTo('\App\RsClass');
       }
 
     public function courseName() {
-        return $this->hasOne('\App\CourseName');
+        return $this->belongsTo('\App\CourseName');
     }
 }

@@ -11,7 +11,7 @@ class CourseName extends Model
     }
 
     public function courses() {
-      return $this->belongsToMany('\App\Course');
+      return $this->hasOne('\App\Course');
     }
 
 
