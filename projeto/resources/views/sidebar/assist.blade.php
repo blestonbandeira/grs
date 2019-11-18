@@ -108,7 +108,7 @@
             <div class="card nav-item">
                 <div class="card-header" id="headingFour">
                     <i class="fas fa-book"></i>
-                    <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('document*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
                         Cursos
                     </p>                
                 </div>
