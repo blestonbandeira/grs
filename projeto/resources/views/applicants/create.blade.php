@@ -7,7 +7,7 @@
     <form action="/applicants" method="post">
       @csrf
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
           <div class="card">
             <div class="card-header card-header-text card-header-info">
               <div class="card-text">
@@ -17,63 +17,48 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-5">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Turma de Recrutamento</label>
-                    <input type="text" class="form-control input-border-width" list="lista-turmas" name="rs_class_id">
-                    <datalist id="lista-turmas">
-                        @foreach($rsclasses as $rsclass)
-                          <option value="{{ $rsclass->id }}">
-                              {{ $rsclass->name }}
-                          </option>
-                        @endforeach
-                      </datalist>
-                  </div>
+                  <label>Turma de Recrutamento</label>
+                  <select name="rs_class_id" class="custom-select" style="height: 36px">
+                    @foreach($rsclasses as $rsclass)
+                      <option value="{{ $rsclass->id }}">
+                          {{ $rsclass->name }}
+                      </option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="col-md-3">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Nome Completo</label>
-                    <input type="text" class="form-control input-border-width" name="name">
-                  </div>
+                    <label>Nome Completo</label>
+                    <input type="text" class="form-control" name="name">
                 </div>
                 <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating bg-white p-1">Data-de-Nascimento</label>
-                    <input type="date" class="form-control input-border-width" name="birthdate" format="dd/MM/yyyy">
-                  </div>
+                  <label class="bg-white">Data-de-Nascimento</label>
+                  <input type="date" class="form-control" name="birthdate" format="dd/MM/yyyy">
                 </div>
               </div>
+            </div>
+
               <div class="row">
                 <div class="col-md-4">
-                  <div class="form-group">
                     <label class="bmd-label-floating">N. Contribuinte</label>
                     <input type="text" class="form-control input-border-width" name="nif">
-                  </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="form-group">
                     <label class="bmd-label-floating">N. CC</label>
                     <input type="text" class="form-control input-border-width" name="identityCard">
-                  </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="form-group">
                     <label class="bmd-label-floating bg-white p-1">Data de Validade</label>
                     <input type="date" class="form-control input-border-width" name="ccExpirationDate">
-                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
-                  <div class="form-group">
                     <label class="bmd-label-floating">Naturalidade</label>
                     <input type="text" class="form-control input-border-width" name="birthtown">
-                  </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="form-group">
                     <label class="bmd-label-floating">Nacionalidade</label>
                     <input type="text" class="form-control input-border-width" name="nationality">
-                  </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
