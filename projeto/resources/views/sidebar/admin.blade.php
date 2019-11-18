@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <div class="wrapper ">
     <div class="sidebar" data-color="#00A3E0" data-background-color="white" data-image="{{ asset('img/sidebar-1.jpg') }}">
         <!--
@@ -156,7 +160,7 @@
             <div class="card nav-item">
                 <div class="card-header" id="headingSeven">
                     <i class="fas fa-book"></i>
-                    <p data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('documents*') ? 'activeMenu' : '' }}">
                         Documentos
                     </p>                
                 </div>
@@ -181,3 +185,4 @@
         </div> 
     </div>
 </div>
+
