@@ -9,4 +9,6 @@ class Applicant extends Model
     public function rsClass() {
         return $this->belongsTo('\App\RsClass');
     }
+
+    
 }
