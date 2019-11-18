@@ -16,7 +16,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        $courseNames = CourseName::all();
+        $courseNames = CourseName::leftJoin('courses', 'courses.course_names_id', '=', 'course_names.id');
         
         return view('courses.index')
         ->with(compact('courses', 'courseNames'));
