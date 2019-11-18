@@ -14,40 +14,43 @@
 
         <div class="accordion nav" id="sidebar">
             
-           <div class="card nav-item">
-                <div class="card-header" id="headingOne">
+            <div class="card nav-item">
+                <div class="card-header" id="headingTwo">
                     <i class="material-icons">dashboard</i>
-                    <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
                         <a href="{{ url('calendars') }}">
-                            Calendário
+                            Calendários
                         </a>
                     </p>
                 </div>
 
-                <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
+                <div id="collapseTwo" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingTwo" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
+                        <li class="{{ request()->is('calendars') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars') }}">
+                                Todos 
+                                </a>
+                            </li>
                             <li class="{{ request()->is('calendars/interviews') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars/interviews') }}">
-                                Entrevistas Marcadas
+                                Entrevistas 
                                 </a>
-                            </li>                              
-                        </ul>                                        
-                    </div>
-                </div>
-
-                <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
-                    <div class="card-body">
-                        <ul class="nav-item">
+                            </li> 
+                            <li class="{{ request()->is('calendars/tests') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('calendars/tests') }}">
+                                    Provas de Selecção
+                                </a>
+                            </li>                             
                             <li class="{{ request()->is('calendars/availabilities') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('calendars/availabilities') }}">
-                                Disponibilidade para Entrevistas
-                                </a>
-                            </li>                              
+                                <a class="nav-link" href="{{ url('calendars/availabilities') }}">       
+                                    Disponibilidades
+                                </a>  
+                            </li>         
                         </ul>                                        
                     </div>
                 </div>
             </div>
-        </div> 
+
     </div> 
 </div>

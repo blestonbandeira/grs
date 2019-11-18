@@ -38,8 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function permissionLevels() {
-        return $this->hasOne('\App\PermissionLevel');
+    public function permissionLevel() {
+        return $this->belongsTo('\App\PermissionLevel');
     }
 }
 

@@ -161,9 +161,9 @@
               <div class="form-group">
                   <label class="bmd-label-floating">Género</label>
                   <input class="form-control input-border-width" type="text" list="lista-generos" name="gender_id">
-                  <datalist id="lista-generos">
+                  <datalist id="lista-generos" >
                     @foreach($genders as $gender)
-                      <option value="{{ $gender->id}}">
+                      <option value="{{ $gender->id }}">
                           {{ $gender->name }}
                       </option>
                     @endforeach

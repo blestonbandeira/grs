@@ -62,6 +62,7 @@ class ApplicantController extends Controller
         $unemployementSituations = UnemployementSituation::all();
         $courses = Course::all();
         $cancellationReasons = CancellationReason::all();
+
         return view('applicants.create')
         ->with(compact(
             'genders',
@@ -86,7 +87,11 @@ class ApplicantController extends Controller
     {
         $applicant = new Applicant;
         $applicant->name = $request->name;
-        $applicant->id_gender = $request->id_gender;
+        // dd($request->gender_name);
+        
+        $request->gender_id = Gender::where('genders.name', '=', $request->name)->get();
+        dd($request->gender_id);
+        $applicant->gender_id = $request->gender_id;
         $nif = $request->nif;
         if (validaNIF($nif)) {
             $applicant->nif = $nif;
@@ -97,30 +102,30 @@ class ApplicantController extends Controller
         $applicant->town = $request->town;
         $applicant->birthdate = $request->birthdate;
         // //botão, devia ser bool
-        // $applicant->id_registrationState = 'Activo'; 
+        // $applicant->registration_state_id = 'Activo'; 
         $applicant->applicationDate = $request->applicationDate;
-        $applicant->id_origin = $request->id_origin;
-        $applicant->id_unemployementSituation = $request->id_unemployementSituation;
-        $applicant->id_education = $request->id_education;
+        $applicant->origin_id = $request->origin_id;
+        $applicant->unemployement_situation_id = $request->unemployement_situation_id;
+        $applicant->education_id = $request->education_id;
         $applicant->phoneNumber = $request->phoneNumber;
-        $applicant->id_district = $request->id_district;
+        $applicant->district_id = $request->district_id;
         $applicant->parish = $request->parish;
-        $applicant->id_firstOptionCourse = $request->id_firstOptionCourse;
-        $applicant->id_secondOptionCourse = $request->id_secondOptionCourse;
+        $applicant->first_option_course_id = $request->first_option_course_id;
+        $applicant->second_option_course_id = $request->second_option_course_id;
         $applicant->rs_class_id = $request->rs_class_id;
         // // Campo no index que é alterado apenas se todos os documentos tiverem um check (pode ser alterado no create e no edit)
         // $applicant->apt = $request->apt;
         // // select que pode ser alterado no create, index e edit
-        // $applicant->id_category = $request->id_category;
+        // $applicant->category_id = $request->category_id;
         
-        $applicant->id_provenance_school = $request->id_provenance_school;
+        $applicant->provenance_school_id = $request->provenance_school_id;
         $applicant->address = $request->address;
         $applicant->birthtown = $request->birthtown;
         $applicant->nationality= $request->nationality;
         $applicant->civilState = $request->civilState;
         //dar a possibilidade de ver com hover as observações de cada candidato no index
         $applicant->observations = $request->observations;
-        $applicant->id_cancellation_reason = $request->observations;
+        $applicant->cancellation_reason_id = $request->cancellation_reason_id;
         //acrescentar a opção alternate (bool) tambem no index
         $applicant->save();
 

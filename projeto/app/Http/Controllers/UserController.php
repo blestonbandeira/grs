@@ -29,8 +29,11 @@ class UserController extends Controller
      */
     public function create()
     {
+        $users = User::all();
+        
         $permissionLevels = PermissionLevel::all();
-        $users = User::all()->join('permission_levels', 'permission_Levels.id', '=', 'users.permission_level_id');
+    
+
         return view('users.create')
         ->with(compact('users', 'permissionLevels'));
     }
