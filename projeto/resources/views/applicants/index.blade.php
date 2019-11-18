@@ -90,7 +90,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="form-group">
-                                                    <select name="id_category" class="custom-select" onchange="this.form.submit()">
+                                                    <select name="catgory_id" class="custom-select" onchange="this.form.submit()">
                                                         @foreach($categories as $category)
                                                             <option value="{{ $category->id }}">
                                                                 {{ $category->name }}
