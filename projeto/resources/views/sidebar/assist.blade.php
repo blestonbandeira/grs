@@ -12,17 +12,44 @@
       <div class="sidebar-wrapper">
         <div class="accordion nav" id="sidebar">
             
-        <div class="card nav-item">
+            <div class="card nav-item">
                 <div class="card-header" id="headingOne">
+                    <i class="material-icons">person</i>
+                    <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('applicants*') ? 'activeMenu' : '' }}">
+                        <a href="{{ url('applicants')}}">
+                            Candidatos
+                        </a>
+                    </p>
+                </div>
+                <div id="collapseOne" class="collapse {{ request()->is('applicants*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
+                <div class="card-body">
+                    <ul class="nav-item">
+                        <li class="{{ request()->is('applicants') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('applicants') }}">
+                                Ver  
+                            </a>
+                        </li>
+                        <li class="{{ request()->is('applicants/create') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('applicants.create') }}">
+                            Adicionar
+                            </a>   
+                        </li>                             
+                    </ul> 
+                </div>
+                </div>
+            </div>
+
+            <div class="card nav-item">
+                <div class="card-header" id="headingTwo">
                     <i class="material-icons">dashboard</i>
-                    <p data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="{{ request()->is('calendars*') ? 'activeMenu' : '' }}">
                         <a href="{{ url('calendars') }}">
-                            Calendário
+                            Calendários
                         </a>
                     </p>
                 </div>
 
-                <div id="collapseOne" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingOne" data-parent="#sidebar">
+                <div id="collapseTwo" class="collapse {{ request()->is('calendars*') ? ' show' : '' }}" aria-labelledby="headingTwo" data-parent="#sidebar">
                     <div class="card-body">
                         <ul class="nav-item">
                         <li class="{{ request()->is('calendars') ? 'active' : '' }}">
@@ -37,14 +64,9 @@
                             </li> 
                             <li class="{{ request()->is('calendars/tests') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars/tests') }}">
-                                    Testes & Provas
+                                    Provas de Selecção
                                 </a>
-                            </li> 
-                            <li class="{{ request()->is('calendars/inventories') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('calendars/inventories') }}">       
-                                    Testes & Inventário
-                                </a>  
-                            </li>  
+                            </li>                             
                             <li class="{{ request()->is('calendars/availabilities') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('calendars/availabilities') }}">       
                                     Disponibilidades
@@ -56,35 +78,12 @@
             </div>
 
             <div class="card nav-item">
-                <div class="card-header" id="headingTwo">
-                    <i class="material-icons">person</i>
-                    <p data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="{{ request()->is('applicants*') ? 'activeMenu' : '' }}">
-                    Candidatos
-                    </p>
-                </div>
-                <div id="collapseTwo" class="collapse {{ request()->is('applicants*') ? ' show' : '' }}" aria-labelledby="headingTwo" data-parent="#sidebar">
-                <div class="card-body">
-                    <ul class="nav-item">
-                        <li class="{{ request()->is('applicants') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ url('applicants') }}">
-                               Ver  
-                            </a>
-                        </li>
-                        <li class="{{ request()->is('applicants/create') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('applicants.create') }}">
-                            Adicionar
-                            </a>   
-                        </li>                             
-                    </ul> 
-                </div>
-                </div>
-            </div>
-
-            <div class="card nav-item">
                 <div class="card-header" id="headingThree">
                     <i class="material-icons">content_paste</i>
                     <p data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" class="{{ request()->is('rsclasses*') ? 'activeMenu' : '' }}">
+                        <a href="{{ url('rsclasses') }}">
                         Turmas
+                        </a>
                     </p>                
                 </div>
                 <div id="collapseThree" class="collapse {{ request()->is('rsclasses*') ? ' show' : '' }}" aria-labelledby="headingThree" data-parent="#sidebar">
@@ -109,10 +108,12 @@
                 <div class="card-header" id="headingFour">
                     <i class="fas fa-book"></i>
                     <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                        <a href="{{ url('courses') }}">
                         Cursos
+                        </a>
                     </p>                
                 </div>
-                <div id="collapseFour" class="collapse {{ request()->is('courses*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                <div id="collapseFour" class="collapse {{ request()->is('courses*') ? ' show' : '' }}" aria-labelledby="headingFour" data-parent="#sidebar">
                     <div class="card-body">
                     <ul class="nav-item">
                             <li class="{{ request()->is('courses') ? 'active' : '' }}">
@@ -131,13 +132,15 @@
             </div>
 
             <div class="card nav-item">
-                <div class="card-header" id="headingSeven">
+                <div class="card-header" id="headingSix">
                     <i class="fas fa-book"></i>
-                    <p data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseSix aria-expanded="true" aria-controls="collapseSix class="{{ request()->is('documents*') ? 'activeMenu' : '' }}">
+                        <a href="{{ url('documents')}}">
                         Documentos
+                        </a>
                     </p>                
                 </div>
-                <div id="collapseSeven" class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                <div id="collapseSix class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
                     <div class="card-body">
                     <ul class="nav-item">
                             <li class="{{ request()->is('documents') ? 'active' : '' }}">

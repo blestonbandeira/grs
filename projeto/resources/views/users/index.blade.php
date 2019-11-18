@@ -51,7 +51,7 @@
                                                 </td>
 
                                                 <td>
-                                                    {{ \App\User::find($user->permissionLevel)->name }}
+                                                    {{ $user->permissionLevel->name }}
                                                 </td>
                                                 <td class="d-flex">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
