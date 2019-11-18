@@ -6,6 +6,15 @@ use App\Applicant;
 use App\Gender;
 use App\RsClass;
 use App\District;
+use App\Origin;
+use App\Education;
+use App\UnemployementSituation;
+use App\Course;
+use App\ProvenanceSchool;
+use App\CancellationReason;
+use App\Category;
+
+
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
@@ -21,11 +30,20 @@ class ApplicantController extends Controller
         $rsClasses = RsClass::all();
         $rsClasses = RsClass::simplePaginate(10);
         $counter = Applicant::withCount('rsClass')->get()->count();
+        $categories = Category::all();
 
-        
-        
+        //calcular a idade e mostrar numa das colnas
+        // $birthdate = Applicant::all('birthdate');
+        // $today = new DateTime('today');
+        // $age = $birthdate->diff($today)->y;
+
         return view('applicants.index')
-        ->with(compact('applicants', 'rsClasses', 'counter'));
+        ->with(compact(
+            'applicants', 
+            'rsClasses',
+            'categories',
+            'counter'
+        ));
     }
 
     /**
@@ -36,14 +54,25 @@ class ApplicantController extends Controller
     public function create()
     {
         $genders = Gender::all();
+        $provenance_schools = ProvenanceSchool::all();
         $rsclasses = RsClass::all();
+        $origins = Origin::all();
         $districts = District::all();
+        $educations = Education::all();
+        $unemployementSituations = UnemployementSituation::all();
+        $courses = Course::all();
+        $cancellationReasons = CancellationReason::all();
         return view('applicants.create')
         ->with(compact(
-            'applicants',
             'genders',
             'rsclasses',
-            'districts'
+            'origins',
+            'districts',
+            'educations',
+            'unemployementSituations',
+            'courses',
+            'provenance_schools',
+            'cancellationReasons'
         ));
     }
 
@@ -65,32 +94,34 @@ class ApplicantController extends Controller
         $applicant->identityCard = $request->identityCard;
         $applicant->ccExpirationDate = $request->ccExpirationDate;
         $applicant->email = $request->email;
-        // $applicant->town = $request->town;
-        // $applicant->birthdate = $request->birthdate;
+        $applicant->town = $request->town;
+        $applicant->birthdate = $request->birthdate;
         // //botão, devia ser bool
         // $applicant->id_registrationState = 'Activo'; 
-        // $applicant->applicationDate = $request->applicationDate;
-        // //testar input-border-width nos selects
-        // // foreach
-        // $applicant->id_origin = $request->id_origin;
-        // // foreach
-        // $applicant->id_unemployementSituation = $request->id_unemployementSituation;
-        // // foreach
-        // $applicant->id_education = $request->id_educations;
-        // $applicant->phoneNumber = $request->phoneNumber;
-        // // foreach
+        $applicant->applicationDate = $request->applicationDate;
+        $applicant->id_origin = $request->id_origin;
+        $applicant->id_unemployementSituation = $request->id_unemployementSituation;
+        $applicant->id_education = $request->id_education;
+        $applicant->phoneNumber = $request->phoneNumber;
         $applicant->id_district = $request->id_district;
-        // $applicant->parish = $request->parish;
-        // // foreach
-        // $applicant->id_firstOptionCourse = $request->id_firstOptionCourse;
-        // // foreach
-        // $applicant->id_secondOptionCourse = $request->id_secondOptionCourse;
-        // // foreach
+        $applicant->parish = $request->parish;
+        $applicant->id_firstOptionCourse = $request->id_firstOptionCourse;
+        $applicant->id_secondOptionCourse = $request->id_secondOptionCourse;
         $applicant->rs_class_id = $request->rs_class_id;
         // // Campo no index que é alterado apenas se todos os documentos tiverem um check (pode ser alterado no create e no edit)
         // $applicant->apt = $request->apt;
         // // select que pode ser alterado no create, index e edit
         // $applicant->id_category = $request->id_category;
+        
+        $applicant->id_provenance_school = $request->id_provenance_school;
+        $applicant->address = $request->address;
+        $applicant->birthtown = $request->birthtown;
+        $applicant->nationality= $request->nationality;
+        $applicant->civilState = $request->civilState;
+        //dar a possibilidade de ver com hover as observações de cada candidato no index
+        $applicant->observations = $request->observations;
+        $applicant->id_cancellation_reason = $request->observations;
+        //acrescentar a opção alternate (bool) tambem no index
         $applicant->save();
 
         return redirect('/applicants');
@@ -146,3 +177,4 @@ class ApplicantController extends Controller
         return redirect('/applicants');
     }
 }
+
