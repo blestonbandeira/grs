@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
 
-@extends('layouts.app')
 @section('content')
 <div class="col text-center">
     <a href="{{ route('courses.create') }}">
@@ -29,8 +27,10 @@
                                     <th></th>
                                     <th>ID</th>
                                     <th>Nome</th>
-                                    <th>Mês de início</th>
-                                    <th>Ano de início</th>                                   
+                                    <th>Tipo</th>
+                                    <th>Regime</th>
+                                    <th>Escolaridade Mínima</th>
+                                                                   
                                     <th></th>
                                 </thead>
                                 <tbody>
@@ -52,18 +52,17 @@
                                             <td>
                                                 {{ $course->courseName->name }}
                                             </td>
+
                                             <td>
-                                                {{ $course->date }}
+                                                {{ $course->courseType->name }}
                                             </td>
                                             <td>
-                                                2018
+                                                {{ $course->regime->name }}
                                             </td>
                                             <td>
-                                                97
+                                                {{ $course->minimumQualification->name }}
                                             </td>
-                                            <td>
-                                                16
-                                            </td>
+                                          
                                             <td class="d-flex">
                                                 <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
                                                     <i class="material-icons">edit</i>
@@ -88,5 +87,4 @@
     </div>
 </div>
 
-@endsection
 @endsection

@@ -50,7 +50,8 @@
                     <div class="card">
                         <div class="card-header card-header-info" data-toggle="collapse" data-target="#{{ $rsClass->name }}" aria-expanded="true" aria-controls="{{ $rsClass->name }}">
                             <h4 class="card-title">{{ $rsClass->name }}</h4>
-                            <p class="card-category"> Nº de Candidatos:{{ $counter }} </p> 
+                            @php($applicants = $rsClass->applicants)
+                            <p class="card-category"> Nº de Candidatos:{{ sizeof($applicants) }} </p> 
                         </div>
                         <div id="{{ $rsClass->name }}" class="collapse" aria-labelledby="headingOne" data-parent="#rsClasses">
                             <div class="card-body table-responsive">

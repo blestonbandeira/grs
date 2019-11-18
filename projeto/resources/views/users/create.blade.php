@@ -58,14 +58,13 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Nível de Acesso</label>
-                                            <input class="form-control input-border-width" type="text" list="permission-level" name="permission_level_id">
-                                            <datalist id="permission-level" name="permission_level_id">
+                                            <select id="permission-level" name="permission_level_id" class="custom-select input-border-width">
                                                 @foreach($permissionLevels as $permissionLevel)
-                                                <option value="{{ $permissionLevel->name }}">
+                                                <option value="{{ $permissionLevel->id }}">
                                                     {{ $permissionLevel->name  }}
                                                 </option>
                                                 @endforeach
-                                            </datalist>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
