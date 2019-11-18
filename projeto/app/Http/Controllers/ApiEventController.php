@@ -151,15 +151,36 @@ class ApiEventController extends Controller
         
         if($request->event_type_id == 1)
         {
-            $startEventTemp = ;
-            $endEventTemp = ;
-            $tempDateStart1 = ;
-            $tempDateEnd1 = ;
-            $tempDateStart2 = ;
-            $tempDateEnd3 = ;
+            $idEventPost = (int)$request->availEvent;
+            $availEvent = Event::where('id', '=', $idEventPost)->get();
 
+            $tempDateStart1 = Carbon::parse($availEvent[0]["start_event"]);
+            $tempDateEnd1 = Carbon::parse($newEvent->start_event);
+            $tempDateStart2 = Carbon::parse($newEvent->end_event);
+            $tempDateEnd2 = Carbon::parse($availEvent[0]["end_event"]);
 
+            if($tempDateEnd1->diffInMinutes($tempDateStart1) > 45)
+            {
+                $newEventDiff = new Event;
+                $newEventDiff->user_id = $availEvent[0]["user_id"];
+                $newEventDiff->title = $availEvent[0]["title"];
+                $newEventDiff->event_type_id = $availEvent[0]["event_type_id"];
+                $newEventDiff->start_event = $tempDateStart1;
+                $newEventDiff->end_event = $tempDateEnd1;
+                $newEventDiff->save();
+            }
+            if($tempDateEnd2->diffInMinutes($tempDateStart2) > 45)
+            {
+                $newEventDiff = new Event;
+                $newEventDiff->user_id = $availEvent[0]["user_id"];
+                $newEventDiff->title = $availEvent[0]["title"];
+                $newEventDiff->event_type_id = $availEvent[0]["event_type_id"];
+                $newEventDiff->start_event = $tempDateStart2;
+                $newEventDiff->end_event = $tempDateEnd2;
+                $newEventDiff->save();
+            }
 
+            Event::where('id', '=', $idEventPost)->delete();
 
             $appliTemp = Applicant::find($request->applicant_id);
             $appliTemp->category_id = $categoryTemp[0]["id"];
@@ -185,7 +206,7 @@ class ApiEventController extends Controller
             }
         }
 
-        return response($newEvent, 201);
+        return response($availEvent, 201);
     }
 
     public function show(Event $event)

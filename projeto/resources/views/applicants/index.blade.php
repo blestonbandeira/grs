@@ -146,8 +146,8 @@
 <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
         <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
-            <div class="container-fluid" style="width: 90vw!important;">
-                <button id="btnCloseModalFromInterviews" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="container-fluid" style="width: 90vw!important; padding: 10px 0;">
+                <button type="button" class="close btnCloseModal" data-dismiss="modal" aria-label="Close">
                     <span style=" margin-top: 7px;background: #0089f2; border-radius: 17px; color: #fff; border: transparent; padding: 2px 10px 2px 10px;" aria-hidden="true">&times;</span>
                 </button>
                 <div class="row" style="width: 90vw!important;">
@@ -202,13 +202,14 @@
 <div id="modalTests" class="modal fade modalTests" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
         <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
-            <div class="container-fluid" style="width: 90vw!important;">
+            <div class="container-fluid" style="width: 90vw!important; padding: 10px 0;">
+                
                 <div id="modalSuccessMessageTests" class="container-fluid" style="visibility:hidden; border-radius:10px; border: 1px solid #0089f2!important; padding: 50px; width: 26.7vw!important; position:absolute; z-index:100; background-color:white;">
                 </div>
                 <div class="modal-header">
                     <h5 class="modal-title">Marcas Testes:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="close btnCloseModal" data-dismiss="modal" aria-label="Close">
+                        <span style=" margin-top: 7px;background: #0089f2; border-radius: 17px; color: #fff; border: transparent; padding: 2px 10px 2px 10px;" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -227,6 +228,7 @@
 <!--FIM MODAL PROVAS-->
 
 <script>
+    let eventAvailId;
     let appliSelectedId = [];
     let appliSelectedName = [];
     let appliSelected = null;
@@ -298,12 +300,13 @@
     function saveInterview()
     {
         let selected = appliSelected;
+        alert(eventAvailId);
         let date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         $.ajax({
             dataType: "json",
             url:"/api/events",
             type:"POST",
-            data:{applicant_id:selected, event_type_id:1, event_id:eventSelectedId, date:date},
+            data:{applicant_id:selected, event_type_id:1, event_id:eventSelectedId, date:date, availEvent:eventAvailId},
             success:function(data)
             {
                 document.getElementById('hoursShowFromInterviews').classList.remove("show");
@@ -311,7 +314,12 @@
                 tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
                 tempModal.style.visibility = "visible" ;
                 appliSelectedHtml.setAttribute("style", "visibility: hidden; position: absolute;");
-                setTimeout(function() {tempModal.style.visibility = "hidden";},2000);
+                setTimeout(
+                    function(){
+                        tempModal.style.visibility = "hidden";
+                        if (appliSelectedCount == 0)
+                            location.reload();
+                    },2000);
                 appliSelected = null;
             }
         });
@@ -362,7 +370,7 @@
             location.reload();
     });
 
-    $("#btnCloseModalFromInterviews").on("click", function() {
+    $(".btnCloseModal").on("click", function() {
         location.reload();
     });
 
@@ -402,6 +410,7 @@
                     events: allEvents,
                     selectHelper: true,
                     eventClick: function(event) {
+                        eventAvailId = event.id;
                         if (appliSelected == null) {
                             let tempModal = document.getElementById('modalSuccessMessage');
                             tempModal.innerHTML = "<h3 style='color:#f00'>Selecionar Primeiro o Candidato!</h3>";
@@ -436,7 +445,8 @@
                             for (var i = hourStart; i <= hourEnd; i++)
                                 hourSelect.innerHTML += "<option>" + i + "</option>";
 
-                            hourSelect.addEventListener("click", function() {
+                            hourSelect.addEventListener("click", function() 
+                            {
                                 minSelect.innerHTML = "<option>--</option>";
                                 minStart = $.fullCalendar.formatDate(event.start, "m");
                                 minEnd = $.fullCalendar.formatDate(event.end, "m");
@@ -476,40 +486,62 @@
                                     }
                                 } else {
                                     minStart = 0;
-                                    if ((minEnd - 45) < 0) {
-                                        var time = 45 - minEnd;
-                                        minEnd = 60 - time;
+                                    if (hourSelect.value == hourEnd) {
+                                        var time = Math.abs(45 - minEnd);
+                                        minEnd = Math.abs(60 - time);
                                         minSelect.innerHTML = "<option>--</option>";
-                                        for (var i = minStart; i <= minEnd; i++) {
-                                            if (i < 10)
-                                                minSelect.innerHTML += "<option>0" + i + "</option>";
-                                            else
-                                                minSelect.innerHTML += "<option>" + i + "</option>";
-                                        }
-                                    } else {
-                                        if (hourSelect.value == hourEnd) {
-                                            minEnd = minEnd - 45;
-                                            minSelect.innerHTML = "<option>--</option>";
-                                            if (minEnd == 0) {
-                                                minSelect.innerHTML = "<option>00</option>";
-                                            } else {
-                                                for (var i = minStart; i <= minEnd; i++) {
-                                                    if (i < 10)
-                                                        minSelect.innerHTML += "<option>0" + i + "</option>";
-                                                    else
-                                                        minSelect.innerHTML += "<option>" + i + "</option>";
-                                                }
-                                            }
+                                        if (minEnd <= 0) {
+                                            minSelect.innerHTML = "<option>00</option>";
                                         } else {
-                                            for (var i = 0; i <= 59; i++) {
+                                            for (var i = minStart; i <= minEnd; i++) {
                                                 if (i < 10)
                                                     minSelect.innerHTML += "<option>0" + i + "</option>";
                                                 else
                                                     minSelect.innerHTML += "<option>" + i + "</option>";
                                             }
                                         }
-
+                                    } else {
+                                        for (var i = 0; i <= 59; i++) {
+                                            if (i < 10)
+                                                minSelect.innerHTML += "<option>0" + i + "</option>";
+                                            else
+                                                minSelect.innerHTML += "<option>" + i + "</option>";
+                                        }
                                     }
+                                    // if ((minEnd - 45) < 0) {
+                                    //     var time = 45 - minEnd;
+                                    //     minEnd = 60 - time;
+                                    //     minSelect.innerHTML = "<option>--</option>";
+                                    //     for (var i = minStart; i <= minEnd; i++) {
+                                    //         if (i < 10)
+                                    //             minSelect.innerHTML += "<option>0" + i + "</option>";
+                                    //         else
+                                    //             minSelect.innerHTML += "<option>" + i + "</option>";
+                                    //     }
+                                    // } else {
+                                    // if (hourSelect.value == hourEnd) {
+                                    //     minEnd = minEnd - 45;
+                                    //     minSelect.innerHTML = "<option>--</option>";
+                                    //     if (minEnd == 0) {
+                                    //         minSelect.innerHTML = "<option>00</option>";
+                                    //     } else {
+                                    //         for (var i = minStart; i <= minEnd; i++) {
+                                    //             if (i < 10)
+                                    //                 minSelect.innerHTML += "<option>0" + i + "</option>";
+                                    //             else
+                                    //                 minSelect.innerHTML += "<option>" + i + "</option>";
+                                    //         }
+                                    //     }
+                                    // } else {
+                                    //     for (var i = 0; i <= 59; i++) {
+                                    //         if (i < 10)
+                                    //             minSelect.innerHTML += "<option>0" + i + "</option>";
+                                    //         else
+                                    //             minSelect.innerHTML += "<option>" + i + "</option>";
+                                    //     }
+                                    // }
+
+                                    // }
                                 }
                             });
                             document.getElementById('hoursShowFromInterviews').className += " show";
