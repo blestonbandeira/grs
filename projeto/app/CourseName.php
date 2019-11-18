@@ -10,7 +10,7 @@ class CourseName extends Model
       return $this->belongsTo('\App\RsClass');
     }
 
-    public function course() {
+    public function courses() {
       return $this->hasOne('\App\Course');
     }
 
