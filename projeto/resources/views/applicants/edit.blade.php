@@ -4,8 +4,9 @@
 
 <div class="content">
   <div class="container-fluid">
-    <form action="/applicants" method="post">
+    <form action="/applicants/{{ $applicant->id }}" method="post">
       @csrf
+      @method('PUT')
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -19,20 +20,20 @@
 
                 <div class="col-md-5">
                   <label>Nome Completo</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="name">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="name" value="{{ $applicant->name }}">
                 </div>
                 <div class="col-md-3">
                   <label>Email</label>
-                  <input type="email" class="form-control border-top-0 border-left-0 border-right-0" name="email">
+                  <input type="email" class="form-control border-top-0 border-left-0 border-right-0" name="email" value="{{ $applicant->email }}">
                 </div>
                 <div class="col-md-2">
                   <label>Contacto</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="phoneNumber">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="phoneNumber" value="{{ $applicant->email }}">
                 </div>
 
                 <div class="col-md-2">
                   <label>Data-de-Nascimento</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy">
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy" value="{{ $applicant->birthdate }}">
                 </div>
               </div>
 
@@ -41,7 +42,7 @@
                   <label>Genero</label>
                   <select name="gender_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($genders as $gender)
-                      <option value="{{ $gender->id }}">
+                      <option value="{{ $applicant->gender_id }}">
                           {{ $gender->name }}
                       </option>
                     @endforeach
@@ -49,46 +50,46 @@
                 </div>
                 <div class="col-md-2">
                   <label>N. Contribuinte</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="nif">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="nif" value="{{ $applicant->nif }}">
                 </div>
                 <div class="col-md-2">
                   <label>N. CC</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="identityCard">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="identityCard" value="{{ $applicant->identityCard }}">
                 </div>
                 <div class="col-md-2">
                   <label>Data de Validade</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate">
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate" value="{{ $applicant->ccExpirationDate }}">
                 </div>
                 <div class="col-md-2">
                   <label>Estado Civil</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="civilState">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="civilState" value="{{ $applicant->civilState }}">
                 </div>
                 <div class="col-md-2">
                   <label>Naturalidade</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="birthtown">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="birthtown" value="{{ $applicant->identityCard }}">
                 </div>
                 </div>
 
               <div class="row pb-5">
                 <div class="col-md-2">
                   <label>Nacionalidade</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="nationality">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="nationality" value="{{ $applicant->nationality }}">
                 </div>
                 <div class="col-md-4">
                   <label>Morada</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="address">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="address" value="{{ $applicant->address }}">
                 </div>
                 <div class="col-md-2">
                   <label>Código Postal</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="postalCode" value="{{ $applicant->postalCode }}">
                 </div>
                 <div class="col-md-2">
                   <label>Localidade</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="town">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="town" value="{{ $applicant->town }}">
                 </div>
                 <div class="col-md-2">
                   <label>Concelho</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="parish">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="parish" value="{{ $applicant->parish }}">
                 </div>
 
 
@@ -98,7 +99,7 @@
                   <label>Distrito</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="district_id">
                     @foreach($districts as $district)
-                      <option value="{{ $district->id }}">
+                      <option value="{{ $applicant->district_id }}">
                           {{ $district->name }}
                       </option>
                     @endforeach
@@ -108,7 +109,7 @@
                   <label>Situação Face ao Emprego</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="unemployement_situation_id">
                     @foreach($unemployementSituations as $unemployementSituation)
-                      <option value="{{ $unemployementSituation->id }}">
+                      <option value="{{ $applicant->unemployement_situation_id }}">
                           {{ $unemployementSituation->name }}
                       </option>
                     @endforeach
@@ -118,7 +119,7 @@
                   <label>Habilitação Literárias</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="education_id">
                     @foreach($educations as $education)
-                      <option value="{{ $education->id }}">
+                      <option value="{{ $applicant->education_id }}">
                           {{ $education->name }}
                       </option>
                     @endforeach
@@ -128,7 +129,7 @@
                   <label>Escola de proveniência</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="provenance_school_id">
                     @foreach($provenance_schools as $provenance_school)
-                      <option value="{{ $provenance_school->id }}">
+                      <option value="{{ $applicant->provenance_school_id }}">
                           {{ $provenance_school->name }}
                       </option>
                     @endforeach
@@ -161,7 +162,7 @@
                   <label>Turma de Recrutamento</label>
                   <select name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($rsclasses as $rsclass)
-                      <option value="{{ $rsclass->id }}">
+                      <option value="{{ $applicant->rs_class_id }}">
                           {{ $rsclass->name }}
                       </option>
                     @endforeach
@@ -171,7 +172,7 @@
                   <label>Curso 1ª Opção</label>
                   <select name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($courseNames as $courseName)
-                      <option value="{{ $courseName->id }}">
+                      <option value="{{ $applicant->first_option_course_id }}">
                           {{ $courseName->name }}
                       </option>
                     @endforeach
@@ -181,7 +182,7 @@
                   <label>Curso 2ª Opção</label>
                   <select name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($courseNames as $courseName)
-                      <option value="{{ $courseName->id }}">
+                      <option value="{{ $applicant->second_option_course_id }}">
                           {{ $courseName->name }}
                       </option>
                     @endforeach
@@ -198,7 +199,7 @@
                   <label>Origem</label>
                   <select name="origin_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($origins as $origin)
-                      <option value="{{ $origin->id }}">
+                      <option value="{{ $applicant->origin_id }}">
                           {{ $origin->name }}
                       </option>
                     @endforeach
@@ -206,13 +207,13 @@
                 </div>
                 <div class="col-md-3">
                   <label>Data de Anulação</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0">
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="cancellationDate">
                 </div>
                 <div class="col-md-3">
                   <label>Motivo da Anulação</label>
-                  <select name="origin_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                  <select name="cancellation_reason_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($cancellationReasons as $cancellationReason)
-                      <option value="{{ $cancellationReason->id }}">
+                      <option value="{{ $applicant->cancellation_reason_id }}">
                           {{ $cancellationReason->name }}
                       </option>
                     @endforeach
@@ -248,6 +249,12 @@
               </div>
             </div>
             <div class="card-body">
+
+              <div>
+                <input class="checkbox" type="hidden" name="appForm" value="0">
+                <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
+                <label>Formulário de Inscrição</label>
+              </div>
 
               <div class="form-check">
                 <label class="form-check-label">
