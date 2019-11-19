@@ -29,8 +29,11 @@ class UserController extends Controller
      */
     public function create()
     {
+        $users = User::all();
+        
         $permissionLevels = PermissionLevel::all();
-        $users = User::all()->join('permission_levels', 'permission_Levels.id', '=', 'users.permission_level_id');
+    
+
         return view('users.create')
         ->with(compact('users', 'permissionLevels'));
     }
@@ -43,21 +46,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'id_permissionLevel' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        //     'id_permissionLevel' => 'required'
+        // ]);
 
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->id_permissionLevel = $request->id_permissionLevel;
+        $user->permission_level_id = $request->permission_level_id;
         $user->save();
-
-        $request->session()->flash('alert-success', 'Utilizador adicionado com sucesso');
 
         return redirect('/users');
     }

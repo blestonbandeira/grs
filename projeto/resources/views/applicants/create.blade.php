@@ -157,20 +157,20 @@
               </div>
             </div>
             <div class="card-body">
-
+{{-- 
               <div class="form-group">
                   <label class="bmd-label-floating">Género</label>
                   <input class="form-control input-border-width" type="text" list="lista-generos" name="gender_id">
-                  <datalist id="lista-generos">
+                  <datalist id="lista-generos" >
                     @foreach($genders as $gender)
-                      <option value="{{ $gender->id}}">
+                      <option value="{{ $gender->id }}">
                           {{ $gender->name }}
                       </option>
                     @endforeach
                   </datalist>
-              </div>
+              </div> --}}
 
-              {{-- <div class="form-group">
+             <div class="form-group">
                 <label class="bmd-label-floating label-create-form">Genero</label>
                 <select name="gender_id" class="custom-select input-border-width">
                     @foreach($genders as $gender)
@@ -179,7 +179,7 @@
                           </option>
                       @endforeach
                 </select>
-              </div> --}}
+              </div> 
 
               <div class="form-group">
                 <label class="bmd-label-floating">Estado Civil</label>
