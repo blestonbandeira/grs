@@ -141,3 +141,7 @@ img#entrar {
 .custom-select {
     margin-bottom: 15x;
 }
+
+.input-height{
+    height: 36px;
+}
