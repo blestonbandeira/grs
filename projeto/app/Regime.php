@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Regime extends Model
 {
     public function courses() {
-        return $this->hasOne('\App\Course');
+        return $this->belongsTo('\App\Course', 'regime_id');
       }
 }

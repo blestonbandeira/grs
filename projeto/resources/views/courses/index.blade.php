@@ -50,17 +50,18 @@
                                             </td>
 
                                             <td>
-                                                {{ $course->courseName->name }}
+                                                {{ $course->courseName['name'] }}
                                             </td>
 
                                             <td>
-                                                {{ $course->courseType->name }}
+                                                {{ $course->courseType['name'] }}
+                                              
                                             </td>
                                             <td>
-                                                {{ $course->regime->name }}
+                                                {{ $course->regime['name'] }}
                                             </td>
                                             <td>
-                                                {{ $course->minimumQualification->name }}
+                                                {{ $course->minimumQualification['name'] }}
                                             </td>
                                           
                                             <td class="d-flex">
@@ -69,7 +70,7 @@
                                                 </button>
                                                 {{-- <form action="/applicants/{{ $rsclass->id }}" method="post"> --}}
                                                     {{-- @csrf --}}
-                                                    @method('delete')
+                                                    {{-- @method('delete') --}}
                                                     <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>

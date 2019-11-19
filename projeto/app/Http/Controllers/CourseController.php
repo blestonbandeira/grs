@@ -20,11 +20,10 @@ class CourseController extends Controller
     {
         $courses = Course::all();
         
-        $courseNames = CourseName::all()->pluck('name')->first();        
-        $courseTypes = CourseType::all()->pluck('name')->first();
-        // dd($courseTypes);
-        $regimes = Regime::all()->pluck('name')->first();
-        $minimumQualifications = MinimumQualification::all()->pluck('name')->first();
+        $courseNames = CourseName::all();        
+        $courseTypes = CourseType::all()->pluck('name');
+        $regimes = Regime::all()->pluck('name');
+        $minimumQualifications = MinimumQualification::all()->pluck('name');
         
         return view('courses.index')
         ->with(compact('courses', 
