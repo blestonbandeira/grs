@@ -251,9 +251,8 @@
                 </div>
                 <div id="modalErrorBody" class="modal-body">
                 </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                    <button type="button" onclick="typeFilterApplicantsSelectedFromInterviews()" class="btn btn-primary">Ignorar e Continuar</button>
+                <div id="divBtnConfirmErrors" class="modal-footer">
+                    
                 </div>
             </div>
         </div>
@@ -279,7 +278,9 @@
     var contTypeInterview = 0;
     var arrayIdInterview = [];
     var arrayNameInterview = [];
-    var arrayType1Interview = [];
+    var arrayType1NameInterview = [];
+    var arrayType1IdInterview = [];
+    
 
     function getApplicantsSelectedFromInterviews()
     {
@@ -304,7 +305,7 @@
                         if(data['type'] == 1 || data['type'] == 3)
                         {
                             contTypeInterview += 1;
-                            arrayType1Interview[x] = data['name'];
+                            arrayType1NameInterview[x] = data['name'];
                             x++;
                         }
                         else
@@ -330,11 +331,12 @@
     function innerApplicantsSelectedFromInterviews()
     {
         if(contTypeInterview != 0){
-            document.getElementById('modalErrorBody').innerHTML += "";  
-            for(let i = 0; i < arrayType1Interview.length; i++)
+            document.getElementById('modalErrorBody').innerHTML = "";  
+            document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button><button type="button" onclick="typeFilterApplicantsSelectedFromInterviews()" class="btn btn-primary">Ignorar e Continuar</button>';
+            for(let i = 0; i < arrayType1NameInterview.length; i++)
             {
                 document.getElementById('btnModalErrors').click();
-                document.getElementById('modalErrorBody').innerHTML += arrayType1Interview[i] + "</br>";  
+                document.getElementById('modalErrorBody').innerHTML += arrayType1NameInterview[i] + "</br>";  
             }   
         }
         else
@@ -355,16 +357,28 @@
 
     function typeFilterApplicantsSelectedFromInterviews()
     {
-        calendarCharge();
-        document.getElementById('btnModalCalendar').click();
-        document.getElementById('btnModalErrors').click();
-        document.getElementById('hoursShowFromInterviews').classList.remove("show");
-        document.getElementById('applicantListFromInterviews').innerHTML = "";
-        let j = 0;
-        for(let i = 0; i < arrayType1Interview.length; i++)
+        if(arrayIdInterview != 0){
+            calendarCharge();
+            document.getElementById('btnModalCalendar').click();
+            document.getElementById('btnModalErrors').click();
+            document.getElementById('hoursShowFromInterviews').classList.remove("show");
+            document.getElementById('applicantListFromInterviews').innerHTML = "";
+            let j = 0;
+            for(let i = 0; i < arrayIdInterview.length; i++)
+            {
+                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + arrayIdInterview[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + arrayNameInterview[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
+                j++;
+            }
+        } 
+        else
         {
-            document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + arrayIdInterview[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + arrayNameInterview[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
-            j++;
+            document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>';
+            document.getElementById('modalErrorBody').innerHTML = "<p>Todos os candidatos selecionados já tem entrevistas marcadas.</p>";  
+            contTypeInterview = 0;
+            arrayIdInterview = [];
+            arrayNameInterview = [];
+            arrayType1NameInterview = [];
+            arrayType1IdInterview = [];
         }
     }
 

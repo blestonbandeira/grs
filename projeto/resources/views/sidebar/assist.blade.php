@@ -1,4 +1,4 @@
-<div class="wrapper ">
+<div class="wrapper " style="position: absolute;">
     <div class="sidebar" data-color="#00A3E0" data-background-color="white" data-image="{{ asset('img/sidebar-1.jpg') }}">
     <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"

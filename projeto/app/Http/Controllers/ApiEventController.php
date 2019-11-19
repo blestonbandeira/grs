@@ -208,7 +208,7 @@ class ApiEventController extends Controller
             }
         }
 
-        return response($availEvent, 201);
+        return response($newEvent, 201);
     }
 
     public function show(Event $event)
