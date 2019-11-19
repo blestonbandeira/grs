@@ -137,7 +137,7 @@
                 @endforeach
               </datalist>
 
-              {{-- <div class="form-group">
+             <div class="form-group">
                 <label class="bmd-label-floating label-create-form">Genero</label>
                 <select name="gender_id" class="custom-select border-top-0 border-left-0 border-right-0">
                     @foreach($genders as $gender)
@@ -146,7 +146,7 @@
                           </option>
                       @endforeach
                 </select>
-              </div> --}}
+              </div> 
 
               <label>Estado Civil</label>
               <datalist id="civil">

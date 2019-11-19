@@ -20,7 +20,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                            <select class="custom-select input-border-width">
+                                            <select class="custom-select border-top-0 border-left-0 border-right-0 pb-0">
                                                 @if (count($courseNames) > 0 )
                                                 <option>-- selecione aqui o curso --</option>
                                                     @foreach($courseNames as $courseName)
@@ -37,13 +37,17 @@
                                             </td>
 
                                             <td>
-                                                <select class="custom-select" name="month">
+                                                    <div class="form-group pb-0">
+                                                            <label style="font-size:12px;">Nome Completo</label>
+                                                            <input type="text" class="form-control border-top-0 border-left-0 border-right-0 pb-0" name="name">
+                                                          </div>
+                                                {{-- <select class="custom-select" name="month">
                                                     @foreach(range(1,12) as $month)
                                                         <option value="{{$month}}">
                                                                 {{date("M", strtotime('2019-'.$month))}}
                                                         </option>
                                                     @endforeach
-                                                </select>
+                                                </select> --}}
                                             </td>
                                             <td>
                                                 <select class="custom-select" name="year">
