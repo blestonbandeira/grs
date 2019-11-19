@@ -49,9 +49,13 @@ class ApiApplicantController extends Controller
                 {
                     $temp = 1;
                 }
-                else if($appli["event_type_id"] == 2)
+                else if($temp == 2)
                 {
                     $temp = 3;
+                }
+                else if($temp == 1)
+                {
+                    $temp = 1;
                 }
             }
             else if($appli["event_type_id"] == 2)
@@ -60,9 +64,13 @@ class ApiApplicantController extends Controller
                 {
                     $temp = 2;
                 }
-                else if($appli["event_type_id"] == 1)
+                else if($temp == 1)
                 {
                     $temp = 3;
+                }
+                else if($temp == 2)
+                {
+                    $temp = 2;
                 }
             }
         }
