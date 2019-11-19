@@ -67,6 +67,7 @@ class ApiApplicantController extends Controller
             }
         }
         return [
+            "id" => $applicant->id,
             "name" => $applicant->name,
             "type" => $temp,
         ];

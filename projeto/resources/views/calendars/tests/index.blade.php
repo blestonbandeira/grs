@@ -12,7 +12,7 @@
 
 <div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-  <input type="hidden" id="idEvent">
+    <input type="hidden" id="idEvent"/>
     <div id="modalEvents" class="modal-content">
       
     </div>
