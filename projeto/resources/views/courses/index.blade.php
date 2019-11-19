@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
 
-@extends('layouts.app')
 @section('content')
 <div class="col text-center">
     <a href="{{ route('courses.create') }}">
@@ -29,8 +27,10 @@
                                     <th></th>
                                     <th>ID</th>
                                     <th>Nome</th>
-                                    <th>Mês de início</th>
-                                    <th>Ano de início</th>                                   
+                                    <th>Tipo</th>
+                                    <th>Regime</th>
+                                    <th>Escolaridade Mínima</th>
+                                                                   
                                     <th></th>
                                 </thead>
                                 <tbody>
@@ -46,35 +46,35 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                {{ $course->id }}
+                                                {{ $course->id }}                                               
                                             </td>
 
                                             <td>
-                                                {{ $course->courseName->name }}
+                                                {{ $course->courseName['name'] }}
+                                            </td>
+
+                                            <td>
+                                                {{ $course->courseType['name'] }}
+                                              
                                             </td>
                                             <td>
-                                                {{ $course->date }}
+                                                {{ $course->regime['name'] }}
                                             </td>
                                             <td>
-                                                2018
+                                                {{ $course->minimumQualification['name'] }}
                                             </td>
-                                            <td>
-                                                97
-                                            </td>
-                                            <td>
-                                                16
-                                            </td>
+                                          
                                             <td class="d-flex">
                                                 <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
                                                     <i class="material-icons">edit</i>
                                                 </button>
                                                 {{-- <form action="/applicants/{{ $rsclass->id }}" method="post"> --}}
-                                                    @csrf
-                                                    @method('delete')
+                                                    {{-- @csrf --}}
+                                                    {{-- @method('delete') --}}
                                                     <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
-                                                </form>
+                                                {{-- </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -88,5 +88,4 @@
     </div>
 </div>
 
-@endsection
 @endsection

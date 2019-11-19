@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\CourseName;
+use App\CourseType;
+use App\MinimumQualification;
+use App\Regime;
 
 class CourseController extends Controller
 {
@@ -16,10 +19,18 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        $courseNames = CourseName::leftJoin('courses', 'courses.course_name_id', '=', 'course_names.id')->get();
+        
+        $courseNames = CourseName::all();        
+        $courseTypes = CourseType::all()->pluck('name');
+        $regimes = Regime::all()->pluck('name');
+        $minimumQualifications = MinimumQualification::all()->pluck('name');
         
         return view('courses.index')
-        ->with(compact('courses', 'courseNames'));
+        ->with(compact('courses', 
+                    'courseNames', 
+                    'courseTypes', 
+                    'regimes',
+                    'minimumQualifications'));
     }
 
     /**
@@ -29,8 +40,20 @@ class CourseController extends Controller
      */
     public function create()
     {
+        $courses = Course::all();
+        $courseNames = CourseName::all();
+       
+        $courseTypes = CourseType::all();
+        $regimes = Regime::all();
+        $minimumQualifications = MinimumQualification::all();
+
+
         return view('courses.create')
-        ->with(compact('courses'));
+        ->with(compact('courses',
+                'courseNames',
+                'courseTypes',
+                'regimes',
+                'minimumQualifications'));
     }
 
     /**
@@ -41,7 +64,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = new Course;        
+        $course->course_name_id = $request->course_name_id;
+        $course->course_type_id = $request->course_type_id;
+        $course->regime_id = $request->regime_id;
+        $course->minimum_qualification_id = $request->minimum_qualification_id;
+        $course->save();
     }
 
     /**

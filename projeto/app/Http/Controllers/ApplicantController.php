@@ -27,7 +27,6 @@ class ApplicantController extends Controller
     public function index()
     {
         $applicants = Applicant::all();
-        $rsClasses = RsClass::all();
         $rsClasses = RsClass::simplePaginate(10);
         $counter = Applicant::withCount('rsClass')->get()->count();
         $categories = Category::all();
@@ -87,10 +86,6 @@ class ApplicantController extends Controller
     {
         $applicant = new Applicant;
         $applicant->name = $request->name;
-        // dd($request->gender_name);
-        
-        $request->gender_id = Gender::where('genders.name', '=', $request->name)->get();
-        dd($request->gender_id);
         $applicant->gender_id = $request->gender_id;
         $nif = $request->nif;
         if (validaNIF($nif)) {
