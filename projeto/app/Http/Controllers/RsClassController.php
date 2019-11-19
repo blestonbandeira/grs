@@ -16,8 +16,10 @@ class RsClassController extends Controller
     public function index()
     {
         $rsclasses = RsClass::all();
+        $courseNames = CourseName::all()->pluck('name');
+
         return view('rsclasses.index')
-        ->with(compact('rsclasses'));
+        ->with(compact('rsclasses', 'courseNames'));
     }
 
     /**

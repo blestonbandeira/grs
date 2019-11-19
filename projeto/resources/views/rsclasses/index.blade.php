@@ -30,7 +30,7 @@
                                     <th></th>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($rsclasses as $rsclass) --}}
+                                    @foreach ($rsclasses as $rsclass)
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -43,11 +43,11 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                TPSI11.18
+                                                {{ $rsclass->name }}
                                             </td>
 
                                             <td>
-                                                Técnico de Programação e Sistemas Informáticos
+                                                {{ $rsclass->course_name_id->['name'] }}
                                             </td>
                                             <td>
                                                 Novembro
@@ -74,7 +74,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>                            
