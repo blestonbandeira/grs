@@ -275,11 +275,10 @@
 
     let testTypeSelected = null;
 
-    var contTypeInterview = 0;
-    var arrayIdInterview = [];
-    var arrayNameInterview = [];
-    var arrayType1NameInterview = [];
-    var arrayType1IdInterview = [];
+    var contType = 0;
+    var arrayId = [];
+    var arrayName = [];
+    var arrayType1Name = [];
     
 
     function getApplicantsSelectedFromInterviews()
@@ -304,21 +303,20 @@
                     { 
                         if(data['type'] == 1 || data['type'] == 3)
                         {
-                            contTypeInterview += 1;
-                            arrayType1NameInterview[x] = data['name'];
+                            contType += 1;
+                            arrayType1Name[x] = data['name'];
                             x++;
                         }
                         else
                         {
-                            arrayIdInterview[z] = data['id'];
-                            arrayNameInterview[z] = data['name'];
+                            arrayId[z] = data['id'];
+                            arrayName[z] = data['name'];
                             z++;
                         }
-
                         appliSelectedName[k] = data['name'];
                         if(appliSelectedName.length == appliSelectedId.length){
                             innerApplicantsSelectedFromInterviews();
-                            appliSelectedCount = appliSelectedName.length;
+                            appliSelectedCount = arrayId.length;
                         }
                         k++;
                     }
@@ -330,13 +328,13 @@
 
     function innerApplicantsSelectedFromInterviews()
     {
-        if(contTypeInterview != 0){
+        if(contType != 0){
             document.getElementById('modalErrorBody').innerHTML = "";  
             document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button><button type="button" onclick="typeFilterApplicantsSelectedFromInterviews()" class="btn btn-primary">Ignorar e Continuar</button>';
-            for(let i = 0; i < arrayType1NameInterview.length; i++)
+            for(let i = 0; i < arrayType1Name.length; i++)
             {
                 document.getElementById('btnModalErrors').click();
-                document.getElementById('modalErrorBody').innerHTML += arrayType1NameInterview[i] + "</br>";  
+                document.getElementById('modalErrorBody').innerHTML += arrayType1Name[i] + "</br>";  
             }   
         }
         else
@@ -357,16 +355,16 @@
 
     function typeFilterApplicantsSelectedFromInterviews()
     {
-        if(arrayIdInterview != 0){
+        if(arrayId != 0){
             calendarCharge();
             document.getElementById('btnModalCalendar').click();
             document.getElementById('btnModalErrors').click();
             document.getElementById('hoursShowFromInterviews').classList.remove("show");
             document.getElementById('applicantListFromInterviews').innerHTML = "";
             let j = 0;
-            for(let i = 0; i < arrayIdInterview.length; i++)
+            for(let i = 0; i < arrayId.length; i++)
             {
-                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + arrayIdInterview[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + arrayNameInterview[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
+                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + arrayId[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + arrayName[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
                 j++;
             }
         } 
@@ -374,11 +372,10 @@
         {
             document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>';
             document.getElementById('modalErrorBody').innerHTML = "<p>Todos os candidatos selecionados já tem entrevistas marcadas.</p>";  
-            contTypeInterview = 0;
-            arrayIdInterview = [];
-            arrayNameInterview = [];
-            arrayType1NameInterview = [];
-            arrayType1IdInterview = [];
+            contType = 0;
+            arrayId = [];
+            arrayName = [];
+            arrayType1Name = [];
         }
     }
 
@@ -395,6 +392,7 @@
         }
         data.className += " active";
         appliSelected = data.value;
+
     }
 
     function saveInterview()
@@ -413,6 +411,7 @@
                 tempModal.innerHTML = "<h3 style='color:#0089f2'>Marcado com sucesso.</h3>";
                 tempModal.style.visibility = "visible" ;
                 appliSelectedHtml.setAttribute("style", "visibility: hidden; position: absolute;");
+                appliSelectedCount--;
                 setTimeout(
                     function(){
                         tempModal.style.visibility = "hidden";
@@ -427,15 +426,78 @@
     function getApplicantsSelectedFromTests()
     {
         let applicantsSelected = document.getElementsByClassName('applicantsSelect');
+        let contFTests = 0;
         let j = 0;
+        let k = 0;
+        let x = 0;
+        let z = 0;
         for(let i = 0; i < applicantsSelected.length; i++)
         {
             if(applicantsSelected[i].checked)
             {
                 appliSelectedId[j] = applicantsSelected[i].value;
+                $.ajax({
+                    contentType: "application/json",
+                    url:"/api/applicants/" + applicantsSelected[i].value,
+                    type:"GET",
+                    data:{},
+                    success:function(data)
+                    { 
+                        if(data['type'] == 2 || data['type'] == 3)
+                        {
+                            contType += 1;
+                            arrayType1Name[x] = data['name'];
+                            x++;
+                        }
+                        else
+                        {
+                            arrayId[z] = data['id'];
+                            z++;
+                        }
+
+                        contFTests++;
+                        if(contFTests == appliSelectedId.length){
+                            innerApplicantsSelectedFromTests();
+                        }
+                        k++;
+                    }
+                });
                 j++;
             }
-            
+        }
+    }
+
+    function innerApplicantsSelectedFromTests()
+    {
+        if(contType != 0){
+            document.getElementById('modalErrorBody').innerHTML = "";  
+            document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button><button type="button" onclick="typeFilterApplicantsSelectedFromTests()" class="btn btn-primary">Ignorar e Continuar</button>';
+            for(let i = 0; i < arrayType1Name.length; i++)
+            {
+                document.getElementById('btnModalErrors').click();
+                document.getElementById('modalErrorBody').innerHTML += arrayType1Name[i] + "</br>";  
+            }   
+        }
+        else
+        {
+            typeFilterApplicantsSelectedFromTests();
+        }
+    }
+
+    function typeFilterApplicantsSelectedFromTests()
+    {
+        if(arrayId != 0)
+        {
+            document.getElementById('btnModalErrors').click();
+            document.getElementById('btnModalTests').click();
+        } 
+        else
+        {
+            document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>';
+            document.getElementById('modalErrorBody').innerHTML = "<p>Todos os candidatos selecionados já tem provas marcadas.</p>";  
+            contType = 0;
+            arrayId = [];
+            arrayType1Name = [];
         }
     }
 
@@ -464,7 +526,7 @@
         $(this).parent().remove();
         appliSelected = null;
         appliSelectedCount -= 1;
-        if (appliSelectedCount == 0)
+        if (appliSelectedCount <= 0)
             location.reload();
     });
 
