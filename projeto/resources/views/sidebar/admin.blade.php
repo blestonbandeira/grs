@@ -109,7 +109,7 @@
 
             <div class="card nav-item">
                 <div class="card-header" id="headingFour">
-                    <i class="fas fa-book"></i>
+                        <i class="fas fa-book-open"></i>
                     <p data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" class="{{ request()->is('courses*') ? 'activeMenu' : '' }}">
                         <a href="{{ url('courses') }}">
                         Cursos
@@ -164,13 +164,13 @@
             <div class="card nav-item">
                 <div class="card-header" id="headingSix">
                     <i class="fas fa-book"></i>
-                    <p data-toggle="collapse" data-target="#collapseSix aria-expanded="true" aria-controls="collapseSix class="{{ request()->is('documents*') ? 'activeMenu' : '' }}">
+                    <p data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix" class="{{ request()->is('documents*') ? 'activeMenu' : '' }}">
                         <a href="{{ url('documents')}}">
                         Documentos
                         </a>
                     </p>                
                 </div>
-                <div id="collapseSix class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingFive" data-parent="#sidebar">
+                <div id="collapseSix" class="collapse {{ request()->is('documents*') ? ' show' : '' }}" aria-labelledby="headingSix" data-parent="#sidebar">
                     <div class="card-body">
                     <ul class="nav-item">
                             <li class="{{ request()->is('documents') ? 'active' : '' }}">
@@ -187,6 +187,33 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card nav-item">
+                    <div class="card-header" id="headingSeven">
+                        <i class="fas fa-chalkboard"></i>
+                        <p data-toggle="collapse" data-target="#collapseSeven"x  aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('tables*') ? 'activeMenu' : '' }}">
+                            <a href="{{ url('tables')}}">
+                            Outros
+                            </a>
+                        </p>                
+                    </div>
+                    <div id="collapseSeven" class="collapse {{ request()->is('tables*') ? ' show' : '' }}" aria-labelledby="headingSeven" data-parent="#sidebar">
+                        <div class="card-body">
+                        <ul class="nav-item">
+                                <li class="{{ request()->is('tables') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ url('tables') }}">
+                                    Ver  
+                                    </a>
+                                </li>
+                                <li class="{{ request()->is('tables/create') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('tables.create') }}">
+                                    Adicionar
+                                    </a>   
+                                </li>                           
+                            </ul>                  
+                        </div>
+                    </div>
+                </div>
 
         </div> 
     </div>

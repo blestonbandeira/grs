@@ -33,5 +33,6 @@ Route::middleware('auth')->resource('/calendars/tests','TestController');
 Route::middleware('auth')->resource('/calendars/inventories','InventoriesController');
 Route::middleware('auth')->resource('/calendars/availabilities','AvailabilitiesController');
 Route::middleware('auth')->resource('/calendars','CalendarController');
+Route::middleware('auth')->resource('/tables','TableController');
 Auth::routes();
 
