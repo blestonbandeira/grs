@@ -9,7 +9,7 @@ use App\District;
 use App\Origin;
 use App\Education;
 use App\UnemployementSituation;
-use App\Course;
+use App\CourseName;
 use App\ProvenanceSchool;
 use App\CancellationReason;
 use App\Category;
@@ -59,7 +59,7 @@ class ApplicantController extends Controller
         $districts = District::all();
         $educations = Education::all();
         $unemployementSituations = UnemployementSituation::all();
-        $courses = Course::all();
+        $courseNames = CourseName::all();
         $cancellationReasons = CancellationReason::all();
 
         return view('applicants.create')
@@ -70,7 +70,7 @@ class ApplicantController extends Controller
             'districts',
             'educations',
             'unemployementSituations',
-            'courses',
+            'courseNames',
             'provenance_schools',
             'cancellationReasons'
         ));
