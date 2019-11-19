@@ -11,10 +11,11 @@ class RsClass extends Model
     }
 
     public function courseName() {
-        return $this->hasOne('\App\CourseName');
+        return $this->belongsTo('\App\CourseName', 'course_name_id');
     }
 
     public function applicants() {
         return $this->hasMany('\App\Applicant');
     }
+    
 }
