@@ -46,7 +46,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                {{ $course->id }}
+                                                {{ $course->id }}                                               
                                             </td>
 
                                             <td>
@@ -68,12 +68,12 @@
                                                     <i class="material-icons">edit</i>
                                                 </button>
                                                 {{-- <form action="/applicants/{{ $rsclass->id }}" method="post"> --}}
-                                                    @csrf
+                                                    {{-- @csrf --}}
                                                     @method('delete')
                                                     <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
-                                                </form>
+                                                {{-- </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach
