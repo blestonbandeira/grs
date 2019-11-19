@@ -16,7 +16,7 @@ Route::get('/home', function () {
     return redirect('/');
 });
 Route::get('/', function () {
-    return redirect('/applicants');
+    return redirect('/calendars');
 });
 
 Route::middleware('auth')->resource('/emails', 'EmailController');
@@ -33,5 +33,6 @@ Route::middleware('auth')->resource('/calendars/tests','TestController');
 Route::middleware('auth')->resource('/calendars/inventories','InventoriesController');
 Route::middleware('auth')->resource('/calendars/availabilities','AvailabilitiesController');
 Route::middleware('auth')->resource('/calendars','CalendarController');
+Route::middleware('auth')->resource('/tables','TableController');
 Auth::routes();
 
