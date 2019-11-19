@@ -122,6 +122,16 @@ class ApplicantController extends Controller
         $applicant->observations = $request->observations;
         $applicant->cancellation_reason_id = $request->cancellation_reason_id;
         //acrescentar a opção alternate (bool) tambem no index
+
+        $applicant->cc = $request->cc;
+        $applicant->appForm = $request->appForm;
+        $applicant->diploma = $request->diploma;
+        $applicant->unemployementUrl = $request->unemployementUrl;
+        $applicant->curriculum = $request->curriculum;
+        $applicant->criminalRecord = $request->criminalRecord;
+        $applicant->medicalRecord = $request->medicalRecord;
+        $applicant->dataAssessment = $request->dataAssessment;
+
         $applicant->save();
 
         return redirect('/applicants');
@@ -144,9 +154,32 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('applicants.modal');
+        $applicant = Applicant::find($id);
+        $genders = Gender::all();
+        $provenance_schools = ProvenanceSchool::all();
+        $rsclasses = RsClass::all();
+        $origins = Origin::all();
+        $districts = District::all();
+        $educations = Education::all();
+        $unemployementSituations = UnemployementSituation::all();
+        $courseNames = CourseName::all();
+        $cancellationReasons = CancellationReason::all();
+
+        return view('applicants.edit')
+        ->with(compact(
+            'applicant',
+            'genders',
+            'rsclasses',
+            'origins',
+            'districts',
+            'educations',
+            'unemployementSituations',
+            'courseNames',
+            'provenance_schools',
+            'cancellationReasons'
+        ));
     }
 
     /**
@@ -158,10 +191,56 @@ class ApplicantController extends Controller
      */
     public function update(Request $request, Applicant $applicant)
     {
+
         $applicant->name = $request->name;
+        $applicant->gender_id = $request->gender_id;
+        $nif = $request->nif;
+        if (validaNIF($nif)) {
+            $applicant->nif = $nif;
+        }
+        $applicant->identityCard = $request->identityCard;
+        $applicant->ccExpirationDate = $request->ccExpirationDate;
         $applicant->email = $request->email;
         $applicant->town = $request->town;
+        $applicant->birthdate = $request->birthdate;
+        // //botão, devia ser bool
+        // $applicant->registration_state_id = 'Activo'; 
+        $applicant->applicationDate = $request->applicationDate;
+        $applicant->origin_id = $request->origin_id;
+        $applicant->unemployement_situation_id = $request->unemployement_situation_id;
+        $applicant->education_id = $request->education_id;
+        $applicant->phoneNumber = $request->phoneNumber;
+        $applicant->district_id = $request->district_id;
+        $applicant->parish = $request->parish;
+        $applicant->first_option_course_id = $request->first_option_course_id;
+        $applicant->second_option_course_id = $request->second_option_course_id;
+        $applicant->rs_class_id = $request->rs_class_id;
+        // // Campo no index que é alterado apenas se todos os documentos tiverem um check (pode ser alterado no create e no edit)
+        // $applicant->apt = $request->apt;
+        // // select que pode ser alterado no create, index e edit
+        // $applicant->category_id = $request->category_id;
+        
+        $applicant->provenance_school_id = $request->provenance_school_id;
+        $applicant->address = $request->address;
+        $applicant->birthtown = $request->birthtown;
+        $applicant->nationality= $request->nationality;
+        $applicant->civilState = $request->civilState;
+        //dar a possibilidade de ver com hover as observações de cada candidato no index
+        $applicant->observations = $request->observations;
+        $applicant->cancellation_reason_id = $request->cancellation_reason_id;
+        //acrescentar a opção alternate (bool) tambem no index
+
+        // $applicant->cc = $request->cc;
+        // $applicant->appForm = $request->appForm;
+        // $applicant->diploma = $request->diploma;
+        // $applicant->unemployementUrl = $request->unemployementUrl;
+        // $applicant->curriculum = $request->curriculum;
+        // $applicant->criminalRecord = $request->criminalRecord;
+        // $applicant->medicalRecord = $request->medicalRecord;
+        // $applicant->dataAssessment = $request->dataAssessment;
+
         $applicant->save();
+        
         return redirect('/applicants');
     }
 
