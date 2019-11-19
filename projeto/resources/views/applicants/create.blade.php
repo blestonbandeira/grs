@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-md-2">
                   <label>Código Postal</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="postalCode">
                 </div>
                 <div class="col-md-2">
                   <label>Localidade</label>
@@ -248,6 +248,12 @@
               </div>
             </div>
             <div class="card-body">
+
+              <div>
+                <input class="checkbox" type="hidden" name="appForm" value="0">
+                <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
+                <label>Formulário de Inscrição</label>
+              </div>
 
               <div class="form-check">
                 <label class="form-check-label">
