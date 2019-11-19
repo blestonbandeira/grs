@@ -26,7 +26,6 @@ class ApiEventController extends Controller
         $lastId = -1;
         $lastColor = "#0089f2";
         $userR = User::where('id', '=', $request->user_id)->get();
-
         if($request->event_type_id == 0)
         {//CALENDARS
             if($userR[0]['permission_level_id'] == 1 || $userR[0]['permission_level_id'] == 2) 
@@ -35,7 +34,7 @@ class ApiEventController extends Controller
             }
             else if($userR[0]['permission_level_id'] == 3)
             {
-                $result = Event::where([['user_id', '=', $request->user_id],['event_type_id','=', 1]])->orWhere([['user_id', '=', $request->user_id],['event_type_id','=', 4]])->orderBy('id')->get();
+                $result = Event::where([['user_id', '=', $request->user_id],['event_type_id','=', 1]])->orWhere([['user_id', '=', $request->user_id],['event_type_id','=', 3]])->orderBy('id')->get();
             } 
         }
         else if($request->event_type_id == 1)
@@ -59,8 +58,10 @@ class ApiEventController extends Controller
         }
         else if($request->event_type_id == 3)
         {//AVAILABILITIES
+
             if($userR[0]['permission_level_id'] == 1)
             {
+                
                 $result = Event::where('event_type_id','=', $request->event_type_id)->orderBy('id')->get();
             }
             else if($userR[0]['permission_level_id'] == 3)
@@ -74,7 +75,7 @@ class ApiEventController extends Controller
             if($row["user_id"] != $lastId){
                 $lastColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
             }
- 
+
             $data[] = array(
                 'id'   => $row["id"],
                 'user_id'   => $row["user_id"],
@@ -86,6 +87,7 @@ class ApiEventController extends Controller
             );
             $lastId = (Int)$row["user_id"];
         } 
+        
 
         return $data;
     }
@@ -206,7 +208,7 @@ class ApiEventController extends Controller
             }
         }
 
-        return response($availEvent, 201);
+        return response($newEvent, 201);
     }
 
     public function show(Event $event)

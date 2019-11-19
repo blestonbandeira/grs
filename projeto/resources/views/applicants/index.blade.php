@@ -29,12 +29,12 @@
         </button>
     </a>
     <a>
-        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()" data-toggle="modal" data-target=".modalCalendar">
+        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()">
             Marcar Entrevista
         </button>
     </a>
     <a href="#">
-        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromTests()" data-toggle="modal" data-target=".modalTests">
+        <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromTests()">
             Marcar Prova
         </button>
     </a>
@@ -144,6 +144,9 @@
     </div>
 </div>
 
+
+<input id="btnModalCalendar" type="hidden" data-toggle="modal" data-target=".modalCalendar"/>
+
 <div class="modal fade modalCalendar" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
         <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
@@ -200,15 +203,16 @@
 
 <!--MODAL PROVAS-->
 
+<input id="btnModalTests" type="hidden" data-toggle="modal" data-target=".modalTests"/>
+
 <div id="modalTests" class="modal fade modalTests" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
         <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
             <div class="container-fluid" style="width: 90vw!important; padding: 10px 0;">
-                
                 <div id="modalSuccessMessageTests" class="container-fluid" style="visibility:hidden; border-radius:10px; border: 1px solid #0089f2!important; padding: 50px; width: 26.7vw!important; position:absolute; z-index:100; background-color:white;">
                 </div>
                 <div class="modal-header">
-                    <h5 class="modal-title">Marcas Testes:</h5>
+                    <h5 class="modal-title">Marcar Provas de Selecção:</h5>
                     <button type="button" class="close btnCloseModal" data-dismiss="modal" aria-label="Close">
                         <span style=" margin-top: 7px;background: #0089f2; border-radius: 17px; color: #fff; border: transparent; padding: 2px 10px 2px 10px;" aria-hidden="true">&times;</span>
                     </button>
@@ -228,6 +232,37 @@
 
 <!--FIM MODAL PROVAS-->
 
+<!--MODAL ERROS-->
+
+<input id="btnModalErrors" type="hidden" data-toggle="modal" data-target=".modalErrors"/>
+
+<div id="modalErrors" class="modal fade modalErrors" style="width: 98vw !important; margin: 15px;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 100vw!important; margin: 15px;">
+        <div class="modal-content d-flex justify-content-end" style="width: 95.5vw!important;">
+            <div class="container-fluid" style="width: 90vw!important; padding: 10px 0;">
+                
+                <div id="modalSuccessMessageTests" class="container-fluid" style="visibility:hidden; border-radius:10px; border: 1px solid #0089f2!important; padding: 50px; width: 26.7vw!important; position:absolute; z-index:100; background-color:white;">
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title">Os seguintes candidatos já foram inseridos anteriormente.</h5>
+                    <button type="button" class="close btnCloseModal" data-dismiss="modal" aria-label="Close">
+                        <span style=" margin-top: 7px;background: #0089f2; border-radius: 17px; color: #fff; border: transparent; padding: 2px 10px 2px 10px;" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modalErrorBody" class="modal-body">
+                </div>
+                <div id="divBtnConfirmErrors" class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--FIM MODAL ERROS-->
+
+
+
 <script>
     let eventAvailId;
     let appliSelectedId = [];
@@ -240,12 +275,21 @@
 
     let testTypeSelected = null;
 
+    var contTypeInterview = 0;
+    var arrayIdInterview = [];
+    var arrayNameInterview = [];
+    var arrayType1NameInterview = [];
+    var arrayType1IdInterview = [];
+    
+
     function getApplicantsSelectedFromInterviews()
     {
         let applicantsSelected = document.getElementsByClassName('applicantsSelect');
         appliSelectedName = [];
         let j = 0;
         let k = 0;
+        let x = 0;
+        let z = 0;
         for(let i = 0; i < applicantsSelected.length; i++)
         {
             if(applicantsSelected[i].checked)
@@ -258,10 +302,22 @@
                     data:{},
                     success:function(data)
                     { 
-                        appliSelectedName[k] = data[0]['name'];
+                        if(data['type'] == 1 || data['type'] == 3)
+                        {
+                            contTypeInterview += 1;
+                            arrayType1NameInterview[x] = data['name'];
+                            x++;
+                        }
+                        else
+                        {
+                            arrayIdInterview[z] = data['id'];
+                            arrayNameInterview[z] = data['name'];
+                            z++;
+                        }
+
+                        appliSelectedName[k] = data['name'];
                         if(appliSelectedName.length == appliSelectedId.length){
                             innerApplicantsSelectedFromInterviews();
-                            calendarCharge();
                             appliSelectedCount = appliSelectedName.length;
                         }
                         k++;
@@ -274,15 +330,58 @@
 
     function innerApplicantsSelectedFromInterviews()
     {
-        document.getElementById('hoursShowFromInterviews').classList.remove("show");
-        document.getElementById('applicantListFromInterviews').innerHTML = "";
-        let j = 0;
-        for(let i = 0; i < appliSelectedName.length; i++)
+        if(contTypeInterview != 0){
+            document.getElementById('modalErrorBody').innerHTML = "";  
+            document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button><button type="button" onclick="typeFilterApplicantsSelectedFromInterviews()" class="btn btn-primary">Ignorar e Continuar</button>';
+            for(let i = 0; i < arrayType1NameInterview.length; i++)
+            {
+                document.getElementById('btnModalErrors').click();
+                document.getElementById('modalErrorBody').innerHTML += arrayType1NameInterview[i] + "</br>";  
+            }   
+        }
+        else
         {
-            document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedName[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
-            j++;
+            document.getElementById('hoursShowFromInterviews').classList.remove("show");
+            document.getElementById('applicantListFromInterviews').innerHTML = "";
+            let j = 0;
+            for(let i = 0; i < appliSelectedName.length; i++)
+            {
+                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedName[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
+                j++;
+            }
+            calendarCharge();
+            document.getElementById('btnModalCalendar').click();
+        }
+        
+    }
+
+    function typeFilterApplicantsSelectedFromInterviews()
+    {
+        if(arrayIdInterview != 0){
+            calendarCharge();
+            document.getElementById('btnModalCalendar').click();
+            document.getElementById('btnModalErrors').click();
+            document.getElementById('hoursShowFromInterviews').classList.remove("show");
+            document.getElementById('applicantListFromInterviews').innerHTML = "";
+            let j = 0;
+            for(let i = 0; i < arrayIdInterview.length; i++)
+            {
+                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + arrayIdInterview[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + arrayNameInterview[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
+                j++;
+            }
+        } 
+        else
+        {
+            document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>';
+            document.getElementById('modalErrorBody').innerHTML = "<p>Todos os candidatos selecionados já tem entrevistas marcadas.</p>";  
+            contTypeInterview = 0;
+            arrayIdInterview = [];
+            arrayNameInterview = [];
+            arrayType1NameInterview = [];
+            arrayType1IdInterview = [];
         }
     }
+
 
     function applicantSelectedFromInterviews(data)
     {
@@ -301,7 +400,6 @@
     function saveInterview()
     {
         let selected = appliSelected;
-        alert(eventAvailId);
         let date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         $.ajax({
             dataType: "json",
@@ -360,7 +458,6 @@
             }
         });
     }
-
 
     $("#applicantListFromInterviews").on("click", "button", function(e) {
         e.preventDefault();
