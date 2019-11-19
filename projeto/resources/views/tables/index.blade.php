@@ -4,9 +4,11 @@
 <div class="content">
     <div class="container-fluid">   
            
+     
         <div class="row">
             <div class="col-md-12">
-                <div class="accordion" id="tablesShow">               
+                <div class="accordion" id="tablesShow">      
+                  
                  
                     <div class="card">
                         <div class="card-header card-header-info" data-toggle="collapse" data-target="#provenance_schools" aria-expanded="true" aria-controls="provenance_schools">
@@ -692,8 +694,10 @@
                     </div>
 
                     <div class="card">
+                       
                         <div class="card-header card-header-info" data-toggle="collapse" data-target="#origins" aria-expanded="true" aria-controls="origins">
                             <h4 class="card-title">Origem</h4>
+                           
                             <p class="card-category"> Nº de origens:{{ count($origins) }} </p> 
                         </div>
                         <div id="origins" class="collapse" aria-labelledby="headingOne" data-parent="#tablesShow">
@@ -702,7 +706,12 @@
                                     <thead class="text-info">
                                         <th class="text-center"></th>
                                         <th class="text-center">ID</th>
-                                        <th class="text-center">Nome</th>                                                                                
+                                        <th class="text-center">
+                                            <a href="{{ route('tables.index', ['order' => 'name']) }}" class="ftc-main">
+                                                Nome
+                                              <i class="grid-sort"></i>
+                                            </a>
+                                        </th>                                                                                
                                         <th class="text-center"></th>
                                         <th class="text-center"></th>
                                         
@@ -754,11 +763,11 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#origins" aria-expanded="true" aria-controls="origins">
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#permission_levels" aria-expanded="true" aria-controls="permission_levels">
                             <h4 class="card-title">Níveis de Acesso</h4>
                             <p class="card-category"> Nº de permissões:{{ count($permissionLevels) }} </p> 
                         </div>
-                        <div id="permissionLevels" class="collapse" aria-labelledby="headingOne" data-parent="#tablesShow">
+                        <div id="permission_levels" class="collapse" aria-labelledby="headingOne" data-parent="#tablesShow">
                             <div class="card-body table-responsive">
                                 <table class="table table-hover">
                                     <thead class="text-info">
@@ -816,11 +825,11 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#origins" aria-expanded="true" aria-controls="origins">
-                            <h4 class="card-title">Níveis de Acesso</h4>
-                            <p class="card-category"> Nº de permissões:{{ count($permissionLevels) }} </p> 
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#regimes" aria-expanded="true" aria-controls="regimes">
+                            <h4 class="card-title">Regime</h4>
+                            <p class="card-category"> Nº de regimes:{{ count($regimes) }} </p> 
                         </div>
-                        <div id="permissionLevels" class="collapse" aria-labelledby="headingOne" data-parent="#tablesShow">
+                        <div id="regimes" class="collapse" aria-labelledby="headingOne" data-parent="#tablesShow">
                             <div class="card-body table-responsive">
                                 <table class="table table-hover">
                                     <thead class="text-info">
@@ -832,12 +841,12 @@
                                         
                                     </thead>
                                     <tbody>
-                                        @foreach ($permissionLevels as $permissionLevel)
+                                        @foreach ($regimes as $regime)
                                         <tr>
                                             <td class="text-center">
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        <input class="form-check-input" type="checkbox" value="{{$permissionLevel->id}}">
+                                                        <input class="form-check-input" type="checkbox" value="{{$regime->id}}">
                                                         <span class="form-check-sign">
                                                             <span class="check"></span>
                                                         </span>
@@ -845,14 +854,14 @@
                                                 </div>
                                             </td>
                                             <td class="text-center">
-                                                {{ $permissionLevel->id }}
+                                                {{ $regime->id }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $permissionLevel->name }}
+                                                {{ $regime->name }}
                                             </td>
                                            
                                              <td>
-                                                <form action="/tables/{{ $permissionLevel->id }}" method="post">
+                                                <form action="/tables/{{ $regime->id }}" method="post">
                                                     @csrf
                                                     @method('put')
                                                     <button type="button" rel="tooltip" title="Editar" class="btn btn-info btn-link btn-sm border-0">
@@ -861,7 +870,132 @@
                                                 </form>
                                              </td>
                                              <td>
-                                                <form action="/tables/{{ $permissionLevel->id }}" method="post">
+                                                <form action="/tables/{{ $regime->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                        <i class="material-icons">close</i>
+                                                    </button>
+                                                </form>
+                                            </td> 
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card">
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#test_types" aria-expanded="true" aria-controls="test_types">
+                            <h4 class="card-title">Tipos de Provas</h4>
+                            <p class="card-category"> Nº de tipos de provas:{{ count($testTypes) }} </p> 
+                        </div>
+                        <div id="test_types" class="collapse" aria-labelledby="headingOne" data-parent="#tablesShow">
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-info">
+                                        <th class="text-center"></th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Nome</th>                                                                                
+                                        <th class="text-center"></th>
+                                        <th class="text-center"></th>
+                                        
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($testTypes as $testType)
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" value="{{$testType->id}}">
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $testType->id }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $testType->name }}
+                                            </td>
+                                           
+                                             <td>
+                                                <form action="/tables/{{ $testType->id }}" method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-info btn-link btn-sm border-0">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </form>
+                                             </td>
+                                             <td>
+                                                <form action="/tables/{{ $testType->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                        <i class="material-icons">close</i>
+                                                    </button>
+                                                </form>
+                                            </td> 
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header card-header-info" data-toggle="collapse" data-target="#unemployement_situations" aria-expanded="true" aria-controls="unemployement_situations">
+                            <h4 class="card-title">Situação Face ao Emprego</h4>
+                            <p class="card-category"> Nº de situações:{{ count($unemployementSituations) }} </p> 
+                        </div>
+                        <div id="unemployement_situations" class="collapse" aria-labelledby="headingOne" data-parent="#tablesShow">
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-info">
+                                        <th class="text-center"></th>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Nome</th>                                                                                
+                                        <th class="text-center"></th>
+                                        <th class="text-center"></th>
+                                        
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($unemployementSituations as $unemployementSituation)
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" value="{{$unemployementSituation->id}}">
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $unemployementSituation->id }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $unemployementSituation->name }}
+                                            </td>
+                                           
+                                             <td>
+                                                <form action="/tables/{{ $unemployementSituation->id }}" method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-info btn-link btn-sm border-0">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </form>
+                                             </td>
+                                             <td>
+                                                <form action="/tables/{{ $unemployementSituation->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm" value="DELETE">

@@ -15,7 +15,11 @@ use App\Gender;
 use App\MinimumQualification;
 use App\Origin;
 use App\PermissionLevel;
+use App\Regime;
+use App\TestType;
+use App\UnemployementSituation;
 use Illuminate\Http\Request;
+
 
 class TableController extends Controller
 {
@@ -24,10 +28,23 @@ class TableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
+       
+        $order = $request->order;
         $provenanceSchools = ProvenanceSchool::all();
+		$origins = Origin::select('provenance_schools.id', 'provenance_schools.name')
+			->when($order, function ($query, $order) {
+				switch ($order) {
+					case 'name':
+						return $query->orderBy('provenance_schools.name');
+					case 'id':
+						return $query->orderBy('provenance_schools.id', 'DESC');
+				}
+			}, function ($query) {
+				return $query->orderBy('provenance_schools.id', 'DESC');
+			})->get();
+
         $cancellationReasons = CancellationReason::all();
         $categories = Category::all();
         $classStates = ClassState::all();
@@ -38,8 +55,10 @@ class TableController extends Controller
         $eventTypes = EventType::all();
         $genders = Gender::all();
         $minimumQualifications = MinimumQualification::all();
-        $origins = Origin::all();
         $permissionLevels = PermissionLevel::all();
+        $regimes = Regime::all();
+        $testTypes = TestType::all();
+        $unemployementSituations = UnemployementSituation::all();
 
         return view('tables.index')
         ->with(compact('provenanceSchools', 
@@ -54,7 +73,10 @@ class TableController extends Controller
                     'genders', 
                     'minimumQualifications',
                     'origins',
-                    'permissionLevels'));
+                    'permissionLevels',
+                    'regimes',
+                    'testTypes',
+                    'unemployementSituations'));
     }
 
     /**

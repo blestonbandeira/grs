@@ -16,7 +16,7 @@ Route::get('/home', function () {
     return redirect('/');
 });
 Route::get('/', function () {
-    return redirect('/applicants');
+    return redirect('/calendars');
 });
 
 Route::middleware('auth')->resource('/emails', 'EmailController');

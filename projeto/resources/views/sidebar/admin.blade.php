@@ -189,32 +189,26 @@
             </div>
 
             <div class="card nav-item">
-                    <div class="card-header" id="headingSeven">
-                        <i class="fas fa-chalkboard"></i>
-                        <p data-toggle="collapse" data-target="#collapseSeven"x  aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('tables*') ? 'activeMenu' : '' }}">
-                            <a href="{{ url('tables')}}">
-                            Outros
-                            </a>
-                        </p>                
-                    </div>
-                    <div id="collapseSeven" class="collapse {{ request()->is('tables*') ? ' show' : '' }}" aria-labelledby="headingSeven" data-parent="#sidebar">
-                        <div class="card-body">
+                <div class="card-header" id="headingSeven">
+                    <i class="fas fa-chalkboard"></i>
+                    <p data-toggle="collapse" data-target="#collapseSeven"x  aria-expanded="true" aria-controls="collapseSeven" class="{{ request()->is('tables*') ? 'activeMenu' : '' }}">
+                        <a href="{{ url('tables')}}">
+                        Outros
+                        </a>
+                    </p>                
+                </div>
+                <div id="collapseSeven" class="collapse {{ request()->is('tables*') ? ' show' : '' }}" aria-labelledby="headingSeven" data-parent="#sidebar">
+                    <div class="card-body">
                         <ul class="nav-item">
-                                <li class="{{ request()->is('tables') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ url('tables') }}">
-                                    Ver  
-                                    </a>
-                                </li>
-                                <li class="{{ request()->is('tables/create') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('tables.create') }}">
-                                    Adicionar
-                                    </a>   
-                                </li>                           
-                            </ul>                  
-                        </div>
+                            <li class="{{ request()->is('tables') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('tables') }}">
+                                Ver  
+                                </a>
+                            </li>                                                   
+                        </ul>                  
                     </div>
                 </div>
-
+            </div>
         </div> 
     </div>
 </div>
