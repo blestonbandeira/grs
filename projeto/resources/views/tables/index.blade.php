@@ -20,8 +20,19 @@
                                 <table class="table table-hover">
                                     <thead class="text-info">
                                         <th class="text-center"></th>
-                                        <th class="text-center">ID</th>
-                                        <th class="text-center">Nome</th>
+                                        <th class="text-center">                                          
+                                          <a href="{{ route('tables.index', ['order' => 'id']) }}" class="ftc-main">
+                                            ID
+                                            <i class="grid-sort"></i>
+                                          </a>
+                                        </th>
+                                        <th class="text-center">                                          
+                                            <a href="{{ route('tables.index', ['order' => 'name']) }}" class="ftc-main">
+                                              Nome
+                                              <i class="grid-sort"></i>
+                                            </a>
+
+                                        </th>
                                         <th class="text-center"></th>
                                         <th class="text-center"></th>
                                         

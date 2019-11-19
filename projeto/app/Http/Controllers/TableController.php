@@ -32,17 +32,18 @@ class TableController extends Controller
     {
        
         $order = $request->order;
-        $provenanceSchools = ProvenanceSchool::all();
-		$origins = Origin::select('provenance_schools.id', 'provenance_schools.name')
+        
+        $origins = Origin::all();
+		$provenanceSchools = ProvenanceSchool::select('provenance_schools.id', 'provenance_schools.name')
 			->when($order, function ($query, $order) {
 				switch ($order) {
 					case 'name':
 						return $query->orderBy('provenance_schools.name');
 					case 'id':
-						return $query->orderBy('provenance_schools.id', 'DESC');
+						return $query->orderBy('provenance_schools.id', 'ASC');
 				}
 			}, function ($query) {
-				return $query->orderBy('provenance_schools.id', 'DESC');
+				return $query->orderBy('provenance_schools.id', 'ASC');
 			})->get();
 
         $cancellationReasons = CancellationReason::all();
