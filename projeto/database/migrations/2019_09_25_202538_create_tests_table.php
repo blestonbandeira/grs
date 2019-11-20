@@ -16,11 +16,11 @@ class CreateTestsTable extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('date');
-            $table->bigInteger('test_tyoe:id')->unsigned()->nullable();
-            $table->foreign('test_tyoe:id')->references('id')->on('test_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('test_type_id')->unsigned()->nullable();
+            $table->foreign('test_type_id')->references('id')->on('test_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('atendance')->default(0);
             $table->bigInteger('applicant_id')->unsigned()->nullable();
             $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');            
-            $table->string('result');
             $table->timestamps();
         });
     }
