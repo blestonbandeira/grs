@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-2">
                   <label>Contacto</label>
-                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="phoneNumber" value="{{ $applicant->email }}">
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="phoneNumber" value="{{ $applicant->phoneNumber }}">
                 </div>
 
                 <div class="col-md-2">

@@ -100,9 +100,11 @@
                                                 {{-- <label>{{ $applicant->category_id->name }}</label> --}}
                                             </td>
                                              <td>
-                                                    <a href="/applicants/{{ $applicant->id }}/edit"><button type="button" rel="tooltip" title="Editar Candidato" class="btn btn-info btn-link btn-sm border-0">
+                                                <a href="/applicants/{{ $applicant->id }}/edit">
+                                                    <button type="button" rel="tooltip" title="Editar Candidato" class="btn btn-info btn-link btn-sm border-0">
                                                         <i class="material-icons">edit</i>
-                                                    </button></a>
+                                                    </button>
+                                                </a>
                                                 
                                                 {{--<form action="/applicants/{{ $applicant->id }}" method="post">
                                                     @csrf

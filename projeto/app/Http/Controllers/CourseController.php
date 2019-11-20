@@ -41,8 +41,7 @@ class CourseController extends Controller
     public function create()
     {
         $courses = Course::all();
-        $courseNames = CourseName::all();
-       
+        $courseNames = CourseName::all();       
         $courseTypes = CourseType::all();
         $regimes = Regime::all();
         $minimumQualifications = MinimumQualification::all();
@@ -93,7 +92,20 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::find($id);
+
+        $courseNames = CourseName::all();       
+        $courseTypes = CourseType::all();
+        $regimes = Regime::all();
+        $minimumQualifications = MinimumQualification::all();
+
+        return view('courses.edit') 
+                ->with(compact( 'course', 
+                                'courseNames',
+                                'courseTypes',
+                                'regimes',
+                                'minimumQualifications'));
+
     }
 
     /**
