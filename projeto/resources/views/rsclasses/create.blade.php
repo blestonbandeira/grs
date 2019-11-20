@@ -3,7 +3,7 @@
 
 <div class="content">
   <div class="container-fluid">
-        <form action="/courses" method="POST">            
+        <form action="/rsclasses" method="POST">            
             @csrf
             <div class="row">
                 
@@ -38,7 +38,7 @@
                                             </select>                                            
                                         </div>
 
-                                        <div >
+                                        <div>
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Assistente de Formação</label>
                                             <select name="user_id" class="custom-select input-border-width">
                                                     @if (count($users) > 0 )
@@ -56,7 +56,7 @@
                                             </select>                                            
                                         </div>
 
-                                        <div >
+                                        <div>
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Estado da Turma</label>
                                             <select name="class_state_id" class="custom-select input-border-width" disabled>
                                                     @if (count($classStates) > 0 )
@@ -75,10 +75,24 @@
                                         </div>
 
                                     </div>
+
                                     <div class="col-md-2">
-                                        <label>Data de Início</label>
-                                        <input id="today" type="date" class="form-control border-top-0 border-left-0 border-right-0" name="startDate" format="yyyy/MM/dd">
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <label>Data de Início</label>
+                                                <input id="today" type="date" class="form-control border-top-0 border-left-0 border-right-0" name="startDate" format="yyyy/MM/dd">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label>Nome sugerido</label>
+                                                <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="rs_class_name" format="yyyy/MM/dd">
+                                            </div>
+
+                                        </div>
                                     </div>
+
+                                    
                                 </div>
 
                                 <div class="row justify-content-end">
