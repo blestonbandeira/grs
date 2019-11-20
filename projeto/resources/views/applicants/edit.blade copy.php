@@ -225,225 +225,171 @@
         </div>
       </div>
 
-      <div class="row">
-          <div class="col-md-6">
-              <div class="card">
-                <div class="card-header card-header-text card-header-info">
-                  <div class="card-text">
-                    <h4 class="card-title">Resultados</h4>
-                  </div>
-                </div>
-                <div class="card-body">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- 
+
+
+
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header card-header-text card-header-info">
+              <div class="card-text">
+                <h4 class="card-title">Resultados</h4>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
                   <div class="row">
-                    <div class="col-md-6">
-                      <div class="row">
-                        <div class="col-md-12">
-
-                          <div class="card">
-
-                              <div class="card-header card-header-text card-header-warning bg-none">
-                                <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
-                                  <h4 class="card-title" style="color:#00A3E0;">Entrevista</h4>
-                                </div>                                  
-                              </div> 
-
-                              <div class="card-body">                          
-                                  <select class="custom-select input-height" name="interview">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                  </select>                       
-                              </div>
-
-                          </div>
-
-                          <div class="card">
-
-                              <div class="card-header card-header-text card-header-warning bg-none">
-                                <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
-                                  <h4 class="card-title" style="color:#00A3E0;">Prova de Aferição</h4>
-                                </div>                                  
-                              </div> 
-
-                              <div class="card-body">                          
-                                  <select class="custom-select input-height" name="interview">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                  </select>                       
-                              </div>
-
-                          </div>
-
-                          <div class="card">
-
-                              <div class="card-header card-header-text card-header-warning bg-none">
-                                <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
-                                  <h4 class="card-title" style="color:#00A3E0;">Inventário Vocacional</h4>
-                                </div>                                  
-                              </div> 
-
-                              <div class="card-body">                          
-                                  <select class="custom-select input-height" name="interview">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                  </select>                       
-                              </div>
-
-                          </div>
-
+                    <div class="card">
+                      <div class="card-header card-header-text card-header-warning bg-none">
+                        <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
+                          <h4 class="card-title" style="color:#00A3E0;">Entrevista</h4>
+                        </div>
+                        
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                          <select class="custom-select input-height" name="interview">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
                         </div>
                       </div>
                     </div>
-
-                    <div class="col-md-6">
-                      <div class="card">
-                          <div class="card-header card-header-text card-header-warning bg-none">
-                            <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
-                              <h4 class="card-title" style="color:#00A3E0;">Teste Psicoténicos</h4>
-                            </div>
-                          </div>
-
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <label class="pr-3">Compreensão Verbal</label>
-                                <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                  <label class="pr-3">Apridão Numérica</label>
-                                  <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                <label class="pr-3">Raciocínio Lógico</label>
-                                <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                <label class="pr-3">Raciocínio Espacial</label>
-                                <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                <label class="pr-3">Média</label>
-                                <label class="pr-3">22</label>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                    </div>
-                    </div>
-                 
-                     
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-6">
-              <div class="card">
-  
-                <div class="card-header card-header-text card-header-info">
-                  <div class="card-text">
-                    <h4 class="card-title">Documentos Entregues</h4>
                   </div>
                 </div>
-  
-                <div class="card-body">
-  
-                  {{-- <div>
-                    <input class="checkbox" type="hidden" name="appForm" value="0">
-                    <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
-                    <label>Formulário de Inscrição</label>
-                  </div> --}}
-  
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        Formulário de Inscrição
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        BI/CC
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        Certificado de Habilitações
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        Cartão de Utente ou Declaração Centro de Emprego
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        Curriculum Vitae
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        Registo Criminal
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        Atestado Médico
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
-                        Data Assessment
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label><br><br>
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header card-header-text card-header-warning bg-none">
+                      <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
+                        <h4 class="card-title" style="color:#00A3E0;">Teste Psicoté</h4>
+                      </div>
                     </div>
-  
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-2">
+                            <label class="pr-3">Português</label>
+                            <input type="text" name=""  maxlength="2" size="1">
+                          </div>
+                          <div class="col-md-2">
+                            <label class="pr-3">Matemática</label>
+                            <input type="text" name=""  maxlength="2" size="1">
+                          </div>
+                          <div class="col-md-2">
+                            <label class="pr-3">Lógica</label>
+                            <input type="text" name=""  maxlength="2" size="1">
+                          </div>
+                          <div class="col-md-2">
+                            <label class="pr-3">Espaço</label>
+                            <input type="text" name=""  maxlength="2" size="1">
+                          </div>
+                          <div class="col-md-4">
+                            <label class="pr-3">Média</label>
+                            <label class="pr-3">22</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-      </div>
-          
+          </div>
+        </div> --}}
 
-          
-      </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header card-header-text card-header-info">
+              <div class="card-text">
+                <h4 class="card-title">Documentos Entregues</h4>
+              </div>
+            </div>
+            <div class="card-body">
 
+              <div>
+                <input class="checkbox" type="hidden" name="appForm" value="0">
+                <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
+                <label>Formulário de Inscrição</label>
+              </div>
 
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  Formulário de Inscrição
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  BI/CC
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  Certificado de Habilitações
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  Cartão de Utente ou Declaração Centro de Emprego
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  Curriculum Vitae
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  Registo Criminal
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  Atestado Médico
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="true">
+                  Data Assessment
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label><br><br>
+              </div>
 
-
-
-        
+            </div>
+          </div>
+        </div>
       </div>
       <button type="submit" class="btn btn-info pull-right">Criar</button>
     </form>
