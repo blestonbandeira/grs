@@ -16,6 +16,7 @@ use App\Category;
 
 
 use Illuminate\Http\Request;
+use Psr\Log\NullLogger;
 
 class ApplicantController extends Controller
 {
@@ -62,8 +63,32 @@ class ApplicantController extends Controller
         $courseNames = CourseName::all();
         $cancellationReasons = CancellationReason::all();
 
+        
+        $courseArray = [];
+        foreach($courseNames as $courseN){
+            $tempCourseN = CourseName::where('name', '=',$courseN->name)->first();
+            $tempClassN = RsClass::where('course_name_id', '=', $tempCourseN->id)->first();
+            if ($tempClassN == null)
+            {
+                array_push($courseArray, [
+                    "courseName" => $tempCourseN->name,
+                    "className" => "Não Existe Turma Definida!"
+                ]);
+            }
+            else
+            {
+                array_push($courseArray, [
+                    "courseName" => $tempCourseN->name,
+                    "className" => $tempClassN->name
+                ]);
+            }
+            
+            
+        }
+
         return view('applicants.create')
         ->with(compact(
+            'courseArray',
             'genders',
             'rsclasses',
             'origins',
