@@ -81,9 +81,7 @@ class ApplicantController extends Controller
                     "courseName" => $tempCourseN->name,
                     "className" => $tempClassN->name
                 ]);
-            }
-            
-            
+            }            
         }
 
         return view('applicants.create')

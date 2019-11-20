@@ -8,9 +8,9 @@
             <div class="row">
                 
                 <div class="col-md-12">
-                    <div class="accordion" id="users">
+                    <div class="accordion" id="courses">
                         <div class="card">
-                            <div class="card-header card-header-info" data-toggle="collapse" data-target="#usersCreate" aria-expanded="true" aria-controls="usersCreate">
+                            <div class="card-header card-header-info" data-toggle="collapse" data-target="#coursesCreate" aria-expanded="true" aria-controls="coursesCreate">
                                 <h4 class="card-title">Criar Novo Curso</h4>
                             </div>
 
@@ -21,6 +21,7 @@
                                     <div class="col-md-10">
 
                                         <div >
+                                            <br/>
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
                                             <select name="course_name_id" class="custom-select input-border-width">
                                                 @if (count($courseNames) > 0 )
