@@ -22,7 +22,7 @@
 
                                         <div >
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
-                                            <select name="course_name_id" class="custom-select input-border-width">
+                                            <select id="courseSelected" onchange="getRsClassName()" name="course_name_id" class="custom-select input-border-width">
                                                     @if (count($courseNames) > 0 )
                                                         <option>-- selecione aqui o nome do Curso --</option>                                                        
                                                         @foreach($courseNames as $courseName)
@@ -81,12 +81,12 @@
 
                                             <div class="col-md-12">
                                                 <label>Data de Início</label>
-                                                <input id="today" type="date" class="form-control border-top-0 border-left-0 border-right-0" name="startDate" format="yyyy/MM/dd">
+                                                <input id="today" oninput="getRsClassName()" type="date" class="form-control border-top-0 border-left-0 border-right-0" name="startDate" format="yyyy/MM/dd">
                                             </div>
 
                                             <div class="col-md-12">
                                                 <label>Nome sugerido</label>
-                                                <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="rs_class_name" format="yyyy/MM/dd">
+                                                <input id="rsClassNameCreated" value="" type="text" class="form-control border-top-0 border-left-0 border-right-0" name="rs_class_name"/>
                                             </div>
 
                                         </div>
@@ -111,6 +111,28 @@
     </div>
 </div>
 
+<script>
 
+
+
+function getRsClassName()
+{
+    let courseSelected = $('#courseSelected :selected').text();
+    if ($('#courseSelected').val() > 0){
+        let dateSelected = document.getElementById('today').value;
+        $.ajax({
+            contentType: "application/json",
+            url:"/api/helpers",
+            type:"GET",
+            data:{ courseName:courseSelected, startDate:dateSelected },
+            success:function(data)
+            {
+                let teste = document.getElementById('rsClassNameCreated').value = data;
+            }
+        });
+    }
+    
+}
+</script>
             
 @endsection
