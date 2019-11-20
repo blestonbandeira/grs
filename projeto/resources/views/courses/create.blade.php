@@ -23,53 +23,87 @@
                                         <div >
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
                                             <select name="course_name_id" class="custom-select input-border-width">
-                                                @foreach($courseNames as $courseName)
-                                                <option value="{{ $courseName->id }}">
-                                                    {{ $courseName->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>                                            
+                                                @if (count($courseNames) > 0 )
+                                                    <option>-- selecione aqui o nome do Curso --</option>                                                        
+                                                    @foreach($courseNames as $courseName)
+                                                        <option value="{{ $courseName->id }}">
+                                                            {{ $courseName->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @else
+                                                    <option>
+                                                        --Não existem cursos na plataforma--
+                                                    </option>
+                                                @endif
+                                            </select>                                           
                                         </div>
 
                                         <div >
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Tipo do Curso</label>
-                                            <select name="course_type_id" class="custom-select input-border-width">
-                                                @foreach($courseTypes as $courseType)
-                                                <option value="{{ $courseType->id }}">
-                                                    {{ $courseType->name }}
-                                                </option>
-                                                @endforeach
+                                            <select name="course_name_id" class="custom-select input-border-width">
+                                                @if (count($courseTypes) > 0 )
+                                                    <option>-- selecione aqui o tipo do Curso --</option>                                                        
+                                                    @foreach($courseTypes as $courseType)
+                                                        <option value="{{ $courseType->id }}">
+                                                            {{ $courseType->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @else
+                                                    <option>
+                                                        --Não existem tipos de curso na plataforma--
+                                                    </option>
+                                                @endif
                                             </select>                                            
-                                        </div>
-
-                                        <div >
-                                            <label class="border-top-0 border-left-0 border-right-0" name="name">Regime do Curso</label>
-                                            <select name="regime_id" class="custom-select input-border-width">
-                                                @foreach($regimes as $regime)
-                                                <option  value="{{ $regime->id }}">
-                                                    {{ $regime->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>                                            
-                                        </div>
-
-                                        <div >
-                                            <label class="border-top-0 border-left-0 border-right-0" name="name">Habilitações Literárias Mínimas para o Curso</label>
-                                            <select name="minimum_qualification_id" class="custom-select input-border-width">
-                                                @foreach($minimumQualifications as $minimumQualification)
-                                                <option value="{{ $minimumQualification->id }}">
-                                                    {{ $minimumQualification->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>                                            
-                                        </div>
-
+                                        </div>                                     
                                     </div>
                                 </div>
 
+                                <div class="row justify-content-md-center">                
+                                        <div class="col-md-5">
+                                            <div >
+                                                <label class="border-top-0 border-left-0 border-right-0" name="name">Regime do Curso</label>
+                                                <select name="course_name_id" class="custom-select input-border-width">
+                                                        @if (count($regimes) > 0 )
+                                                            <option>-- selecione aqui o regime do Curso --</option>                                                        
+                                                            @foreach($regimes as $regime)
+                                                                <option value="{{ $regime->id }}">
+                                                                    {{ $regime->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        @else
+                                                            <option>
+                                                                --Não existem regimes na plataforma--
+                                                            </option>
+                                                        @endif
+                                                </select>                                        
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div >
+                                                <label class="border-top-0 border-left-0 border-right-0" name="name">Habilitações Literárias Mínimas para o Curso</label>
+
+                                                <select name="course_name_id" class="custom-select input-border-width">
+                                                        @if (count($minimumQualifications) > 0 )
+                                                            <option>-- selecione aqui o nome do Curso --</option>                                                        
+                                                            @foreach($minimumQualifications as $minimumQualifications)
+                                                                <option value="{{ $minimumQualifications->id }}">
+                                                                    {{ $minimumQualifications->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        @else
+                                                            <option>
+                                                                --Não existem habilitações literárias mínimas na plataforma--
+                                                            </option>
+                                                        @endif
+                                                </select>                                            
+                                            </div>
+    
+                                        </div>
+                                    </div>
+
 
                                 <div class="row justify-content-end">
-                                    <div class="col-md-3">
+                                    <div class="col-md-1">
                                         <button type="submit" class="btn btn-primary">Criar</button>
                                         
                                     </div>
