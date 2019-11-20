@@ -63,7 +63,6 @@
                                         <th class="text-center">Idade</th>
                                         <th class="text-center">Media das Provas</th>
                                         <th class="text-center">Nota de Entrevista</th>
-                                        <th class="text-center">Apto</th>
                                         <th class="text-center">Categorização</th>
                                         <th class="text-center"></th>
                                     </thead>
@@ -96,19 +95,9 @@
                                             <td class="text-center">
                                                 <input class="text-center" type="text" value="22" maxlength="2" size="1">
                                             </td>
+                                            
                                             <td class="text-center">
-                                                <button class="btn btn-success" style=" display: inline-block;">Sim</button>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="form-group">
-                                                    <select name="catgory_id" class="custom-select" onchange="this.form.submit()">
-                                                        @foreach($categories as $category)
-                                                            <option value="{{ $category->id }}">
-                                                                {{ $category->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                {{-- <label>{{ $applicant->category_id->name }}</label> --}}
                                             </td>
                                              <td>
                                                 <a href="/applicants/{{ $applicant->id }}/edit">

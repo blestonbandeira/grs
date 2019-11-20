@@ -416,8 +416,9 @@
                   <div class="card-text">
                     <h4 class="card-title">Documentos Entregues</h4>
                   </div>
+                  
                 </div>
-  
+                
                 <div class="card-body">
   
                   {{-- <div>
@@ -482,9 +483,10 @@
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
-                      </label><br><br>
+                      </label>
                     </div>
-  
+                    <button class="btn btn-success pull-right" >Apto</button>
+
                 </div>
               </div>
             </div>
