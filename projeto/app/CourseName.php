@@ -8,7 +8,7 @@ class CourseName extends Model
 {
    
     
-    public function rsClass() {
+    public function rsClasses() {
       return $this->belongsTo('\App\RsClass');
     }
 

@@ -17,5 +17,13 @@ class RsClass extends Model
     public function applicants() {
         return $this->hasMany('\App\Applicant');
     }
+
+    public function user() {
+        return $this->belongsTo ('\App\User');
+    }
+
+    public function classState() {
+        return $this->belongsTo ('\App\ClassState');
+    }
     
 }

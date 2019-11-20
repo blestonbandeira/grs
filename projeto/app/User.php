@@ -42,6 +42,9 @@ class User extends Authenticatable
         return $this->belongsTo('\App\PermissionLevel');
     }
 
+    public function rsClasses() {
+        return $this->belongsTo('\App\RsClass');
+    }
     
 }
 

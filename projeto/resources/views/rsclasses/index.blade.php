@@ -48,17 +48,17 @@
                                                 {{ $rsClass->name }}
                                             </td>
 
-                                            <td>
-                                                {{ $rsClass->course_name_id }}
+                                            <td> 
+                                                {{ $rsClass->courseName->name}}
                                             </td>
                                             <td>
                                                 {{ $rsClass->startDate }}
                                             </td>
                                             <td>
-                                                {{ $rsClass->user_id }}
+                                                {{ $rsClass->user->name }}
                                             </td>
                                             <td>
-                                                {{ $rsClass->class_state_id }}
+                                                {{ $rsClass->classState->name}}
                                             </td>
                                             <td class="d-flex">
                                                 <button type="button" rel="tooltip" title="EditAR" class="btn btn-info btn-link btn-sm">
