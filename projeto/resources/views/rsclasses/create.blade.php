@@ -22,7 +22,7 @@
 
                                         <div >
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
-                                            <select name="course_name_id" class="custom-select input-border-width">
+                                            <select id="courseSelected" onchange="getRsClassName()" name="course_name_id" class="custom-select input-border-width">
                                                     @if (count($courseNames) > 0 )
                                                         <option>-- selecione aqui o nome do Curso --</option>                                                        
                                                         @foreach($courseNames as $courseName)
@@ -86,7 +86,7 @@
 
                                             <div class="col-md-12">
                                                 <label>Nome sugerido</label>
-                                                <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="rs_class_name" format="yyyy/MM/dd">
+                                                <input id="rsClassNameCreated" type="text" class="form-control border-top-0 border-left-0 border-right-0" name="rs_class_name"/>
                                             </div>
 
                                         </div>
@@ -110,6 +110,30 @@
         </form>
     </div>
 </div>
+
+<script>
+
+
+
+function getRsClassName()
+{
+    let courseSelected = $("#courseSelected :selected").text();
+    let dateSelected = $("#today").value;
+    
+    $.ajax({
+        dataType: "json",
+        url:"/api/helpers",
+        type:"GET",
+        data:{ courseName:courseSelected, startDate:dateSelected },
+        success:function(data)
+        {
+            alert("asdasd");
+            let teste = $("#rsClassNameCreated");
+            teste.value = data;
+        }
+    });
+}
+</script>
 
 
             

@@ -24,7 +24,7 @@ class RsClassController extends Controller
         $classStates = ClassState::all()->pluck('name');
         $courseNames = CourseName::all()->pluck('name');
 
-        return view('rsClasses.index')
+        return view('rsclasses.index')
         ->with(compact('rsClasses', 
                     'courseNames',
                     'users',
