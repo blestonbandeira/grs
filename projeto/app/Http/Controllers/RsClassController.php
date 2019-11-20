@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ClassState;
 use App\RsClass;
 use App\CourseName;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class RsClassController extends Controller
@@ -15,9 +17,18 @@ class RsClassController extends Controller
      */
     public function index()
     {
-        $rsclasses = RsClass::all();
-        return view('rsclasses.index')
-        ->with(compact('rsclasses'));
+        $rsClasses = RsClass::all();
+
+        $users = User::all()->pluck('name');
+        
+        $classStates = ClassState::all()->pluck('name');
+        $courseNames = CourseName::all()->pluck('name');
+
+        return view('rsClasses.index')
+        ->with(compact('rsClasses', 
+                    'courseNames',
+                    'users',
+                    'classStates'));
     }
 
     /**
@@ -28,8 +39,14 @@ class RsClassController extends Controller
     public function create()
     {
         $courseNames = CourseName::all();
+        $users = User::all()->where('permission_level_id', '=', 2);
+        $classStates = ClassState::all();
+        
         return view('rsclasses.create')
-        ->with(compact('rsclasses', 'courseNames'));
+                ->with(compact('rsclasses', 
+                            'courseNames',
+                            'users',
+                            'classStates'));
     }
 
     /**

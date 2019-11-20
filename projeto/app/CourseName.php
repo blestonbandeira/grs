@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseName extends Model
 {
+   
+    
     public function rsClasses() {
       return $this->belongsTo('\App\RsClass');
     }

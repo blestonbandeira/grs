@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="col-md-2">
-                  <label>Data-de-Nascimento</label>
+                  <label>Data de Nascimento</label>
                   <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy">
                 </div>
               </div>
@@ -225,11 +225,11 @@
                 </div>
                 <div class="col-md-3">
                   <label>Data de Anulação</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0">
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0"  name="cancellationDate">
                 </div>
                 <div class="col-md-3">
                   <label>Motivo da Anulação</label>
-                  <select name="origin_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                  <select name="cancellation_reason_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($cancellationReasons as $cancellationReason)
                       <option value="{{ $cancellationReason->id }}">
                           {{ $cancellationReason->name }}
@@ -319,7 +319,8 @@
                 </label><br><br>
                 <label class="form-check-label">
                   <input class="form-check-input" type="checkbox" value="true">
-                  Atestado Médico
+                  Atestado Médico 
+                  {{-- é preciso fazer aqui validações: o atestado médico e o data assessment são só para alguns cursos, tenho de ir ver quais --}}
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
