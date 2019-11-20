@@ -81,12 +81,12 @@
 
                                             <div class="col-md-12">
                                                 <label>Data de Início</label>
-                                                <input id="today" type="date" class="form-control border-top-0 border-left-0 border-right-0" name="startDate" format="yyyy/MM/dd">
+                                                <input id="today" oninput="getRsClassName()" type="date" class="form-control border-top-0 border-left-0 border-right-0" name="startDate" format="yyyy/MM/dd">
                                             </div>
 
                                             <div class="col-md-12">
                                                 <label>Nome sugerido</label>
-                                                <input id="rsClassNameCreated" type="text" class="form-control border-top-0 border-left-0 border-right-0" name="rs_class_name"/>
+                                                <input id="rsClassNameCreated" value="" type="text" class="form-control border-top-0 border-left-0 border-right-0" name="rs_class_name"/>
                                             </div>
 
                                         </div>
@@ -117,24 +117,22 @@
 
 function getRsClassName()
 {
-    let courseSelected = $("#courseSelected :selected").text();
-    let dateSelected = $("#today").value;
+    let courseSelected = $('#courseSelected :selected').text();
+    if ($('#courseSelected').val() > 0){
+        let dateSelected = document.getElementById('today').value;
+        $.ajax({
+            contentType: "application/json",
+            url:"/api/helpers",
+            type:"GET",
+            data:{ courseName:courseSelected, startDate:dateSelected },
+            success:function(data)
+            {
+                let teste = document.getElementById('rsClassNameCreated').value = data;
+            }
+        });
+    }
     
-    $.ajax({
-        dataType: "json",
-        url:"/api/helpers",
-        type:"GET",
-        data:{ courseName:courseSelected, startDate:dateSelected },
-        success:function(data)
-        {
-            alert("asdasd");
-            let teste = $("#rsClassNameCreated");
-            teste.value = data;
-        }
-    });
 }
 </script>
-
-
             
 @endsection
