@@ -94,7 +94,7 @@
                                                <input type="text" value="22" style="text-align: center;" maxlength="2" size="1">
                                             </td>
                                             <td class="text-center">
-                                                <input type="text" value="22" style="text-align: center;" maxlength="2" size="1">
+                                                <input class="text-center" type="text" value="22" maxlength="2" size="1">
                                             </td>
                                             <td class="text-center">
                                                 <button class="btn btn-success" style=" display: inline-block;">Sim</button>
