@@ -65,7 +65,7 @@ class RsClassController extends Controller
         $courseName = CourseName::select('name')->where('id', '=', $rsClass->course_name_id);
         $rsClass->name = getCourseName($courseName, $rsClass->startDate);
 
-        
+        $rsClass->save();
 
     }
 
