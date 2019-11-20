@@ -247,14 +247,15 @@
                                 </div>                                  
                               </div> 
 
-                              <div class="card-body">                          
-                                  <select class="custom-select input-height" name="interview">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                  </select>                       
+                              <div class="card-body">
+                                <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
+                                  <option>---Selecione um resultado-</option>
+                                  <option>Aceite (1)</option>
+                                  <option>Aceite (1)</option>
+                                  <option>Aceite (1)</option>
+                                  <option>Aceite c/ reservas</option>
+                                  <option>Não Aceite</option>
+                                </select>                       
                               </div>
 
                           </div>
@@ -267,8 +268,8 @@
                                 </div>                                  
                               </div> 
 
-                              <div class="card-body">                          
-                                  <select class="custom-select input-height" name="interview">
+                              <div class="card-body">                       
+                                  <select class="custom-select input-height w-25 border-top-0 border-left-0 border-right-0 " name="interview">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -293,7 +294,7 @@
                               </div> 
 
                               <div class="card-body">                          
-                                  <select class="custom-select input-height" name="interview">
+                                  <select class="custom-select input-height w-25 border-top-0 border-left-0 border-right-0 " name="interview">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -322,28 +323,82 @@
                           </div>
 
                           <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <label class="pr-3">Compreensão Verbal</label>
-                                <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                  <label class="pr-3">Apridão Numérica</label>
-                                  <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                <label class="pr-3">Raciocínio Lógico</label>
-                                <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                <label class="pr-3">Raciocínio Espacial</label>
-                                <input type="text" name=""  maxlength="2" size="1">
-                              </div>
-                              <div class="col-md-12">
-                                <label class="pr-3">Média</label>
-                                <label class="pr-3">22</label>
-                              </div>
-                            </div>
+                              <table>
+                                <tr>
+                                  <th></th>
+                                  <th></th>
+                                </tr>
+                                <tr style="height: 55px;">
+                                  <td><label class="pr-3">Compreensão Verbal</label></td>
+                                  <td>
+                                    <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>
+                                    </select>  
+                                  </td>
+                                </tr>
+                                <tr style="height: 55px;">
+                                  <td><label class="pr-3">Apridão Numérica</label></td>
+                                  <td><select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>
+                                    </select></td>
+                                </tr>
+                                <tr style="height: 55px;">
+                                  <td><label class="pr-3">Raciocínio Lógico</label></td>
+                                  <td><select class="custom-select input-height  border-top-0 border-left-0 border-right-0 " name="interview">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>
+                                    </select> </td>
+                                </tr>
+                                <tr style="height: 55px;">
+                                  <td><label class="pr-5">Raciocínio Espacial</label></td>
+                                  <td><select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>
+                                    </select> </td>
+                                </tr>
+                                <tr>
+                                    <td><br></td>
+                                    <td><br></td>
+                                  </tr>
+                                <tr>
+                                  <td><label class="pr-3 text-info">Média dos Testes</label></td>
+                                  <td class="text-center"><label class="pr-3 text-info">22</label></td>
+                                </tr>
+                              </table>
                           </div>
                     </div>
                     </div>
