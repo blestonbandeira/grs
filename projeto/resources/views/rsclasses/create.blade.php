@@ -131,6 +131,10 @@ function getRsClassName()
             }
         });
     }
+    else
+    {
+        let teste = document.getElementById('rsClassNameCreated').value = "";
+    }
     
 }
 </script>
