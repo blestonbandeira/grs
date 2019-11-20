@@ -84,7 +84,7 @@
 
                           <div class="row justify-content-end">
                               <div class="col-md-1">
-                                  <button type="submit" class="btn btn-primary">Criar</button>
+                                  <button type="submit" class="btn btn-primary">Editar</button>
                                   
                               </div>
                           </div>
