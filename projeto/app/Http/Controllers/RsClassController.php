@@ -57,7 +57,16 @@ class RsClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rsClass = new RsClass;
+        $rsClass->startDate = $request->startDate;
+        $rsClass->user_id = $request->user_id;
+        $rsClass->class_stete_id = $request->class_state_id;
+        $rsClass->course_name_id = $request->course_name_id;
+        $courseName = CourseName::select('name')->where('id', '=', $rsClass->course_name_id);
+        $rsClass->name = getCourseName($courseName, $rsClass->startDate);
+
+        
+
     }
 
     /**
