@@ -70,6 +70,8 @@ class CourseController extends Controller
         $course->regime_id = $request->regime_id;
         $course->minimum_qualification_id = $request->minimum_qualification_id;
         $course->save();
+
+        return redirect('courses');
     }
 
     /**

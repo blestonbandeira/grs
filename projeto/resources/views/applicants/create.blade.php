@@ -300,7 +300,8 @@
                 </label><br><br>
                 <label class="form-check-label">
                   <input class="form-check-input" type="checkbox" value="true">
-                  Atestado Médico
+                  Atestado Médico 
+                  {{-- é preciso fazer aqui validações: o atestado médico e o data assessment são só para alguns cursos, tenho de ir ver quais --}}
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>

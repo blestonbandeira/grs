@@ -11,7 +11,7 @@ class RsClass extends Model
     }
 
     public function courseName() {
-        return $this->belongsTo('\App\CourseName', 'course_name_id');
+        return $this->belongsTo('\App\CourseName');
     }
 
     public function applicants() {
