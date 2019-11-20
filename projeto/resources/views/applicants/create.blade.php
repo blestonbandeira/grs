@@ -97,6 +97,7 @@
                 <div class="col-md-2">
                   <label>Distrito</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="district_id">
+                    <option>-- selecione aqui o Distrito --</option>
                     @foreach($districts as $district)
                       <option value="{{ $district->id }}">
                           {{ $district->name }}
@@ -107,6 +108,7 @@
                 <div class="col-md-3">
                   <label>Situação Face ao Emprego</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="unemployement_situation_id">
+                    <option>-- selecione aqui a Situação Face ao Emprego --</option>  
                     @foreach($unemployementSituations as $unemployementSituation)
                       <option value="{{ $unemployementSituation->id }}">
                           {{ $unemployementSituation->name }}
@@ -115,8 +117,9 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                  <label>Habilitação Literárias</label>
+                  <label>Habilitações Literárias</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="education_id">
+                    <option>-- selecione aqui as Habilitações Literárias --</option>  
                     @foreach($educations as $education)
                       <option value="{{ $education->id }}">
                           {{ $education->name }}
@@ -127,6 +130,7 @@
                 <div class="col-md-4">
                   <label>Escola de proveniência</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="provenance_school_id">
+                    <option>-- selecione aqui o nome da Escola --</option>  
                     @foreach($provenance_schools as $provenance_school)
                       <option value="{{ $provenance_school->id }}">
                           {{ $provenance_school->name }}
@@ -161,6 +165,7 @@
                 <div class="col-md-4">
                   <label>Curso 1ª Opção</label>
                   <select onchange="rsClassAppear(this.value)" name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                    <option value="false">-- selecione aqui o nome do Curso --</option>  
                     @foreach($courseArray as $value)
                       <option value="{{ $value['courseName'] }}" >
                           {{ $value['courseName'] }}
@@ -171,26 +176,29 @@
                 <div class="col-md-4">
                   <label>Turma de Recrutamento</label>
                   <select id="rsClassName" name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    <option value="{{ $courseArray[0]['className'] }}" >
-                        {{ $courseArray[0]['className'] }}
-                    </option>
+                    <option>-- selecione primeiro o nome do Curso --</option>
                   </select>
                 </div>
                 <div class="col-md-4">
                   <label>Curso 2ª Opção</label>
                   <select id="secondOptionCourse" name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                    <option>-- selecione aqui o nome do Curso --</option>  
                   </select>
                 </div>
               </div>
 
 
 <script>
-  secondCourse("{{ $courseArray[0]['courseName'] }}")
+  secondCourse();
   function rsClassAppear(data)
   { 
+    document.getElementById('rsClassName').innerHTML = "";
     @foreach($courseArray as $value)
+      if(data == "false"){
+        document.getElementById('rsClassName').innerHTML = "<option>-- selecione primeiro o nome do Curso --</option>";
+      }
       if("{{ $value['courseName'] }}" == data){
-        document.getElementById('rsClassName').innerHTML = "<option value=' $value['className'] '> {{$value['className']}} </option>";
+        document.getElementById('rsClassName').innerHTML += "<option value=' {{$value['className']}} '> {{$value['className']}} </option>";
       }
     @endforeach
     secondCourse(data)
@@ -199,9 +207,10 @@
   function secondCourse(data)
   { 
     document.getElementById('secondOptionCourse').innerHTML = "";
+    document.getElementById('secondOptionCourse').innerHTML = "<option>-- selecione aqui o nome do Curso --</option>  ";
     @foreach($courseArray as $value)
       if("{{ $value['courseName'] }}" != data){
-        document.getElementById('secondOptionCourse').innerHTML += "<option value=' $value['courseName'] '> {{$value['courseName']}} </option>";
+        document.getElementById('secondOptionCourse').innerHTML += "<option value=' {{$value['courseName']}} '> {{$value['courseName']}} </option>";
       }
     @endforeach
   }
@@ -216,6 +225,7 @@
                 <div class="col-md-3">
                   <label>Origem</label>
                   <select name="origin_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                    <option>-- selecione aqui a Origem --</option>
                     @foreach($origins as $origin)
                       <option value="{{ $origin->id }}">
                           {{ $origin->name }}
@@ -230,6 +240,7 @@
                 <div class="col-md-3">
                   <label>Motivo da Anulação</label>
                   <select name="cancellation_reason_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                    <option>-- selecione aqui o Motivo da Anulação --</option>
                     @foreach($cancellationReasons as $cancellationReason)
                       <option value="{{ $cancellationReason->id }}">
                           {{ $cancellationReason->name }}
