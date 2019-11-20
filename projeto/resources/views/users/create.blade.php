@@ -3,7 +3,7 @@
 
 <div class="content">
   <div class="container-fluid">
-        <form action="/courses" method="POST">            
+        <form action="/users" method="POST">            
             @csrf
             <div class="row">
                 
@@ -11,84 +11,67 @@
                     <div class="accordion" id="users">
                         <div class="card">
                             <div class="card-header card-header-info" data-toggle="collapse" data-target="#usersCreate" aria-expanded="true" aria-controls="usersCreate">
-                                <h4 class="card-title">Criar Nova Turma</h4>
+                                <h4 class="card-title">Criar Novo Utilizador</h4>
                             </div>
 
-                            <br/>
+                            
                             <div class="card-body">
                 
-                                <div class="row justify-content-md-center">                
-                                    <div class="col-md-10">
-
-                                        <div >
-                                            <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
-                                            <select name="course_name_id" class="custom-select input-border-width">
-                                                    @if (count($courseNames) > 0 )
-                                                        <option>-- selecione aqui o nome do Curso --</option>                                                        
-                                                        @foreach($courseNames as $courseName)
-                                                            <option value="{{ $courseName->id }}">
-                                                                {{ $courseName->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    @else
-                                                        <option>
-                                                            --Não existem cursos na plataforma--
-                                                        </option>
-                                                    @endif
-                                            </select>                                            
-                                        </div>
-
-                                        <div >
-                                            <label class="border-top-0 border-left-0 border-right-0" name="name">Tipo do Curso</label>
-                                            <select name="course_type_id" class="custom-select input-border-width">
-                                                    @if (count($users) > 0 )
-                                                        <option>-- selecione aqui a Assistente de Formação --</option>                                                        
-                                                        @foreach($users as $user)
-                                                            <option value="{{ $user->id }}">
-                                                                {{ $user->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    @else
-                                                        <option>
-                                                            --Não existem assistentes de formação--
-                                                        </option>
-                                                    @endif                                               
-                                            </select>                                            
-                                        </div>
-
-                                        <div >
-                                            <label class="border-top-0 border-left-0 border-right-0" name="name">Regime do Curso</label>
-                                            <select name="regime_id" class="custom-select input-border-width">
-                                                    @if (count($classStates) > 0 )
-                                                        <option>-- selecione aqui a estado da turma--</option>
-                                                        @foreach($classStates as $classState)
-                                                            <option  value="{{ $classState->id }}">
-                                                                {{ $classState->name }}         
-                                                            </option>                                                       
-                                                        @endforeach
-                                                        </option>
-                                                    @else
-                                                        <option>
-                                                            --Não existem estados de turma na plataforma--
-                                                        </option>
-                                                    @endif                                               
-                                            </select>                                            
-                                        </div>
-
+                                <div class="row justify-content-md-center">     
+                                    <div class="col-md-5">
+                                        <br/>
+                                        <label>Nome do Utilizador</label>
+                                        <input class="form-control border-top-0 border-left-0 border-right-0" name="name" type="text">
                                     </div>
-                                    <div class="col-md-2">
-                                        <label>Data de Início
-                                        </label>
-                                        <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy">
+
+                                    <div class="col-md-4">
+                                        <br/>
+                                        <label>Email</label>
+                                        <input class="form-control border-top-0 border-left-0 border-right-0" name="email" type="email">
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-md-center">                
+                                  
+                                    <div class="col-md-3">
+                                        <br/>
+                                        <label>Password</label>
+                                        <input class="form-control border-top-0 border-left-0 border-right-0" name="password" type="password">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <br/>
+                                        <label>Repita a Password</label>
+                                        <input type="password" class="form-control border-top-0 border-left-0 border-right-0" name="password">
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <br/>
+                                        <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
+                                        <select name="permission_level_id" class="custom-select input-border-width">
+                                                @if (count($permissionLevels) > 0 )
+                                                    <option>-- selecione aqui o nível de acesso--</option>                                                        
+                                                    @foreach($permissionLevels as $permissionLevel)
+                                                        <option value="{{ $permissionLevel->id }}">
+                                                            {{ $permissionLevel->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @else
+                                                    <option>
+                                                        --Não existem níveis de acesso registados na plataforma--
+                                                    </option>
+                                                @endif
+                                        </select>                                            
                                     </div>
                                 </div>
 
                                 <div class="row justify-content-end">
                                     <div class="col-md-1">
-                                        <button type="submit" class="btn btn-primary">Criar</button>
-                                        
+                                        <button type="submit" class="btn btn-primary">Criar</button>                                        
                                     </div>
                                 </div>
+
                             </div>           
                         </div>
                     </div>
