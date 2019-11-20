@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="col-md-2">
-                  <label>Data-de-Nascimento</label>
+                  <label>Data de Nascimento</label>
                   <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy">
                 </div>
               </div>

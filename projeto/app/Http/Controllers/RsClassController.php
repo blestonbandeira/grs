@@ -39,8 +39,14 @@ class RsClassController extends Controller
     public function create()
     {
         $courseNames = CourseName::all();
+        $users = User::all()->where('permission_level_id', '=', 2);
+        $classStates = ClassState::all();
+        
         return view('rsclasses.create')
-        ->with(compact('rsclasses', 'courseNames'));
+                ->with(compact('rsclasses', 
+                            'courseNames',
+                            'users',
+                            'classStates'));
     }
 
     /**
