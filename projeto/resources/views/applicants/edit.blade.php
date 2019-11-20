@@ -162,19 +162,31 @@
                   <label>Turma de Recrutamento</label>
                   <select name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($rsclasses as $rsclass)
-                      <option value="{{ $applicant->rs_class_id }}">
+                      @if($rsclass->id == $applicant->rs_class_id)
+                        <option selected="selected" value="{{ $applicant->rs_class_id }}">
                           {{ $rsclass->name }}
-                      </option>
+                        </option>
+                      @else
+                        <option value="{{ $applicant->rs_class_id }}">
+                          {{ $rsclass->name }}
+                        </option>
+                      @endif
                     @endforeach
                   </select>
                 </div>
                 <div class="col-md-4">
                   <label>Curso 1ª Opção</label>
-                  <select name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                  <select id="courseSelected" name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($courseNames as $courseName)
-                      <option value="{{ $applicant->first_option_course_id }}">
-                          {{ $courseName->name }}
-                      </option>
+                      @if($applicant->first_option_course_id == $courseName->id)
+                        <option selected="selected" value="{{ $applicant->first_option_course_id }}">
+                            {{ $courseName->name }}
+                        </option>
+                      @else
+                        <option value="{{ $applicant->first_option_course_id }}">
+                            {{ $courseName->name }}
+                        </option>
+                      @endif
                     @endforeach
                   </select>
                 </div>
@@ -182,13 +194,22 @@
                   <label>Curso 2ª Opção</label>
                   <select name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($courseNames as $courseName)
-                      <option value="{{ $applicant->second_option_course_id }}">
-                          {{ $courseName->name }}
-                      </option>
+                      @if($applicant->second_option_course_id == $courseName->id)
+                        <option selected="selected" value="{{ $applicant->second_option_course_id }}">
+                            {{ $courseName->name }}
+                        </option>
+                      @else
+                        <option value="{{ $applicant->second_option_course_id }}">
+                            {{ $courseName->name }}
+                        </option>
+                      @endif
                     @endforeach
                   </select>
                 </div>
               </div>
+
+
+
 
               <div class="row pb-5">
                 <div class="col-md-3">
@@ -251,8 +272,8 @@
                                 <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
                                   <option>---Selecione um resultado-</option>
                                   <option>Aceite (1)</option>
-                                  <option>Aceite (1)</option>
-                                  <option>Aceite (1)</option>
+                                  <option>Aceite (2)</option>
+                                  <option>Aceite (3)</option>
                                   <option>Aceite c/ reservas</option>
                                   <option>Não Aceite</option>
                                 </select>                       
