@@ -28,7 +28,7 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Nível de Acesso</th>
-                                        <th></th>
+                                        <th></th> 
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $user)

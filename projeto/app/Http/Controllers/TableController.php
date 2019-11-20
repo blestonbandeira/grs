@@ -32,32 +32,176 @@ class TableController extends Controller
     {
        
         $order = $request->order;
-        $provenanceSchools = ProvenanceSchool::all();
-		$origins = Origin::select('provenance_schools.id', 'provenance_schools.name')
-			->when($order, function ($query, $order) {
-				switch ($order) {
-					case 'name':
-						return $query->orderBy('provenance_schools.name');
-					case 'id':
-						return $query->orderBy('provenance_schools.id', 'DESC');
-				}
-			}, function ($query) {
-				return $query->orderBy('provenance_schools.id', 'DESC');
-			})->get();
+        
+        $origins = Origin::all();
+		$provenanceSchools = ProvenanceSchool::select('provenance_schools.id', 'provenance_schools.name')
+                ->when($order, function ($query, $order) {
+                    switch ($order) {
+                        case 'name':
+                            return $query->orderBy('provenance_schools.name');
+                        case 'id':
+                            return $query->orderBy('provenance_schools.id', 'ASC');
+                    }
+                }, function ($query) {
+                    return $query->orderBy('provenance_schools.id', 'ASC');
+                })->get();
 
-        $cancellationReasons = CancellationReason::all();
-        $categories = Category::all();
-        $classStates = ClassState::all();
-        $courseNames = CourseName::all();
-        $districts = District::all();
-        $documentTypes = DocumentType::all();
-        $educations = Education::all();
-        $eventTypes = EventType::all();
-        $genders = Gender::all();
-        $minimumQualifications = MinimumQualification::all();
-        $permissionLevels = PermissionLevel::all();
-        $regimes = Regime::all();
-        $testTypes = TestType::all();
+        $cancellationReasons = CancellationReason::select('cancellation_reasons.id', 'cancellation_reasons.name')
+                ->when($order, function ($query, $order) {
+                    switch ($order) {
+                        case 'name':
+                            return $query->orderBy('cancellation_reasons.name');
+                        case 'id':
+                            return $query->orderBy('cancellation_reasons.id', 'ASC');
+                    }
+                }, function ($query) {
+                    return $query->orderBy('cancellation_reasons.id', 'ASC');
+                })->get();
+
+        $categories = Category::select('categories.id', 'categories.name')
+                ->when($order, function ($query, $order) {
+                    switch ($order) {
+                        case 'name':
+                            return $query->orderBy('categories.name');
+                        case 'id':
+                            return $query->orderBy('categories.id', 'ASC');
+                    }
+                }, function ($query) {
+                    return $query->orderBy('categories.id', 'ASC');
+                })->get();
+
+        $classStates = ClassState::select('class_states.id', 'class_states.name')
+                ->when($order, function ($query, $order) {
+                    switch ($order) {
+                        case 'name':
+                            return $query->orderBy('class_states.name');
+                        case 'id':
+                            return $query->orderBy('class_states.id', 'ASC');
+                    }
+                }, function ($query) {
+                    return $query->orderBy('class_states.id', 'ASC');
+                })->get();
+
+        $courseNames = CourseName::select('course_names.id', 'course_names.name')
+                ->when($order, function ($query, $order) {
+                    switch ($order) {
+                        case 'name':
+                            return $query->orderBy('course_names.name');
+                        case 'id':
+                            return $query->orderBy('course_names.id', 'ASC');
+                    }
+                }, function ($query) {
+                    return $query->orderBy('course_names.id', 'ASC');
+                })->get();
+
+        $districts = District::select('districts.id', 'districts.name')
+                ->when($order, function ($query, $order) {
+                    switch ($order) {
+                        case 'name':
+                            return $query->orderBy('districts.name');
+                        case 'id':
+                            return $query->orderBy('districts.id', 'ASC');
+                    }
+                }, function ($query) {
+                    return $query->orderBy('districts.id', 'ASC');
+                })->get();
+
+        $documentTypes = DocumentType::select('document_types.id', 'document_types.name')
+                ->when($order, function ($query, $order) {
+                    switch ($order) {
+                        case 'name':
+                            return $query->orderBy('document_types.name');
+                        case 'id':
+                            return $query->orderBy('document_types.id', 'ASC');
+                    }
+                }, function ($query) {
+                    return $query->orderBy('document_types.id', 'ASC');
+                })->get();
+
+        $educations = Education::select('education.id', 'education.name')
+                    ->when($order, function ($query, $order) {
+                        switch ($order) {
+                            case 'name':
+                                return $query->orderBy('education.name');
+                            case 'id':
+                                return $query->orderBy('education.id', 'ASC');
+                        }
+                    }, function ($query) {
+                        return $query->orderBy('education.id', 'ASC');
+                    })->get();
+
+        $eventTypes = EventType::select('event_types.id', 'event_types.name')
+                    ->when($order, function ($query, $order) {
+                        switch ($order) {
+                            case 'name':
+                                return $query->orderBy('event_types.name');
+                            case 'id':
+                                return $query->orderBy('event_types.id', 'ASC');
+                        }
+                    }, function ($query) {
+                        return $query->orderBy('event_types.id', 'ASC');
+                    })->get();
+
+        $genders = Gender::select('genders.id', 'genders.name')
+                    ->when($order, function ($query, $order) {
+                        switch ($order) {
+                            case 'name':
+                                return $query->orderBy('genders.name');
+                            case 'id':
+                                return $query->orderBy('genders.id', 'ASC');
+                        }
+                    }, function ($query) {
+                        return $query->orderBy('genders.id', 'ASC');
+                    })->get();
+
+        $minimumQualifications = MinimumQualification::select('minimum_qualifications.id', 'minimum_qualifications.name')
+                    ->when($order, function ($query, $order) {
+                        switch ($order) {
+                            case 'name':
+                                return $query->orderBy('minimum_qualifications.name');
+                            case 'id':
+                                return $query->orderBy('minimum_qualifications.id', 'ASC');
+                        }
+                    }, function ($query) {
+                        return $query->orderBy('minimum_qualifications.id', 'ASC');
+                    })->get();
+
+        $permissionLevels = PermissionLevel::select('permission_levels.id', 'permission_levels.name')
+                    ->when($order, function ($query, $order) {
+                        switch ($order) {
+                            case 'name':
+                                return $query->orderBy('permission_levels.name');
+                            case 'id':
+                                return $query->orderBy('permission_levels.id', 'ASC');
+                        }
+                    }, function ($query) {
+                        return $query->orderBy('permission_levels.id', 'ASC');
+                    })->get();
+
+        $regimes = Regime::select('regimes.id', 'regimes.name')
+                    ->when($order, function ($query, $order) {
+                        switch ($order) {
+                            case 'name':
+                                return $query->orderBy('regimes.name');
+                            case 'id':
+                                return $query->orderBy('regimes.id', 'ASC');
+                        }
+                    }, function ($query) {
+                        return $query->orderBy('regimes.id', 'ASC');
+                    })->get();
+
+        $testTypes = TestType::select('test_types.id', 'test_types.name')
+                    ->when($order, function ($query, $order) {
+                        switch ($order) {
+                            case 'name':
+                                return $query->orderBy('test_types.name');
+                            case 'id':
+                                return $query->orderBy('test_types.id', 'ASC');
+                        }
+                    }, function ($query) {
+                        return $query->orderBy('test_types.id', 'ASC');
+                    })->get();
+
         $unemployementSituations = UnemployementSituation::all();
 
         return view('tables.index')

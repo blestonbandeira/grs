@@ -22,20 +22,19 @@
                                 <thead class="text-info">
                                     <th></th>
                                     <th>ID</th>
-                                    <th>Curso</th>
-                                    <th>Mês de início</th>
-                                    <th>Ano de início</th>
-                                    <th>Nº de Inscrições</th>
-                                    <th>Nº de Aptos</th>
+                                    <th>Nome da Turma</th>
+                                    <th>Nome do Curso</th>
+                                    <th>Data de início</th>
+                                    <th>Assistente de Formação</th>
+                                    <th>Estado</th>
                                     <th></th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($rsclasses as $rsclass)
+                                    @foreach ($rsClasses as $rsClass)
                                         <tr>
                                             <td>
                                                 <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        {{-- <input class="form-check-input applicantsSelect" type="checkbox" value="{{$rsclass->id}}"> --}}
+                                                    <label class="form-check-label">                                                        
                                                         <span class="form-check-sign">
                                                         <span class="check"></span>
                                                         </span>
@@ -43,32 +42,32 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                {{ $rsclass->name }}
+                                                {{ $rsClass->id }}
+                                            </td>
+                                            <td>
+                                                {{ $rsClass->name }}
                                             </td>
 
-                                            <td>
-                                                {{ $rsclass->course_name_id->['name'] }}
+                                            <td> 
+                                                {{ $rsClass->courseName->name}}
                                             </td>
                                             <td>
-                                                Novembro
+                                                {{ $rsClass->startDate }}
                                             </td>
                                             <td>
-                                                2018
+                                                {{ $rsClass->user->name }}
                                             </td>
                                             <td>
-                                                97
-                                            </td>
-                                            <td>
-                                                16
+                                                {{ $rsClass->classState->name}}
                                             </td>
                                             <td class="d-flex">
-                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
+                                                <button type="button" rel="tooltip" title="EditAR" class="btn btn-info btn-link btn-sm">
                                                     <i class="material-icons">edit</i>
                                                 </button>
-                                                {{-- <form action="/applicants/{{ $rsclass->id }}" method="post"> --}}
+                                                <form action="/rsclasses/{{ $rsClass->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                    <button type="submit" rel="tooltip" title="RemoveR" class="btn btn-info btn-link btn-sm" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </form>
