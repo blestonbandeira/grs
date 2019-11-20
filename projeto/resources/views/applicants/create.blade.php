@@ -157,37 +157,56 @@
             </div>
             <div class="card-body">
               <div class="row pb-5">
+                
                 <div class="col-md-4">
-                  <label>Turma de Recrutamento</label>
-                  <select name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    @foreach($rsclasses as $rsclass)
-                      <option value="{{ $rsclass->id }}">
-                          {{ $rsclass->name }}
+                  <label>Curso 1ª Opção</label>
+                  <select onchange="rsClassAppear(this.value)" name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                    @foreach($courseArray as $value)
+                      <option value="{{ $value['courseName'] }}" >
+                          {{ $value['courseName'] }}
                       </option>
                     @endforeach
                   </select>
                 </div>
                 <div class="col-md-4">
-                  <label>Curso 1ª Opção</label>
-                  <select name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    @foreach($courseNames as $courseName)
-                      <option value="{{ $courseName->id }}">
-                          {{ $courseName->name }}
-                      </option>
-                    @endforeach
+                  <label>Turma de Recrutamento</label>
+                  <select id="rsClassName" name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                    <option value="{{ $courseArray[0]['className'] }}" >
+                        {{ $courseArray[0]['className'] }}
+                    </option>
                   </select>
                 </div>
                 <div class="col-md-4">
                   <label>Curso 2ª Opção</label>
-                  <select name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    @foreach($courseNames as $courseName)
-                      <option value="{{ $courseName->id }}">
-                          {{ $courseName->name }}
-                      </option>
-                    @endforeach
+                  <select id="secondOptionCourse" name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                   </select>
                 </div>
               </div>
+
+
+<script>
+  secondCourse("{{ $courseArray[0]['courseName'] }}")
+  function rsClassAppear(data)
+  { 
+    @foreach($courseArray as $value)
+      if("{{ $value['courseName'] }}" == data){
+        document.getElementById('rsClassName').innerHTML = "<option value=' $value['className'] '> {{$value['className']}} </option>";
+      }
+    @endforeach
+    secondCourse(data)
+  }
+
+  function secondCourse(data)
+  { 
+    document.getElementById('secondOptionCourse').innerHTML = "";
+    @foreach($courseArray as $value)
+      if("{{ $value['courseName'] }}" != data){
+        document.getElementById('secondOptionCourse').innerHTML += "<option value=' $value['courseName'] '> {{$value['courseName']}} </option>";
+      }
+    @endforeach
+  }
+</script>
+
 
               <div class="row pb-5">
                 <div class="col-md-3">
