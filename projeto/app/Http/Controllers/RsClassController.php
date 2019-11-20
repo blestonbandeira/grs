@@ -66,6 +66,8 @@ class RsClassController extends Controller
         $rsClass->name = getCourseName($courseName, $rsClass->startDate);
 
         $rsClass->save();
+        
+        return redirect('/rsclasses');
 
     }
 

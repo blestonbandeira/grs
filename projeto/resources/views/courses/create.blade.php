@@ -7,6 +7,12 @@
             @csrf
             <div class="row">
                 
+
+                    @if (Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message')}}
+                    </div>
+                @endif
                 <div class="col-md-12">
                     <div class="accordion" id="courses">
                         <div class="card">
@@ -104,7 +110,8 @@
 
 
                                 <div class="row justify-content-end">
-                                    <div class="col-md-1">
+                                    <div class="col-md-3">
+                                        
                                         <button type="submit" class="btn btn-primary">Criar</button>
                                         
                                     </div>

@@ -32,6 +32,7 @@
     @elseif (Auth::user()->permission_level_id == 2) @include('sidebar.assist')
     @elseif (Auth::user()->permission_level_id == 3) @include('sidebar.inter')
     @endif
+    
   <div class="main-panel">
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
@@ -89,8 +90,9 @@
         </div>
       </div>
     </nav>
-    <div class="content">
+    <div class="content">        
         <div class="container-fluid">
+          @include ('messages.flash')
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>

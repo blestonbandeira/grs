@@ -65,29 +65,31 @@
                               </div>
                             </div>
 
-                              <div class="col-md-5">
-                                  <div>
-                                    <br/>
-                                    <label class="border-top-0 border-left-0 border-right-0" name="name">Habilitações Literárias Mínimas para o Curso</label>
-                                    <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="minimum_qualification_id">
-                                        @foreach($minimumQualifications as $minimumQualification)
-                                          <option value="{{ $course->minimum_qualification_id }}">
-                                              {{ $minimumQualification->name }}
-                                          </option>
-                                        @endforeach
-                                    </select>                                             
-                                  </div>
-                              </div>
+                            <div class="col-md-5">
+                                <div>
+                                  <br/>
+                                  <label class="border-top-0 border-left-0 border-right-0" name="name">Habilitações Literárias Mínimas para o Curso</label>
+                                  <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="minimum_qualification_id">
+                                      @foreach($minimumQualifications as $minimumQualification)
+                                        <option value="{{ $course->minimum_qualification_id }}">
+                                            {{ $minimumQualification->name }}
+                                        </option>
+                                      @endforeach
+                                  </select>                                             
+                                </div>
+                            </div>
 
                           </div>
 
 
                           <div class="row justify-content-end">
-                              <div class="col-md-1">
+                              <div class="col-md-3">
+                                <br/>
                                   <button type="submit" class="btn btn-primary">Editar</button>
                                   
                               </div>
                           </div>
+
                       </div>           
                   </div>
                  
