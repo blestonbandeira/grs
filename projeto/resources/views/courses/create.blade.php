@@ -40,7 +40,7 @@
 
                                         <div >
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Tipo do Curso</label>
-                                            <select name="course_name_id" class="custom-select input-border-width">
+                                            <select name="course_type_id" class="custom-select input-border-width">
                                                 @if (count($courseTypes) > 0 )
                                                     <option>-- selecione aqui o tipo do Curso --</option>                                                        
                                                     @foreach($courseTypes as $courseType)
@@ -62,7 +62,7 @@
                                         <div class="col-md-5">
                                             <div >
                                                 <label class="border-top-0 border-left-0 border-right-0" name="name">Regime do Curso</label>
-                                                <select name="course_name_id" class="custom-select input-border-width">
+                                                <select name="regime_id" class="custom-select input-border-width">
                                                         @if (count($regimes) > 0 )
                                                             <option>-- selecione aqui o regime do Curso --</option>                                                        
                                                             @foreach($regimes as $regime)
@@ -82,9 +82,9 @@
                                             <div >
                                                 <label class="border-top-0 border-left-0 border-right-0" name="name">Habilitações Literárias Mínimas para o Curso</label>
 
-                                                <select name="course_name_id" class="custom-select input-border-width">
+                                                <select name="minimum_qualification_id" class="custom-select input-border-width">
                                                         @if (count($minimumQualifications) > 0 )
-                                                            <option>-- selecione aqui o nome do Curso --</option>                                                        
+                                                            <option>-- selecione aqui as Habilitações Literárias mínimas para o Curso --</option>                                                        
                                                             @foreach($minimumQualifications as $minimumQualifications)
                                                                 <option value="{{ $minimumQualifications->id }}">
                                                                     {{ $minimumQualifications->name }}
