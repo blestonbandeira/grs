@@ -125,6 +125,12 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'course_name_id' => 'required',
+            'course_type_id' => 'required',
+            'regime_id' => 'required',
+            'minimum_qualification_id' => 'required'
+        ]);
               
         $course = Course::find($id);
         $course->course_name_id = $request->course_name_id;

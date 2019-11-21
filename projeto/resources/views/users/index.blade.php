@@ -61,9 +61,12 @@
                                                     {{ $user->permissionLevel['name'] }}
                                                 </td>
                                                 <td class="d-flex">
-                                                    <button type="button" rel="tooltip" title="Editar Utilizador" class="btn btn-info btn-link btn-sm border-0">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
+                                                    <a href="/users/{{ $user->id }}/edit">
+                                                        <button type="button" rel="tooltip" title="Editar Curso" class="btn btn-info btn-link btn-sm border-0">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                    </a>
+    
                                                     <form action="/users/{{ $user->id }}" method="post">
                                                         @csrf
                                                         @method('delete')
