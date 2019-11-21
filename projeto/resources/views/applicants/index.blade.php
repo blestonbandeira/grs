@@ -137,13 +137,9 @@
                                                     </button>
                                                 </a>
                                                 
-                                                <form action="/applicants/{{ $applicant->id }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </form>
+                                                <button value="{{ $applicant->id }}" onclick="openModal(this.value)" type="button" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
+                                                    <i class="material-icons">close</i>
+                                                </button>
                                             </td> 
                                         </tr>
                                         @endif
@@ -277,8 +273,50 @@
         </div>
     </div>
 </div>
-
 <!--FIM MODAL ERROS-->
+
+
+<button id="btnModalShow" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow" style="visibility: hidden;"></button>
+
+<div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <input type="hidden" id="idEvent"/>
+    <div id="modalEvents" class="modal-content">
+        <div class="modal-header">
+            <p class="modal-title">
+                Tem a certeza que pretende eliminar?
+            </p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Este registo será totalmente perdido!
+
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                Não
+            </button>
+            <form id="formModal" action="" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger" value="DELETE" style="margin-top: 24px;">
+                    Sim, eliminar
+                </button>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+    function openModal(data)
+    {
+        document.getElementById('formModal').action = "/applicants/" + data;
+        $('#btnModalShow').click();
+    }
+</script>
 
 
 
@@ -687,7 +725,10 @@
                                                 minSelect.innerHTML += "<option>" + i + "</option>";
                                         }
                                     }
+<<<<<<< HEAD
                                   
+=======
+>>>>>>> 81dd54081e127f0118013a9b56cebe0450bf09f1
                                 }
                             });
                             document.getElementById('hoursShowFromInterviews').className += " show";

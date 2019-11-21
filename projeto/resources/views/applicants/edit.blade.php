@@ -33,7 +33,11 @@
 
                 <div class="col-md-2">
                   <label>Data-de-Nascimento</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy" value="{{ $applicant->birthdate }}">
+                  @if($applicant->birthdate != null)
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy" value="{{ Carbon\Carbon::parse($applicant->birthdate)->format('Y-m-d') }}">
+                  @else
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="birthdate" format="dd/MM/yyyy" value="">
+                  @endif
                 </div>
               </div>
 
@@ -42,9 +46,15 @@
                   <label>Género</label>
                   <select name="gender_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($genders as $gender)
-                      <option value="{{ $applicant->gender_id }}">
-                          {{ $gender->name }}
-                      </option>
+                      @if($gender->id == $applicant->gender_id)
+                        <option selected="selected" value="{{ $gender->id }}">
+                            {{ $gender->name }}
+                        </option>
+                      @else
+                        <option value="{{ $gender->id }}">
+                            {{ $gender->name }}
+                        </option>
+                      @endif
                     @endforeach
                   </select>
                 </div>
@@ -58,7 +68,12 @@
                 </div>
                 <div class="col-md-2">
                   <label>Data de Validade</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate" value="{{ $applicant->ccExpirationDate }}">
+                  @if($applicant->ccExpirationDate != null)
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate" value="{{ Carbon\Carbon::parse($applicant->ccExpirationDate)->format('Y-m-d') }}">
+                  @else
+                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate" format="dd/MM/yyyy" value="">
+                  @endif
+                  
                 </div>
                 <div class="col-md-2">
                   <label>Estado Civil</label>
@@ -99,9 +114,15 @@
                   <label>Distrito</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="district_id">
                     @foreach($districts as $district)
-                      <option value="{{ $applicant->district_id }}">
-                          {{ $district->name }}
-                      </option>
+                    @if($district->id == $applicant->district_id)
+                        <option selected="selected" value="{{ $district->id }}">
+                            {{ $district->name }}
+                        </option>
+                      @else
+                        <option value="{{ $district->id }}">
+                            {{ $district->name }}
+                        </option>
+                      @endif
                     @endforeach
                     </select>
                 </div>
@@ -109,9 +130,15 @@
                   <label>Situação Face ao Emprego</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="unemployement_situation_id">
                     @foreach($unemployementSituations as $unemployementSituation)
-                      <option value="{{ $applicant->unemployement_situation_id }}">
-                          {{ $unemployementSituation->name }}
-                      </option>
+                    @if($unemployementSituation->id == $applicant->unemployementSituation_id)
+                        <option selected="selected" value="{{ $unemployementSituation->id }}">
+                            {{ $unemployementSituation->name }}
+                        </option>
+                      @else
+                        <option value="{{ $unemployementSituation->id }}">
+                            {{ $unemployementSituation->name }}
+                        </option>
+                      @endif
                     @endforeach
                     </select>
                 </div>
@@ -119,27 +146,39 @@
                   <label>Habilitação Literárias</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="education_id">
                     @foreach($educations as $education)
-                      <option value="{{ $applicant->education_id }}">
-                          {{ $education->name }}
-                      </option>
+                      @if($education->id == $applicant->education_id)
+                        <option selected="selected" value="{{ $education->id }}">
+                            {{ $education->name }}
+                        </option>
+                      @else
+                        <option value="{{ $education->id }}">
+                            {{ $education->name }}
+                        </option>
+                      @endif
                     @endforeach
                     </select>
                 </div>
                 <div class="col-md-4">
                   <label>Escola de proveniência</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="provenance_school_id">
-                    @foreach($provenance_schools as $provenance_school)
-                      <option value="{{ $applicant->provenance_school_id }}">
+                  @foreach($provenance_schools as $provenance_school)
+                    @if($provenance_school->id == $applicant->provenance_school_id)
+                      <option selected="selected" value="{{ $provenance_school->id }}">
                           {{ $provenance_school->name }}
                       </option>
-                    @endforeach
-                    </select>
+                    @else
+                      <option value="{{ $provenance_school->id }}">
+                          {{ $provenance_school->name }}
+                      </option>
+                    @endif
+                  @endforeach  
+                  </select>
                 </div>
               </div>
               <div class="row pb-5">
                 <div class="col-md-12">
                   <label>Observações</label>
-                    <textarea class="form-control" rows="5" name="observations"></textarea>
+                    <textarea class="form-control" rows="5" name="observations" value="{{ $applicant->observations }}"></textarea>
                 </div>
               </div>
               {{-- <a class="float-right text-info" href="#">Preenchimento automático</a> --}}
@@ -159,33 +198,29 @@
             <div class="card-body">
               <div class="row pb-5">
                 <div class="col-md-4">
-                  <label>Turma de Recrutamento</label>
-                  <select name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    @foreach($rsclasses as $rsclass)
-                      <option value="{{ $applicant->rs_class_id }}">
-                          {{ $rsclass->name }}
-                      </option>
+                  <label>Curso 1ª Opção</label>
+                  <select id="courseSelected" onchange="rsClassAppear(this.value)" name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
+                    @foreach($courseNames as $courseName)
+                      @if($applicant->first_option_course_id == $courseName->id)
+                        <option selected="selected" value="{{ $courseName->id }}">
+                            {{ $courseName->name }}
+                        </option>
+                      @else
+                        <option value="{{ $courseName->id }}">
+                            {{ $courseName->name }}
+                        </option>
+                      @endif
                     @endforeach
                   </select>
                 </div>
                 <div class="col-md-4">
-                  <label>Curso 1ª Opção</label>
-                  <select name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    @foreach($courseNames as $courseName)
-                      <option value="{{ $applicant->first_option_course_id }}">
-                          {{ $courseName->name }}
-                      </option>
-                    @endforeach
+                  <label>Turma de Recrutamento</label>
+                  <select id="rsClassName" name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                   </select>
                 </div>
                 <div class="col-md-4">
                   <label>Curso 2ª Opção</label>
-                  <select name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    @foreach($courseNames as $courseName)
-                      <option value="{{ $applicant->second_option_course_id }}">
-                          {{ $courseName->name }}
-                      </option>
-                    @endforeach
+                  <select id="secondOptionCourse" name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                   </select>
                 </div>
               </div>
@@ -193,29 +228,51 @@
               <div class="row pb-5">
                 <div class="col-md-3">
                   <label>Data de Candidatura</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="applicationDate">
+                  <input type="date" value="{{ Carbon\Carbon::parse($applicant->applicationDate)->format('Y-m-d') }}" class="form-control border-top-0 border-left-0 border-right-0" name="applicationDate">
                 </div>
                 <div class="col-md-3">
                   <label>Origem</label>
                   <select name="origin_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($origins as $origin)
-                      <option value="{{ $applicant->origin_id }}">
-                          {{ $origin->name }}
-                      </option>
+                      @if($applicant->origin_id == $origin->id)
+                        <option selected="selected" value="{{ $origin->id }}">
+                            {{ $origin->name }}
+                        </option>
+                      @else
+                        <option value="{{ $origin->id }}">
+                            {{ $origin->name }}
+                        </option>
+                      @endif
                     @endforeach
                   </select>
                 </div>
                 <div class="col-md-3">
                   <label>Data de Anulação</label>
-                  <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="cancellationDate">
+                  @if($applicant->cancellationDate != null)
+                  <input type="date" value="{{ Carbon\Carbon::parse($applicant->cancellationDate)->format('Y-m-d') }}" class="form-control border-top-0 border-left-0 border-right-0" name="cancellationDate">
+                  @else
+                  <input type="date" value="" class="form-control border-top-0 border-left-0 border-right-0" name="cancellationDate">
+                  @endif
+               
                 </div>
                 <div class="col-md-3">
                   <label>Motivo da Anulação</label>
                   <select name="cancellation_reason_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    @foreach($cancellationReasons as $cancellationReason)
-                      <option value="{{ $applicant->cancellation_reason_id }}">
-                          {{ $cancellationReason->name }}
+                    @if($applicant->cancellation_reason_id == null)
+                      <option selected="selected" value>
+                          Candidatura não anulada.
                       </option>
+                    @endif
+                    @foreach($cancellationReasons as $cancellationReason)
+                      @if($applicant->cancellation_reason_id == $cancellationReason->id)
+                        <option selected="selected" value="{{ $cancellationReason->id }}">
+                            {{ $cancellationReason->name }}
+                        </option>
+                      @else
+                        <option value="{{ $cancellationReason->id }}">
+                          {{ $cancellationReason->name }}
+                        </option>
+                      @endif
                     @endforeach
                   </select>
                 </div>
@@ -238,15 +295,12 @@
                     <div class="col-md-6">
                       <div class="row">
                         <div class="col-md-12">
-
                           <div class="card">
-
                               <div class="card-header card-header-text card-header-warning bg-none">
                                 <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
                                   <h4 class="card-title" style="color:#00A3E0;">Entrevista</h4>
                                 </div>                                  
                               </div> 
-
                               <div class="card-body">
                                 <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
                                   <option>---Selecione um resultado-</option>
@@ -257,17 +311,13 @@
                                   <option>Não Aceite</option>
                                 </select>                       
                               </div>
-
                           </div>
-
                           <div class="card">
-
                               <div class="card-header card-header-text card-header-warning bg-none">
                                 <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
                                   <h4 class="card-title" style="color:#00A3E0;">Prova de Aferição</h4>
                                 </div>                                  
                               </div> 
-
                               <div class="card-body">                       
                                   <select class="custom-select input-height w-25 border-top-0 border-left-0 border-right-0 " name="interview">
                                     <option>1</option>
@@ -282,17 +332,13 @@
                                     <option>10</option>
                                   </select>                       
                               </div>
-
                           </div>
-
                           <div class="card">
-
                               <div class="card-header card-header-text card-header-warning bg-none">
                                 <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
                                   <h4 class="card-title" style="color:#00A3E0;">Inventário Vocacional</h4>
                                 </div>                                  
                               </div> 
-
                               <div class="card-body">                          
                                   <select class="custom-select input-height w-25 border-top-0 border-left-0 border-right-0 " name="interview">
                                     <option>1</option>
@@ -307,13 +353,10 @@
                                     <option>10</option>
                                   </select>                       
                               </div>
-
                           </div>
-
                         </div>
                       </div>
                     </div>
-
                     <div class="col-md-6">
                       <div class="card">
                           <div class="card-header card-header-text card-header-warning bg-none">
@@ -321,7 +364,6 @@
                               <h4 class="card-title" style="color:#00A3E0;">Teste Psicoténicos</h4>
                             </div>
                           </div>
-
                           <div class="card-body">
                               <table>
                                 <tr>
@@ -502,4 +544,35 @@
 
 
 
+<script>
+  rsClassAppear("{{$applicant->first_option_course_id}}")
+  secondCourse();
+  function rsClassAppear(data)
+  { 
+    document.getElementById('rsClassName').innerHTML = "";
+    @foreach($courseArray as $value)
+      if(data == "false"){
+        document.getElementById('rsClassName').innerHTML = "<option>-- selecione primeiro o nome do Curso --</option>";
+      }
+      if("{{ $value['courseId'] }}" == data){
+        document.getElementById('rsClassName').innerHTML += "<option value=' {{$value['classId']}} '> {{$value['className']}} </option>";
+      }
+    @endforeach
+    secondCourse(data)
+  }
+
+  function secondCourse(data)
+  { 
+    document.getElementById('secondOptionCourse').innerHTML = "";
+    document.getElementById('secondOptionCourse').innerHTML = "<option>-- selecione aqui o nome do Curso --</option>  ";
+    @foreach($courseArray as $value)
+      if("{{ $value['courseId'] }}" == "{{$applicant->second_option_course_id}}"){
+        document.getElementById('secondOptionCourse').innerHTML += "<option selected='selected' value=' {{$value['courseId']}} '> {{$value['courseName']}} </option>";
+      }
+      if("{{ $value['courseId'] }}" != data){
+        document.getElementById('secondOptionCourse').innerHTML += "<option value=' {{$value['courseId']}} '> {{$value['courseName']}} </option>";
+      }
+    @endforeach
+  }
+</script>
 @endsection
