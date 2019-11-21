@@ -82,11 +82,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = User::find($id);
+        $user = User::find($id);
         $permissionLevels = PermissionLevel::all();
 
         return view('users.edit')
-        ->with(compact('users', 'permissionLevels'));
+        ->with(compact('user', 'permissionLevels'));
     
     }
 
@@ -99,6 +99,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'permission_level_id' => 'required'
+        ]);
+
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;

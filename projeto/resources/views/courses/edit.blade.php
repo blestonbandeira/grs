@@ -15,7 +15,7 @@
 
                   <div class="card">
                       <div class="card-header card-header-info" data-toggle="collapse" data-target="#coursesCreate" aria-expanded="true" aria-controls="coursesCreate">
-                          <h4 class="card-title">Criar Novo Curso</h4>
+                          <h4 class="card-title">Editar Curso</h4>
                       </div>
 
                       <br/>
