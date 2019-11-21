@@ -61,13 +61,15 @@
                                                 {{ $rsClass->classState->name}}
                                             </td>
                                             <td class="d-flex">
-                                                <button type="button" rel="tooltip" title="EditAR" class="btn btn-info btn-link btn-sm">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                                <form action="/rsclasses/{{ $rsClass->id }}" method="post">
+                                                <a href="/rsclasses/{{ $rsClass->id }}/edit">
+                                                    <button type="button" rel="tooltip" title="Editar Turma" class="btn btn-info btn-link btn-sm border-0">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </a>                                            
+                                            <form action="/rsclasses/{{ $rsClass->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" rel="tooltip" title="RemoveR" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </form>

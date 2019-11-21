@@ -57,6 +57,11 @@ class RsClassController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'course_name_id' => 'required',
+            'startDate' => 'required',
+        ]);
+
         $rsClass = new RsClass;
         $rsClass->startDate = $request->startDate;
         $rsClass->user_id = $request->user_id;
@@ -66,6 +71,8 @@ class RsClassController extends Controller
         $rsClass->name = getCourseName($courseName, $rsClass->startDate);
 
         $rsClass->save();
+        
+        return redirect('/rsclasses')->with('success','Turma criada com sucesso.');
 
     }
 
@@ -86,9 +93,19 @@ class RsClassController extends Controller
      * @param  \App\RsClass  $rsClass
      * @return \Illuminate\Http\Response
      */
-    public function edit(RsClass $rsClass)
+    public function edit($id)
     {
-        //
+        $rsClass = RsClass::find($id);
+
+        $users = User::all()->where('permission_level_id', '=', 2);        
+        $classStates = ClassState::all();
+        $courseNames = CourseName::all();
+
+        return view('rsclasses.edit')
+        ->with(compact('rsClass', 
+                    'courseNames',
+                    'users',
+                    'classStates'));
     }
 
     /**
@@ -98,9 +115,24 @@ class RsClassController extends Controller
      * @param  \App\RsClass  $rsClass
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RsClass $rsClass)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'course_name_id' => 'required',
+            'startDate' => 'required',
+        ]);
+        
+        $rsClass = RsClass::find($id);
+        $rsClass->startDate = $request->startDate;
+        $rsClass->user_id = $request->user_id;
+        $rsClass->class_stete_id = $request->class_state_id;
+        $rsClass->course_name_id = $request->course_name_id;
+        $courseName = CourseName::select('name')->where('id', '=', $rsClass->course_name_id);
+        $rsClass->name = getCourseName($courseName, $rsClass->startDate);
+
+        $rsClass->save();
+        
+        return redirect('/rsclasses')->with('success','Turma actualizada com sucesso.');
     }
 
     /**
@@ -109,8 +141,11 @@ class RsClassController extends Controller
      * @param  \App\RsClass  $rsClass
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RsClass $rsClass)
+    public function destroy($id)
     {
-        //
+        $rsClass = RsClass::find($id);
+        $rsClass->delete();
+
+        return redirect('/rsclasses')->with('success','Turma apagada com sucesso.');
     }
 }

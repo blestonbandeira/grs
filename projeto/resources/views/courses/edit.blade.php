@@ -15,7 +15,7 @@
 
                   <div class="card">
                       <div class="card-header card-header-info" data-toggle="collapse" data-target="#coursesCreate" aria-expanded="true" aria-controls="coursesCreate">
-                          <h4 class="card-title">Criar Novo Curso</h4>
+                          <h4 class="card-title">Editar Curso</h4>
                       </div>
 
                       <br/>
@@ -65,29 +65,31 @@
                               </div>
                             </div>
 
-                              <div class="col-md-5">
-                                  <div>
-                                    <br/>
-                                    <label class="border-top-0 border-left-0 border-right-0" name="name">Habilitações Literárias Mínimas para o Curso</label>
-                                    <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="minimum_qualification_id">
-                                        @foreach($minimumQualifications as $minimumQualification)
-                                          <option value="{{ $course->minimum_qualification_id }}">
-                                              {{ $minimumQualification->name }}
-                                          </option>
-                                        @endforeach
-                                    </select>                                             
-                                  </div>
-                              </div>
+                            <div class="col-md-5">
+                                <div>
+                                  <br/>
+                                  <label class="border-top-0 border-left-0 border-right-0" name="name">Habilitações Literárias Mínimas para o Curso</label>
+                                  <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="minimum_qualification_id">
+                                      @foreach($minimumQualifications as $minimumQualification)
+                                        <option value="{{ $course->minimum_qualification_id }}">
+                                            {{ $minimumQualification->name }}
+                                        </option>
+                                      @endforeach
+                                  </select>                                             
+                                </div>
+                            </div>
 
                           </div>
 
 
                           <div class="row justify-content-end">
-                              <div class="col-md-1">
-                                  <button type="submit" class="btn btn-primary">Editar</button>
+                              <div class="col-md-3">
+                                <br/>
+                                  <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-primary">Gravar</button>
                                   
                               </div>
                           </div>
+
                       </div>           
                   </div>
                  

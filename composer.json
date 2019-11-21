@@ -1,5 +1,6 @@
 {
     "require": {
-        "laravelcollective/html": "^6.0"
+        "laravelcollective/html": "^6.0",
+        "laracasts/flash": "^3.0"
     }
 }

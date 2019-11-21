@@ -9,6 +9,7 @@ use App\CourseType;
 use App\MinimumQualification;
 use App\Regime;
 
+
 class CourseController extends Controller
 {
     /**
@@ -52,7 +53,7 @@ class CourseController extends Controller
                 'courseNames',
                 'courseTypes',
                 'regimes',
-                'minimumQualifications'));
+                'minimumQualifications'))->with('success', 'O Curso foi adicionado com sucesso.');
     }
 
     /**
@@ -63,6 +64,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'course_name_id' => 'required',
+            'course_type_id' => 'required',
+            'regime_id' => 'required',
+            'minimum_qualification_id' => 'required'
+        ]);
+
         $course = new Course;        
         $course->course_name_id = $request->course_name_id;
         $course->course_type_id = $request->course_type_id;
@@ -70,7 +78,7 @@ class CourseController extends Controller
         $course->minimum_qualification_id = $request->minimum_qualification_id;
         $course->save();
 
-        return redirect('courses');
+        return redirect('courses')->with('success', 'O Curso foi adicionado com sucesso.');
     }
 
     /**
@@ -117,7 +125,21 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'course_name_id' => 'required',
+            'course_type_id' => 'required',
+            'regime_id' => 'required',
+            'minimum_qualification_id' => 'required'
+        ]);
+              
+        $course = Course::find($id);
+        $course->course_name_id = $request->course_name_id;
+        $course->course_type_id = $request->course_type_id;
+        $course->regime_id = $request->regime_id;
+        $course->minimum_qualification_id = $request->minimum_qualification_id;
+        $course->save();
+
+        return redirect('/courses')->with ('success', 'O curso foi actualizado com sucesso.');
     }
 
     /**
@@ -128,6 +150,9 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = Course::find($id);
+        $course->delete();
+
+        return redirect('/courses')->with('success','Curso apagado com sucesso.');
     }
 }

@@ -68,7 +68,7 @@
 
                                 <div class="row justify-content-end">
                                     <div class="col-md-1">
-                                        <button type="submit" class="btn btn-primary">Criar</button>                                        
+                                        <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-primary">Criar</button>                                        
                                     </div>
                                 </div>
 

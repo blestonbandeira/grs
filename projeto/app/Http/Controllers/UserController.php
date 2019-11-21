@@ -46,12 +46,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'name' => 'required',
-        //     'email' => 'required',
-        //     'password' => 'required',
-        //     'id_permissionLevel' => 'required'
-        // ]);
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'permission_level_id' => 'required'
+        ]);
 
         $user = new User;
         $user->name = $request->name;
@@ -60,7 +60,7 @@ class UserController extends Controller
         $user->permission_level_id = $request->permission_level_id;
         $user->save();
 
-        return redirect('/users');
+        return redirect('/users')->with('success', 'O Utilizador foi adicionado com sucesso.');
     }
 
     /**
@@ -82,7 +82,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $permissionLevels = PermissionLevel::all();
+
+        return view('users.edit')
+        ->with(compact('user', 'permissionLevels'));
+    
     }
 
     /**
@@ -94,7 +99,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'permission_level_id' => 'required'
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->permission_level_id = $request->permission_level_id;
+        $user->save();
+
+        return redirect('/users')->with('success', 'O Utilizador foi actualizado com sucesso.');
     }
 
     /**
@@ -105,6 +124,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/users')->with('success', 'Utilizador eliminado com sucesso');
     }
 }

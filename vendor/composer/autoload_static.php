@@ -13,6 +13,7 @@ class ComposerStaticInit0f208766d9c6cbc34328f6f86155ecef
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
@@ -192,6 +193,16 @@ class ComposerStaticInit0f208766d9c6cbc34328f6f86155ecef
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'L' => 
+        array (
+            'Laracasts\\Flash' => 
+            array (
+                0 => __DIR__ . '/..' . '/laracasts/flash/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     );
@@ -201,6 +212,7 @@ class ComposerStaticInit0f208766d9c6cbc34328f6f86155ecef
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit0f208766d9c6cbc34328f6f86155ecef::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0f208766d9c6cbc34328f6f86155ecef::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0f208766d9c6cbc34328f6f86155ecef::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit0f208766d9c6cbc34328f6f86155ecef::$classMap;
 
         }, null, ClassLoader::class);
