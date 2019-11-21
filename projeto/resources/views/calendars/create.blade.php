@@ -110,13 +110,13 @@
                   var end = $.fullCalendar.formatDate(event.end, "HH:mm:ss");
                   var date = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                   var typeEvent;
-                  if (event.type === "interview")
+                  if (event.type == "interview")
                     typeEvent="Entrevista";
-                  else if (event.type === "cursoNA")
+                  else if (event.type == "cursoNA")
                     typeEvent="Prova de Aferição";
-                  else if (event.type === "cursoA")
+                  else if (event.type == "cursoA")
                     typeEvent="Inventário Vocacional";
-                  else if (event.type === "cursoT")
+                  else if (event.type == "cursoT")
                     typeEvent="Teste Psicotécnico";
 
                   document.getElementById('btnModalShow').click();
