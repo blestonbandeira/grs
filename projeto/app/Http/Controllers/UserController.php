@@ -129,4 +129,15 @@ class UserController extends Controller
 
         return redirect('/users')->with('success', 'Utilizador eliminado com sucesso');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('layouts.profile')->with(compact('user'));
+    }
 }
