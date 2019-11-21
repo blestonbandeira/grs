@@ -71,14 +71,18 @@ class ApplicantController extends Controller
             if ($tempClassN == null)
             {
                 array_push($courseArray, [
+                    "courseId" => $tempCourseN->id,
                     "courseName" => $tempCourseN->name,
+                    "classId" => null,
                     "className" => "Não Existe Turma Definida!"
                 ]);
             }
             else
             {
                 array_push($courseArray, [
+                    "courseId" => $tempCourseN->id,
                     "courseName" => $tempCourseN->name,
+                    "classId" => $tempClassN->id,
                     "className" => $tempClassN->name
                 ]);
             }            
@@ -150,6 +154,7 @@ class ApplicantController extends Controller
         $applicant->civilState = $request->civilState;
         //dar a possibilidade de ver com hover as observações de cada candidato no index
         $applicant->observations = $request->observations;
+        $applicant->cancellationDate = $request->cancellationDate;
         $applicant->cancellation_reason_id = $request->cancellation_reason_id;
         //acrescentar a opção alternate (bool) tambem no index
 
@@ -197,6 +202,30 @@ class ApplicantController extends Controller
         $courseNames = CourseName::all();
         $cancellationReasons = CancellationReason::all();
 
+        $courseArray = [];
+        foreach($courseNames as $courseN){
+            $tempCourseN = CourseName::where('name', '=',$courseN->name)->first();
+            $tempClassN = RsClass::where('course_name_id', '=', $tempCourseN->id)->first();
+            if ($tempClassN == null)
+            {
+                array_push($courseArray, [
+                    "courseId" => $tempCourseN->id,
+                    "courseName" => $tempCourseN->name,
+                    "classId" => null,
+                    "className" => "Não Existe Turma Definida!"
+                ]);
+            }
+            else
+            {
+                array_push($courseArray, [
+                    "courseId" => $tempCourseN->id,
+                    "courseName" => $tempCourseN->name,
+                    "classId" => $tempClassN->id,
+                    "className" => $tempClassN->name
+                ]);
+            }            
+        }
+
         return view('applicants.edit')
         ->with(compact(
             'applicant',
@@ -208,7 +237,8 @@ class ApplicantController extends Controller
             'unemployementSituations',
             'courseNames',
             'provenance_schools',
-            'cancellationReasons'
+            'cancellationReasons',
+            'courseArray'
         ));
     }
 
@@ -264,6 +294,7 @@ class ApplicantController extends Controller
         $applicant->civilState = $request->civilState;
         //dar a possibilidade de ver com hover as observações de cada candidato no index
         $applicant->observations = $request->observations;
+        $applicant->cancellationDate = $request->cancellationDate;
         $applicant->cancellation_reason_id = $request->cancellation_reason_id;
         //acrescentar a opção alternate (bool) tambem no index
 

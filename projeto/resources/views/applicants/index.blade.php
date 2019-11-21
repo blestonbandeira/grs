@@ -106,13 +106,9 @@
                                                     </button>
                                                 </a>
                                                 
-                                                <form action="/applicants/{{ $applicant->id }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </form>
+                                                <button value="{{ $applicant->id }}" onclick="openModal(this.value)" type="button" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
+                                                    <i class="material-icons">close</i>
+                                                </button>
                                             </td> 
                                         </tr>
                                         @endif
@@ -246,8 +242,50 @@
         </div>
     </div>
 </div>
-
 <!--FIM MODAL ERROS-->
+
+
+<button id="btnModalShow" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow" style="visibility: hidden;"></button>
+
+<div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <input type="hidden" id="idEvent"/>
+    <div id="modalEvents" class="modal-content">
+        <div class="modal-header">
+            <p class="modal-title">
+                Tem a certeza que pretende eliminar?
+            </p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Este registo será totalmente perdido!
+
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                Não
+            </button>
+            <form id="formModal" action="" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger" value="DELETE" style="margin-top: 24px;">
+                    Sim, eliminar
+                </button>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+    function openModal(data)
+    {
+        document.getElementById('formModal').action = "/applicants/" + data;
+        $('#btnModalShow').click();
+    }
+</script>
 
 
 
@@ -656,40 +694,6 @@
                                                 minSelect.innerHTML += "<option>" + i + "</option>";
                                         }
                                     }
-                                    // if ((minEnd - 45) < 0) {
-                                    //     var time = 45 - minEnd;
-                                    //     minEnd = 60 - time;
-                                    //     minSelect.innerHTML = "<option>--</option>";
-                                    //     for (var i = minStart; i <= minEnd; i++) {
-                                    //         if (i < 10)
-                                    //             minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    //         else
-                                    //             minSelect.innerHTML += "<option>" + i + "</option>";
-                                    //     }
-                                    // } else {
-                                    // if (hourSelect.value == hourEnd) {
-                                    //     minEnd = minEnd - 45;
-                                    //     minSelect.innerHTML = "<option>--</option>";
-                                    //     if (minEnd == 0) {
-                                    //         minSelect.innerHTML = "<option>00</option>";
-                                    //     } else {
-                                    //         for (var i = minStart; i <= minEnd; i++) {
-                                    //             if (i < 10)
-                                    //                 minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    //             else
-                                    //                 minSelect.innerHTML += "<option>" + i + "</option>";
-                                    //         }
-                                    //     }
-                                    // } else {
-                                    //     for (var i = 0; i <= 59; i++) {
-                                    //         if (i < 10)
-                                    //             minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    //         else
-                                    //             minSelect.innerHTML += "<option>" + i + "</option>";
-                                    //     }
-                                    // }
-
-                                    // }
                                 }
                             });
                             document.getElementById('hoursShowFromInterviews').className += " show";
