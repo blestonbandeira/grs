@@ -173,9 +173,10 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function show(Applicant $applicant)
+    public function show($id)
     {
-        //
+        $applicant = Applicant::find($id);
+        return view('applicants.show')->with(compact('applicant'));
     }
 
     /**

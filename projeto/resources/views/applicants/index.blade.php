@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col text-center">
-        <div class="text-center"> 
+        {{-- <div class="text-center"> 
                 <label class="pr-3 pl-3">Filtrar por:</label>
                 <select onchange="selectFilter(this)" name="category_id" class="text-center custom-select w-25">
                     <option>--selecione um filtro--</option>
@@ -36,7 +36,7 @@
                         document.getElementById('categoryName').style.visibility = "visible";
                    }
                }
-               </script>
+               </script> --}}
     <a href="/applicants/create">
         <button type="button" class="btn btn-info">
             Adicionar
@@ -99,7 +99,7 @@
                                                 {{ $applicant->id }}
                                             </td>
                                             <td class="text-center" title="{{ $applicant->observations }}">
-                                                {{ $applicant->name }}
+                                            <a href="/applicants/{{ $applicant->id }}">{{ $applicant->name }}</a>
                                             </td>
                                             <td class="text-center">
                                                 22
