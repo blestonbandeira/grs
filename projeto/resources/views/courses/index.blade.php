@@ -65,13 +65,16 @@
                                             </td>
                                           
                                             <td class="d-flex">
-                                                <button type="button" rel="tooltip" title="Editar" class="btn btn-info btn-link btn-sm">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
+                                                <a href="/courses/{{ $course->id }}/edit">
+                                                    <button type="button" rel="tooltip" title="Editar Curso" class="btn btn-info btn-link btn-sm border-0">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </a>
+
                                                 <form action="/courses/{{ $course->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </form>

@@ -1,7 +1,43 @@
+//Obter nome da turma
+function getRsClassName()
+{
+    let courseSelected = $('#courseSelected :selected').text();
+    if ($('#courseSelected').val() > 0){
+        let dateSelected = document.getElementById('today').value;
+        $.ajax({
+            contentType: "application/json",
+            url:"/api/helpers",
+            type:"GET",
+            data:{ courseName:courseSelected, startDate:dateSelected },
+            success:function(data)
+            {
+                let teste = document.getElementById('rsClassNameCreated').value = data;
+            }
+        });
+    }
+    else
+    {
+        let teste = document.getElementById('rsClassNameCreated').value = "";
+    }
+    
+}
+
 //Date
 let today = new Date().toISOString().substr(0, 10);
 document.querySelector("#today").value = today;
 // document.querySelector("#today").valueAsDate = new Date();
+
+//Disable multiple requests
+$(document).ready(function()
+{
+  $('#submitButton').on('click',function()
+  {
+    $(this).val('Aguarde')
+      .attr('disabled','disabled');
+    $('#submitForm').submit();
+  });
+  
+});
 
 
 $(document).ready(function() {

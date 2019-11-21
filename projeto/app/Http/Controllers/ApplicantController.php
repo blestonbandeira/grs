@@ -81,9 +81,7 @@ class ApplicantController extends Controller
                     "courseName" => $tempCourseN->name,
                     "className" => $tempClassN->name
                 ]);
-            }
-            
-            
+            }            
         }
 
         return view('applicants.create')
@@ -109,6 +107,13 @@ class ApplicantController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',            
+            'email' => 'required',
+            'first_option_course_id' => 'required',
+            'rs_class_id' => 'required'
+        ]);
+
         $applicant = new Applicant;
         $applicant->name = $request->name;
         $applicant->gender_id = $request->gender_id;
@@ -159,7 +164,7 @@ class ApplicantController extends Controller
 
         $applicant->save();
 
-        return redirect('/applicants');
+        return redirect('/applicants')->with('success', 'O Candidato foi adicionado com sucesso.');
     }
 
     /**
@@ -214,9 +219,16 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Applicant $applicant)
+    public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',            
+            'email' => 'required',
+            'first_option_course_id' => 'required',
+            'rs_class_id' => 'required'
+        ]);
 
+        $applicant = Applicant::find($id);
         $applicant->name = $request->name;
         $applicant->gender_id = $request->gender_id;
         $nif = $request->nif;
@@ -266,7 +278,7 @@ class ApplicantController extends Controller
 
         $applicant->save();
         
-        return redirect('/applicants');
+        return redirect('/applicants')->with ('success', 'O candidato foi actualizado com sucesso.');
     }
 
     /**
@@ -275,10 +287,12 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Applicant $applicant)
+    public function destroy($id)
     {
+        $applicant = Applicant::find($id);
         $applicant->delete();
-        return redirect('/applicants');
+
+        return redirect('/applicants')->with('success','Candidato apagado com sucesso.');
     }
 }
 
