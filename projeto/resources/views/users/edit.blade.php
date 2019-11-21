@@ -5,6 +5,7 @@
   <div class="container-fluid">
   <form action="/users/ {{ $user->id }}" method="POST">            
             @csrf
+            @method('PUT')
             <div class="row">
                 
                 <div class="col-md-12">
@@ -18,57 +19,61 @@
                             <div class="card-body">
                 
                                 <div class="row justify-content-md-center">     
-                                    <div class="col-md-5">
+                                    <div class="col-md-3">
                                         <br/>
                                         <label>Nome do Utilizador</label>
-                                        <input class="form-control border-top-0 border-left-0 border-right-0" name="name" type="text">
+                                        <input value="{{ $user->name }}" class="form-control border-top-0 border-left-0 border-right-0" name="name" type="text">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <br/>
+                                        <label>Email</label>
+                                        <input value="{{ $user->email }}" class="form-control border-top-0 border-left-0 border-right-0" name="email" type="email">
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <br/>
+                                        <label class="border-top-0 border-left-0 border-right-0" name="name">Nível de Acesso</label>
+                                        <select name="permission_level_id" class="custom-select input-border-width">                                                                                       
+                                            @foreach($permissionLevels as $permissionLevel)
+                                                <option value="{{ $user->permission_level_id }}">
+                                                    {{ $permissionLevel->name }}
+                                                </option>
+                                            @endforeach                                        
+                                        </select>                                            
+                                    </div>
+
+                                </div>
+
+                                
+
+                                <div class="row justify-content-md-center">                
+                                  
+                                    <div class="col-md-4">
+                                        <br/>
+                                        <label>Coloque a sua password antiga</label>
+                                        <input value="" class="form-control border-top-0 border-left-0 border-right-0" name="password" type="password">
                                     </div>
 
                                     <div class="col-md-4">
                                         <br/>
-                                        <label>Email</label>
-                                        <input class="form-control border-top-0 border-left-0 border-right-0" name="email" type="email">
+                                        <label>Coloque a password nova</label>
+                                        <input value="" class="form-control border-top-0 border-left-0 border-right-0" name="password" type="password">
                                     </div>
-                                </div>
 
-                                <div class="row justify-content-md-center">                
-                                  
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <br/>
-                                        <label>Password</label>
-                                        <input class="form-control border-top-0 border-left-0 border-right-0" name="password" type="password">
+                                        <label>Repita a password nova</label>
+                                        <input value=""  type="password" class="form-control border-top-0 border-left-0 border-right-0" name="password">
                                     </div>
 
-                                    <div class="col-md-3">
-                                        <br/>
-                                        <label>Repita a Password</label>
-                                        <input type="password" class="form-control border-top-0 border-left-0 border-right-0" name="password">
-                                    </div>
-
-
-                                    <div class="col-md-3">
-                                        <br/>
-                                        <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
-                                        <select name="permission_level_id" class="custom-select input-border-width">
-                                                @if (count($permissionLevels) > 0 )
-                                                    <option>-- selecione aqui o nível de acesso--</option>                                                        
-                                                    @foreach($permissionLevels as $permissionLevel)
-                                                        <option value="{{ $permissionLevel->id }}">
-                                                            {{ $permissionLevel->name }}
-                                                        </option>
-                                                    @endforeach
-                                                @else
-                                                    <option>
-                                                        --Não existem níveis de acesso registados na plataforma--
-                                                    </option>
-                                                @endif
-                                        </select>                                            
-                                    </div>
                                 </div>
 
                                 <div class="row justify-content-end">
-                                    <div class="col-md-1">
-                                        <button type="submit" class="btn btn-primary">Criar</button>                                        
+                                    <div class="col-md-3">
+                                        <br/>
+                                        <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-primary">Gravar</button>                                        
                                     </div>
                                 </div>
 

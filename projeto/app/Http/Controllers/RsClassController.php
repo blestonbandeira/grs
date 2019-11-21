@@ -57,6 +57,11 @@ class RsClassController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'course_name_id' => 'required',
+            'startDate' => 'required',
+        ]);
+
         $rsClass = new RsClass;
         $rsClass->startDate = $request->startDate;
         $rsClass->user_id = $request->user_id;
@@ -112,6 +117,11 @@ class RsClassController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'course_name_id' => 'required',
+            'startDate' => 'required',
+        ]);
+        
         $rsClass = RsClass::find($id);
         $rsClass->startDate = $request->startDate;
         $rsClass->user_id = $request->user_id;
