@@ -667,40 +667,7 @@
                                                 minSelect.innerHTML += "<option>" + i + "</option>";
                                         }
                                     }
-                                    // if ((minEnd - 45) < 0) {
-                                    //     var time = 45 - minEnd;
-                                    //     minEnd = 60 - time;
-                                    //     minSelect.innerHTML = "<option>--</option>";
-                                    //     for (var i = minStart; i <= minEnd; i++) {
-                                    //         if (i < 10)
-                                    //             minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    //         else
-                                    //             minSelect.innerHTML += "<option>" + i + "</option>";
-                                    //     }
-                                    // } else {
-                                    // if (hourSelect.value == hourEnd) {
-                                    //     minEnd = minEnd - 45;
-                                    //     minSelect.innerHTML = "<option>--</option>";
-                                    //     if (minEnd == 0) {
-                                    //         minSelect.innerHTML = "<option>00</option>";
-                                    //     } else {
-                                    //         for (var i = minStart; i <= minEnd; i++) {
-                                    //             if (i < 10)
-                                    //                 minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    //             else
-                                    //                 minSelect.innerHTML += "<option>" + i + "</option>";
-                                    //         }
-                                    //     }
-                                    // } else {
-                                    //     for (var i = 0; i <= 59; i++) {
-                                    //         if (i < 10)
-                                    //             minSelect.innerHTML += "<option>0" + i + "</option>";
-                                    //         else
-                                    //             minSelect.innerHTML += "<option>" + i + "</option>";
-                                    //     }
-                                    // }
-
-                                    // }
+                                  
                                 }
                             });
                             document.getElementById('hoursShowFromInterviews').className += " show";
