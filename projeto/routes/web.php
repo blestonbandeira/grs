@@ -12,9 +12,7 @@
 */
 
 //Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', function () {
-    return redirect('/');
-});
+Route::get('/profile', 'UserController@profile')->name('profile');
 Route::get('/', function () {
     return redirect('/calendars');
 });
@@ -34,5 +32,9 @@ Route::middleware('auth')->resource('/calendars/inventories','InventoriesControl
 Route::middleware('auth')->resource('/calendars/availabilities','AvailabilitiesController');
 Route::middleware('auth')->resource('/calendars','CalendarController');
 Route::middleware('auth')->resource('/tables','TableController');
+
 Auth::routes();
+
+
+
 
