@@ -3,7 +3,7 @@
 
 <div class="content">
   <div class="container-fluid">
-        <form action="/users" method="POST">            
+  <form action="/users/ {{ $user->id }}" method="POST">            
             @csrf
             <div class="row">
                 
@@ -11,7 +11,7 @@
                     <div class="accordion" id="users">
                         <div class="card">
                             <div class="card-header card-header-info" data-toggle="collapse" data-target="#usersCreate" aria-expanded="true" aria-controls="usersCreate">
-                                <h4 class="card-title">Criar Novo Utilizador</h4>
+                                <h4 class="card-title">Editar Utilizador</h4>
                             </div>
 
                             
@@ -68,7 +68,7 @@
 
                                 <div class="row justify-content-end">
                                     <div class="col-md-1">
-                                        <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-primary">Criar</button>                                        
+                                        <button type="submit" class="btn btn-primary">Criar</button>                                        
                                     </div>
                                 </div>
 
