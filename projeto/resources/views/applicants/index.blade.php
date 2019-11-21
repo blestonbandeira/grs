@@ -4,25 +4,39 @@
 <div class="col text-center">
         <div class="text-center"> 
                 <label class="pr-3 pl-3">Filtrar por:</label>
-                <select name="catgory_id" class="text-center custom-select w-25" onchange="this.form.submit()">
+                <select onchange="selectFilter(this)" name="catgory_id" class="text-center custom-select w-25">
+                    <option>--selecione um filtro--</option>
+                    <option value="0">Apto</option>
+                    <option value="1">Categoria</option>
+                </select>
+                <label class="pr-3 pl-3">e</label>
+                <select id="categoryName" style="visibility: hidden" name="catgory_id" class="text-center custom-select w-25 position-absolute">
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">
                             {{ $category->name }}
                         </option>
                     @endforeach
                 </select>
-                <label class="pr-3 pl-3">e</label>
-                <select name="catgory_id" class="text-center custom-select w-25" onchange="this.form.submit()">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
+                <select id="categoryApto" style="visibility: hidden" name="catgory_id" class="text-center custom-select w-25">
+                        <option value="">Sim</option>
+                        <option value="">Não</option>
                 </select>
             </div>
             <br>
             <br>
-           
+           <script>
+               function selectFilter(data){
+                   if(data.value == 0){
+                        document.getElementById('categoryName').style.visibility = "hidden";
+                        document.getElementById('categoryApto').style.visibility = "visible";
+                   }
+                   else
+                   {
+                        document.getElementById('categoryApto').style.visibility = "hidden";
+                        document.getElementById('categoryName').style.visibility = "visible";
+                   }
+               }
+               </script>
     <a href="/applicants/create">
         <button type="button" class="btn btn-info">
             Adicionar
@@ -63,6 +77,7 @@
                                         <th class="text-center">Idade</th>
                                         <th class="text-center">Media das Provas</th>
                                         <th class="text-center">Nota de Entrevista</th>
+                                        <th class="text-center">Apto</th>
                                         <th class="text-center">Categorização</th>
                                         <th class="text-center"></th>
                                     </thead>
@@ -95,9 +110,25 @@
                                             <td class="text-center">
                                                 <input class="text-center" type="text" value="22" maxlength="2" size="1">
                                             </td>
-                                            
                                             <td class="text-center">
-                                                {{-- <label>{{ $applicant->category_id->name }}</label> --}}
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        @if ($applicant->apt == true)
+                                                        <input class="form-check-input applicantsSelect" type="checkbox" checked disabled>
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                        @else
+                                                        <input class="form-check-input applicantsSelect" type="checkbox" disabled>
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                        @endif
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <label>{{ $applicant->category->name }}</label>
                                             </td>
                                              <td>
                                                 <a href="/applicants/{{ $applicant->id }}/edit">
