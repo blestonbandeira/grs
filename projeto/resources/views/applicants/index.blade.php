@@ -4,20 +4,20 @@
 <div class="col text-center">
         <div class="text-center"> 
                 <label class="pr-3 pl-3">Filtrar por:</label>
-                <select onchange="selectFilter(this)" name="catgory_id" class="text-center custom-select w-25">
+                <select onchange="selectFilter(this)" name="category_id" class="text-center custom-select w-25">
                     <option>--selecione um filtro--</option>
                     <option value="0">Apto</option>
                     <option value="1">Categoria</option>
                 </select>
                 <label class="pr-3 pl-3">e</label>
-                <select id="categoryName" style="visibility: hidden" name="catgory_id" class="text-center custom-select w-25 position-absolute">
+                <select id="categoryName" style="visibility: hidden" name="category_id" class="text-center custom-select w-25 position-absolute">
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">
                             {{ $category->name }}
                         </option>
                     @endforeach
                 </select>
-                <select id="categoryApto" style="visibility: hidden" name="catgory_id" class="text-center custom-select w-25">
+                <select id="categoryApto" style="visibility: hidden" name="category_id" class="text-center custom-select w-25">
                         <option value="">Sim</option>
                         <option value="">Não</option>
                 </select>
