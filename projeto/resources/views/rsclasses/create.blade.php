@@ -96,8 +96,8 @@
                                 </div>
 
                                 <div class="row justify-content-end">
-                                    <div class="col-md-1">
-                                        <button type="submit" class="btn btn-primary">Criar</button>
+                                    <div class="col-md-3">
+                                        <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-primary">Criar</button>
                                         
                                     </div>
                                 </div>
@@ -111,32 +111,6 @@
     </div>
 </div>
 
-<script>
 
-
-
-function getRsClassName()
-{
-    let courseSelected = $('#courseSelected :selected').text();
-    if ($('#courseSelected').val() > 0){
-        let dateSelected = document.getElementById('today').value;
-        $.ajax({
-            contentType: "application/json",
-            url:"/api/helpers",
-            type:"GET",
-            data:{ courseName:courseSelected, startDate:dateSelected },
-            success:function(data)
-            {
-                let teste = document.getElementById('rsClassNameCreated').value = data;
-            }
-        });
-    }
-    else
-    {
-        let teste = document.getElementById('rsClassNameCreated').value = "";
-    }
-    
-}
-</script>
             
 @endsection

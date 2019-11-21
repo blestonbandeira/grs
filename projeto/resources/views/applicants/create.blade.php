@@ -159,9 +159,9 @@
                 <h4 class="card-title">Dados de Candidatura</h4>
               </div>
             </div>
+
             <div class="card-body">
-              <div class="row pb-5">
-                
+              <div class="row pb-5">                
                 <div class="col-md-4">
                   <label>Curso 1ª Opção</label>
                   <select onchange="rsClassAppear(this.value)" name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
@@ -173,12 +173,14 @@
                     @endforeach
                   </select>
                 </div>
+
                 <div class="col-md-4">
                   <label>Turma de Recrutamento</label>
                   <select id="rsClassName" name="rs_class_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     <option>-- selecione primeiro o nome do Curso --</option>
                   </select>
                 </div>
+                
                 <div class="col-md-4">
                   <label>Curso 2ª Opção</label>
                   <select id="secondOptionCourse" name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
@@ -186,36 +188,6 @@
                   </select>
                 </div>
               </div>
-
-
-<script>
-  secondCourse();
-  function rsClassAppear(data)
-  { 
-    document.getElementById('rsClassName').innerHTML = "";
-    @foreach($courseArray as $value)
-      if(data == "false"){
-        document.getElementById('rsClassName').innerHTML = "<option>-- selecione primeiro o nome do Curso --</option>";
-      }
-      if("{{ $value['courseName'] }}" == data){
-        document.getElementById('rsClassName').innerHTML += "<option value=' {{$value['className']}} '> {{$value['className']}} </option>";
-      }
-    @endforeach
-    secondCourse(data)
-  }
-
-  function secondCourse(data)
-  { 
-    document.getElementById('secondOptionCourse').innerHTML = "";
-    document.getElementById('secondOptionCourse').innerHTML = "<option>-- selecione aqui o nome do Curso --</option>  ";
-    @foreach($courseArray as $value)
-      if("{{ $value['courseName'] }}" != data){
-        document.getElementById('secondOptionCourse').innerHTML += "<option value=' {{$value['courseName']}} '> {{$value['courseName']}} </option>";
-      }
-    @endforeach
-  }
-</script>
-
 
               <div class="row pb-5">
                 <div class="col-md-3">
@@ -249,28 +221,42 @@
                   </select>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
+<script>
+  secondCourse();
+  function rsClassAppear(data)
+  { 
+    document.getElementById('rsClassName').innerHTML = "";
+    @foreach($courseArray as $value)
+      if(data == "false"){
+        document.getElementById('rsClassName').innerHTML = "<option>-- selecione primeiro o nome do Curso --</option>";
+      }
+      if("{{ $value['courseName'] }}" == data){
+        document.getElementById('rsClassName').innerHTML += "<option value=' {{$value['className']}} '> {{$value['className']}} </option>";
+      }
+    @endforeach
+    secondCourse(data)
+  }
+
+  function secondCourse(data)
+  { 
+    document.getElementById('secondOptionCourse').innerHTML = "";
+    document.getElementById('secondOptionCourse').innerHTML = "<option>-- selecione aqui o nome do Curso --</option>  ";
+    @foreach($courseArray as $value)
+      if("{{ $value['courseName'] }}" != data){
+        document.getElementById('secondOptionCourse').innerHTML += "<option value=' {{$value['courseName']}} '> {{$value['courseName']}} </option>";
+      }
+    @endforeach
+  }
+</script>
+      
 
       <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header card-header-text card-header-info">
-              <div class="card-text">
-                <h4 class="card-title">Resultados</h4>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="row">
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
+        <div class="col-md-12 justify-content-center">
           <div class="card">
             <div class="card-header card-header-text card-header-info">
               <div class="card-text">
@@ -279,11 +265,6 @@
             </div>
             <div class="card-body">
 
-              <div>
-                <input class="checkbox" type="hidden" name="appForm" value="0">
-                <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
-                <label>Formulário de Inscrição</label>
-              </div>
 
               <div class="form-check">
                 <label class="form-check-label">
@@ -349,7 +330,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-info pull-right">Criar</button>
+      <button type="submit" class="btn btn-info pull-right" id="submitButton" onclick="this.disabled=true;this.form.submit();">Criar</button>
     </form>
   </div>
 </div>

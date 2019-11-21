@@ -74,7 +74,7 @@
                                                 <form action="/courses/{{ $course->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </form>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+b@extends('layouts.app')
 
 @section('content')
 
@@ -39,7 +39,7 @@
 
               <div class="row pb-5">
                 <div class="col-md-2">
-                  <label>Genero</label>
+                  <label>Género</label>
                   <select name="gender_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($genders as $gender)
                       <option value="{{ $applicant->gender_id }}">
@@ -250,8 +250,8 @@
                               <div class="card-body">
                                 <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
                                   <option>---Selecione um resultado-</option>
-                                  <option>Aceite (1)</option>
-                                  <option>Aceite (1)</option>
+                                  <option>Aceite (3)</option>
+                                  <option>Aceite (2)</option>
                                   <option>Aceite (1)</option>
                                   <option>Aceite c/ reservas</option>
                                   <option>Não Aceite</option>
@@ -500,7 +500,7 @@
 
         
       </div>
-      <button type="submit" class="btn btn-info pull-right">Criar</button>
+      <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-info pull-right">Gravar</button>
     </form>
   </div>
 </div>

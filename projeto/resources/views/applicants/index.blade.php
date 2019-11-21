@@ -117,13 +117,13 @@
                                                     </button>
                                                 </a>
                                                 
-                                                {{--<form action="/applicants/{{ $applicant->id }}" method="post">
+                                                <form action="/applicants/{{ $applicant->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" rel="tooltip" title="Remove" class="btn btn-info btn-link btn-sm" value="DELETE">
+                                                    <button type="submit" rel="tooltip" title="Remover" class="btn btn-info btn-link btn-sm border-0" value="DELETE">
                                                         <i class="material-icons">close</i>
                                                     </button>
-                                                </form>--}}
+                                                </form>
                                             </td> 
                                         </tr>
                                         @endif
