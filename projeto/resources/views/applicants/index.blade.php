@@ -102,7 +102,7 @@
                                             <a href="/applicants/{{ $applicant->id }}">{{ $applicant->name }}</a>
                                             </td>
                                             <td class="text-center">
-                                                {{ $applicant->birthdate }}
+                                                {{ Carbon\Carbon::parse($applicant->birthdate)->age }}
                                             </td>
                                             <td class="text-center">
                                                {{-- <input type="text" value="22" style="text-align: center;" maxlength="2" size="1"> --}}
