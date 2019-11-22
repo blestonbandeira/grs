@@ -19,7 +19,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="accordion" id="rsclasses">
+                <div class="accordion" >
                     <div class="card">
                         <div class="card-header card-header-info">
                           <h4>Gestão de Cursos<h4>

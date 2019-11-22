@@ -479,13 +479,6 @@
                 </div>
 
                 <div class="card-body">
-
-                  {{-- <div>
-                    <input class="checkbox" type="hidden" name="appForm" value="0">
-                    <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
-                    <label>Formulário de Inscrição</label>
-                  </div> --}}
-
                     <div class="form-check">
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="true">
