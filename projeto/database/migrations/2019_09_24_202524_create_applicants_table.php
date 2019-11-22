@@ -23,7 +23,7 @@ class CreateApplicantsTable extends Migration
             $table->bigInteger('gender_id')->unsigned()->nullable();
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('category_id')->unsigned()->default(2);
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('registration_state_id')->unsigned()->nullable();
             $table->foreign('registration_state_id')->references('id')->on('registration_states')->onDelete('cascade')->onUpdate('cascade');
             $table->date('applicationDate')->nullable();
@@ -33,11 +33,11 @@ class CreateApplicantsTable extends Migration
             $table->foreign('unemployement_situation_id')->references('id')->on('unemployement_situations')->onDelete('cascade')->onUpdate('cascade');
             $table->string('cancellationDate')->nullable();
             $table->bigInteger('cancellation_reason_id')->unsigned()->nullable();
-            $table->foreign('cancellation_reason_id')->references('id')->on('cancellation_reasons');
+            $table->foreign('cancellation_reason_id')->references('id')->on('cancellation_reasons')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('education_id')->unsigned()->nullable();
             $table->foreign('education_id')->references('id')->on('education')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('provenance_school_id')->unsigned()->nullable();
-            $table->foreign('provenance_school_id')->references('id')->on('provenance_schools');
+            $table->foreign('provenance_school_id')->references('id')->on('provenance_schools')->onDelete('cascade')->onUpdate('cascade');
             $table->string('birthtown')->nullable();
             $table->string('nationality')->nullable();
             $table->string('civilState')->nullable();
@@ -51,7 +51,7 @@ class CreateApplicantsTable extends Migration
             $table->bigInteger('first_option_course_id')->unsigned()->nullable();
             $table->foreign('first_option_course_id')->references('id')->on('course_names')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('second_option_course_id')->unsigned()->nullable();
-            $table->foreign('second_option_course_id')->references('id')->on('course_names');
+            $table->foreign('second_option_course_id')->references('id')->on('course_names')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('rs_class_id')->unsigned()->nullable();
             $table->foreign('rs_class_id')->references('id')->on('rs_classes')->onDelete('cascade')->onUpdate('cascade');            
             $table->boolean('appForm')->nullable()->default(false);

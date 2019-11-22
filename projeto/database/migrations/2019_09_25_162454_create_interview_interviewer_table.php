@@ -18,7 +18,7 @@ class CreateInterviewInterviewerTable extends Migration
             $table->bigInteger('interview_id')->unsigned();
             $table->foreign('interview_id')->references('id')->on('interviews');
             $table->bigInteger('user_id')->unsigned(); //fazer where para garantir que o user tem id de interviewer
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
