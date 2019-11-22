@@ -9,6 +9,11 @@
         </button>
     </a>
 </div>
+<div class="col-md-12 text-center">
+    <button type="button" class="btn btn-info" onclick="deleteSelected()">
+        Eliminar Curso(os)
+    </button>
+</div>
 
 <div class="content">
     <div class="container-fluid">
@@ -39,6 +44,7 @@
                                             <td>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
+                                                        <input class="form-check-input usersSelect" type="checkbox" value="{{$course->id}}">
                                                         <span class="form-check-sign">
                                                         <span class="check"></span>
                                                         </span>
@@ -125,6 +131,26 @@
     {
         document.getElementById('formModal').action = "/courses/" + data;
         $('#btnModalShow').click();
+    }
+
+    function deleteSelected()
+    {
+        let allSelected = document.getElementsByClassName('usersSelect');
+        let count = 0;
+        for(let i = 0; i < allSelected.length; i++){
+            if (allSelected[i].checked){
+                $.ajax({
+                    contentType: "application/json",
+                    url:"/api/courses/" + allSelected[i].value,
+                    type:"DELETE",
+                    data:{},
+                    success:function(data)
+                    { 
+                    }
+                });
+            }
+        }
+        location.reload();
     }
 </script>
 

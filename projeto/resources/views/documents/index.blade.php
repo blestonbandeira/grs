@@ -9,6 +9,6 @@
     <div class="card-body">
             
 
-      <jumbotron>aqui era interessante vermos os candidatos que não têm os documentos todos
+      <jumbotron>candidatos que não têm os documentos todos
       </jumbotron> 
 @endsection

@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->resource('/emails', 'EmailController');
-Route::resource('/applicants','ApplicantController');
+Route::middleware('auth')->resource('/applicants','ApplicantController');
 Route::middleware('auth')->resource('/assistants','AssistantController');
 Route::middleware('auth')->resource('/users','UserController');
 Route::middleware('auth')->resource('/rsclasses','RsClassController');
