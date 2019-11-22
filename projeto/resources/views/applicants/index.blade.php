@@ -725,10 +725,7 @@
                                                 minSelect.innerHTML += "<option>" + i + "</option>";
                                         }
                                     }
-<<<<<<< HEAD
                                   
-=======
->>>>>>> 81dd54081e127f0118013a9b56cebe0450bf09f1
                                 }
                             });
                             document.getElementById('hoursShowFromInterviews').className += " show";
