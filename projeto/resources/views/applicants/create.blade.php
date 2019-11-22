@@ -19,11 +19,11 @@
 
                 <div class="col-md-5">
                   <label>Nome Completo</label>
-                  <p></p>
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="name">
                 </div>
                 <div class="col-md-3">
                   <label>Email</label>
-                  <p></p>
+                  <input type="email" class="form-control border-top-0 border-left-0 border-right-0" name="email">
                 </div>
                 <div class="col-md-2">
                   <label>Contacto</label>
@@ -38,7 +38,7 @@
 
               <div class="row pb-5">
                 <div class="col-md-2">
-                  <label>Genero</label>
+                  <label>Género</label>
                   <select name="gender_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($genders as $gender)
                       <option value="{{ $gender->id }}">
@@ -48,15 +48,15 @@
                   </select>
                 </div>
                 <div class="col-md-2">
-                  <label>N. Contribuinte</label>
+                  <label>Número de Contribuinte</label>
                   <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="nif">
                 </div>
                 <div class="col-md-2">
-                  <label>N. CC</label>
+                  <label>Número do CC</label>
                   <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="identityCard">
                 </div>
                 <div class="col-md-2">
-                  <label>Data de Validade</label>
+                  <label>Validade do CC</label>
                   <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate">
                 </div>
                 <div class="col-md-2">
@@ -97,7 +97,8 @@
                 <div class="col-md-2">
                   <label>Distrito</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="district_id">
-                    <option>-- selecione aqui o Distrito --</option>
+                    {{-- <option>-- selecione aqui o Distrito --</option> --}}
+                    <option> </option>
                     @foreach($districts as $district)
                       <option value="{{ $district->id }}">
                           {{ $district->name }}
@@ -108,7 +109,8 @@
                 <div class="col-md-3">
                   <label>Situação Face ao Emprego</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="unemployement_situation_id">
-                    <option>-- selecione aqui a Situação Face ao Emprego --</option>  
+                    {{-- <option>-- selecione aqui a Situação Face ao Emprego --</option>   --}}
+                    <option> </option>
                     @foreach($unemployementSituations as $unemployementSituation)
                       <option value="{{ $unemployementSituation->id }}">
                           {{ $unemployementSituation->name }}
@@ -119,7 +121,8 @@
                 <div class="col-md-3">
                   <label>Habilitações Literárias</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="education_id">
-                    <option>-- selecione aqui as Habilitações Literárias --</option>  
+                    {{-- <option>-- selecione aqui as Habilitações Literárias --</option>   --}}
+                    <option> </option>
                     @foreach($educations as $education)
                       <option value="{{ $education->id }}">
                           {{ $education->name }}
@@ -130,7 +133,8 @@
                 <div class="col-md-4">
                   <label>Escola de proveniência</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="provenance_school_id">
-                    <option>-- selecione aqui o nome da Escola --</option>  
+                    {{-- <option>-- selecione aqui o nome da Escola --</option>   --}}
+                    <option> </option>
                     @foreach($provenance_schools as $provenance_school)
                       <option value="{{ $provenance_school->id }}">
                           {{ $provenance_school->name }}
@@ -161,11 +165,11 @@
             </div>
 
             <div class="card-body">
-              <div class="row pb-5">                
+              <div class="row pb-5">
                 <div class="col-md-4">
                   <label>Curso 1ª Opção</label>
                   <select onchange="rsClassAppear(this.value)" name="first_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    <option value="false">-- selecione aqui o nome do Curso --</option>  
+                    <option selected value="">-- selecione aqui o nome do Curso --</option>
                     @foreach($courseArray as $value)
                       <option value="{{ $value['courseId'] }}" >
                           {{ $value['courseName'] }}
@@ -180,11 +184,11 @@
                     <option>-- selecione primeiro o nome do Curso --</option>
                   </select>
                 </div>
-                
+
                 <div class="col-md-4">
                   <label>Curso 2ª Opção</label>
                   <select id="secondOptionCourse" name="second_option_course_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    <option>-- selecione aqui o nome do Curso --</option>  
+                    <option>-- selecione aqui o nome do Curso --</option>
                   </select>
                 </div>
               </div>
@@ -197,7 +201,8 @@
                 <div class="col-md-3">
                   <label>Origem</label>
                   <select name="origin_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    <option>-- selecione aqui a Origem --</option>
+                    {{-- <option>-- selecione aqui a Origem --</option> --}}
+                    <option> </option>
                     @foreach($origins as $origin)
                       <option value="{{ $origin->id }}">
                           {{ $origin->name }}
@@ -212,7 +217,8 @@
                 <div class="col-md-3">
                   <label>Motivo da Anulação</label>
                   <select name="cancellation_reason_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    <option>-- selecione aqui o Motivo da Anulação --</option>
+                    {{-- <option>-- selecione aqui o Motivo da Anulação --</option> --}}
+                    <option> </option>
                     @foreach($cancellationReasons as $cancellationReason)
                       <option value="{{ $cancellationReason->id }}">
                           {{ $cancellationReason->name }}
@@ -238,64 +244,71 @@
 
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
+                  <input class="form-check-input" type="hidden" value="0" name="appForm" >
+                  <input class="form-check-input" type="checkbox" value="1" name="appForm">
                   Formulário de Inscrição
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
                 </label><br><br>
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
+                  <input class="form-check-input" type="hidden" value="0"  name="cc">
+                  <input class="form-check-input" type="checkbox" value="1" name="cc">
                   BI/CC
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
                 </label><br><br>
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
+                  <input class="form-check-input" type="hidden" value="0" name="diploma">
+                  <input class="form-check-input" type="checkbox" value="1" name="diploma">
                   Certificado de Habilitações
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
                 </label><br><br>
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
+                  <input class="form-check-input" type="hidden" value="0" name="unemployementUrl">
+                  <input class="form-check-input" type="checkbox" value="1" name="unemployementUrl">
                   Cartão de Utente ou Declaração Centro de Emprego
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
                 </label><br><br>
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
+                  <input class="form-check-input" type="hidden" value="0" name="curriculum">
+                  <input class="form-check-input" type="checkbox" value="1" name="curriculum">
                   Curriculum Vitae
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
                 </label><br><br>
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
+                  <input class="form-check-input" type="hidden" value="0" name="criminalRecord">
+                  <input class="form-check-input" type="checkbox" value="1" name="criminalRecord">
                   Registo Criminal
                   <span class="form-check-sign">
-                    <span class="check"></span>
+                  <span class="check"></span>
                   </span>
                 </label><br><br>
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
-                  Atestado Médico 
+                  <input class="form-check-input" type="hidden" value="0" name="medicalRecord">
+                  <input class="form-check-input" type="checkbox" value="1" name="medicalRecord">
+                  Atestado Médico
                   {{-- é preciso fazer aqui validações: o atestado médico e o data assessment são só para alguns cursos, tenho de ir ver quais --}}
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
                 </label><br><br>
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="true">
+                  <input class="form-check-input" type="hidden" value="0" name="dataAssessment">
+                  <input class="form-check-input" type="checkbox" value="1" name="dataAssessment">
                   Data Assessment
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>
                 </label><br><br>
               </div>
-
             </div>
           </div>
         </div>
@@ -309,7 +322,7 @@
 <script>
   secondCourse();
   function rsClassAppear(data)
-  { 
+  {
     document.getElementById('rsClassName').innerHTML = "";
     @foreach($courseArray as $value)
       if(data == "false"){
@@ -323,7 +336,7 @@
   }
 
   function secondCourse(data)
-  { 
+  {
     document.getElementById('secondOptionCourse').innerHTML = "";
     document.getElementById('secondOptionCourse').innerHTML = "<option>-- selecione aqui o nome do Curso --</option>  ";
     @foreach($courseArray as $value)
@@ -333,6 +346,6 @@
     @endforeach
   }
 </script>
-      
+
 
 @endsection

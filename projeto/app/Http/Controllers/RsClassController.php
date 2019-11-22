@@ -82,9 +82,11 @@ class RsClassController extends Controller
      * @param  \App\RsClass  $rsClass
      * @return \Illuminate\Http\Response
      */
-    public function show(RsClass $rsClass)
+    public function show($id)
     {
-        //
+        $rsClass = rsClass::find($id);
+        $courseNames = CourseName::all();
+        return view('rsClasses.show')->with(compact('rsClass', 'courseNames'));
     }
 
     /**
@@ -100,12 +102,13 @@ class RsClassController extends Controller
         $users = User::all()->where('permission_level_id', '=', 2);        
         $classStates = ClassState::all();
         $courseNames = CourseName::all();
-
+        $users = User::all();
         return view('rsclasses.edit')
         ->with(compact('rsClass', 
                     'courseNames',
                     'users',
-                    'classStates'));
+                    'classStates',
+                    'users'));
     }
 
     /**

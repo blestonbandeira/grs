@@ -13,7 +13,7 @@ use App\CourseName;
 use App\ProvenanceSchool;
 use App\CancellationReason;
 use App\Category;
-
+use App\Interview;
 
 use Illuminate\Http\Request;
 use Psr\Log\NullLogger;
@@ -27,22 +27,20 @@ class ApplicantController extends Controller
      */
     public function index()
     {
+        
         $applicants = Applicant::all();
         $rsClasses = RsClass::simplePaginate(10);
         $counter = Applicant::withCount('rsClass')->get()->count();
         $categories = Category::all();
-
-        //calcular a idade e mostrar numa das colnas
-        // $birthdate = Applicant::all('birthdate');
-        // $today = new DateTime('today');
-        // $age = $birthdate->diff($today)->y;
+        $interviews = Interview::all();
 
         return view('applicants.index')
         ->with(compact(
             'applicants', 
             'rsClasses',
             'categories',
-            'counter'
+            'counter',
+            'interviews'
         ));
     }
 
@@ -113,9 +111,7 @@ class ApplicantController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',            
-            'email' => 'required',
-            'first_option_course_id' => 'required',
-            'rs_class_id' => 'required'
+            'email' => 'required'
         ]);
 
         $applicant = new Applicant;
@@ -167,6 +163,21 @@ class ApplicantController extends Controller
         $applicant->medicalRecord = $request->medicalRecord;
         $applicant->dataAssessment = $request->dataAssessment;
 
+        if (
+            $request->cc == 0 ||
+            $request->appForm == 0 ||
+            $request->diploma == 0 ||
+            $request->unemployementUrl == 0 ||
+            $request->curriculum == 0 ||
+            $request->criminalRecord == 0 ||
+            $request->medicalRecord == 0 ||
+            $request->dataAssessment == 0
+        ) {
+            $applicant->apt = 0;
+        } else {
+            $applicant->apt = 1;
+        }
+
         $applicant->save();
 
         return redirect('/applicants')->with('success', 'O Candidato foi adicionado com sucesso.');
@@ -181,7 +192,10 @@ class ApplicantController extends Controller
     public function show($id)
     {
         $applicant = Applicant::find($id);
-        return view('applicants.show')->with(compact('applicant'));
+        $gender = Gender::all();
+        return view('applicants.show')
+                ->with(compact('applicant',
+                                'gender'));
     }
 
     /**
@@ -254,9 +268,7 @@ class ApplicantController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',            
-            'email' => 'required',
-            'first_option_course_id' => 'required',
-            'rs_class_id' => 'required'
+            'email' => 'required'
         ]);
 
         $applicant = Applicant::find($id);
@@ -299,17 +311,21 @@ class ApplicantController extends Controller
         $applicant->cancellation_reason_id = $request->cancellation_reason_id;
         //acrescentar a opção alternate (bool) tambem no index
 
-        // $applicant->cc = $request->cc;
-        // $applicant->appForm = $request->appForm;
-        // $applicant->diploma = $request->diploma;
-        // $applicant->unemployementUrl = $request->unemployementUrl;
-        // $applicant->curriculum = $request->curriculum;
-        // $applicant->criminalRecord = $request->criminalRecord;
-        // $applicant->medicalRecord = $request->medicalRecord;
-        // $applicant->dataAssessment = $request->dataAssessment;
+        $applicant->cc = $request->cc;
+        $applicant->appForm = $request->appForm;
+        $applicant->diploma = $request->diploma;
+        $applicant->unemployementUrl = $request->unemployementUrl;
+        $applicant->curriculum = $request->curriculum;
+        $applicant->criminalRecord = $request->criminalRecord;
+        $applicant->medicalRecord = $request->medicalRecord;
+        $applicant->dataAssessment = $request->dataAssessment;
+
+
 
         $applicant->save();
+
         
+
         return redirect('/applicants')->with ('success', 'O candidato foi actualizado com sucesso.');
     }
 
@@ -325,6 +341,24 @@ class ApplicantController extends Controller
         $applicant->delete();
 
         return redirect('/applicants')->with('success','Candidato apagado com sucesso.');
+    }
+
+    public function apt($id){
+        $applicant = Applicant::find($id);
+        if (
+            $applicant->cc == 0 &&
+            $applicant->appForm == 0 &&
+            $applicant->diploma == 0 &&
+            $applicant->unemployementUrl == 0 &&
+            $applicant->curriculum == 0 &&
+            $applicant->criminalRecord == 0 &&
+            $applicant->medicalRecord == 0 &&
+            $applicant->dataAssessment == 0
+        ) {
+            return $applicant->apt = 1;
+        } else {
+            return $applicant->apt = 0;
+        }
     }
 }
 

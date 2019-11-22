@@ -57,7 +57,7 @@
 
 <div class="content">
     <div class="container-fluid">
-        <div class="row" style="displex: flex-inline;">
+        <div class="row">
             <div class="col-md-12">
                 <div class="accordion" id="rsClasses">
                     @foreach ($rsClasses as $rsClass)
@@ -108,7 +108,9 @@
                                                {{-- <input type="text" value="22" style="text-align: center;" maxlength="2" size="1"> --}}
                                             </td>
                                             <td class="text-center">
-                                                {{-- <input class="text-center" type="text" value="22" maxlength="2" size="1"> --}}
+                                               @foreach ($interviews->where('applicant_id', $applicant->id) as $interview)
+                                                   {{ $interview->result }}
+                                               @endforeach
                                             </td>
                                             <td class="text-center">
                                                 <div class="form-check">
@@ -150,9 +152,6 @@
                         </div>
                     </div>
                     @endforeach
-                </div>
-                <div class="pagination-sm float-right">
-                    {{ $rsClasses->links() }}
                 </div>
             </div>
         </div>
@@ -721,6 +720,7 @@
                                                 minSelect.innerHTML += "<option>" + i + "</option>";
                                         }
                                     }
+                                  
                                 }
                             });
                             document.getElementById('hoursShowFromInterviews').className += " show";
