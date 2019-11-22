@@ -482,63 +482,71 @@
                 <div class="card-body">
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0" name="appForm">
+                        <input class="form-check-input" type="checkbox" value="1" name="appForm">
                         Formulário de Inscrição
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label><br><br>
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0"  name="cc">
+                        <input class="form-check-input" type="checkbox" value="1" name="cc">
                         BI/CC
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label><br><br>
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0" name="cc">
+                        <input class="form-check-input" type="checkbox" value="1" name="cc">
                         Certificado de Habilitações
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label><br><br>
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0" name="unemployementUrl">
+                        <input class="form-check-input" type="checkbox" value="1" name="unemployementUrl">
                         Cartão de Utente ou Declaração Centro de Emprego
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label><br><br>
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0" name="curriculum">
+                        <input class="form-check-input" type="checkbox" value="1" name="curriculum">
                         Curriculum Vitae
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label><br><br>
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0" name="curriculum">
+                        <input class="form-check-input" type="checkbox" value="1" name="curriculum">
                         Registo Criminal
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label><br><br>
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0" name="criminalRecord">
+                        <input class="form-check-input" type="checkbox" value="1" name="criminalRecord">
                         Atestado Médico
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label><br><br>
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="true">
+                        <input class="form-check-input" type="hidden" value="0" name="dataAssessment">
+                        <input class="form-check-input" type="checkbox" value="1" name="dataAssessment">
                         Data Assessment
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                       </label>
                     </div>
-                    <button class="btn btn-success pull-right" >Apto</button>
+                    <button class="btn btn-success pull-right">Apto</button>
 
                 </div>
               </div>
