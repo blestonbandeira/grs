@@ -19,11 +19,11 @@
 
                 <div class="col-md-5">
                   <label>Nome Completo</label>
-                  <p></p>
+                  <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="name">
                 </div>
                 <div class="col-md-3">
                   <label>Email</label>
-                  <p></p>
+                  <input type="email" class="form-control border-top-0 border-left-0 border-right-0" name="email">
                 </div>
                 <div class="col-md-2">
                   <label>Contacto</label>
