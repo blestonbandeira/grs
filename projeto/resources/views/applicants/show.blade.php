@@ -36,8 +36,7 @@
                     <div class="row pb-5">
                       <div class="col-md-2">
                         <label>Género</label>
-                        {{-- <label class="form-control border-0">{{ $applicant->gender->name }}</label> --}}
-                        <label class="form-control border-0">{{ $applicant->gender_id }}</label>
+                        <label class="form-control border-0">{{ DB::table('genders')->where('id', $applicant->gender_id )->value('name') }}</label>
                       </div>
                       <div class="col-md-2">
                         <label>N. Contribuinte</label>
@@ -86,23 +85,20 @@
                     <div class="row pb-5">
                       <div class="col-md-2">
                         <label>Distrito</label>
-                        <label class="form-control border-0">{{ $applicant->district_id }}</label>
-                        {{-- <label class="form-control border-0">{{ $applicant->district->name }}</label> --}}
+                        <label class="form-control border-0">{{ DB::table('districts')->where('id', $applicant->district_id )->value('name') }}</label>
                       </div>
                       <div class="col-md-3">
                         <label>Situação Face ao Emprego</label>
-                        <label class="form-control border-0">{{ $applicant->unemployementSituation_id }}</label>
-                        {{-- <label class="form-control border-0">{{ $applicant->unemployementSituation->name }}</label> --}}
+                        {{-- <label class="form-control border-0">{{ $applicant->unemployementSituation_id }}</label> --}}
+                        <label class="form-control border-0">{{ DB::table('unemployement_situations')->where('id', $applicant->unemployementSituation_id )->value('name') }}</label>
                       </div>
                       <div class="col-md-3">
                         <label>Habilitação Literárias</label>
-                        <label class="form-control border-0">{{ $applicant->education_id }}</label>
-                        {{-- <label class="form-control border-0">{{ $applicant->education->name }}</label> --}}
+                        <label class="form-control border-0">{{ DB::table('education')->where('id', $applicant->education_id )->value('name') }}</label>
                       </div>
                       <div class="col-md-4">
                         <label>Escola de proveniência</label>
-                        <label class="form-control border-0">{{ $applicant->provenance_id }}</label>
-                        {{-- <label class="form-control border-0">{{ $applicant->provenance_school->name }}</label> --}}
+                        <label class="form-control border-0">{{ DB::table('provenance_schools')->where('id', $applicant->provenance_id )->value('name') }}</label>
                       </div>
                     </div>
                     <div class="row pb-5">
@@ -116,7 +112,7 @@
               </div>
             </div>
 
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -125,25 +121,26 @@
                             <h4 class="card-title">Dados de Candidatura</h4>
                             </div>
                         </div>
-        
+
                         <div class="card-body">
-                            <div class="row pb-5">                
+                            <div class="row pb-5">
                                 <div class="col-md-4">
                                     <label>Curso 1ª Opção</label>
-                                    <label class="form-control border-0">{{ $applicant->first_option_course_id }}</label>
+                                    <label class="form-control border-0">{{ DB::table('course_names')->where('id', $applicant->first_option_course_id )->value('name') }}</label>
+
                                 </div>
-        
+
                                 <div class="col-md-4">
                                     <label>Turma de Recrutamento</label>
-                                    <label class="form-control border-0">{{ $applicant->rs_class_id }}</label>
+                                    <label class="form-control border-0">{{ DB::table('rs_classes')->where('id', $applicant->rs_class_id )->value('name') }}</label>
                                 </div>
-                        
+
                                 <div class="col-md-4">
                                     <label>Curso 2ª Opção</label>
-                                    <label class="form-control border-0">{{ $applicant->second_option_course_id }}</label>
+                                    <label class="form-control border-0">{{ DB::table('course_names')->where('id', $applicant->second_option_course_id )->value('name') }}</label>
                                 </div>
                             </div>
-        
+
                             <div class="row pb-5">
                                 <div class="col-md-3">
                                     <label>Data de Candidatura</label>
@@ -151,8 +148,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label>Origem</label>
-                                    {{-- <label class="form-control border-0">{{ $applicant->origin->name }}</label> --}}
-                                    <label class="form-control border-0">{{ $applicant->origin_id }}</label>
+                                    <label class="form-control border-0">{{ DB::table('origins')->where('id', $applicant->origin_id )->value('name') }}</label>
                                 </div>
                                 <div class="col-md-3">
                                     <label>Data de Anulação</label>
@@ -160,11 +156,10 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label>Motivo da Anulação</label>
-                                    {{-- <label class="form-control border-0">{{ $applicant->cancellationReason->name }}</label> --}}
-                                    <label class="form-control border-0">{{ $applicant->cancellationReason_id }}</label>
+                                    <label class="form-control border-0">{{ DB::table('cancellation_reasons')->where('id', $applicant->cancellationReason_id )->value('name') }}</label>
                                 </div>
                             </div>
-        
+
                         </div>
                     </div>
                 </div>
@@ -192,7 +187,7 @@
                                     <div class="card-body">
                                       <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
                                         {{-- <option>---Selecione um resultado-</option> --}}
-                                        <option> </option> 
+                                        <option> </option>
                                         <option>Aceite (3)</option>
                                         <option>Aceite (2)</option>
                                         <option>Aceite (1)</option>
@@ -334,21 +329,21 @@
                           </div>
                           </div>
                           </div>
-      
+
                         <script>
                           var verbal = document.getElementById("verbal");
                           var numerica = document.getElementById("numerica");
                           var logico = document.getElementById("logico");
                           var espacial = document.getElementById("espacial");
-      
+
                           function updateMedia() {
                             var op_v = parseInt(verbal.options[verbal.selectedIndex].text);
                             var op_n = parseInt(numerica.options[numerica.selectedIndex].text);
                             var op_l = parseInt(logico.options[logico.selectedIndex].text);
                             var op_e = parseInt(espacial.options[espacial.selectedIndex].text);
-      
+
                             var media= ((op_v+op_n+op_l+op_e)/4);
-      
+
                             var label_media = document.getElementById("media");
                             label_media.innerText = media;
                             }
@@ -356,17 +351,17 @@
                       </div>
                     </div>
                 </div>
-      
+
                 <div class="col-md-6">
                     <div class="card">
-      
+
                       <div class="card-header card-header-text card-header-info">
                         <div class="card-text">
                           <h4 class="card-title">Documentos Entregues</h4>
                         </div>
-      
+
                       </div>
-      
+
                       <div class="card-body">
                           <div class="form-check">
                             <label class="form-check-label">
@@ -427,7 +422,7 @@
                             </label>
                           </div>
                           <button class="btn btn-success pull-right" >Apto</button>
-      
+
                       </div>
                     </div>
                   </div>

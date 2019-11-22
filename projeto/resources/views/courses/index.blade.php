@@ -56,7 +56,7 @@
                                             </td>
 
                                             <td>
-                                                {{ $course->courseName['name'] }}
+                                                <a href="/courses/{{ $course->id }}">{{ $course->courseName['name'] }}</a>
                                             </td>
 
                                             <td>
