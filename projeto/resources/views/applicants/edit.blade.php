@@ -546,7 +546,6 @@
                         </span>
                       </label>
                     </div>
-                    <button class="btn btn-success pull-right">Apto</button>
 
                 </div>
               </div>

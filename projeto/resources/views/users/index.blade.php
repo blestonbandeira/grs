@@ -32,6 +32,7 @@
                                         <th></th>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Email</th>
                                         <th>Nível de Acesso</th>
                                         <th></th> 
                                     </thead>
@@ -53,6 +54,10 @@
                                                 </td>
                                                 <td>
                                                     {{ $user->name }}
+                                                </td>
+
+                                                <td>
+                                                    {{ $user->email }}
                                                 </td>
 
                                                 <td>
