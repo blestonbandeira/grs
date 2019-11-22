@@ -13,7 +13,7 @@ use App\CourseName;
 use App\ProvenanceSchool;
 use App\CancellationReason;
 use App\Category;
-
+use App\Interview;
 
 use Illuminate\Http\Request;
 use Psr\Log\NullLogger;
@@ -27,11 +27,12 @@ class ApplicantController extends Controller
      */
     public function index()
     {
+        
         $applicants = Applicant::all();
         $rsClasses = RsClass::simplePaginate(10);
         $counter = Applicant::withCount('rsClass')->get()->count();
         $categories = Category::all();
-
+        $interviews = Interview::all();
         //calcular a idade e mostrar numa das colnas
         // $birthdate = Applicant::all('birthdate');
         // $today = new DateTime('today');
@@ -42,7 +43,8 @@ class ApplicantController extends Controller
             'applicants', 
             'rsClasses',
             'categories',
-            'counter'
+            'counter',
+            'interviews'
         ));
     }
 
