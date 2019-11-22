@@ -48,10 +48,13 @@
                                                 </div>
                                             </td>
                                             <td>
+
                                                 {{ $rsClass->id }}
                                             </td>
                                             <td>
-                                                {{ $rsClass->name }}
+                                                    <a href="/rsclasses/{{ $rsClass->id }}">
+
+                                                {{ $rsClass->name }}</a>
                                             </td>
 
                                             <td> 
