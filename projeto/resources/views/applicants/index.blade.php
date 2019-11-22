@@ -108,9 +108,9 @@
                                                {{-- <input type="text" value="22" style="text-align: center;" maxlength="2" size="1"> --}}
                                             </td>
                                             <td class="text-center">
-                                               @foreach ($interviews->where('applicant_id', $applicant->id) as $interview)
+                                               {{-- @foreach ($interviews->where('applicant_id', $applicant->id) as $interview)
                                                    {{ $interview->result }}
-                                               @endforeach
+                                               @endforeach --}}
                                             </td>
                                             <td class="text-center">
                                                 <div class="form-check">

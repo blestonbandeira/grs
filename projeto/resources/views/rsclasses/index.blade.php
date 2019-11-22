@@ -9,7 +9,7 @@
 </div>
 <div class="col-md-12 text-center">
     <button type="button" class="btn btn-info" onclick="deleteSelected()">
-        Eliminar Turma(as)
+        Eliminar Turma(s)
     </button>
 </div>
 

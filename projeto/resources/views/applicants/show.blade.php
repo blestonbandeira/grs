@@ -37,7 +37,7 @@
                       <div class="col-md-2">
                         <label>Género</label>
                         {{-- <label class="form-control border-0">{{ $applicant->gender->name }}</label> --}}
-                        <label class="form-control border-0">{{ $applicant->gender->name }}</label>
+                        <label class="form-control border-0">{{ $applicant->gender_id }}</label>
                       </div>
                       <div class="col-md-2">
                         <label>N. Contribuinte</label>

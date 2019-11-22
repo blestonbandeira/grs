@@ -6,7 +6,7 @@
         <div class="accordion" id="users">
             <div class="card">
                 <div class="card-header card-header-info" data-toggle="collapse" data-target="#usersCreate" aria-expanded="true" aria-controls="usersCreate">
-                    <h4 class="card-title">Criar Nova Turma</h4>
+                    <h4 class="card-title">Detalhes da Turma</h4>
                 </div>
 
                 <br/>
@@ -40,8 +40,9 @@
 
                     <div class="row justify-content-end">
                         <div class="col-md-3">
-                            <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-primary">Criar</button>
-
+                            <a href="/rsclasses">
+                                <button class="btn btn-primary">Voltar</button> 
+                            </a>
                         </div>
                     </div>
                 </div>
