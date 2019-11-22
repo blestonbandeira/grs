@@ -116,12 +116,12 @@
                                                 <div class="form-check">
                                                     <label class="form-check-label">
                                                         @if ($applicant->apt == true)
-                                                        <input class="form-check-input applicantsSelect" type="checkbox" checked disabled>
+                                                        <input class="form-check-input" type="checkbox" checked disabled>
                                                         <span class="form-check-sign">
                                                             <span class="check"></span>
                                                         </span>
                                                         @else
-                                                        <input class="form-check-input applicantsSelect" type="checkbox" disabled>
+                                                        <input class="form-check-input" type="checkbox" disabled>
                                                         <span class="form-check-sign">
                                                             <span class="check"></span>
                                                         </span>
@@ -397,11 +397,9 @@
         {
             document.getElementById('hoursShowFromInterviews').classList.remove("show");
             document.getElementById('applicantListFromInterviews').innerHTML = "";
-            let j = 0;
             for(let i = 0; i < appliSelectedName.length; i++)
             {
-                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedName[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
-                j++;
+                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + appliSelectedId[i] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + appliSelectedName[i] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
             }
             calendarCharge();
             document.getElementById('btnModalCalendar').click();
@@ -417,11 +415,9 @@
             document.getElementById('btnModalErrors').click();
             document.getElementById('hoursShowFromInterviews').classList.remove("show");
             document.getElementById('applicantListFromInterviews').innerHTML = "";
-            let j = 0;
             for(let i = 0; i < arrayId.length; i++)
             {
-                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + arrayId[j] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + arrayName[j] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
-                j++;
+                document.getElementById('applicantListFromInterviews').innerHTML += "<li class='applOnClick btn btn-info' value=" + arrayId[i] + " onclick='applicantSelectedFromInterviews(this)'><label style='width:10vw; color:white;'><b>" + arrayName[i] + "</b></label><button class='removeAppl' style='background: #fff; border-radius: 17px; color: #0089f2; border: transparent; padding: 6px 12px 6px 12px;'>X</button></li>";
             }
         } 
         else
@@ -456,10 +452,10 @@
         let selected = appliSelected;
         let date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
         $.ajax({
-            dataType: "json",
+            contentType: "application/json",
             url:"/api/events",
             type:"POST",
-            data:{applicant_id:selected, event_type_id:1, event_id:eventSelectedId, date:date, availEvent:eventAvailId},
+            data:{user_id:{{Auth::id()}}, applicant_id:selected, event_type_id:1, event_id:eventSelectedId, date:date, availEvent:eventAvailId},
             success:function(data)
             {
                 document.getElementById('hoursShowFromInterviews').classList.remove("show");
