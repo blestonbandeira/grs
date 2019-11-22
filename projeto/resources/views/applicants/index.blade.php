@@ -451,11 +451,12 @@
     {
         let selected = appliSelected;
         let date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
+        alert(selected + date + eventAvailId);
         $.ajax({
-            contentType: "application/json",
+
             url:"/api/events",
             type:"POST",
-            data:{user_id:{{Auth::id()}}, applicant_id:selected, event_type_id:1, event_id:eventSelectedId, date:date, availEvent:eventAvailId},
+            data:{applicant_id:selected, event_type_id:1, date:date, availEvent:eventAvailId},
             success:function(data)
             {
                 document.getElementById('hoursShowFromInterviews').classList.remove("show");
@@ -524,9 +525,9 @@
         if(contType != 0){
             document.getElementById('modalErrorBody').innerHTML = "";  
             document.getElementById('divBtnConfirmErrors').innerHTML = '<button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button><button type="button" onclick="typeFilterApplicantsSelectedFromTests()" class="btn btn-primary">Ignorar e Continuar</button>';
+            document.getElementById('btnModalErrors').click();
             for(let i = 0; i < arrayType1Name.length; i++)
             {
-                document.getElementById('btnModalErrors').click();
                 document.getElementById('modalErrorBody').innerHTML += arrayType1Name[i] + "</br>";  
             }   
         }
@@ -540,7 +541,9 @@
     {
         if(arrayId != 0)
         {
-            document.getElementById('btnModalErrors').click();
+            if(contType != 0){
+                document.getElementById('btnModalErrors').click();
+            }
             document.getElementById('btnModalTests').click();
         } 
         else
