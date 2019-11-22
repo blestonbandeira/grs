@@ -303,7 +303,8 @@
                               </div>
                               <div class="card-body">
                                 <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
-                                  <option>---Selecione um resultado-</option>
+                                  {{-- <option>---Selecione um resultado-</option> --}}
+                                  <option> </option> 
                                   <option>Aceite (3)</option>
                                   <option>Aceite (2)</option>
                                   <option>Aceite (1)</option>
@@ -479,13 +480,6 @@
                 </div>
 
                 <div class="card-body">
-
-                  {{-- <div>
-                    <input class="checkbox" type="hidden" name="appForm" value="0">
-                    <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
-                    <label>Formulário de Inscrição</label>
-                  </div> --}}
-
                     <div class="form-check">
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="true">

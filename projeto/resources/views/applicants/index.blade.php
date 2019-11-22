@@ -57,7 +57,7 @@
 
 <div class="content">
     <div class="container-fluid">
-        <div class="row" style="displex: flex-inline;">
+        <div class="row">
             <div class="col-md-12">
                 <div class="accordion" id="rsClasses">
                     @foreach ($rsClasses as $rsClass)
@@ -152,9 +152,6 @@
                         </div>
                     </div>
                     @endforeach
-                </div>
-                <div class="pagination-sm float-right">
-                    {{ $rsClasses->links() }}
                 </div>
             </div>
         </div>
@@ -727,6 +724,7 @@
                                                 minSelect.innerHTML += "<option>" + i + "</option>";
                                         }
                                     }
+                                  
                                 }
                             });
                             document.getElementById('hoursShowFromInterviews').className += " show";

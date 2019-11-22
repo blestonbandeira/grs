@@ -115,9 +115,7 @@ class ApplicantController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',            
-            'email' => 'required',
-            'first_option_course_id' => 'required',
-            'rs_class_id' => 'required'
+            'email' => 'required'
         ]);
 
         $applicant = new Applicant;
@@ -183,7 +181,10 @@ class ApplicantController extends Controller
     public function show($id)
     {
         $applicant = Applicant::find($id);
-        return view('applicants.show')->with(compact('applicant'));
+        $gender = Gender::all();
+        return view('applicants.show')
+                ->with(compact('applicant',
+                                'gender'));
     }
 
     /**
@@ -256,9 +257,7 @@ class ApplicantController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',            
-            'email' => 'required',
-            'first_option_course_id' => 'required',
-            'rs_class_id' => 'required'
+            'email' => 'required'
         ]);
 
         $applicant = Applicant::find($id);

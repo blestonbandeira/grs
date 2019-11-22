@@ -38,7 +38,7 @@
 
               <div class="row pb-5">
                 <div class="col-md-2">
-                  <label>Genero</label>
+                  <label>Género</label>
                   <select name="gender_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
                     @foreach($genders as $gender)
                       <option value="{{ $gender->id }}">
@@ -48,15 +48,15 @@
                   </select>
                 </div>
                 <div class="col-md-2">
-                  <label>N. Contribuinte</label>
+                  <label>Número de Contribuinte</label>
                   <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="nif">
                 </div>
                 <div class="col-md-2">
-                  <label>N. CC</label>
+                  <label>Número do Cartão de Cidadão</label>
                   <input type="text" class="form-control border-top-0 border-left-0 border-right-0" name="identityCard">
                 </div>
                 <div class="col-md-2">
-                  <label>Data de Validade</label>
+                  <label>Data de Validade do Cartão de Cidadão</label>
                   <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate">
                 </div>
                 <div class="col-md-2">
@@ -97,7 +97,8 @@
                 <div class="col-md-2">
                   <label>Distrito</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="district_id">
-                    <option>-- selecione aqui o Distrito --</option>
+                    {{-- <option>-- selecione aqui o Distrito --</option> --}}
+                    <option> </option> 
                     @foreach($districts as $district)
                       <option value="{{ $district->id }}">
                           {{ $district->name }}
@@ -108,7 +109,8 @@
                 <div class="col-md-3">
                   <label>Situação Face ao Emprego</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="unemployement_situation_id">
-                    <option>-- selecione aqui a Situação Face ao Emprego --</option>  
+                    {{-- <option>-- selecione aqui a Situação Face ao Emprego --</option>   --}}
+                    <option> </option> 
                     @foreach($unemployementSituations as $unemployementSituation)
                       <option value="{{ $unemployementSituation->id }}">
                           {{ $unemployementSituation->name }}
@@ -119,7 +121,8 @@
                 <div class="col-md-3">
                   <label>Habilitações Literárias</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="education_id">
-                    <option>-- selecione aqui as Habilitações Literárias --</option>  
+                    {{-- <option>-- selecione aqui as Habilitações Literárias --</option>   --}}
+                    <option> </option> 
                     @foreach($educations as $education)
                       <option value="{{ $education->id }}">
                           {{ $education->name }}
@@ -130,7 +133,8 @@
                 <div class="col-md-4">
                   <label>Escola de proveniência</label>
                   <select class="custom-select border-top-0 border-left-0 border-right-0 input-height" name="provenance_school_id">
-                    <option>-- selecione aqui o nome da Escola --</option>  
+                    {{-- <option>-- selecione aqui o nome da Escola --</option>   --}}
+                    <option> </option> 
                     @foreach($provenance_schools as $provenance_school)
                       <option value="{{ $provenance_school->id }}">
                           {{ $provenance_school->name }}
@@ -197,7 +201,8 @@
                 <div class="col-md-3">
                   <label>Origem</label>
                   <select name="origin_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    <option>-- selecione aqui a Origem --</option>
+                    {{-- <option>-- selecione aqui a Origem --</option> --}}
+                    <option> </option> 
                     @foreach($origins as $origin)
                       <option value="{{ $origin->id }}">
                           {{ $origin->name }}
@@ -212,7 +217,8 @@
                 <div class="col-md-3">
                   <label>Motivo da Anulação</label>
                   <select name="cancellation_reason_id" class="custom-select border-top-0 border-left-0 border-right-0 input-height">
-                    <option>-- selecione aqui o Motivo da Anulação --</option>
+                    {{-- <option>-- selecione aqui o Motivo da Anulação --</option> --}}
+                    <option> </option> 
                     @foreach($cancellationReasons as $cancellationReason)
                       <option value="{{ $cancellationReason->id }}">
                           {{ $cancellationReason->name }}
