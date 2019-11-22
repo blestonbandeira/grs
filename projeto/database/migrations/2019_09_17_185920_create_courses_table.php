@@ -16,7 +16,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');            
             $table->bigInteger('course_name_id')->unsigned()->nullable();
-            $table->foreign('course_name_id')->references('id')->on('course_names');
+            $table->foreign('course_name_id')->references('id')->on('course_names')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('course_type_id')->unsigned()->nullable();
             $table->foreign('course_type_id')->references('id')->on('course_types')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('regime_id')->unsigned()->nullable();

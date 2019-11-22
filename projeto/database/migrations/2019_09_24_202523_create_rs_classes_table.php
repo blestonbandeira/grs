@@ -24,7 +24,7 @@ class CreateRsClassesTable extends Migration
             $table->bigInteger('class_state_id')->unsigned()->default(1);
             $table->foreign('class_state_id')->references('id')->on('class_states')->onDelete('cascade')->onUpdate('cascade');           
             $table->bigInteger('course_name_id')->unsigned()->nullable();
-            $table->foreign('course_name_id')->references('id')->on('course_names');
+            $table->foreign('course_name_id')->references('id')->on('course_names')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name')->nullable();
             $table->timestamps();
         });

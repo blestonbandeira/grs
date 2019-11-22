@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('permission_level_id')->unsigned()->nullable();
-            $table->foreign('permission_level_id')->references('id')->on('permission_levels');
+            $table->foreign('permission_level_id')->references('id')->on('permission_levels')->onDelete('cascade')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

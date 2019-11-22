@@ -451,7 +451,6 @@
     {
         let selected = appliSelected;
         let date = dateSelected + " " + document.getElementById('hourSelectChange').value + ":" + document.getElementById('minSelectChange').value + ":00";
-        alert(selected + date + eventAvailId);
         $.ajax({
 
             url:"/api/events",
