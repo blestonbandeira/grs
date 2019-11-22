@@ -107,6 +107,7 @@ class ApiEventController extends Controller
             $interview->applicant_id = $request->applicant_id;
             $time = Carbon::parse($request->date);
             $interview->date = $time;
+            $interview->result = "'sem resultado'";
             $interview->save();
     
             $interCreated = Interview::where('applicant_id', '=', $interview->applicant_id, 'and', 'date', '=', $time)->first();
