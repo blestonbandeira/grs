@@ -17,3 +17,6 @@ Route::apiResource('/applicants', 'ApiApplicantController');
 Route::apiResource('/events', 'ApiEventController');
 Route::apiResource('/interviews', 'ApiEventController');
 Route::apiResource('/helpers', 'ApiHelperController');
+Route::apiResource('/users', 'UserController');
+Route::apiResource('/rsclasses','RsClassController');
+Route::apiResource('/courses','CourseController');

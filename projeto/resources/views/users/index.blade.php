@@ -12,11 +12,9 @@
                 </a>
             </div>
             <div class="col-md-12 text-center">
-                <a href="/users/create">
-                    <button type="button" class="btn btn-info">
-                        Eliminar Utilizador(es)
-                    </button>
-                </a>
+                <button type="button" class="btn btn-info" onclick="deleteSelected()">
+                    Eliminar Utilizador(es)
+                </button>
             </div>
         </div>      
         <div class="row">
@@ -129,6 +127,26 @@
     {
         document.getElementById('formModal').action = "/users/" + data;
         $('#btnModalShow').click();
+    }
+
+    function deleteSelected()
+    {
+        let allSelected = document.getElementsByClassName('usersSelect');
+        let count = 0;
+        for(let i = 0; i < allSelected.length; i++){
+            if (allSelected[i].checked){
+                $.ajax({
+                    contentType: "application/json",
+                    url:"/api/users/" + allSelected[i].value,
+                    type:"DELETE",
+                    data:{},
+                    success:function(data)
+                    { 
+                    }
+                });
+            }
+        }
+        location.reload();
     }
 </script>
 
