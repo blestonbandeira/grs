@@ -18,9 +18,9 @@ class CreateDocumentsTable extends Migration
             $table->string('name');
             $table->string('size');
             $table->bigInteger('applicant_id')->unsigned()->nullable();
-            $table->foreign('applicant_id')->references('id')->on('applicants');
+            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('document_type_id')->unsigned()->nullable();
-            $table->foreign('document_type_id')->references('id')->on('document_types');
+            $table->foreign('document_type_id')->references('id')->on('document_types')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
