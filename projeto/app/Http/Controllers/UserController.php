@@ -87,7 +87,6 @@ class UserController extends Controller
 
         return view('users.edit')
         ->with(compact('user', 'permissionLevels'));
-    
     }
 
     /**

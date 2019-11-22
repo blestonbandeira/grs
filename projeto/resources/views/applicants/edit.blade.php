@@ -73,7 +73,7 @@
                   @else
                   <input type="date" class="form-control border-top-0 border-left-0 border-right-0" name="ccExpirationDate" format="dd/MM/yyyy" value="">
                   @endif
-                  
+
                 </div>
                 <div class="col-md-2">
                   <label>Estado Civil</label>
@@ -171,7 +171,7 @@
                           {{ $provenance_school->name }}
                       </option>
                     @endif
-                  @endforeach  
+                  @endforeach
                   </select>
                 </div>
               </div>
@@ -253,7 +253,7 @@
                   @else
                   <input type="date" value="" class="form-control border-top-0 border-left-0 border-right-0" name="cancellationDate">
                   @endif
-               
+
                 </div>
                 <div class="col-md-3">
                   <label>Motivo da Anulação</label>
@@ -299,8 +299,8 @@
                               <div class="card-header card-header-text card-header-warning bg-none">
                                 <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
                                   <h4 class="card-title" style="color:#00A3E0;">Entrevista</h4>
-                                </div>                                  
-                              </div> 
+                                </div>
+                              </div>
                               <div class="card-body">
                                 <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
                                   <option>---Selecione um resultado-</option>
@@ -309,16 +309,16 @@
                                   <option>Aceite (1)</option>
                                   <option>Aceite c/ reservas</option>
                                   <option>Não Aceite</option>
-                                </select>                       
+                                </select>
                               </div>
                           </div>
                           <div class="card">
                               <div class="card-header card-header-text card-header-warning bg-none">
                                 <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
                                   <h4 class="card-title" style="color:#00A3E0;">Prova de Aferição</h4>
-                                </div>                                  
-                              </div> 
-                              <div class="card-body">                       
+                                </div>
+                              </div>
+                              <div class="card-body">
                                   <select class="custom-select input-height w-25 border-top-0 border-left-0 border-right-0 " name="interview">
                                     <option>1</option>
                                     <option>2</option>
@@ -330,16 +330,16 @@
                                     <option>8</option>
                                     <option>9</option>
                                     <option>10</option>
-                                  </select>                       
+                                  </select>
                               </div>
                           </div>
                           <div class="card">
                               <div class="card-header card-header-text card-header-warning bg-none">
                                 <div class="card-text" style="box-shadow:none; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4); border: 1px solid #00A3E0;">
                                   <h4 class="card-title" style="color:#00A3E0;">Inventário Vocacional</h4>
-                                </div>                                  
-                              </div> 
-                              <div class="card-body">                          
+                                </div>
+                              </div>
+                              <div class="card-body">
                                   <select class="custom-select input-height w-25 border-top-0 border-left-0 border-right-0 " name="interview">
                                     <option>1</option>
                                     <option>2</option>
@@ -351,7 +351,7 @@
                                     <option>8</option>
                                     <option>9</option>
                                     <option>10</option>
-                                  </select>                       
+                                  </select>
                               </div>
                           </div>
                         </div>
@@ -373,7 +373,7 @@
                                 <tr style="height: 55px;">
                                   <td><label class="pr-3">Compreensão Verbal</label></td>
                                   <td>
-                                    <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
+                                    <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview" id="verbal" onclick="updateMedia()">
                                       <option>1</option>
                                       <option>2</option>
                                       <option>3</option>
@@ -384,12 +384,12 @@
                                       <option>8</option>
                                       <option>9</option>
                                       <option>10</option>
-                                    </select>  
+                                    </select>
                                   </td>
                                 </tr>
                                 <tr style="height: 55px;">
-                                  <td><label class="pr-3">Apridão Numérica</label></td>
-                                  <td><select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
+                                  <td><label class="pr-3">Apdidão Numérica</label></td>
+                                  <td><select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview" id="numerica" onclick="updateMedia()">
                                       <option>1</option>
                                       <option>2</option>
                                       <option>3</option>
@@ -404,7 +404,7 @@
                                 </tr>
                                 <tr style="height: 55px;">
                                   <td><label class="pr-3">Raciocínio Lógico</label></td>
-                                  <td><select class="custom-select input-height  border-top-0 border-left-0 border-right-0 " name="interview">
+                                  <td><select class="custom-select input-height  border-top-0 border-left-0 border-right-0 " name="interview" id="logico" onclick="updateMedia()">
                                       <option>1</option>
                                       <option>2</option>
                                       <option>3</option>
@@ -419,9 +419,9 @@
                                 </tr>
                                 <tr style="height: 55px;">
                                   <td><label class="pr-5">Raciocínio Espacial</label></td>
-                                  <td><select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
+                                  <td><select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview" id="espacial" onclick="updateMedia()">
                                       <option>1</option>
-                                      <option>2</option>
+                                      <option >2</option>
                                       <option>3</option>
                                       <option>4</option>
                                       <option>5</option>
@@ -438,37 +438,54 @@
                                   </tr>
                                 <tr>
                                   <td><label class="pr-3 text-info">Média dos Testes</label></td>
-                                  <td class="text-center"><label class="pr-3 text-info">22</label></td>
+                                  <td class="text-center"><label class="pr-3 text-info" id="media">0</label></td>
                                 </tr>
                               </table>
                           </div>
                     </div>
                     </div>
                     </div>
-                 
-                     
+
+                  <script>
+                    var verbal = document.getElementById("verbal");
+                    var numerica = document.getElementById("numerica");
+                    var logico = document.getElementById("logico");
+                    var espacial = document.getElementById("espacial");
+
+                    function updateMedia() {
+                      var op_v = parseInt(verbal.options[verbal.selectedIndex].text);
+                      var op_n = parseInt(numerica.options[numerica.selectedIndex].text);
+                      var op_l = parseInt(logico.options[logico.selectedIndex].text);
+                      var op_e = parseInt(espacial.options[espacial.selectedIndex].text);
+
+                      var media= ((op_v+op_n+op_l+op_e)/4);
+
+                      var label_media = document.getElementById("media");
+                      label_media.innerText = media;
+                      }
+                    </script>
                 </div>
               </div>
           </div>
 
           <div class="col-md-6">
               <div class="card">
-  
+
                 <div class="card-header card-header-text card-header-info">
                   <div class="card-text">
                     <h4 class="card-title">Documentos Entregues</h4>
                   </div>
-                  
+
                 </div>
-                
+
                 <div class="card-body">
-  
+
                   {{-- <div>
                     <input class="checkbox" type="hidden" name="appForm" value="0">
                     <input class="form-check-sign" type="checkbox" name="appForm" value="1" checked>
                     <label>Formulário de Inscrição</label>
                   </div> --}}
-  
+
                     <div class="form-check">
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="true">
@@ -533,9 +550,9 @@
               </div>
             </div>
       </div>
-          
+
       </div>
-        
+
       </div>
       <button type="submit" id="submitButton" onclick="this.disabled=true;this.form.submit();" class="btn btn-info pull-right">Gravar</button>
     </form>
@@ -548,7 +565,7 @@
   rsClassAppear("{{$applicant->first_option_course_id}}")
   secondCourse();
   function rsClassAppear(data)
-  { 
+  {
     document.getElementById('rsClassName').innerHTML = "";
     @foreach($courseArray as $value)
       if(data == "false"){
@@ -562,7 +579,7 @@
   }
 
   function secondCourse(data)
-  { 
+  {
     document.getElementById('secondOptionCourse').innerHTML = "";
     document.getElementById('secondOptionCourse').innerHTML = "<option>-- selecione aqui o nome do Curso --</option>  ";
     @foreach($courseArray as $value)
