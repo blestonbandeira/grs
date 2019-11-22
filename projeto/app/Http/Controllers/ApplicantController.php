@@ -181,7 +181,10 @@ class ApplicantController extends Controller
     public function show($id)
     {
         $applicant = Applicant::find($id);
-        return view('applicants.show')->with(compact('applicant'));
+        $gender = Gender::all();
+        return view('applicants.show')
+                ->with(compact('applicant',
+                                'gender'));
     }
 
     /**

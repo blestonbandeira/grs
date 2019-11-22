@@ -303,7 +303,8 @@
                               </div>
                               <div class="card-body">
                                 <select class="custom-select input-height border-top-0 border-left-0 border-right-0 " name="interview">
-                                  <option>---Selecione um resultado-</option>
+                                  {{-- <option>---Selecione um resultado-</option> --}}
+                                  <option> </option> 
                                   <option>Aceite (3)</option>
                                   <option>Aceite (2)</option>
                                   <option>Aceite (1)</option>
