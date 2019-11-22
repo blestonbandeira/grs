@@ -17,7 +17,6 @@ class CreateInterviewsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('applicant_id')->unsigned();
             $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('result')->nullable();
             $table->string('date');            
             $table->timestamps();
         });
