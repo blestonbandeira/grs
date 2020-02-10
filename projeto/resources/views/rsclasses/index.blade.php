@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="col text-center">
     <a href="{{ route('rsclasses.create') }}">
@@ -20,7 +21,10 @@
                 <div class="accordion" id="rsclasses">
                     <div class="card">
                         <div class="card-header card-header-info">
-                          <h5>Gestão de Turmas de Recrutamento<h5>
+                            @if (count($rsClasses) <= 0 )
+                                <h5> Não há Turmas de Recrutamento inseridas no sistema </h5>
+                            @else
+                                <h5>Gestão de Turmas de Recrutamento<h5>
                         </div>
                         <div class="card-body table-responsive">                            
                             <table class="table table-hover">
@@ -82,6 +86,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                @endif
                             </table>
                         </div>                            
                     </div>

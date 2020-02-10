@@ -39,7 +39,7 @@
         <div class="navbar-wrapper">
           @if (Request::is('applicants/create'))
             <a class="navbar-brand">Registo de Candidato</a>
-          @else <a></a>
+        
           @endif
           </div>  
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,11 +93,11 @@
     <div class="content">        
         <div class="container-fluid">
          
-          @if ($message = Session::get('success'))  
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
-            </div>
+        @if ($message = Session::get('success'))  
+          <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>{{ $message }}</strong>
+          </div>
         @endif
 
         @if (count($errors) > 0)

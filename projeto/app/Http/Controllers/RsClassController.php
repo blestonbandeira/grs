@@ -39,12 +39,14 @@ class RsClassController extends Controller
     public function create()
     {
         $courseNames = CourseName::all();
+        $courseName = $courseNames->toJson();
         $users = User::all()->where('permission_level_id', '=', 2);
         $classStates = ClassState::all();
         
         return view('rsclasses.create')
                 ->with(compact('rsclasses', 
                             'courseNames',
+                            'courseName',
                             'users',
                             'classStates'));
     }
@@ -72,7 +74,7 @@ class RsClassController extends Controller
 
         $rsClass->save();
         
-        return redirect('/rsclasses')->with('success','Turma criada com sucesso.');
+        return redirect('rsclasses')->with('success','Turma criada com sucesso.');
 
     }
 
@@ -135,7 +137,7 @@ class RsClassController extends Controller
 
         $rsClass->save();
         
-        return redirect('/rsclasses')->with('success','Turma actualizada com sucesso.');
+        return redirect('rsclasses')->with('success','Turma actualizada com sucesso.');
     }
 
     /**
@@ -149,6 +151,6 @@ class RsClassController extends Controller
         $rsClass = RsClass::find($id);
         $rsClass->delete();
 
-        return redirect('/rsclasses')->with('success','Turma apagada com sucesso.');
+        return redirect('rsclasses')->with('success','Turma apagada com sucesso.');
     }
 }

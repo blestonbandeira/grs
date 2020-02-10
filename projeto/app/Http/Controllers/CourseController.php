@@ -141,7 +141,7 @@ class CourseController extends Controller
         $course->minimum_qualification_id = $request->minimum_qualification_id;
         $course->save();
 
-        return redirect('/courses')->with ('success', 'O curso foi actualizado com sucesso.');
+        return redirect('courses')->with ('success', 'O curso foi actualizado com sucesso.');
     }
 
     /**
@@ -155,6 +155,6 @@ class CourseController extends Controller
         $course = Course::find($id);
         $course->delete();
 
-        return redirect('/courses')->with('success','Curso apagado com sucesso.');
+        return redirect('courses')->with('success','Curso apagado com sucesso.');
     }
 }

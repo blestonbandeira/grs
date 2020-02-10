@@ -1,9 +1,36 @@
+//Modal de confirmação de eliminação
+function openModal(data)
+{
+    document.getElementById('formModal').action = "/courses/" + data;
+    $('#btnModalShow').click();
+}
+
+function deleteSelected()
+{
+  let allSelected = document.getElementsByClassName('usersSelect');
+  let count = 0;
+  for(let i = 0; i < allSelected.length; i++){
+      if (allSelected[i].checked){
+          $.ajax({
+              contentType: "application/json",
+              url:"/api/courses/" + allSelected[i].value,
+              type:"DELETE",
+              data:{},
+              success:function(data)
+              { 
+              }
+          });
+      }
+  }
+  location.reload();
+}
+
 //Obter nome da turma
 function getRsClassName()
 {
     let courseSelected = $('#courseSelected :selected').text();
     if ($('#courseSelected').val() > 0){
-        let dateSelected = document.getElementById('today').value;
+        let dateSelected = document.getElementById('today').value;        
         $.ajax({
             contentType: "application/json",
             url:"/api/helpers",
@@ -11,20 +38,22 @@ function getRsClassName()
             data:{ courseName:courseSelected, startDate:dateSelected },
             success:function(data)
             {
-                let teste = document.getElementById('rsClassNameCreated').value = data;
+                document.getElementById('rsClassNameCreated').value = data;
             }
         });
     }
     else
     {
-        let teste = document.getElementById('rsClassNameCreated').value = "";
+        document.getElementById('rsClassNameCreated').value = "";
     }
+    return teste;
     
 }
 
 //Date
 let today = new Date().toISOString().substr(0, 10);
 document.querySelector("#today").value = today;
+
 // document.querySelector("#today").valueAsDate = new Date();
 
 //Disable multiple requests

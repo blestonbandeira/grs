@@ -2,46 +2,13 @@
 
 @section('content')
 <div class="col text-center">
-        {{-- <div class="text-center"> 
-                <label class="pr-3 pl-3">Filtrar por:</label>
-                <select onchange="selectFilter(this)" name="category_id" class="text-center custom-select w-25">
-                    <option>--selecione um filtro--</option>
-                    <option value="0">Apto</option>
-                    <option value="1">Categoria</option>
-                </select>
-                <label class="pr-3 pl-3">e</label>
-                <select id="categoryName" style="visibility: hidden" name="category_id" class="text-center custom-select w-25 position-absolute">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-                <select id="categoryApto" style="visibility: hidden" name="category_id" class="text-center custom-select w-25">
-                        <option value="">Sim</option>
-                        <option value="">Não</option>
-                </select>
-            </div>
-            <br>
-            <br>
-           <script>
-               function selectFilter(data){
-                   if(data.value == 0){
-                        document.getElementById('categoryName').style.visibility = "hidden";
-                        document.getElementById('categoryApto').style.visibility = "visible";
-                   }
-                   else
-                   {
-                        document.getElementById('categoryApto').style.visibility = "hidden";
-                        document.getElementById('categoryName').style.visibility = "visible";
-                   }
-               }
-               </script> --}}
+   
     <a href="/applicants/create">
         <button type="button" class="btn btn-info">
             Adicionar
         </button>
     </a>
+    
     <a>
         <button type="button" class="btn btn-info" onclick="getApplicantsSelectedFromInterviews()">
             Marcar Entrevista

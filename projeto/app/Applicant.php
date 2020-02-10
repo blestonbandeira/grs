@@ -14,3 +14,4 @@ class Applicant extends Model
         return $this->belongsTo('\App\Category');
     }
 }
+ 

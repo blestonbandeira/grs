@@ -35,7 +35,8 @@ class TableController extends Controller
         
         $origins = Origin::all();
 		$provenanceSchools = ProvenanceSchool::select('provenance_schools.id', 'provenance_schools.name')
-                ->when($order, function ($query, $order) {
+                ->when($order, function ($query, $order) 
+                {
                     switch ($order) {
                         case 'name':
                             return $query->orderBy('provenance_schools.name');

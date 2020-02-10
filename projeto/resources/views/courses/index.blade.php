@@ -22,11 +22,15 @@
                 <div class="accordion" >
                     <div class="card">
                         <div class="card-header card-header-info">
+                        @if (count($courses) <=0 ) 
+                            <h4> Não existem cursos adicionados no sistema. </h4>
+                        @else  
                           <h4>Gestão de Cursos<h4>
                             <h6> Nº. de Cursos em Recrutamento: {{ $courses->count()}}</h6>
                         </div>
-
-                        <div class="card-body table-responsive">                            
+                            
+                        <div class="card-body table-responsive">    
+                                                    
                             <table class="table table-hover">
                                 <thead class="text-info">
                                     <th></th>
@@ -38,6 +42,7 @@
                                     <th></th>                         
                                     <th></th>
                                 </thead>
+
                                 <tbody>
                                     @foreach ($courses as $course)
                                         <tr>
@@ -61,7 +66,7 @@
 
                                             <td>
                                                 {{ $course->courseType['name'] }}
-                                              
+                                                
                                             </td>
                                             <td>
                                                 {{ $course->regime['name'] }}
@@ -69,7 +74,7 @@
                                             <td>
                                                 {{ $course->minimumQualification['name'] }}
                                             </td>
-                                          
+                                            
                                             <td class="d-flex">
                                                 <a href="/courses/{{ $course->id }}/edit">
                                                     <button type="button" rel="tooltip" title="Editar Curso" class="btn btn-info btn-link btn-sm border-0">
@@ -84,6 +89,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        @endif
                         </div>                            
                     </div>
                 </div>
@@ -94,7 +100,7 @@
 
 <button id="btnModalShow" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEventsShow" style="visibility: hidden;"></button>
 
-<div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="modalEventsShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
   <input type="hidden" id="idEvent"/>
     <div id="modalEvents" class="modal-content">
@@ -125,33 +131,7 @@
         </div>
     </div>
   </div>
-</div>
-<script>
-    function openModal(data)
-    {
-        document.getElementById('formModal').action = "/courses/" + data;
-        $('#btnModalShow').click();
-    }
+</div> --}}
 
-    function deleteSelected()
-    {
-        let allSelected = document.getElementsByClassName('usersSelect');
-        let count = 0;
-        for(let i = 0; i < allSelected.length; i++){
-            if (allSelected[i].checked){
-                $.ajax({
-                    contentType: "application/json",
-                    url:"/api/courses/" + allSelected[i].value,
-                    type:"DELETE",
-                    data:{},
-                    success:function(data)
-                    { 
-                    }
-                });
-            }
-        }
-        location.reload();
-    }
-</script>
 
 @endsection

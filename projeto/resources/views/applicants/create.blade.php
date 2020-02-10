@@ -295,7 +295,7 @@
                   <input class="form-check-input" type="hidden" value="0" name="medicalRecord">
                   <input class="form-check-input" type="checkbox" value="1" name="medicalRecord">
                   Atestado Médico
-                  {{-- é preciso fazer aqui validações: o atestado médico e o data assessment são só para alguns cursos, tenho de ir ver quais --}}
+                  
                   <span class="form-check-sign">
                     <span class="check"></span>
                   </span>

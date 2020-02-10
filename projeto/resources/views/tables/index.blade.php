@@ -27,10 +27,10 @@
                                         </a>
                                       </th>
                                       <th class="text-center">                                          
-                                          <a href="{{ route('tables.index', ['order' => 'name']) }}" class="ftc-main">
-                                            Nome
-                                            <i class="grid-sort"></i>
-                                          </a>
+                                        <a href="{{ route('tables.index', ['order' => 'name']) }}" class="ftc-main">
+                                        Nome
+                                        <i class="grid-sort"></i>
+                                        </a>
 
                                       </th>
                                       <th class="text-center"></th>

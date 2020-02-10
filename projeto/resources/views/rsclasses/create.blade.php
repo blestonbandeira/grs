@@ -24,7 +24,7 @@
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Nome do Curso</label>
                                             <select id="courseSelected" onchange="getRsClassName()" name="course_name_id" class="custom-select input-border-width">
                                                     @if (count($courseNames) > 0 )
-                                                        <option>-- selecione aqui o nome do Curso --</option>                                                        
+                                                        <option selected disabled>-- selecione aqui o nome do Curso --</option>                                                        
                                                         @foreach($courseNames as $courseName)
                                                             <option value="{{ $courseName->id }}">
                                                                 {{ $courseName->name }}
@@ -32,7 +32,7 @@
                                                         @endforeach
                                                     @else
                                                         <option>
-                                                            --Não existem cursos na plataforma--
+                                                            --Não existem nomes de cursos no sistema--
                                                         </option>
                                                     @endif
                                             </select>                                            
@@ -42,7 +42,7 @@
                                             <label class="border-top-0 border-left-0 border-right-0" name="name">Assistente de Formação</label>
                                             <select name="user_id" class="custom-select input-border-width">
                                                     @if (count($users) > 0 )
-                                                        <option>-- selecione aqui a Assistente de Formação --</option>                                                        
+                                                        <option selected disabled>-- selecione aqui a Assistente de Formação --</option>                                                        
                                                         @foreach($users as $user)
                                                             <option value="{{ $user->id }}">
                                                                 {{ $user->name }}
@@ -50,7 +50,7 @@
                                                         @endforeach
                                                     @else
                                                         <option>
-                                                            --Não existem assistentes de formação--
+                                                            --Não existem assistentes de formação inseridos no sistema--
                                                         </option>
                                                     @endif                                               
                                             </select>                                            

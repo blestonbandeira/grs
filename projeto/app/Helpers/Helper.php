@@ -1,10 +1,12 @@
 <?php
 
 use Carbon\Carbon;
+use App\CourseName;
 
 function getCourseName($courseName, $startDate) {
-        
-
+	
+	
+	
   $palavras = preg_split('/(?=[A-Z])/', $courseName, null, PREG_SPLIT_NO_EMPTY);
   $acronimo = " ";
 

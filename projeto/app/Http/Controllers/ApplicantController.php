@@ -29,19 +29,16 @@ class ApplicantController extends Controller
     {
         
         $applicants = Applicant::all();
-        $rsClasses = RsClass::simplePaginate(10);
-        $counter = Applicant::withCount('rsClass')->get()->count();
+        $rsClasses = RsClass::all();
         $categories = Category::all();
-        $interviews = Interview::all();
+      
 
         return view('applicants.index')
-        ->with(compact(
-            'applicants', 
-            'rsClasses',
-            'categories',
-            'counter',
-            'interviews'
-        ));
+                ->with(compact(
+                    'applicants', 
+                    'rsClasses',
+                    'categories'
+                ));
     }
 
     /**
@@ -356,9 +353,9 @@ class ApplicantController extends Controller
             $applicant->dataAssessment == 0
         ) {
             return $applicant->apt = 1;
-        } else {
-            return $applicant->apt = 0;
-        }
+        } 
+        return $applicant->apt = 0;
     }
+    
 }
 
